@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import com.example.androidbase.mvp.MvpFragment;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
@@ -24,10 +23,9 @@ import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
 import com.suctan.huigangdemo.R;
 import com.yalantis.phoenix.PullToRefreshView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
