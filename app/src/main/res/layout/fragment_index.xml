@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yalantis.phoenix.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pull_to_refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+
+    <com.example.androidbase.widget.CustomScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <com.jude.rollviewpager.RollPagerView
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    rollviewpager_play_delay="4000"
+                    android:id="@+id/rollViewpager"/>
+            </FrameLayout>
+            <RadioGroup
+                android:id="@+id/tab_rg_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal" >
+                <cn.bingoogolapple.badgeview.BGABadgeRadioButton
+                    android:id="@+id/tab_index"
+                    style="@style/tab_rb_style"
+                    android:checked="false"
+                    android:drawableTop="@drawable/selector_tab_com"
+                    android:text="@string/tab_recommend" />
+
+                <cn.bingoogolapple.badgeview.BGABadgeRadioButton
+                    android:id="@+id/tab_want"
+                    style="@style/tab_rb_style"
+                    android:checked="false"
+                    android:drawableTop="@drawable/selector_tab_want_com"
+                    android:text="@string/tab_want" />
+                <cn.bingoogolapple.badgeview.BGABadgeRadioButton
+                    android:id="@+id/tab_do"
+                    style="@style/tab_rb_style"
+                    android:checked="false"
+                    android:drawableTop="@drawable/selector_tab_do_com"
+                    android:text="@string/tab_do" />
+
+            </RadioGroup>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/recommend_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="菜品推荐"
+                    android:paddingLeft="25dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="更多>>"
+                    android:paddingLeft="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <GridView
+                    android:id="@+id/gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:numColumns="auto_fit"
+                    android:verticalSpacing="10dp"
+                    android:horizontalSpacing="10dp"
+                    android:columnWidth="90dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.example.androidbase.widget.CustomScrollView>
+
+</com.yalantis.phoenix.PullToRefreshView>
+

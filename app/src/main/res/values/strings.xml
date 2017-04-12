@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HuiGangDemo</string>
+    <!--网路检查-->
+    <string name="Test">测试</string>
+    <string name="checkNetTip">请检查您的网络！</string>
+    <string name="inputPwdTip">请输入密码！</string>
+    <string name="inputActTip">请输入用户名！</string>
+    <string name="loginSucTip">登录成功！</string>
+    <string name="tab_recommend">推荐</string>
+    <string name="tab_want">我要吃</string>
+    <string name="tab_do">我要做</string>
+
+
+
+</resources>

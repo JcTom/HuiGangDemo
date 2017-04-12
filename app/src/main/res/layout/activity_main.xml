@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+    <!--viewpage布局-->
+    <include layout="@layout/login_head" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_fragment_viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v4.view.ViewPager>
+    <!--底部按钮布局开始-->
+
+    <!--底部按钮布局开始-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#cbcbcb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:orientation="horizontal"
+            android:paddingTop="3dp">
+            ly_index_select
+            <!--首页按钮布局开始-->
+            <LinearLayout
+                android:id="@+id/ly_index_select"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!--首页包裹层布局开始-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/main_imv_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/select_imv_index" />
+
+                    <TextView
+                        android:id="@+id/main_tv_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="首页"
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+                <!--首页包裹层布局结束-->
+            </LinearLayout>
+            <!--首页按钮布局结束-->
+
+            <!--课程按钮布局开始-->
+            <LinearLayout
+                android:id="@+id/ly_chanel_select"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <!--课程包裹层布局开始-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/main_imv_chancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/select_imv_chanel" />
+
+                    <TextView
+                        android:id="@+id/main_tv_chanel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="共享"
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <!--课程包裹层布局结束-->
+            </LinearLayout>
+            <!--课程按钮布局结束-->
+
+            <!--直播按钮布局开始-->
+            <LinearLayout
+                android:id="@+id/ly_find_select"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <!--我包裹层布局开始-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <ImageView
+                        android:id="@+id/main_imv_find"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/select_imv_find" />
+
+                    <TextView
+                        android:id="@+id/main_tv_find"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="社区"
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <!--直播按钮布局结束-->
+            </LinearLayout>
+            <!--我按钮布局结束-->
+
+
+            <!--我按钮布局开始-->
+            <LinearLayout
+                android:id="@+id/ly_myselft_select"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+                <!--购物车图标-->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <!--我包裹层布局开始-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/main_imv_myselft"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/select_imv_myselft" />
+
+                            <TextView
+                                android:id="@+id/main_tv_myselft"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="3dp"
+                                android:text="我的"
+                                android:textColor="#666666"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/txt_index_tipNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="10dp"
+                        android:background="@mipmap/ic_launcher"
+                        android:gravity="center"
+
+                        android:textSize="10sp"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <!--我包裹层布局结束-->
+            </LinearLayout>
+            <!--我按钮布局结束-->
+        </LinearLayout>
+    </LinearLayout>
+    <!--底部按钮布局结束-->
+</LinearLayout>
