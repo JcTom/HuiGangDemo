@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/tab_title"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/back_white"
+            android:background="#00000000"
+            android:id="@+id/release_back"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="发布家政需求"
+            style="@style/title_font" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/two_title"
+                android:text="标题："/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:maxLength="16"
+                android:id="@+id/service_title"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_gray"
+            android:layout_marginTop="10dp" />
+        <EditText
+            android:layout_marginTop="10dp"
+            android:id="@+id/service_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:enabled="true"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:minLines="12"
+            android:maxLines="14"
+            android:scrollbars="vertical"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="详情描述"  >
+        </EditText>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="响应时间："
+                    android:layout_gravity="center"
+                    style="@style/editor_one"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_gray">
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textSize="25sp"
+                        android:textColor="@color/green"
+                        android:background="#00000000"
+                        android:id="@+id/service_time_minus"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="5"
+                        android:layout_height="25dp"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/holo_red_light"
+                        android:text="1.5h"
+                        android:id="@+id/service_time"/>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="+"
+                        android:textColor="@color/green"
+                        android:textSize="25sp"
+                        android:background="#00000000"
+                        android:id="@+id/service_time_add"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="期望时间："
+                    android:layout_gravity="center"
+                    style="@style/editor_one"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg_gray"
+                    android:gravity="center_vertical">
+                    <TimePicker
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/service_select_time">
+
+                    </TimePicker>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="       酬劳："
+                    android:layout_gravity="center"
+                    style="@style/editor_one"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical">
+                    <EditText
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:id="@+id/service_money"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="元"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        style="@style/tab_title"
+        android:background="#00000000"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="@string/share_fb"
+            android:background="@color/green"
+            style="@style/title_font"
+            android:id="@+id/service_fb"/>
+    </LinearLayout>
+
+</LinearLayout>

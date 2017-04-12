@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        style="@style/tab_title"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/back_white"
+            android:background="#00000000"
+            android:id="@+id/notice_back"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="公告"
+            style="@style/title_font"
+            android:id="@+id/service_title"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/share_fb"
+            android:background="#00000000"
+            style="@style/title_font"
+            android:textSize="16sp"
+            android:id="@+id/notice_fb"/>
+    </LinearLayout>
+    <com.example.androidbase.widget.RecyclerScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.example.androidbase.widget.RecyclerScrollView>
+</LinearLayout>
