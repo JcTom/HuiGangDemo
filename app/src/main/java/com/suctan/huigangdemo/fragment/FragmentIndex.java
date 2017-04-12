@@ -1,5 +1,4 @@
 package com.suctan.huigangdemo.fragment;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
