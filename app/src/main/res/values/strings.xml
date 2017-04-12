@@ -11,5 +11,15 @@
     <string name="tab_do">我要做</string>
 
 
+    <string name="share_jqqd">敬请期待</string>
+    <string name="share_esjy">二手交易</string>
+    <string name="share_phlr">陪护老人</string>
+    <string name="jsxh">接送小孩</string>
+    <string name="share_dskd">代收快递</string>
+    <string name="share_sfc">顺风车</string>
+    <string name="share_dg">代购</string>
+    <string name="share_jz">家政服务</string>
+    <string name="share_fb">发布</string>
+
 
 </resources>

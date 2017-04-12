@@ -18,6 +18,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layout/home',
+                            'src/main/res/layout/share',
+                            'src/main/res/layout/circle',
+                            'src/main/res/layout/my',
+                            'src/main/res/layout',
+                            'src/main/res'
+                    ]
+        }
+    }
+
 }
 
 dependencies {
@@ -35,4 +49,5 @@ dependencies {
     compile 'com.bigkoo:convenientbanner:2.0.5'
     compile 'com.facebook.fresco:fresco:0.9.0'
     compile 'com.jude:rollviewpager:1.2.9'
+    compile 'com.tb.emoji:yykEmoji:1.0.0'
 }

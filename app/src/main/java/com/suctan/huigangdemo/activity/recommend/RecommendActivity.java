@@ -31,6 +31,6 @@ public class RecommendActivity extends HomeActivity implements View.OnClickListe
             }
         });
         login_recommend_title = (TextView) findViewById(R.id.login_recommend_title);
-        login_recommend_title.setText("享享我好吗");
+        login_recommend_title.setText("今日推荐");
     }
 }
