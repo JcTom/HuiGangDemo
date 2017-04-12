@@ -54,6 +54,8 @@
         <activity android:name=".activity.Home_Page.HomeActivity"/>
         <activity android:name=".activity.search.SearchActivity"/>
         <activity android:name=".activity.recommend.RecommendActivity"/>
+             <activity android:name=".activity.do_want.Dowant"></activity>
+        <activity android:name=".activity.want.Want"></activity>
     </application>
 
 </manifest>
