@@ -119,6 +119,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
             @Override
             public void onClick(View v) {
                 Intent goDoWant = new Intent(getActivity(), Dowant.class);
+                startActivity(goDoWant);
             }
         });
     }
