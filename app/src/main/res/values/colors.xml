@@ -11,4 +11,10 @@
     <color name="txtgray">#999999</color>
     <color name="txtblack">#333333</color>
     <color name="line">#e6e6e6</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#ff9900</color>
+    <color name="gray_h">#333333</color>
+    <color name="bg_gray">#f0f0f0</color>
+    <color name="green">#9DB830</color>
 </resources>
