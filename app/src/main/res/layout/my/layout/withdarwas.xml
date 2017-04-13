@@ -10,13 +10,15 @@
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
+        android:paddingLeft="10dp"
         >
 
         <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@mipmap/return_128"
             android:layout_marginLeft="1dp"
+            android:layout_gravity="center"
             />
 
         <TextView

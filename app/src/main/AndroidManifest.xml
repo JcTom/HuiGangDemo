@@ -56,6 +56,7 @@
         <activity android:name=".activity.recommend.RecommendActivity"/>
              <activity android:name=".activity.do_want.DoWant"></activity>
         <activity android:name=".activity.want.Want"></activity>
+        <activity android:name=".activity.myself.SettingActivity"></activity>
     </application>
 
 </manifest>
