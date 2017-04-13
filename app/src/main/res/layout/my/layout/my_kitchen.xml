@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#9db830"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/return_128"
+            android:layout_marginLeft="1dp"
+            android:layout_gravity="left|center_vertical"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:text="@string/my_kitchen"
+            android:textSize="20sp"
+            android:textColor="@color/top_title"
+            android:gravity="center"
+            android:layout_marginRight="26dp"
+            />
+
+    </LinearLayout>
+
+    <!--背景图片和头像，名字设置-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@mipmap/my_kitchen_bg"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            >
+            <com.example.androidbase.widget.CircleImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@mipmap/ic_launcher"
+                app:border_width="5dp"
+                app:border_color="@color/border_clo"
+                android:layout_gravity="bottom"
+                >
+            </com.example.androidbase.widget.CircleImageView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Lee"
+                    android:textColor="#000"
+                    android:layout_marginLeft="5dp"
+                    />
+
+                 <TextView
+                     android:layout_marginLeft="5dp"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="♀ 厨娘"
+                     android:background="@drawable/textview_shape"
+
+                     />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#999"
+                    android:textSize="15sp"
+                    android:text="厨龄"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--我的菜色-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/my_food_mark"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/back"
+            android:textSize="18sp"
+            android:text="@string/my_food"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="#d3d3d3"
+        android:layout_marginTop="5dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".screen.screen_Activity"
+            >
+
+
+            <ListView
+                android:id="@+id/list_view_food"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="showPopFormBottom"
+                android:layout_gravity="bottom|right"
+                android:text="发布"
+                android:textColor="@color/white"
+                android:background="@color/common_green"
+                />
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

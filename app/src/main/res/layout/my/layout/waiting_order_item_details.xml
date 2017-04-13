@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+    <!--标题栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#9db830"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/return_128"
+            android:layout_marginLeft="1dp"
+            android:layout_gravity="left|center_vertical"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:text="订单详情"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:layout_marginRight="25dp"
+            />
+    </LinearLayout>
+
+    <!--剩余时间横栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/waiting_orders_time"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="如果订单超时,订单自动取消"
+            android:textSize="16sp"
+            android:layout_marginRight="2dp"
+            />
+
+
+    </LinearLayout>
+
+    <!--收货人信息-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="收货人信息"
+            android:textColor="@color/grey"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A栋-A001"
+            android:textSize="15sp"
+            android:textColor="@color/grey"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+
+    <!--分隔线-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/grey"
+        android:layout_marginTop="10dp"
+        >
+    </LinearLayout>
+
+
+    <!--商品信息-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="商品清单"
+            android:textColor="@color/grey"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            />
+        <!--菜的详情-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="番茄炒鸡蛋"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 3"
+                android:textColor="@color/grey"
+                android:textSize="15sp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+
+        <!--菜的详情-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="西兰花抄牛肉"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="x 2"
+                android:textColor="@color/grey"
+                android:textSize="15sp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/grey"
+            android:layout_marginTop="5dp"
+            >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right|center_vertical"
+            android:layout_marginTop="5dp"
+            >
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="总计:"
+             android:layout_marginRight="10dp"
+             android:textSize="15sp"
+             android:textColor="@color/grey"
+             />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="¥"
+              android:textSize="15sp"
+              android:textColor="#ff00"
+              android:layout_marginRight="5dp"
+              />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textSize="15sp"
+                android:textColor="#ff00"
+                />
+
+        </LinearLayout>
+
+        <!--分隔线-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/grey"
+            android:layout_marginTop="5dp"
+            >
+        </LinearLayout>
+
+        <!--订单信息单号等-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="订单编号"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="001"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="5dp"
+                />
+        </LinearLayout>
+
+
+
+        <!--分隔线-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/grey"
+            android:layout_marginTop="5dp"
+            >
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/common_green"
+        android:text="取消订单"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        />
+
+</LinearLayout>

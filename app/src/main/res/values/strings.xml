@@ -22,4 +22,95 @@
     <string name="share_fb">发布</string>
 
 
+    <!--用户名修改信息-->
+    <string name="midf_setting_username">用户名修改</string>
+    <string name="setting_username">请输入用户名</string>
+    <string name="warm_setting_name">用户名(昵称):</string>
+
+    <!--实名认证修改信息-->
+    <string name="midf_real_username">实名认证</string>
+    <string name="real_username">姓名:</string>
+    <string name="warm_real_username">请输入姓名</string>
+    <string name="real_name_number">身份证:</string>
+    <string name="warm_real_name_number">请输入身份证</string>
+
+    <!--性别修改信息-->
+    <string name="midf_sex">性别修改</string>
+    <string name="sex">性别</string>
+    <string name="boy">男</string>
+    <string name="girl">女</string>
+
+    <!--学历修改信息-->
+    <string name="midf_eduction">学历修改</string>
+    <string name="eduction">学历:</string>
+    <string name="edutction_junior">初中</string>
+    <string name="edutction_high">高中</string>
+    <string name="edutction_junior_college">大专</string>
+    <string name="edutction_undergarduate">本科</string>
+    <string name="edutction_master">硕士</string>
+    <string name="edutction_doctor">博士</string>
+    <string name="edutction_other">其他</string>
+
+    <!--年龄段修改信息-->
+    <string name="modf_age">年龄修改</string>
+    <string name="age">年龄:</string>
+    <string name="age_00">00后</string>
+    <string name="age_90">90后</string>
+    <string name="age_80">80后</string>
+    <string name="age_70">70后</string>
+    <string name="age_other">其他</string>
+
+    <!--熟悉领域修改信息-->
+    <string name="modf_special">熟悉领域修改</string>
+    <string name="special">熟悉领域:</string>
+    <string name="warm_hint_special">请输入你的熟悉领域:</string>
+
+    <!--业余爱好修改信息-->
+    <string name="modf_hobby">业余爱好修改</string>
+    <string name="hobby">业余爱好:</string>
+    <string name="warm_hint_hobby">请输入你的爱好</string>
+
+    <!--四大主页之一  我的-->
+    <string name="myself">我的</string>
+
+    <!--我的钱包设设置-->
+    <string name="change">零钱</string>
+    <string name="wallet">我的零钱</string>
+    <string name="Recharge">充值</string>
+    <string name="Withdrawals">提现</string>
+    <string name="change_withdrawals">零钱提现</string>
+
+    <!--评价文字设置-->
+    <string name="assess">评价</string>
+    <string name="Release">发布</string>
+
+    <!--菜色发布文字设置-->
+    <string name="Release_food">新菜色</string>
+    <string name="food_name">菜名</string>
+    <string name="food_name_edit">请输入你的菜名</string>
+    <string name="food_money">价格</string>
+    <string name="food_money_edit">请定义菜的价格/元</string>
+    <string name="food_describe">菜品描述</string>
+    <string name="please_food_describe">请输入菜品描述</string>
+    <string name="service_type">服务类型</string>
+    <string name="type">自提|送上门|上门提</string>
+    <string name="food_book">菜谱(可事后添加)</string>
+    <string name="release">发布</string>
+
+
+    <!--菜谱发布文字设置-->
+    <string name="cook_book">菜谱</string>
+    <string name="food_material">菜所需材料:</string>
+    <string name="food_material_edit">请输入制作菜所需要的材料</string>
+    <string name="food_making_process">制作流程:</string>
+    <string name="food_making_process_edit">请简述此菜的制作流程</string>
+    <string name="food_attention">注意事项:</string>
+    <string name="food_attention_edit">制作的过程中和材料有什么需要注意的地方</string>
+
+    <!--我的厨房-->
+    <string name="my_kitchen">我的厨房</string>
+    <string name="my_food">我的菜色</string>
+    <string name="add_food_today">上架今日菜色</string>
+    <string name="add_new_food">添加新菜色</string>
+
 </resources>

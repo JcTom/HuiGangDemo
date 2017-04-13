@@ -12,9 +12,53 @@
     <color name="txtblack">#333333</color>
     <color name="line">#e6e6e6</color>
 
-    <color name="white">#FFFFFF</color>
+
     <color name="yellow">#ff9900</color>
     <color name="gray_h">#333333</color>
     <color name="bg_gray">#f0f0f0</color>
     <color name="green">#9DB830</color>
+
+    <!--四大主页之一我的颜色配置-->
+    <!--分隔线颜色设置-->
+    <color name="border_clo">#ccc</color>
+    <!--个人设置字体颜色设置-->
+    <color name="text_clo">#333</color>
+    <color name="white">#fff</color>
+    <color name="blue">#419DE4</color>
+    <!--标题栏颜色设置-->
+    <color name="title_color_my">#9db830</color>
+    <!--共用颜色颜色设置-->
+    <color name="common_green">#9db830</color>
+    <!--real_button没被选中的颜色-->
+    <color name="unselect">#9db830</color>
+    <!--real_button被选中的颜色-->
+    <color name="select">#88d9f9</color>
+    <!--头像边框颜色 以及透明度-->
+    <color name="head_border_width_clo">#ccc</color>
+    <!--提现颜色背景设置-->
+    <color name="bj_withdarwas">#dcdc</color>
+    <!--我的厨房颜色设置-->
+    <color name="mid_title">#000</color>
+    <color name="top_title">#fff</color>
+    <color name="back">#000</color>
+
+    <color name="release">#9db830</color>
+    <!--我的厨房中的服务类型自提颜色设置-->
+    <color name="selected_service">#9db830</color>
+
+
+    <!--menu菜单栏的颜色设置-->
+    <color name="colorOrange">#FF933E</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+    <!--待接单-订单详情-->
+    <color name="waiting_orders_time">#d6fe5200</color>
+    <color name="grey">#999</color>
+
+    <!--筛选栏目的字体颜色配置-->
+    <color name="gray">#666666</color>
+    <color name="divider_line">#e2e2e2</color>
+
+
+
 </resources>
