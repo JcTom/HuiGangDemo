@@ -9,7 +9,7 @@ import com.suctan.huigangdemo.activity.Home_Page.HomeActivity;
  * Created by Tom on 2017/4/12.
  */
 
-public class Dowant extends HomeActivity {
+public class DoWant extends HomeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

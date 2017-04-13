@@ -44,7 +44,7 @@
             <EditText
                 android:id="@+id/edt_login_user_name"
                 style="@style/Login_edt"
-                android:hint="请输入用户名" />
+                android:hint="请输入用户名 输入任意字符" />
 
         </LinearLayout>
 
@@ -70,7 +70,7 @@
             <EditText
                 android:id="@+id/edt_login_user_pwd"
                 style="@style/Login_edt"
-                android:hint="请输入密码"
+                android:hint="请输入密码字符即可"
                 android:inputType="textPassword" />
 
         </LinearLayout>

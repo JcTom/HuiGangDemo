@@ -1,6 +1,9 @@
 package com.suctan.huigangdemo.mvp.login;
 
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.example.androidbase.BaseApplication;
 
 import com.example.androidbase.rxjava.ApiCallback;
@@ -26,6 +29,8 @@ import java.util.Map;
 
 public class LoginPresener extends DemoBasePresenter<LoginView> {
 
+    private String TAG="LoginPresener";
+
     public LoginPresener(LoginView mvpView) {
         attachView(mvpView);
     }
@@ -34,28 +39,38 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
     public void getLoginAction(Map map) {
         addSubscription(apiStores.getLoginReturnMessage(map),
                 new SubscriberCallBack<>(new ApiCallback<LoginReturn>() {
+
                     @Override
                     public void onStart() {
                         mvpView.showLoading();
+                        System.out.println("onStart");
                     }
-
                     @Override
                     public void onCompleted() {
+                        System.out.println("onCompleted");
                     }
 
                     @Override
                     public void onSuccess(LoginReturn model) {
                         if (model != null) {
-                            if (model.getToken() != null) {
+                            System.out.println("onSuccess ");
+                            if (model.getStatus().equals("1")) {
+                                mvpView.loginGoMain();
+                                Log.i(TAG, "我是状态成功status->"+model.getStatus()+"msg->"+model.getMsg()+"token->"+model.getToken());
                                 getCurrentUser(model.getToken());
                             } else {
+                                mvpView.loginGoMain();
+                                Log.i(TAG, "我是状态失败status->"+model.getStatus()+"msg->"+model.getMsg()+"token->"+model.getToken());
                                 mvpView.getDataFail("用户名或者密码错误");
                             }
                         }
                     }
 
+
                     @Override
-                    public void onFaild(String msg) {
+                    public void onFailed(String msg) {
+                        mvpView.loginGoMain();
+                        System.out.println("onFailed msg"+msg);
                         mvpView.getDataFail(msg);
                         mvpView.hideLoading();
                     }
@@ -65,7 +80,6 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
 
     public void getCurrentUser(final String userToken) {
         Map mapUser = new HashMap();
-        mapUser.put("action", "get_user_info");
         mapUser.put("token", userToken);
         addSubscription(apiStores.getUserReturnMessage(mapUser),
                 new SubscriberCallBack<>(new ApiCallback<GetUserReturn>() {
@@ -99,11 +113,47 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     }
 
                     @Override
-                    public void onFaild(String msg) {
+                    public void onFailed(String msg) {
                         mvpView.getDataFail(msg);
                     }
                 }));
     }
+
+
+
+
+    public void getHelloText() {
+        Map map=new HashMap();
+        map.put("username", "18942433927");
+        map.put("password", 94682431);
+//       String user  = "?&user=liheming";
+        addSubscription(apiStores.getHello(map),
+                new SubscriberCallBack<>(new ApiCallback<String>() {
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        mvpView.hideLoading();
+                    }
+
+                    @Override
+                    public void onSuccess(String model) {
+                        Toast.makeText(BaseApplication.getContext(),model,Toast.LENGTH_LONG).show();
+
+                        Log.i(TAG, "onSuccess: "+model);
+                    }
+
+                    @Override
+                    public void onFailed(String msg) {
+                        mvpView.getDataFail(msg);
+                    }
+                }));
+    }
+
+
+
 
     /**
      * created at 2017/3/23 16:45

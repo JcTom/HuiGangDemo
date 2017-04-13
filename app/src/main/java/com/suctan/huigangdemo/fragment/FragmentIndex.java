@@ -12,10 +12,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+
 import com.example.androidbase.mvp.MvpFragment;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
-import com.suctan.huigangdemo.activity.do_want.Dowant;
+import com.suctan.huigangdemo.activity.do_want.DoWant;
 import com.suctan.huigangdemo.activity.recommend.RecommendActivity;
 import com.suctan.huigangdemo.activity.want.Want;
 import com.suctan.huigangdemo.bean.user.HomeBean;
@@ -23,6 +24,7 @@ import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
 import com.suctan.huigangdemo.R;
 import com.yalantis.phoenix.PullToRefreshView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -46,6 +48,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     @BindView(R.id.gridview)
     GridView gridView;
     ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
+
     @Nullable
     public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
         if (this.viewIndex == null)
@@ -63,7 +66,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         rollPagerView.setPlayDelay(3000);//*播放间隔
         rollPagerView.setAnimationDurtion(500);//透明度
         rollPagerView.setAdapter(new rollViewpagerAdapter());//配置适配器
-        rollPagerView.setHintView(new ColorPointHintView(getActivity(), Color.BLUE,Color.WHITE));
+        rollPagerView.setHintView(new ColorPointHintView(getActivity(), Color.BLUE, Color.WHITE));
     }
 
     @Override
@@ -75,32 +78,33 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     }
 
     private void item() {
-        for (int i = 0;i<10;i++){
-            HashMap<String,Object> map= new HashMap<String, Object>();
-            map.put("image",R.mipmap.ic_launcher);
-            map.put("Name","No"+String.valueOf(i));
+        for (int i = 0; i < 10; i++) {
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("image", R.mipmap.ic_launcher);
+            map.put("Name", "No" + String.valueOf(i));
             lstImageItem.add(map);
         }
         SimpleAdapter saImageItems = new SimpleAdapter(getActivity(),
                 lstImageItem,
                 R.layout.recommend_item,
-                new String[] { "image", "Name" },
-                new int[] { R.id.ItemImage, R.id.ItemText });
-                gridView.setAdapter(saImageItems);
-                Toast.makeText(getContext(),"你好",Toast.LENGTH_LONG).show();
-                gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-                        HashMap<String, Object> item = (HashMap<String, Object>) arg0.getItemAtPosition(arg2);
-                        item.get("I");
-                    }
-                });
+                new String[]{"image", "Name"},
+                new int[]{R.id.ItemImage, R.id.ItemText});
+        gridView.setAdapter(saImageItems);
+        Toast.makeText(getContext(), "你好", Toast.LENGTH_LONG).show();
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                HashMap<String, Object> item = (HashMap<String, Object>) arg0.getItemAtPosition(arg2);
+                item.get("I");
+            }
+        });
     }
+
     private void Check() {
         tab_index.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goRecommend = new Intent(getActivity(),RecommendActivity.class);
+                Intent goRecommend = new Intent(getActivity(), RecommendActivity.class);
                 startActivity(goRecommend);
             }
         });
@@ -108,7 +112,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         tab_want.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goWant = new Intent(getActivity(),Want.class);
+                Intent goWant = new Intent(getActivity(), Want.class);
                 startActivity(goWant);
             }
         });
@@ -116,7 +120,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         tab_do.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goDoWant = new Intent(getActivity(), Dowant.class);
+                Intent goDoWant = new Intent(getActivity(), DoWant.class);
                 startActivity(goDoWant);
             }
         });

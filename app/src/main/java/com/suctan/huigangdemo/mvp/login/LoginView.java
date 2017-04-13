@@ -13,4 +13,5 @@ import com.suctan.huigangdemo.bean.user.Users;
 
 public interface LoginView extends BaseMvpView {
     void loginMessageReturn(Users users);
+    void loginGoMain();
 }

@@ -22,7 +22,7 @@ public class SubscriberCallBack<T> extends Subscriber<T> {
     @Override
     public void onError(Throwable e) {
         e.printStackTrace();
-        apiCallback.onFaild("系统繁忙，请稍后访问");
+        apiCallback.onFailed("系统繁忙，请稍后访问");
         apiCallback.onCompleted();
     }
 
