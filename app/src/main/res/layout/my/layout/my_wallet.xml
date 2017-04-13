@@ -10,6 +10,7 @@
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
+        android:paddingLeft="10dp"
         >
 
         <ImageView
@@ -102,6 +103,7 @@
 
 
         <Button
+            android:id="@+id/incase"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="50dp"
@@ -113,6 +115,7 @@
             />
 
         <Button
+             android:id="@+id/withdarwas"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="50dp"

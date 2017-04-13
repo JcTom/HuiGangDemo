@@ -12,6 +12,8 @@
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         >
 
         <ImageView
@@ -87,7 +89,7 @@
                      android:layout_height="wrap_content"
                      android:text="♀ 厨娘"
                      android:background="@drawable/textview_shape"
-
+                     android:padding="2dp"
                      />
 
                 </LinearLayout>

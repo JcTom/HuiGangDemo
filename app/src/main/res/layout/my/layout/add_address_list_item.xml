@@ -9,7 +9,8 @@
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         >
 
         <ImageView
@@ -23,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="管理地址"
+            android:text="添加地址"
             android:textSize="20sp"
             android:textColor="@color/top_title"
             android:gravity="center"

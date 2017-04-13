@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView  android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d3d3d3"
+    android:background="@color/bg_gray"
     >
 
     <LinearLayout
@@ -11,6 +14,8 @@
         android:layout_height="wrap_content"
         android:background="#9db830"
         android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         >
 
         <ImageView
@@ -38,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="45sp"
             android:text="编辑"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="#fff"
             android:gravity="center"
             android:layout_marginRight="1dp"
@@ -114,7 +119,7 @@
         <View style="@style/bg_line"/>
 
         <LinearLayout style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="本科" />
+            <TextView style="@style/usertext" android:text="@string/special" />
             <TextView style="@style/textview" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>
@@ -154,11 +159,5 @@
 
     </LinearLayout>
 
-
-
-
-
-
-
-
 </LinearLayout>
+</ScrollView>

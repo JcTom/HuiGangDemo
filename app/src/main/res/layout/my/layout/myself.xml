@@ -15,7 +15,6 @@
         android:background="@color/bg_gray"
         >
 
-
    <!--背景图-->
         <FrameLayout
             android:layout_width="wrap_content"
@@ -118,6 +117,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
+                    android:id="@+id/waiting_orders"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -141,6 +141,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
+                    android:id="@+id/wait_food"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -165,6 +166,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
+                    android:id="@+id/wait_assess"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -189,6 +191,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
+                    android:id="@+id/wait_real"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -221,6 +224,7 @@
 
         <LinearLayout style="@style/mid_layout"
             android:layout_marginTop="8dp"
+            android:id="@+id/address_setting"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -249,6 +253,7 @@
         <View style="@style/bg_line"/>
 
         <LinearLayout style="@style/mid_layout"
+            android:id="@+id/I_buy"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -265,6 +270,7 @@
 
 
         <LinearLayout style="@style/mid_layout"
+            android:id="@+id/I_sell"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -280,6 +286,7 @@
 
         <LinearLayout style="@style/mid_layout"
             android:layout_marginTop="8dp"
+            android:id="@+id/my_money"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -294,6 +301,7 @@
         <View style="@style/bg_line"/>
 
         <LinearLayout style="@style/mid_layout"
+            android:id="@+id/My_discount"
             >
             <ImageView
                 android:layout_width="wrap_content"
@@ -310,6 +318,7 @@
 
         <LinearLayout style="@style/mid_layout"
             android:layout_marginTop="8dp"
+            android:id="@+id/Mykitchen"
             >
             <ImageView
                 android:layout_width="wrap_content"

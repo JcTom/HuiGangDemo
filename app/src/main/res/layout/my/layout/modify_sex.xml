@@ -8,6 +8,8 @@
         android:layout_height="wrap_content"
         android:background="#9db830"
         android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         >
 
         <ImageView
