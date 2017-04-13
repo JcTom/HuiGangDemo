@@ -19,6 +19,7 @@ import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.suctan.huigangdemo.activity.do_want.DoWant;
 import com.suctan.huigangdemo.activity.recommend.RecommendActivity;
 import com.suctan.huigangdemo.activity.want.Want;
+import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import com.suctan.huigangdemo.bean.user.HomeBean;
 import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
@@ -65,7 +66,14 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     private void rollPagerViewSet() {
         rollPagerView.setPlayDelay(3000);//*播放间隔
         rollPagerView.setAnimationDurtion(500);//透明度
-        rollPagerView.setAdapter(new rollViewpagerAdapter());//配置适配器
+        ArrayList<CompanyInfoBean>companyList=new ArrayList<>();
+        for(int i=0;i<=3;i++){
+            CompanyInfoBean companyInfoBean=new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492068213958&di=530b4e4796309358cc9f3d4ab750b9d7&imgtype=0&src=http%3A%2F%2Fstatic.leiphone.com%2Fuploads%2Fnew%2Farticle%2Fpic%2F201509%2F5602525bec148.jpg");
+            companyList.add(companyInfoBean);
+        }
+
+
+        rollPagerView.setAdapter(new rollViewpagerAdapter(getActivity(),companyList));//配置适配器
         rollPagerView.setHintView(new ColorPointHintView(getActivity(), Color.BLUE, Color.WHITE));
     }
 
