@@ -1,6 +1,7 @@
 package com.suctan.huigangdemo.activity.Popupwindow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,6 +11,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.activity.myself.release_new_todayfoodActivity;
+import com.suctan.huigangdemo.activity.myself.release_todayfood_Activiity;
 
 /**
  * Created by B-305 on 2017/4/10.
@@ -40,8 +43,23 @@ public class my_kitchen_popupwin_release extends PopupWindow{
             }
         });
         // 设置按钮监听
-        btn_add_today_food.setOnClickListener(itemsOnClick);
-        btn_add_new_food.setOnClickListener(itemsOnClick);
+        btn_add_today_food.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                Intent gotoTodayfood =new Intent(v.getContext(), release_todayfood_Activiity.class);
+                v.getContext().startActivity(gotoTodayfood);
+            }
+        });
+        btn_add_new_food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                Intent gotoNewfood = new Intent(v.getContext(), release_new_todayfoodActivity.class);
+                v.getContext().startActivity(gotoNewfood);
+            }
+        });
 
         // 设置外部可点击
         this.setOutsideTouchable(true);

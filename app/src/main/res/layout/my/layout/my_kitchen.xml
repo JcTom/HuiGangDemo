@@ -89,7 +89,7 @@
                      android:layout_height="wrap_content"
                      android:text="♀ 厨娘"
                      android:background="@drawable/textview_shape"
-
+                     android:padding="2dp"
                      />
 
                 </LinearLayout>

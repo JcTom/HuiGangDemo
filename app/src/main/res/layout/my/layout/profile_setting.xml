@@ -119,7 +119,7 @@
         <View style="@style/bg_line"/>
 
         <LinearLayout style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="本科" />
+            <TextView style="@style/usertext" android:text="@string/special" />
             <TextView style="@style/textview" />
             <ImageView style="@style/img_arrow"/>
         </LinearLayout>

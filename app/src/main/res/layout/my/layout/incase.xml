@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="45sp"
-            android:text="@string/change_withdrawals"
+            android:text="@string/Recharge"
             android:textSize="20sp"
             android:textColor="#fff"
             android:gravity="center"
@@ -73,21 +73,21 @@
                 >
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支付宝"
-                android:textSize="18sp"
-                                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付宝"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text=">"
-                android:textSize="20sp"
-                android:textColor="#000"
-                android:layout_marginLeft="50dp"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=">"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="50dp"
+                    />
 
 
             </LinearLayout>
@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="提现金额"
+                android:text="充值金额"
                 android:textSize="18sp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
@@ -143,7 +143,7 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="请输入你要提现的金额"
+                    android:hint="请输入你要充值的金额"
                     android:layout_gravity="center"
                     android:background="@drawable/et_shape"
                     android:padding="8px"
@@ -181,7 +181,7 @@
         </LinearLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

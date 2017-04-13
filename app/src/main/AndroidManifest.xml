@@ -54,9 +54,23 @@
         <activity android:name=".activity.Home_Page.HomeActivity"/>
         <activity android:name=".activity.search.SearchActivity"/>
         <activity android:name=".activity.recommend.RecommendActivity"/>
-             <activity android:name=".activity.do_want.DoWant"></activity>
+        <activity android:name=".activity.do_want.DoWant"></activity>
         <activity android:name=".activity.want.Want"></activity>
         <activity android:name=".activity.myself.SettingActivity"></activity>
+        <activity android:name=".activity.myself.addressActivity"></activity>
+        <activity android:name=".activity.myself.buyActivity"></activity>
+        <activity android:name=".activity.myself.SellActivity"></activity>
+        <activity android:name=".activity.myself.MymoneyActivity"></activity>
+        <activity android:name=".activity.myself.MydiscountAcitity"></activity>
+        <activity android:name=".activity.myself.MykitchenActity"></activity>
+        <activity android:name=".activity.myself.WaitOrdersActivity"></activity>
+        <activity android:name=".activity.myself.WaitfoodActitity"></activity>
+        <activity android:name=".activity.myself.WaitassessActivity"></activity>
+        <activity android:name=".activity.myself.WaitrealActivity"></activity>
+        <activity android:name=".activity.myself.release_todayfood_Activiity"></activity>
+        <activity android:name=".activity.myself.release_new_todayfoodActivity"></activity>
+        <activity android:name=".activity.myself.WithdarwasActivity"></activity>
+        <activity android:name=".activity.myself.incaseActivity"></activity>
     </application>
 
 </manifest>
