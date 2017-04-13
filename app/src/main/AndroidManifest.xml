@@ -71,6 +71,7 @@
         <activity android:name=".activity.myself.release_new_todayfoodActivity"></activity>
         <activity android:name=".activity.myself.WithdarwasActivity"></activity>
         <activity android:name=".activity.myself.incaseActivity"></activity>
+        <activity android:name=".activity.myself.foobBookActivity"></activity>
     </application>
 
 </manifest>

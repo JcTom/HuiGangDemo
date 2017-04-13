@@ -43,6 +43,7 @@ public class my_kitchen_popupwin_release extends PopupWindow{
             }
         });
         // 设置按钮监听
+        //点击发布今日菜色
         btn_add_today_food.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -52,6 +53,7 @@ public class my_kitchen_popupwin_release extends PopupWindow{
                 v.getContext().startActivity(gotoTodayfood);
             }
         });
+        //点击发布今日新菜色
         btn_add_new_food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,6 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -31,6 +33,24 @@
             />
 
     </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+
+        >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -217,7 +237,11 @@
         android:layout_marginTop="5dp"></View>
 
 
-    <LinearLayout style="@style/mid_layout">
+    <!--release_new_todayfoodActivity 在这个acticity中进行点击事件-->
+
+    <LinearLayout style="@style/mid_layout"
+        android:id="@+id/new_food_ideas"
+        >
         <TextView style="@style/usertext" android:text="@string/food_book" />
         <ImageView style="@style/img_arrow"/>
     </LinearLayout>
@@ -229,8 +253,12 @@
         android:background="#d3d3d3"
         android:layout_marginTop="5dp"></View>
 
+    </LinearLayout>
+    </ScrollView>
+
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="center"
@@ -245,7 +273,9 @@
             android:layout_height="match_parent"
             android:text="发布"
             android:textSize="20dp"
-            android:background="@drawable/real_button_selector"></Button>
+            android:background="@drawable/real_button_selector">
+
+        </Button>
 
     </LinearLayout>
 

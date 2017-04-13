@@ -20,8 +20,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_food_today"
-            android:textColor="@color/white"
-            android:background="@drawable/button_popupwin_shape"
+            android:textColor="#000"
+            android:background="@color/white"
             android:textSize="18sp"
              />
 
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:text="@string/add_new_food"
             android:textSize="18sp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_popupwin_shape"
+            android:textColor="#000"
+            android:background="@color/white"
             />
 
 
@@ -55,8 +55,7 @@
             android:layout_marginTop="15dip"
             android:text="取消"
             android:textSize="18sp"
-            android:textColor="@color/white"
-            android:background="@drawable/button_popupwin_shape"
+            android:background="@color/white"
              />
     </LinearLayout>
 
