@@ -36,6 +36,8 @@
 
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
+    <!-- 调用手机相册 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".acache.HuiGangApplication"
@@ -54,8 +56,14 @@
         <activity android:name=".activity.Home_Page.HomeActivity"/>
         <activity android:name=".activity.search.SearchActivity"/>
         <activity android:name=".activity.recommend.RecommendActivity"/>
-             <activity android:name=".activity.do_want.DoWant"></activity>
-        <activity android:name=".activity.want.Want"></activity>
+        <activity android:name=".activity.do_want.DoWant"/>
+        <activity android:name=".activity.want.Want"/>
+        <activity android:name=".activity.share.ServiceList"/>
+        <activity android:name=".activity.share.ReleaseService"/>
+        <activity android:name=".activity.circle.PostRelease"/>
+        <activity android:name=".activity.circle.CirclePostDetails"/>
+        <activity android:name=".activity.circle.NoticeDetail"/>
+        <activity android:name=".activity.circle.MoreNotice"/>
     </application>
 
 </manifest>

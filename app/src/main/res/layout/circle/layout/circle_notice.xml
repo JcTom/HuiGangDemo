@@ -32,9 +32,10 @@
             android:textSize="16sp"
             android:id="@+id/notice_fb"/>
     </LinearLayout>
-    <com.example.androidbase.widget.RecyclerScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/circle_notice"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.example.androidbase.widget.RecyclerScrollView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>
