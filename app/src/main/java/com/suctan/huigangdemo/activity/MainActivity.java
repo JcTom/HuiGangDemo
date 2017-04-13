@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 import com.example.androidbase.BaseActivity;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.activity.recommend.RecommendActivity;
 import com.suctan.huigangdemo.activity.search.SearchActivity;
 import com.suctan.huigangdemo.adapter.FragmentViewPage;
 import com.suctan.huigangdemo.fragment.FragmentChanel;
@@ -23,8 +23,6 @@ import com.suctan.huigangdemo.fragment.FragmentIndex;
 import com.suctan.huigangdemo.fragment.FragmentMySelft;
 
 import java.util.ArrayList;
-
-import cn.bingoogolapple.badgeview.BGABadgeRadioButton;
 
 /**
  * Create by Lzh on 16/11/10
@@ -48,6 +46,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ImageView search;
     private ImageView login_back;
     private TextView login_title;
+    private Button addPost;
    /* private BGABadgeRadioButton tab_index;*/
 
     private LinearLayout ly_index_select;//首页点击布局
@@ -111,6 +110,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         main_imv_find = (ImageView) findViewById(R.id.main_imv_find);
         main_tv_find = (TextView) findViewById(R.id.main_tv_find);
         search = (ImageView) findViewById(R.id.search);
+        addPost = (Button) findViewById(R.id.add_post);
         login_back = (ImageView) findViewById(R.id.login_back);
         login_title= (TextView) findViewById(R.id.login_title);
         login_title.setText("享享我好吗");
@@ -192,15 +192,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.ly_index_select:
                 main_fragment_viewPage.setCurrentItem(0);
+                login_title.setText("享享我好吗");
+                search.setVisibility(View.VISIBLE);
+                addPost.setVisibility(View.GONE);
                 break;
             case R.id.ly_chanel_select:
                 main_fragment_viewPage.setCurrentItem(1);
+                login_title.setText("共享");
+                search.setVisibility(View.GONE);
+                addPost.setVisibility(View.GONE);
                 break;
             case R.id.ly_find_select:
                 main_fragment_viewPage.setCurrentItem(2);
+                login_title.setText("圈子");
+                search.setVisibility(View.GONE);
+                addPost.setVisibility(View.VISIBLE);
                 break;
             case R.id.ly_myselft_select:
                 main_fragment_viewPage.setCurrentItem(3);
+                login_title.setText("我的");
+                search.setVisibility(View.GONE);
+                addPost.setVisibility(View.GONE);
                 break;
             case R.id.search:
                 Intent goMainIntent = new Intent(MainActivity.this, SearchActivity.class);

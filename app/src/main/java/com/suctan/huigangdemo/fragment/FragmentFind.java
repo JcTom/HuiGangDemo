@@ -20,7 +20,7 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (viewFind == null) {
-            viewFind = inflater.inflate(R.layout.fragment_find, container, false);
+            viewFind = inflater.inflate(R.layout.fragment_circle, container, false);
         }
         ViewGroup parent = (ViewGroup) viewFind.getParent();
         if (parent != null) {
