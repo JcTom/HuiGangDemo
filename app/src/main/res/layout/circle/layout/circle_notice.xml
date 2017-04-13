@@ -10,7 +10,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/back_white"
+            android:src="@mipmap/return_128"
             android:background="#00000000"
             android:id="@+id/notice_back"/>
         <TextView
