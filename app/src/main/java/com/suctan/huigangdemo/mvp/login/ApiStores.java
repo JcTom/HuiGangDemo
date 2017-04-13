@@ -14,17 +14,29 @@ import rx.Observable;
  */
 
 public interface ApiStores {
-    String ServerUrl = "http://112.74.195.131:8666/api/";
+    //    String ServerUrl = "http://112.74.195.131:8666/api/";
+//String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
+    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+//        String ServerUrl = "http://119.29.137.109/hello/";
+
+
 /**********************************************************************************************************************/
     /**
      * 用户登录请求
      */
-    @POST("Login.ashx")
+    @POST("login")
     Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
+
+    //    @POST("login.php")
+//    Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
+    @POST("login_test")
+    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
 
     /**
      * 获取用户信息
      */
-    @POST("User.ashx")
+    @POST("get_user_info")
     Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
+
+
 }

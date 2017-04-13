@@ -6,7 +6,7 @@ public interface ApiCallback<T> {
 
     void onSuccess(T model);
 
-    void onFaild(String msg);
+    void onFailed(String msg);
 
     void onCompleted();
 }

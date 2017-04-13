@@ -2,6 +2,8 @@ package com.suctan.huigangdemo.activity.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -36,9 +38,9 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
 
     //title
     private ImageView imgBack;
-    private ImageView search;
     private TextView txtTitle;
     private Button btnLogin;
+
     //edt
     private EditText edtUserName;
     private EditText edtPwd;
@@ -48,6 +50,11 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+        mvpPresenter.getHelloText();
+        //
+        TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        String szImei = TelephonyMgr.getDeviceId();
+        System.out.println("Imei是" + szImei);
         initView();
     }
 
@@ -60,9 +67,6 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         imgBack = (ImageView) findViewById(R.id.login_back);
         imgBack.setOnClickListener(this);
 
-        search = (ImageView) findViewById(R.id.search);
-        search.setOnClickListener(this);
-        search.setVisibility(View.GONE);
         txtTitle = (TextView) findViewById(R.id.login_title);
         txtTitle.setText("登录");
 
@@ -83,11 +87,11 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
      */
     private void toogleBtnClickStyle(boolean canClick) {
         if (canClick) {
-        btnLogin.setClickable(true);
-    } else {
-        btnLogin.setClickable(false);
+            btnLogin.setClickable(true);
+        } else {
+            btnLogin.setClickable(false);
+        }
     }
-}
 
 
     @Override
@@ -96,21 +100,13 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
             case R.id.login_back:
                 finish();
                 break;
-
-            case R.id.search:
-                finish();
-                break;
-
             case R.id.btn_login:
+//              TODO 调试阶段，登陆任意放行
                 toogleBtnClickStyle(false);
-                Variety();
-                Pass();
+                LoginVariety("1", "1");
+//                Variety();
                 break;
         }
-    }
-    //测试
-    private void Pass() {
-                goActivity();
     }
 
     /**
@@ -129,6 +125,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
             return;
         } else {
             if (NetConnectUtils.isNetConnected(LoginActivity.this)) {
+                System.out.println("你输入的手机号码和密码是" + userName + pwd);
                 LoginVariety(userName, pwd);
             } else {
                 ToastTool.showToast(getResources().getString(R.string.checkNetTip), 0);
@@ -146,9 +143,9 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
      */
     private void LoginVariety(String userName, String pwd) {
         Map mapLogin = new HashMap();
-        mapLogin.put("action", "login");
-        mapLogin.put("userName", userName);
-        mapLogin.put("password", pwd);
+        mapLogin.put("user_phone", userName);
+        mapLogin.put("user_pass", pwd);
+        System.out.println("执行LoginVariety");
         mvpPresenter.getLoginAction(mapLogin);
     }
 
@@ -162,6 +159,10 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         finish();
     }
 
+    @Override
+    public void loginGoMain() {
+        goActivity();
+    }
 
     @Override
     public void loginMessageReturn(Users users) {
@@ -178,6 +179,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     public void showLoading() {
 
     }
+
     @Override
     public void hideLoading() {
 
