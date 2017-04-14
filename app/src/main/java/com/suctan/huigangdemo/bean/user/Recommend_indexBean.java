@@ -7,13 +7,17 @@ import android.widget.ImageView;
  */
 
 public class Recommend_indexBean {
-    private ImageView recommend_imageView;
+    private String ImageUrl;
 
-    public ImageView getRecommend_imageView() {
-        return recommend_imageView;
+    public String getImageUrl() {
+        return ImageUrl;
     }
 
-    public void setRecommend_imageView(ImageView recommend_imageView) {
-        this.recommend_imageView = recommend_imageView;
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
+    }
+
+    private Recommend_indexBean(String imageUrl){
+
     }
 }

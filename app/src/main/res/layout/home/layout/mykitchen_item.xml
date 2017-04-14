@@ -4,71 +4,65 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent">
 
         <ImageView
             android:layout_alignParentLeft="true"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:id="@+id/recommend_ItemImage"
-            android:layout_marginLeft="5dp"
-
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:id="@+id/Mykitchen_ItemImage"
+            android:src="@mipmap/ic_launcher"
             />
+
         <!--设置菜的名字-->
         <TextView
-            android:id="@+id/recommend_ItemTitle"
+            android:id="@+id/Mykitchen_ItemTitle"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:text="00"
+            android:text="000"
             android:textStyle="bold"
-            android:layout_toRightOf="@id/recommend_ItemImage"
+            android:layout_toRightOf="@id/Mykitchen_ItemImage"
             android:lines="1"
             android:ellipsize="end"
             android:maxEms="18"
-            android:layout_marginLeft="5dp"
             />
         <!--设置菜的描述-->
         <TextView
-            android:layout_toRightOf="@id/recommend_ItemImage"
-            android:id="@+id/recommend_ItemText"
+            android:layout_toRightOf="@id/Mykitchen_ItemImage"
+            android:id="@+id/Mykitchen_ItemText"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="12sp"
-            android:layout_below="@+id/recommend_ItemTitle"
+            android:layout_below="@+id/Mykitchen_ItemTitle"
             android:textColor="#d3d3d3"
             android:text="0001"
             android:lines="2"
             android:ellipsize="end"
             android:maxEms="18"
-            android:layout_marginLeft="5dp"
             />
         <!--设置菜的价格-->
         <TextView
-            android:id="@+id/recommend_ItemMoney"
+            android:id="@+id/Mykitchen_ItemMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/recommend_ItemImage"
-            android:layout_alignLeft="@id/recommend_ItemTitle"
-            android:text="¥"
+            android:layout_alignBottom="@id/Mykitchen_ItemImage"
+            android:layout_alignLeft="@id/Mykitchen_ItemTitle"
+            android:text="¥25"
             android:textSize="18sp"
             android:textColor="#ff0000"
-            android:layout_marginLeft="5dp"
             />
-        <!--设置返回按钮,src已经在activity里面设置了-->
+
 
         <ImageView
-            android:id="@+id/recommend_ItemReturn"
+            android:id="@+id/Mykitchen_ItemReturn"
             android:layout_width="40dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:paddingRight="20dp"
             android:textSize="18sp"
-            android:src="@mipmap/add"
-            android:layout_marginTop="80dp"
+            android:src="@mipmap/setting_arrow"
+            android:layout_marginTop="40dp"
             />
         <ImageView
             android:layout_width="fill_parent"
