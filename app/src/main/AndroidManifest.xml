@@ -50,12 +50,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.Home_Page.HomeActivity"/>
-        <activity android:name=".activity.search.SearchActivity"/>
-        <activity android:name=".activity.recommend.RecommendActivity"/>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.Home_Page.HomeActivity" />
+        <activity android:name=".activity.search.SearchActivity" />
+        <activity android:name=".activity.recommend.RecommendActivity" />
         <activity android:name=".activity.do_want.DoWant"></activity>
         <activity android:name=".activity.want.Want"></activity>
+
+        <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.SettingActivity"></activity>
         <activity android:name=".activity.myself.addressActivity"></activity>
         <activity android:name=".activity.myself.buyActivity"></activity>
@@ -72,6 +74,21 @@
         <activity android:name=".activity.myself.WithdarwasActivity"></activity>
         <activity android:name=".activity.myself.incaseActivity"></activity>
         <activity android:name=".activity.myself.foobBookActivity"></activity>
+        <activity android:name=".activity.myself.address_listitemActivity"></activity>
+
+        /*****************************************************************************************************/
+        <!--用户信息修改-->
+
+
+        <activity android:name=".activity.setting.SeetingUserName"></activity>
+        <activity android:name=".activity.setting.SeetingUserAge"></activity>
+        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
+        <activity android:name=".activity.setting.SeetingUserSex"></activity>
+        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
+        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
+        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
+
+
     </application>
 
 </manifest>
