@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+    <!--筛选栏-->
+    <LinearLayout
+            android:id="@+id/ll_stay_visit_selsect"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+        <!--筛选混合所有-->
+        <LinearLayout
+                android:id="@+id/ll_place_tab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+            <CheckBox
+                    android:id="@+id/cb_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/selector_stock_arrow"
+                    android:gravity="center"
+                    android:text="全部类型"
+                    android:textColor="@drawable/selector_text_stock"
+                    android:textSize="15sp"/>
+        </LinearLayout>
+        <!--筛选区域类型-->
+        <LinearLayout
+                android:id="@+id/ll_type"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+            <CheckBox
+                    android:id="@+id/cb_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/selector_stock_arrow"
+                    android:gravity="center"
+                    android:text="全部区域"
+                    android:textColor="@drawable/selector_text_stock"
+                    android:textSize="15sp"/>
+        </LinearLayout>
+        <!--筛选送上门类型-->
+        <LinearLayout
+                android:id="@+id/ll_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+            <CheckBox
+                    android:id="@+id/cb_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:button="@null"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/selector_stock_arrow"
+                    android:gravity="center"
+                    android:text="服务类型"
+                    android:textColor="@drawable/selector_text_stock"
+                    android:textSize="15sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--根据以上条件，筛选得出的数据储存listview-->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+    </ListView>
+
+
+
+
+</LinearLayout>

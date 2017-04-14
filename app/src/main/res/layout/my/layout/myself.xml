@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <!--背景图以下的颜色-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/bg_gray"
+        >
+
+   <!--背景图-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:background="@mipmap/bj"
+            >
+
+            <!--头像位置摆放-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.example.androidbase.widget.CircleImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="18dp"
+                    android:src="@mipmap/tou"
+                    app:border_color="@color/head_border_width_clo"
+                    app:border_width="1dp">
+                </com.example.androidbase.widget.CircleImageView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="用户名"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="实名认证"
+                        android:textColor="#fff"
+                        android:textSize="12sp"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:background="@drawable/textview_shape"
+
+                        />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+            <!--右箭头位置摆放-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:orientation="horizontal"
+                android:gravity="right"
+                >
+
+
+                <ImageView
+                    android:id="@+id/setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/my_setting_32"
+                    android:layout_gravity="right"
+                     android:layout_marginRight="10dp"
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:paddingTop="3dp"
+                android:paddingBottom="2dp"
+                android:background="@mipmap/my_wait_transparent_bar"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/waiting_orders"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/my_wait_list_32"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="待接单"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/wait_food"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/my_wait_room_32"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="待送餐"
+                        android:textColor="@color/white"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/wait_assess"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/my_wait_confirm_32"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="待确认"
+                        android:textColor="@color/white"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:id="@+id/wait_real"
+                    >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/my_wait_assess_32"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="待评价"
+                        android:textColor="@color/white"
+
+                        />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </FrameLayout>
+
+
+        <LinearLayout style="@style/mid_layout"
+            android:layout_marginTop="8dp"
+            android:id="@+id/address_setting"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/address_32"
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   地址管理" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/mid_layout"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/evaluate_32"
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   我的评价" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/mid_layout"
+            android:id="@+id/I_buy"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/buy_32"
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   我买到的" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+
+
+        <LinearLayout style="@style/mid_layout"
+            android:id="@+id/I_sell"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sell_32"
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   我卖出的" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/mid_layout"
+            android:layout_marginTop="8dp"
+            android:id="@+id/my_money"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/money_32"
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   我的钱包" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/mid_layout"
+            android:id="@+id/My_discount"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/coupon_32"
+
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   我的优惠券" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+        <View style="@style/bg_line"/>
+
+        <LinearLayout style="@style/mid_layout"
+            android:layout_marginTop="8dp"
+            android:id="@+id/Mykitchen"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/cook_32"
+                >
+            </ImageView>
+            <TextView style="@style/usertext" android:text="   我的厨房" />
+            <ImageView style="@style/img_arrow"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>

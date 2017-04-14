@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#9db830"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/add_address_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/return_128"
+            android:layout_marginLeft="1dp"
+            android:layout_gravity="left|center_vertical"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:text="添加地址"
+            android:textSize="20sp"
+            android:textColor="@color/top_title"
+            android:gravity="center"
+            android:layout_marginRight="25dp"
+            />
+
+    </LinearLayout>
+
+
+  <!--收件人-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+
+     <TextView
+         android:layout_width="100dp"
+         android:layout_height="wrap_content"
+         android:text="收货人:"
+         android:textSize="18sp"
+         android:textColor="#000"
+         android:gravity="right"
+         />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入你名字"
+            android:layout_weight="1"
+            android:gravity="right"
+            />
+
+    </LinearLayout>
+
+    <!--联系电话-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="联系电话:"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:gravity="right"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入你电话"
+            android:layout_weight="1"
+            android:gravity="right"
+            />
+
+    </LinearLayout>
+
+    <!--所在地区-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        >
+
+
+        <TextView
+          android:layout_width="100dp"
+          android:layout_height="wrap_content"
+          android:text="所在地区:"
+            android:textColor="#000"
+            android:gravity="right"
+            android:textSize="18sp"
+            />
+
+        <!--点击时间,点击这个text的时候,底部会弹起滑动选择器-->
+         <TextView
+             android:id="@+id/btn_show"
+             android:layout_marginTop="2dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:hint="请选择你所在的地区"
+             android:textSize="18sp"
+             android:gravity="right"
+             android:layout_marginBottom="2dp"
+             />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=">"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+
+    <!--所在小区-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="小区:"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:gravity="right"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入你小区的名字"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+
+
+    <!--详细地址-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="详细地址:"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:gravity="right"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="请输入例如 A栋-A520号"
+            android:layout_weight="1"
+            android:gravity="right"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/common_green"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

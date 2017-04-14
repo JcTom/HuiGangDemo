@@ -2,10 +2,8 @@ package com.suctan.huigangdemo.mvp.login;
 
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.androidbase.BaseApplication;
-
 import com.example.androidbase.rxjava.ApiCallback;
 import com.example.androidbase.rxjava.SubscriberCallBack;
 import com.example.androidbase.utils.ACache;
@@ -15,7 +13,6 @@ import com.suctan.huigangdemo.bean.user.GetUserReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.util.JSONParstObject;
-
 
 import java.util.HashMap;
 import java.util.Map;
@@ -140,7 +137,7 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
 
                     @Override
                     public void onSuccess(String model) {
-                        Toast.makeText(BaseApplication.getContext(),model,Toast.LENGTH_LONG).show();
+//                        Toast.makeText(BaseApplication.getContext(),model,Toast.LENGTH_LONG).show();
 
                         Log.i(TAG, "onSuccess: "+model);
                     }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+     android:layout_alignParentLeft="true"
+     android:layout_width="100dp"
+     android:layout_height="80dp"
+     android:id="@+id/ItemImage"
+     android:src="@mipmap/ic_launcher"
+        />
+
+    <!--设置菜的名字-->
+    <TextView
+        android:id="@+id/ItemTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:text="000"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/ItemImage"
+        android:lines="1"
+        android:ellipsize="end"
+        android:maxEms="18"
+        />
+     <!--设置菜的描述-->
+    <TextView
+        android:layout_toRightOf="@id/ItemImage"
+        android:id="@+id/ItemText"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="12sp"
+        android:layout_below="@+id/ItemTitle"
+        android:textColor="#d3d3d3"
+        android:text="0001"
+        android:lines="2"
+        android:ellipsize="end"
+        android:maxEms="18"
+        />
+   <!--设置菜的价格-->
+    <TextView
+        android:id="@+id/ItemMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ItemImage"
+        android:layout_alignLeft="@id/ItemTitle"
+        android:text="¥"
+        android:textSize="18sp"
+        android:textColor="#ff0000"
+        />
+     <!--设置返回按钮,src已经在activity里面设置了-->
+
+    <ImageView
+        android:id="@+id/ItemReturn"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:paddingRight="20dp"
+        android:textSize="18sp"
+        android:src="@mipmap/setting_arrow"
+        android:layout_marginTop="40dp"
+        />
+</RelativeLayout>

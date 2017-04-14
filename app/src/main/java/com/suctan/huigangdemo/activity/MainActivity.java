@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void initBarStatus() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
-    }
+}
 
     private void initViewPage() {
         viewMyselft = new FragmentMySelft();

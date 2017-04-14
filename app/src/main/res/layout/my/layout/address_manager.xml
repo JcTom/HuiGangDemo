@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#9db830"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/address_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/return_128"
+            android:layout_marginLeft="1dp"
+            android:layout_gravity="left|center_vertical"
+            />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="45sp"
+            android:text="管理地址"
+            android:textSize="20sp"
+            android:textColor="@color/top_title"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/address_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </ListView>
+
+</LinearLayout>

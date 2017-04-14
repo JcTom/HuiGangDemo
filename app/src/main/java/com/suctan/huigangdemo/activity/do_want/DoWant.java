@@ -15,5 +15,6 @@ public class DoWant extends HomeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.do_want);
+
     }
 }

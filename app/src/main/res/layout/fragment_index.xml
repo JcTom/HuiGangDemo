@@ -4,17 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    >
+   >
 
-    <com.example.androidbase.widget.CustomScrollView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:fadingEdge="none"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:scrollbars="none">
+        android:scrollbars="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <FrameLayout
@@ -81,11 +82,13 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="25dp"
+                    android:id="@+id/more_texts"
                     />
             </RelativeLayout>
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:background="@color/background"
                 android:orientation="vertical"
                 android:paddingLeft="12dp"
@@ -97,16 +100,13 @@
                     android:id="@+id/gridview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:numColumns="auto_fit"
+                    android:numColumns="2"
                     android:verticalSpacing="10dp"
                     android:horizontalSpacing="10dp"
-                    android:columnWidth="90dp"
-                    android:stretchMode="columnWidth"
-                    android:gravity="center"
                     />
-            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
-    </com.example.androidbase.widget.CustomScrollView>
+    </ScrollView>
 
 </com.yalantis.phoenix.PullToRefreshView>
 

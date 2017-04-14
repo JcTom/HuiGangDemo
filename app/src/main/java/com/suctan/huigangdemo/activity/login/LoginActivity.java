@@ -2,7 +2,6 @@ package com.suctan.huigangdemo.activity.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,21 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.androidbase.mvp.MvpActivity;
 import com.example.androidbase.utils.NetConnectUtils;
 import com.example.androidbase.utils.ToastTool;
 import com.jaeger.library.StatusBarUtil;
+import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.LoginPresener;
 import com.suctan.huigangdemo.mvp.login.LoginView;
 
-
 import java.util.HashMap;
 import java.util.Map;
-
-import com.suctan.huigangdemo.R;
 
 /**
  * create at 2017/3/23 17:23
@@ -64,11 +60,9 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     }
 
     private void initView() {
-        imgBack = (ImageView) findViewById(R.id.login_back);
+        imgBack = (ImageView) findViewById(R.id.logins_back);
         imgBack.setOnClickListener(this);
 
-        txtTitle = (TextView) findViewById(R.id.login_title);
-        txtTitle.setText("登录");
 
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);

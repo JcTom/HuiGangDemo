@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#9db830"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+
+                android:layout_width="25dp"
+                android:layout_height="25sp"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="1dp"
+                android:src="@mipmap/return_128" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45sp"
+                android:layout_weight="4"
+                android:gravity="center"
+                android:text="个人设置"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="45sp"
+                android:layout_marginRight="1dp"
+                android:gravity="center"
+                android:text="编辑"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/wrap_layout">
+            <!-- 上圆角-->
+            <LinearLayout
+                android:id="@+id/ly_head_setting"
+                style="@style/top_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="头像" />
+
+                <ImageView
+                    android:id="@+id/imv_head"
+                    style="@style/user_arrow" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+            <!-- 分割线-->
+            <View style="@style/bg_line" />
+
+
+            <!-- 下圆角-->
+            <LinearLayout
+                android:id="@+id/ly_userName"
+                style="@style/bottom_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="用户名" />
+
+                <TextView
+                    android:id="@+id/tv_userName"
+                    style="@style/textview" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/wrap_layout"
+
+            >
+            <!-- 上圆角-->
+            <LinearLayout
+                android:id="@+id/ly_varityBody"
+                style="@style/top_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="实名认证" />
+
+                <TextView
+                    android:id="@+id/tv_varityBody"
+                    style="@style/textview" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+            <!-- 分割线-->
+            <View style="@style/bg_line" />
+
+            <LinearLayout
+                android:id="@+id/ly_sex"
+                style="@style/mid_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="性别" />
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    style="@style/textview" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+            <View style="@style/bg_line" />
+
+            <!-- 下圆角-->
+            <LinearLayout
+                android:id="@+id/ly_ageDegree"
+                style="@style/bottom_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="年龄段" />
+
+                <TextView
+                    android:id="@+id/tv_ageDegree"
+                    style="@style/textview" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout style="@style/wrap_layout">
+            <!-- 上圆角-->
+            <LinearLayout
+                android:id="@+id/ly_degree"
+                style="@style/top_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="学历" />
+
+                <TextView
+                    android:id="@+id/tv_degree"
+                    style="@style/textview" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+
+            <!-- 分割线-->
+            <View style="@style/bg_line" />
+
+            <LinearLayout
+                android:id="@+id/ly_KnowArea"
+                style="@style/mid_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="@string/special" />
+
+                <TextView
+                    android:id="@+id/tv_knowArea"
+                    style="@style/textview"
+
+                    />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+            <View style="@style/bg_line" />
+
+
+            <!-- 下圆角-->
+            <LinearLayout
+                android:id="@+id/ly_hobby"
+                style="@style/bottom_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="业余爱好" />
+
+                <TextView
+                    android:id="@+id/tv_hobby"
+                    style="@style/textview" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/wrap_layout">
+            <!-- 上圆角-->
+            <LinearLayout
+                android:id="@+id/ly_changPwd"
+                style="@style/top_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="修改密码" />
+                //
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+            <!-- 分割线-->
+            <View style="@style/bg_line" />
+
+            <View style="@style/bg_line" />
+
+
+            <!-- 下圆角-->
+            <LinearLayout
+                android:id="@+id/ly_loginQuit"
+                style="@style/bottom_layout">
+
+                <TextView
+                    style="@style/usertext"
+                    android:text="退出当前用户" />
+
+                <ImageView style="@style/img_arrow" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
