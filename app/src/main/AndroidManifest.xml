@@ -75,6 +75,8 @@
 
         /*****************************************************************************************************/
         <!--用户信息修改-->
+
+
         <activity android:name=".activity.setting.SeetingUserName"></activity>
 
         <activity android:name=".activity.setting.SeetingUserAge"></activity>
