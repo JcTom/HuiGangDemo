@@ -4,33 +4,30 @@
     android:layout_height="match_parent">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
+            android:id="@+id/new_food_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
             android:layout_gravity="left|center_vertical"
-            />
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/Release_food"
-            android:textSize="20sp"
-            android:textColor="@color/top_title"
-            android:gravity="center"
             android:layout_marginRight="26dp"
-            />
+            android:gravity="center"
+            android:text="@string/Release_food"
+            android:textColor="@color/top_title"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

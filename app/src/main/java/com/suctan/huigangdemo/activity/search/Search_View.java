@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.activity.SQLiteHelper.SQLiteOpenHelper;
+import com.suctan.huigangdemo.activity.recommend.RecommendActivity;
 
 /**
  * Created by Tom on 2017/4/6.
@@ -114,14 +115,12 @@ public class Search_View extends LinearLayout{
                     boolean hasData = hasData(et_search.getText().toString().trim());
                     
                     if (!hasData){
-
                         insertData(et_search.getText().toString().trim());
                         //搜索后显示数据库里所有搜索历史是为了测试
                         queryData("");
                     }
                     //根据输入的内容模糊查询商品，并跳转到另一个界面，这个需要根据需求实现
                     Toast.makeText(context, "点击搜索", Toast.LENGTH_SHORT).show();
-
                 }
                 return false;
             }
@@ -135,6 +134,7 @@ public class Search_View extends LinearLayout{
                 String name = textView.getText().toString();
                 et_search.setText(name);
                 Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -151,6 +151,8 @@ public class Search_View extends LinearLayout{
                 }
                 //根据输入的内容模糊查询商品，并跳转到另一个界面，这个根据需求实现
                 Toast.makeText(context, "clicked!", Toast.LENGTH_SHORT).show();
+                /*Intent goRecommend = new Intent(getActivity(), RecommendActivity.class);
+                startActivity(goRecommend);*/
 
             }
         });

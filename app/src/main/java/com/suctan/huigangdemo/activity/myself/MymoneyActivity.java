@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.suctan.huigangdemo.R;
 
@@ -21,6 +22,7 @@ public class MymoneyActivity  extends Activity{
 
         Button  incase = (Button) findViewById(R.id.incase);   //充值点击按钮
         Button  withdarwas = (Button) findViewById(R.id.withdarwas);   //提取点击按钮
+        ImageView money_back= (ImageView) findViewById(R.id.money_back); //返回按钮
 
         //提现页面点击事件
         withdarwas.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +39,14 @@ public class MymoneyActivity  extends Activity{
             public void onClick(View v) {
                 Intent gotoincase = new Intent(MymoneyActivity.this , incaseActivity.class);
                 startActivity(gotoincase);
+            }
+        });
+        //我的钱包中的返回 点击事件
+        money_back.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

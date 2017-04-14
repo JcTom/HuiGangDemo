@@ -25,9 +25,10 @@ public class PostRelease extends AppCompatActivity {
 
     //调用系统相册-选择图片
     private static final int IMAGE = 1;
-    private ImageButton selectImg,deleteImg;
+    private ImageButton selectImg,deleteImg,postBack;
     private ImageView imageView;
     private FrameLayout imgLayout;
+
     /**
      * 所需权限
      * <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -36,16 +37,17 @@ public class PostRelease extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_release);
-        getSupportActionBar().hide();
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initSelectImg();
     }
 
 
 
-    //初始化图片选择控件
+    //初始化图片选择控件,返回
     private void initSelectImg(){
+        postBack = (ImageButton) findViewById(R.id.post_back);
+
         imgLayout = (FrameLayout) findViewById(R.id.img_layout);
         selectImg = (ImageButton) findViewById(R.id.select_img);
         deleteImg = (ImageButton) findViewById(R.id.delete_img);
@@ -63,6 +65,13 @@ public class PostRelease extends AppCompatActivity {
                 imageView.setWillNotDraw(true);
                 imgLayout.setVisibility(View.GONE);
                 selectImg.setVisibility(View.VISIBLE);
+            }
+        });
+
+        postBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

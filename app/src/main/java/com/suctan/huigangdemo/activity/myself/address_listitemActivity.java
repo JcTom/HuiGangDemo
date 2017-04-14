@@ -8,28 +8,27 @@ import android.widget.ImageView;
 import com.suctan.huigangdemo.R;
 
 /**
- * Created by B-305 on 2017/4/13.
+ * Created by B-305 on 2017/4/14.
  */
 
-public class SellActivity  extends Activity implements View.OnClickListener{
-    private ImageView sell_back;
+public class address_listitemActivity extends Activity  implements View.OnClickListener{
+
+   private ImageView add_address_back;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_sell);
+        setContentView(R.layout.add_address_list_item);
         initView();
-
     }
 
     private void initView() {
-        sell_back = (ImageView) findViewById(R.id.sell_back);
-        sell_back.setOnClickListener(this);
+        add_address_back = (ImageView) findViewById(R.id.add_address_back);
+        add_address_back.setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.sell_back:
+            case R.id.add_address_back:
                 finish();
         }
     }
