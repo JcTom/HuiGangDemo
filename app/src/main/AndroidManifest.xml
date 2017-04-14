@@ -78,14 +78,12 @@
 
 
         <activity android:name=".activity.setting.SeetingUserName"></activity>
-
         <activity android:name=".activity.setting.SeetingUserAge"></activity>
         <activity android:name=".activity.setting.SeetingUserDegree"></activity>
         <activity android:name=".activity.setting.SeetingUserSex"></activity>
         <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
         <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
         <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
-
 
     </application>
 

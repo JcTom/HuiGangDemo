@@ -64,6 +64,7 @@
     <!--熟悉领域修改信息-->
     <string name="modf_special">熟悉领域修改</string>
     <string name="special">熟悉领域:</string>
+    <string name="special1">熟悉领域</string>
     <string name="warm_hint_special">请输入你的熟悉领域:</string>
 
     <!--业余爱好修改信息-->

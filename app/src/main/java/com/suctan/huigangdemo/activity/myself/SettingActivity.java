@@ -1,32 +1,58 @@
 package com.suctan.huigangdemo.activity.myself;
 
+import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.androidbase.Constants;
+import com.example.androidbase.mvp.MvpActivity;
+import com.example.androidbase.utils.ScreenTools;
+import com.example.androidbase.utils.SdCardTool;
+import com.example.androidbase.utils.ToastTool;
+import com.example.androidbase.widget.loading.WaitDialog;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
 import com.suctan.huigangdemo.activity.setting.SeetingUserAge;
 import com.suctan.huigangdemo.activity.setting.SeetingUserDegree;
-import com.suctan.huigangdemo.activity.setting.SeetingUserFogetPwd;
 import com.suctan.huigangdemo.activity.setting.SeetingUserHoppy;
 import com.suctan.huigangdemo.activity.setting.SeetingUserKnowArea;
 import com.suctan.huigangdemo.activity.setting.SeetingUserName;
 import com.suctan.huigangdemo.activity.setting.SeetingUserSex;
+import com.suctan.huigangdemo.bean.user.CourseBean;
+import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
+import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by B-305 on 2017/4/13.
  */
 
-public class SettingActivity extends Activity implements View.OnClickListener {
+public class SettingActivity extends MvpActivity<ModifityUserPresenter> implements View.OnClickListener, ModifityUserView {
     private static final int requestCamera = 1001;//获取拍照
     private static final int requestPhoto = 1002;//获取图库
     private static final int requestUserName = 1003;//获取用户名
@@ -36,7 +62,17 @@ public class SettingActivity extends Activity implements View.OnClickListener {
     private static final int requestUserDegree = 1007;//获取学历
     private static final int requestUserKnowArea = 1008;//获取熟悉领域
     private static final int requestUserHoppy = 1009;//获取业余爱好
-
+    private static final int CHOSE_PICTRUE = 1;// 选择本地图片
+    private int pic;//0 拍照 1 相册文件
+    private Uri tempUri;//图片Uri
+    private static final int TAKE_PICTRUE = 0;// 拍照
+    private static final int OPEN_SETTING = 0x1001;//打开应用信息
+    private static final int CROP_SMALL_PICTURE = 2;// 裁剪
+    /**
+     * 可取消的任务
+     */
+    private Callback.Cancelable cancelable;
+    private Callback.CacheCallback cachecallback;
 
     private LinearLayout ly_head_setting;//设置头像
     private LinearLayout ly_chose_photo;//选择图库
@@ -44,7 +80,7 @@ public class SettingActivity extends Activity implements View.OnClickListener {
 
     private Dialog dialogHead;//选择图库拍照弹出框
 
-
+    private ImageView imv_setting_back;
     private ImageView imv_head;//头像显示
     private LinearLayout ly_userName;//用户名点击修改
     private TextView tv_userName;//用户名显示
@@ -62,14 +98,23 @@ public class SettingActivity extends Activity implements View.OnClickListener {
     private TextView tv_hobby;//业余爱好显示
     private LinearLayout ly_changPwd;//修改密码点击
     private LinearLayout ly_loginQuit;//退出登录点击
+    private WaitDialog waitDialog;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_setting);
+        x.view().inject(this);
         initView();
     }
 
+    @Override
+    protected ModifityUserPresenter createPresenter() {
+        return new ModifityUserPresenter(this);
+    }
+
     private void initView() {
+        imv_setting_back = (ImageView) findViewById(R.id.imv_setting_back);
         ly_head_setting = (LinearLayout) findViewById(R.id.ly_head_setting);
         imv_head = (ImageView) findViewById(R.id.imv_head);
         ly_userName = (LinearLayout) findViewById(R.id.ly_userName);
@@ -101,76 +146,84 @@ public class SettingActivity extends Activity implements View.OnClickListener {
         ly_hobby.setOnClickListener(this);
         ly_changPwd.setOnClickListener(this);
         ly_loginQuit.setOnClickListener(this);
+        imv_setting_back.setOnClickListener(this);
+//        initWaitDialog();
 
+    }
+
+    private void initWaitDialog() {
+        waitDialog = new WaitDialog(this, 0);
+        ProgressBar bar = new ProgressBar(this);
+
+        waitDialog.setContentView(bar);
+        waitDialog.show();
     }
 
     private void showHeadSetDialog() {
         View viewHeadChose = LayoutInflater.from(SettingActivity.this).inflate(R.layout.activity_picture_dialog, null, false);
         ly_chose_photo = (LinearLayout) viewHeadChose.findViewById(R.id.ly_chose_photo);
         ly_chose_camera = (LinearLayout) viewHeadChose.findViewById(R.id.ly_chose_camera);
+
         //监听
         ly_chose_photo.setOnClickListener(this);
         ly_chose_camera.setOnClickListener(this);
-        dialogHead = new AlertDialog.Builder(this)
-                .setView(viewHeadChose)
-                .setInverseBackgroundForced(false)
-                .create();
+        dialogHead = new AlertDialog.Builder(this).create();
         dialogHead.show();
-    }
+        Window window = dialogHead.getWindow();
+        int windowWidth = ScreenTools.getWindowsWidth(this);
 
-    //显示拍照系统
-    private void showCameraSystem() {
-        Intent intentCamare = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intentCamare, requestCamera);
-    }
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(windowWidth - 100, WindowManager.LayoutParams.WRAP_CONTENT);
 
-    //显示图库选择
-    private void showPhotoSystem() {
-        Intent intentPhoto = new Intent(Intent.ACTION_GET_CONTENT, null);
-        intentPhoto.setType("image/*");
-        startActivityForResult(intentPhoto, requestPhoto);
+        window.setContentView(viewHeadChose, layoutParams);
+        window.setBackgroundDrawableResource(android.R.color.transparent);//去除自定义是保留的棱角
+
     }
 
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.imv_setting_back:
+                finish();
+                break;
             case R.id.ly_head_setting:
                 showHeadSetDialog();
                 break;
             case R.id.ly_chose_photo:
-                showPhotoSystem();
+                //检查是否有读写外置SD卡的权限
+                checkWriteExternalPermission();
                 dialogHead.cancel();
                 break;
             case R.id.ly_chose_camera:
-                showCameraSystem();
-                dialogHead.cancel();
+
+                //检查是否有拍照和读写外置SD卡的权限
+                checkCameraAndWriteExternalPermission();
+                dialogHead.dismiss();
                 break;
             case R.id.ly_userName:
-                goClass(SeetingUserName.class, requestUserName);
+                goClass(SeetingUserName.class, requestUserName, tv_userName.getText().toString());
                 break;
             case R.id.ly_varityBody:
-                goClass(SeetingUserName.class, requestUserVeriatyBody);
+                goClass(SeetingUserName.class, requestUserVeriatyBody, tv_varityBody.getText().toString());
                 break;
             case R.id.ly_sex:
-                goClass(SeetingUserSex.class, requestUserSex);
+                goClass(SeetingUserSex.class, requestUserSex, tv_sex.getText().toString());
                 break;
             case R.id.ly_ageDegree:
-                goClass(SeetingUserAge.class, requestUserAge);
+                goClass(SeetingUserAge.class, requestUserAge, tv_ageDegree.getText().toString());
                 break;
             case R.id.ly_KnowArea:
-                goClass(SeetingUserKnowArea.class, requestUserKnowArea);
+                goClass(SeetingUserKnowArea.class, requestUserKnowArea, tv_knowArea.getText().toString());
                 break;
             case R.id.ly_degree:
-                goClass(SeetingUserDegree.class, requestUserDegree);
+                goClass(SeetingUserDegree.class, requestUserDegree, tv_degree.getText().toString());
                 break;
             case R.id.ly_hobby:
-                goClass(SeetingUserHoppy.class, requestUserHoppy);
+                goClass(SeetingUserHoppy.class, requestUserHoppy, tv_hobby.getText().toString());
                 break;
             case R.id.ly_changPwd:
                 Intent intentLogPwd = new Intent(this, SeetingForGetPwd.class);
                 startActivity(intentLogPwd);
-
                 break;
             case R.id.ly_loginQuit:
 
@@ -178,15 +231,322 @@ public class SettingActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void goClass(Class<?> goClass, int requestKey) {
+    //更新和设置服务器数据
+    private void setServiceData(int resultDataCode, String tempData) {
+        switch (resultDataCode) {
+
+
+        }
+    }
+
+    private void goClass(Class<?> goClass, int requestKey, String oldData) {
         Intent intent = new Intent(SettingActivity.this, goClass);
+        intent.putExtra("oldData", oldData);
         startActivityForResult(intent, requestKey);
+    }
+
+    //设置回调后页面信息修改
+    private void setViewResultData(int nowResultCode, String tempDataString) {
+        switch (nowResultCode) {
+            case requestUserName:
+                if (!tempDataString.equals(tv_userName.getText().toString())) {
+                    tv_userName.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+            case requestUserVeriatyBody:
+                if (!tempDataString.equals(tv_varityBody.getText().toString())) {
+                    tv_varityBody.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+            case requestUserSex:
+                if (!tempDataString.equals(tv_sex.getText().toString())) {
+                    tv_sex.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+            case requestUserAge:
+                if (!tempDataString.equals(tv_ageDegree.getText().toString())) {
+                    tv_ageDegree.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+            case requestUserDegree:
+                if (!tempDataString.equals(tv_userName.getText().toString())) {
+                    tv_userName.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+            case requestUserKnowArea:
+                if (!tempDataString.equals(tv_knowArea.getText().toString())) {
+                    tv_knowArea.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+            case requestUserHoppy:
+                if (!tempDataString.equals(tv_hobby.getText().toString())) {
+                    tv_hobby.setText(tempDataString);
+                    setServiceData(nowResultCode, tempDataString);
+                }
+                break;
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+
+            switch (requestCode) {
+                case CHOSE_PICTRUE:
+                    startPhotoZoom(data.getData());
+                    break;
+                case TAKE_PICTRUE:
+                    startPhotoZoom(tempUri);
+                    break;
+                case CROP_SMALL_PICTURE:
+                    if (data != null) {
+                        setImageToView(data);
+                    }
+                    break;
+            }
+        } else if (requestCode == OPEN_SETTING) {
+
+            if (pic == 0) {//相机
+
+                if (hasPermission(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                    changeByCamera();
+                } else if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                    ToastTool.showToast("为获得相机的权限", 2);
+                } else if (hasPermission(Manifest.permission.CAMERA)) {
+
+                    ToastTool.showToast("为获得读写手机存储的权限", 2);
+                } else {
+                    ToastTool.showToast("未获得需要的权限", 2);
+                }
+
+            } else {//相册
+                if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                    changeByPic();
+                } else {
+
+                    ToastTool.showToast("未获得需要的权限", 2);
+                }
+            }
+        } else {
+            if (data != null) {
+                String tempData = data.getStringExtra("newData");
+                if (tempData == null | tempData.isEmpty()) {
+                    return;
+                }
+                setViewResultData(resultCode, tempData);
+            }
+        }
+
+    }
+
+    // 设置头像
+    private void setImageToView(Intent data) {
+        Bundle extras = data.getExtras();
+        if (extras != null) {
+            Bitmap photo = extras.getParcelable("data");
+            imv_head.setImageBitmap(photo);
+//            initWaitDialog();
+            upload(photo);
+        }
+    }
+
+    /**
+     * 裁剪图片
+     *
+     * @param uri
+     */
+    private void startPhotoZoom(Uri uri) {
+        tempUri = uri;
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        // 设置裁剪
+        intent.putExtra("crop", "true");
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        // outputX outputY 是裁剪图片宽高
+        intent.putExtra("outputX", 150);
+        intent.putExtra("outputY", 150);
+        intent.putExtra("return-data", true);
+        startActivityForResult(intent, CROP_SMALL_PICTURE);
+    }
 
 
+    /**
+     * 检查是否有拍照和读写外置SD卡的权限
+     */
+    private void checkCameraAndWriteExternalPermission() {
+
+        if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)) {
+            changeByCamera();
+        } else {
+            //请求权限
+            requestPermission(Constants.CAMERA_CODE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.CAMERA);
+        }
+    }
+
+    @Override
+    public void doCameraPermission() {
+
+        if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)) {
+
+            changeByCamera();
+        } else {
+
+//            showRequestPermissionReason("当前操作需要相机、读写手机存储的权限");
+        }
+    }
+
+    /**
+     * 检查是否有读写外置SD卡的权限
+     */
+    private void checkWriteExternalPermission() {
+
+        if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            changeByPic();
+        } else {
+            //请求权限
+            requestPermission(Constants.WRITE_EXTERNAL_CODE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+    }
+
+    /**
+     * 根据回调结果，做业务逻辑处理
+     */
+    @Override
+    public void doSDCardPermission() {
+        if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            changeByPic();
+        } else {
+//            showRequestPermissionReason("当前操作需要读写手机存储的权限");
+        }
+    }
+
+
+    /**
+     * 从本地相册获取更改
+     */
+    private void changeByPic() {
+        pic = 1;
+        Intent chosePic = new Intent(
+                Intent.ACTION_GET_CONTENT);
+        chosePic.setType("image/*");
+        startActivityForResult(chosePic, CHOSE_PICTRUE);
+    }
+
+    /**
+     * 拍照更换头像
+     */
+    private void changeByCamera() {
+
+        pic = 0;
+        Intent takePic = new Intent(
+                MediaStore.ACTION_IMAGE_CAPTURE);
+        tempUri = Uri.fromFile(new File(SdCardTool.getRootFilePath(), "image.jpg"));
+        takePic.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
+        startActivityForResult(takePic, TAKE_PICTRUE);
+    }
+
+
+    /**
+     * 打开该app的应用信息
+     */
+    private void openSetting() {
+        String scheme = "package";
+        String packageName = getPackageName();
+        Intent it = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri data = Uri.fromParts(scheme, packageName, null);
+        it.setData(data);
+        startActivityForResult(it, OPEN_SETTING);
+    }
+
+
+    @Override
+    public void loadCourseDone(CourseBean courseBean) {
+
+    }
+
+    @Override
+    public void getDataFail(String msg) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    //将bitmap转化成file类型
+    public File saveBitmapFile(Bitmap bitmap) {
+        String filePath = SdCardTool.getRootFilePath();
+        File file = new File(filePath);//将要保存图片的路径
+//        System.err.println(file.getAbsolutePath() + "\n" + file.getAbsoluteFile());
+        if (file.exists()) {
+            file.delete();
+            file = null;
+        }
+        File file1 = new File(filePath);
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file1));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bos.flush();
+            bos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (file1.exists()) {
+//            System.out.println("头像上传路径" + fileName);
+        }
+        return file1;
+    }
+
+    private void upload(Bitmap bitmap) {
+//        http://119.29.137.109/tp/index.php/home/index/upload
+//        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
+        String url = "http://119.29.137.109/tp/index.php/home/index/upload";
+        RequestParams params = new RequestParams(url);
+//        params.setMultipart(true);
+//       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
+        params.addBodyParameter("file", saveBitmapFile(bitmap));//设置上传的文件路径
+        cancelable = x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                waitDialog.cancel();
+                ToastTool.showToast("头像上传成功", 2);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                ex.printStackTrace();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+                hideLoading();
+            }
+        });
     }
 }
