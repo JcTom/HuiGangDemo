@@ -59,6 +59,10 @@
     <color name="gray">#666666</color>
     <color name="divider_line">#e2e2e2</color>
 
+    <!-- 黑色 -->
+    <color name="black">#FF000000</color>
+    <!-- 橙色 -->
+    <color name="text_orange">#FFF39A1C</color>
 
 
 </resources>
