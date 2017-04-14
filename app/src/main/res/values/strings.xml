@@ -114,4 +114,8 @@
     <string name="add_food_today">上架今日菜色</string>
     <string name="add_new_food">添加新菜色</string>
 
+
+    <!--用户信息-->
+    <string name="camera">拍照</string>
+    <string name="photo">图库</string>
 </resources>

@@ -148,7 +148,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0.3</item>
-        <item name="android:background">#d3d3d3</item>
+
     </style>
 
     <!-- 文本右边箭头样式 -->
