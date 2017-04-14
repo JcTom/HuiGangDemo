@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -22,10 +23,20 @@ import java.util.HashMap;
 public class MykitchenActity extends Activity{
 
     private  ListView lv;
-
+    private ImageView Mykitchen_back;
     public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.my_kitchen);
+
+        Mykitchen_back  = (ImageView) findViewById(R.id.Mykitchen_back);  //定义一个返回按钮
+        //实现返回按钮的点击事件
+        Mykitchen_back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
             lv = (ListView) findViewById(R.id.list_view_food);/*定义一个动态数组*/
             ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();/*在数组中存放数据*/
