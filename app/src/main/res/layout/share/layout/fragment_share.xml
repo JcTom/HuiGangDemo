@@ -113,8 +113,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@color/line_gray"
-            android:id="@+id/ad1"/>
+            android:src="@mipmap/ad_001"
+            android:id="@+id/ad1"
+            android:scaleType="centerCrop"/>
     </LinearLayout>
 
     <LinearLayout
@@ -124,8 +125,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@color/green"
-            android:id="@+id/ad2"/>I
+            android:src="@mipmap/ad_002"
+            android:id="@+id/ad2"
+            android:scaleType="centerCrop"/>I
     </LinearLayout>
 
 </LinearLayout>

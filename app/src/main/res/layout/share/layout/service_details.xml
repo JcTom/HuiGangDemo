@@ -66,6 +66,7 @@
                 android:layout_weight="4"
                 android:text="需要打扫卫生，需要打扫卫生，需要鲨卷风蓝色礼服，撒反对是是" />
 
+
             <TextView
                 android:id="@+id/details_money"
                 android:layout_width="match_parent"

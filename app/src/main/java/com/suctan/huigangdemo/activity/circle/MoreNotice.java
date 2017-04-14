@@ -102,6 +102,15 @@ public class MoreNotice extends AppCompatActivity {
             holder.notice_item_time.setText(mDatas.get(position));
             holder.notice_item_content.setText(mDatas.get(position));
 
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent goPostDetails = new Intent(MoreNotice.this, NoticeDetail.class);
+                    startActivity(goPostDetails);
+                }
+            });
+
+
         }
 
         public int getItemCount() {
