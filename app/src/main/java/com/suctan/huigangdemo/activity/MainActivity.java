@@ -11,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.androidbase.BaseActivity;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.activity.circle.PostRelease;
 import com.suctan.huigangdemo.activity.search.SearchActivity;
 import com.suctan.huigangdemo.adapter.FragmentViewPage;
 import com.suctan.huigangdemo.fragment.FragmentChanel;
@@ -121,6 +123,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         /*tab_index.setOnClickListener(this);*/
         login_back.setOnClickListener(this);
         login_back.setVisibility(View.GONE);
+        addPost.setOnClickListener(this);
         search.setOnClickListener(this);
         ly_index_select.setOnClickListener(this);
         main_tv_index.setTextColor(Color.parseColor("#9DB830"));//初始颜色
@@ -147,6 +150,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_tv_chanel.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_find.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_myselft.setTextColor(Color.parseColor("#D2E587"));
+
+                        login_title.setText("享享我好吗");
+                        search.setVisibility(View.VISIBLE);
+                        addPost.setVisibility(View.GONE);
                         break;
                     case 1:
                         main_imv_index.setSelected(false);
@@ -157,6 +164,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_tv_index.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_find.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_myselft.setTextColor(Color.parseColor("#D2E587"));
+
+                        login_title.setText("共享");
+                        search.setVisibility(View.GONE);
+                        addPost.setVisibility(View.GONE);
                         break;
                     case 2:
                         main_imv_index.setSelected(false);
@@ -167,6 +178,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_tv_chanel.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_index.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_myselft.setTextColor(Color.parseColor("#D2E587"));
+
+                        login_title.setText("圈子");
+                        search.setVisibility(View.GONE);
+                        addPost.setVisibility(View.VISIBLE);
                         break;
                     case 3:
                         main_imv_index.setSelected(false);
@@ -177,6 +192,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_tv_find.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_chanel.setTextColor(Color.parseColor("#D2E587"));
                         main_tv_index.setTextColor(Color.parseColor("#D2E587"));
+
+                        login_title.setText("我的");
+                        search.setVisibility(View.GONE);
+                        addPost.setVisibility(View.GONE);
                         break;
                 }
             }
@@ -192,33 +211,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.ly_index_select:
                 main_fragment_viewPage.setCurrentItem(0);
-                login_title.setText("享享我好吗");
-                search.setVisibility(View.VISIBLE);
-                addPost.setVisibility(View.GONE);
                 break;
             case R.id.ly_chanel_select:
                 main_fragment_viewPage.setCurrentItem(1);
-                login_title.setText("共享");
-                search.setVisibility(View.GONE);
-                addPost.setVisibility(View.GONE);
                 break;
             case R.id.ly_find_select:
                 main_fragment_viewPage.setCurrentItem(2);
-                login_title.setText("圈子");
-                search.setVisibility(View.GONE);
-                addPost.setVisibility(View.VISIBLE);
                 break;
             case R.id.ly_myselft_select:
                 main_fragment_viewPage.setCurrentItem(3);
-                login_title.setText("我的");
-                search.setVisibility(View.GONE);
-                addPost.setVisibility(View.GONE);
                 break;
             case R.id.search:
                 Intent goMainIntent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(goMainIntent);
                 break;
-
+            case R.id.add_post:
+                Intent goPostRelease = new Intent(MainActivity.this, PostRelease.class);
+                startActivity(goPostRelease);
+                Toast.makeText(this,"111",Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 

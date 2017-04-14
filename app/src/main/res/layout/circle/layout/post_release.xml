@@ -10,7 +10,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/back_white"
+            android:src="@mipmap/arrow_left"
             android:background="#00000000"
             android:id="@+id/post_back"/>
         <TextView

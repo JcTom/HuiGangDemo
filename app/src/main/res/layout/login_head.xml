@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="?android:selectableItemBackground"
         android:padding="14dp"
-        android:src="@mipmap/arrow_left"
+        android:src="@mipmap/back_white"
         />
 
 
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
         tools:text="Title"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />

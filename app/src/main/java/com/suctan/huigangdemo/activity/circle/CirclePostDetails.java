@@ -38,6 +38,8 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
     EditText et_reply;
     FrameLayout emojicons_layout;
 
+    ImageButton postDetailsBack;
+
 
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
@@ -46,7 +48,6 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.post_details);
 
         initEmotion();
@@ -57,9 +58,23 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
 
         initData();
 
+        postBack();
+
+    }
+
+    //返回
+    private void postBack(){
+        postDetailsBack = (ImageButton)findViewById(R.id.post_details_back);
+        postDetailsBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 
+    //初始化数据
     protected void initData()
     {
         mDatas = new ArrayList<String>();
@@ -70,7 +85,6 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
 
 
     }
-
 
     class CirclePostAdapter extends RecyclerView.Adapter<CirclePostAdapter.MyViewHolder> {
 
@@ -90,6 +104,10 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
             //LoadImageManager.getImageLoader().displayImage("",holder.item_tx);
 
         }
+
+
+
+
 
 
         public int getItemCount() {
