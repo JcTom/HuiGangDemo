@@ -96,6 +96,7 @@ public class MoreNotice extends AppCompatActivity {
         }
 
 
+
         public void onBindViewHolder(MyViewHolder holder, int position) {
 
             holder.notice_item_title.setText(mDatas.get(position));
