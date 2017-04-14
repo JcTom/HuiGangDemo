@@ -51,14 +51,16 @@
         android:textColor="#ff0000"
         />
     <!--设置添加份量按钮-->
-    <com.example.b_305.helloword.numlib.AnimShopButton
+    <com.suctan.huigangdemo.numlib.AnimShopButton
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/btn2"
         android:layout_alignParentRight="true"
         android:layout_alignBottom="@id/ItemImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:count="3"
-        app:gapBetweenCircle="90dp"
+        app:count="1"
+        app:gapBetweenCircle="50dp"
         app:hintFgColor="#ffffff"
         app:hintText="增加数量就点我吧！"
         app:maxCount="99"

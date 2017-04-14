@@ -662,8 +662,8 @@ public class AnimShopButton extends View {
         mGapBetweenCircle = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 34, context.getResources().getDisplayMetrics());
 
         isAddFillMode = true;
-        mAddEnableBgColor = 0xFFFFDC5B;
-        mAddEnableFgColor = Color.BLACK;
+        mAddEnableBgColor = 0xFFff0000;
+        mAddEnableFgColor = 0xFFffffff;
         mAddDisableBgColor = 0xff979797;
         mAddDisableFgColor = Color.BLACK;
 

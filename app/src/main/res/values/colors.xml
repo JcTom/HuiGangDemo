@@ -53,7 +53,7 @@
 
     <!--待接单-订单详情-->
     <color name="waiting_orders_time">#d6fe5200</color>
-    <color name="grey">#999</color>
+    <color name="grey">#333</color>
 
     <!--筛选栏目的字体颜色配置-->
     <color name="gray">#666666</color>
