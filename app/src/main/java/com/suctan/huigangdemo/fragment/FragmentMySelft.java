@@ -22,6 +22,7 @@ import com.suctan.huigangdemo.activity.myself.WaitfoodActitity;
 import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
 import com.suctan.huigangdemo.activity.myself.addressActivity;
 import com.suctan.huigangdemo.activity.myself.buyActivity;
+import com.suctan.huigangdemo.activity.myself.my_assess;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftView;
 
@@ -55,6 +56,8 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
     LinearLayout wait_assess;
     @BindView(R.id.wait_real)      //绑定我的中 待确认选项页面
     LinearLayout wait_real;
+    @BindView(R.id.my_assess_me)      //绑定我的中 我的评价页面
+    LinearLayout my_assess_me;
     @Nullable
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (viewMyselft == null) {
@@ -182,6 +185,16 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
             public void onClick(View v) {
                 Intent wait_real = new Intent(getActivity(), WaitrealActivity.class);
                 startActivity(wait_real);
+            }
+        });
+
+        //我的页面中的 我的评价页面跳转
+        my_assess_me.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent gotoassess = new Intent(getActivity(), my_assess.class);
+                startActivity(gotoassess);
             }
         });
 

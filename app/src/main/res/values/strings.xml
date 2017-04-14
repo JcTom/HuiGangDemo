@@ -119,4 +119,11 @@
     <!--用户信息-->
     <string name="camera">拍照</string>
     <string name="photo">图库</string>
+
+    <!--viewpager-->
+    <string name="my_sell_new">进行中</string>
+    <string name="my_sell_old">已完成</string>
+    <string name="my_assess_go">我的评论</string>
+    <string name="my_assess_up">我收到的</string>
+
 </resources>

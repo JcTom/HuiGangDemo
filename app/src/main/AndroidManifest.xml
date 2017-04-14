@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.suctan.huigangdemo">
 
-    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -33,9 +32,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
+    <!-- 调用手机相册 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".acache.HuiGangApplication"
@@ -47,6 +47,7 @@
         <activity android:name=".activity.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -54,39 +55,15 @@
         <activity android:name=".activity.Home_Page.HomeActivity" />
         <activity android:name=".activity.search.SearchActivity" />
         <activity android:name=".activity.recommend.RecommendActivity" />
-        <activity android:name=".activity.do_want.DoWant"></activity>
-        <activity android:name=".activity.want.Want"></activity>
-        <activity android:name=".activity.myself.SettingActivity"></activity>
-        <activity android:name=".activity.myself.addressActivity"></activity>
-        <activity android:name=".activity.myself.buyActivity"></activity>
-        <activity android:name=".activity.myself.SellActivity"></activity>
-        <activity android:name=".activity.myself.MymoneyActivity"></activity>
-        <activity android:name=".activity.myself.MydiscountAcitity"></activity>
-        <activity android:name=".activity.myself.MykitchenActity"></activity>
-        <activity android:name=".activity.myself.WaitOrdersActivity"></activity>
-        <activity android:name=".activity.myself.WaitfoodActitity"></activity>
-        <activity android:name=".activity.myself.WaitassessActivity"></activity>
-        <activity android:name=".activity.myself.WaitrealActivity"></activity>
-        <activity android:name=".activity.myself.release_todayfood_Activiity"></activity>
-        <activity android:name=".activity.myself.release_new_todayfoodActivity"></activity>
-        <activity android:name=".activity.myself.WithdarwasActivity"></activity>
-        <activity android:name=".activity.myself.incaseActivity"></activity>
-        <activity android:name=".activity.myself.foobBookActivity"></activity>
-
-        /*****************************************************************************************************/
-        <!--用户信息修改-->
-
-
-        <activity android:name=".activity.setting.SeetingUserName"></activity>
-
-        <activity android:name=".activity.setting.SeetingUserAge"></activity>
-        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
-        <activity android:name=".activity.setting.SeetingUserSex"></activity>
-        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
-        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
-        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
-
-
+        <activity android:name=".activity.do_want.DoWant" />
+        <activity android:name=".activity.want.Want" />
+        <activity android:name=".activity.share.ServiceList" />
+        <activity android:name=".activity.share.ReleaseService" />
+        <activity android:name=".activity.circle.PostRelease" />
+        <activity android:name=".activity.circle.CirclePostDetails" />
+        <activity android:name=".activity.circle.NoticeDetail" />
+        <activity android:name=".activity.circle.MoreNotice" />
+        <activity android:name=".activity.share.ServiceDetail"></activity>
     </application>
 
 </manifest>
