@@ -106,6 +106,8 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
         }
 
 
+
+
         public int getItemCount() {
             return mDatas.size();
         }
