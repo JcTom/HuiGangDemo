@@ -35,6 +35,8 @@ import com.suctan.huigangdemo.activity.setting.SeetingUserKnowArea;
 import com.suctan.huigangdemo.activity.setting.SeetingUserName;
 import com.suctan.huigangdemo.activity.setting.SeetingUserSex;
 import com.suctan.huigangdemo.bean.user.CourseBean;
+import com.suctan.huigangdemo.bean.user.CurrentUser;
+import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
 
@@ -134,6 +136,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_changPwd = (LinearLayout) findViewById(R.id.ly_changPwd);
         ly_loginQuit = (LinearLayout) findViewById(R.id.ly_loginQuit);
 
+        initViewData();//设置布局的data
 
         //设置监听
         ly_head_setting.setOnClickListener(this);
@@ -148,7 +151,25 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_loginQuit.setOnClickListener(this);
         imv_setting_back.setOnClickListener(this);
 //        initWaitDialog();
+    }
 
+
+    private void initViewData() {
+        Users mUser = CurrentUser.getInstance().getUserBean();
+        if (mUser.getUser_name() != null) {
+            tv_userName.setText(mUser.getUser_name());
+        }
+
+//        tv_varityBody
+//        if (mUser.getUser_sex() != -1) {
+//
+//        }
+//        tv_sex
+//                tv_ageDegree
+//
+//        tv_knowArea
+//                tv_degree
+//        tv_hobby
     }
 
     private void initWaitDialog() {

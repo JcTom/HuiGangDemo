@@ -2,6 +2,7 @@ package com.suctan.huigangdemo.mvp.login;
 
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.androidbase.BaseApplication;
 import com.example.androidbase.rxjava.ApiCallback;
@@ -25,9 +26,6 @@ import java.util.Map;
  */
 
 public class LoginPresener extends DemoBasePresenter<LoginView> {
-
-    private String TAG="LoginPresener";
-
     public LoginPresener(LoginView mvpView) {
         attachView(mvpView);
     }
@@ -40,8 +38,8 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     @Override
                     public void onStart() {
                         mvpView.showLoading();
-                        System.out.println("onStart");
                     }
+
                     @Override
                     public void onCompleted() {
                         System.out.println("onCompleted");
@@ -50,14 +48,11 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     @Override
                     public void onSuccess(LoginReturn model) {
                         if (model != null) {
-                            System.out.println("onSuccess ");
-                            if (model.getStatus().equals("1")) {
-                                mvpView.loginGoMain();
-                                Log.i(TAG, "我是状态成功status->"+model.getStatus()+"msg->"+model.getMsg()+"token->"+model.getToken());
+                            if (model.getStatus() == 1) {
                                 getCurrentUser(model.getToken());
-                            } else {
                                 mvpView.loginGoMain();
-                                Log.i(TAG, "我是状态失败status->"+model.getStatus()+"msg->"+model.getMsg()+"token->"+model.getToken());
+
+                            } else {
                                 mvpView.getDataFail("用户名或者密码错误");
                             }
                         }
@@ -66,10 +61,7 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
 
                     @Override
                     public void onFailed(String msg) {
-                        mvpView.loginGoMain();
-                        System.out.println("onFailed msg"+msg);
                         mvpView.getDataFail(msg);
-                        mvpView.hideLoading();
                     }
                 }));
     }
@@ -77,11 +69,12 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
 
     public void getCurrentUser(final String userToken) {
         Map mapUser = new HashMap();
-        mapUser.put("token", userToken);
+        mapUser.put("user_token", userToken);
         addSubscription(apiStores.getUserReturnMessage(mapUser),
                 new SubscriberCallBack<>(new ApiCallback<GetUserReturn>() {
                     @Override
                     public void onStart() {
+
                     }
 
                     @Override
@@ -93,12 +86,11 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     public void onSuccess(GetUserReturn model) {
                         System.out.println("用户信息" + model.getDatas());
                         if (model != null) {
-                            if (model.getStatus().equals("success")) {
+                            if (model.getStatus() == 1) {
                                 if (model.getDatas() != null && !model.getDatas().isEmpty()) {
                                     Users users = JSONParstObject.GetUserJSonObject(model.getDatas());
                                     if (users != null) {
                                         InsertTokenToCace(userToken);
-                                        users.setToken(userToken);
                                         InsertToCace(users);
                                         mvpView.loginMessageReturn(users);
                                     }
@@ -115,42 +107,6 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     }
                 }));
     }
-
-
-
-
-    public void getHelloText() {
-        Map map=new HashMap();
-        map.put("username", "18942433927");
-        map.put("password", 94682431);
-//       String user  = "?&user=liheming";
-        addSubscription(apiStores.getHello(map),
-                new SubscriberCallBack<>(new ApiCallback<String>() {
-                    @Override
-                    public void onStart() {
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                        mvpView.hideLoading();
-                    }
-
-                    @Override
-                    public void onSuccess(String model) {
-//                        Toast.makeText(BaseApplication.getContext(),model,Toast.LENGTH_LONG).show();
-
-                        Log.i(TAG, "onSuccess: "+model);
-                    }
-
-                    @Override
-                    public void onFailed(String msg) {
-                        mvpView.getDataFail(msg);
-                    }
-                }));
-    }
-
-
-
 
     /**
      * created at 2017/3/23 16:45
@@ -180,7 +136,6 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
      */
     public void InsertTokenToCace(String UserToken) {
         ACache aCacheToken = ACache.get(BaseApplication.getContext());
-//        aCacheToken.put("nowToken", UserToken, 10800);
         aCacheToken.put("nowToken", UserToken);//暂时去掉时间
     }
 }

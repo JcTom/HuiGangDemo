@@ -29,13 +29,13 @@ public interface ApiStores {
 
     //    @POST("login.php")
 //    Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
-    @POST("login")
-    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
+//    @POST("login")
+//    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
 
     /**
      * 获取用户信息
      */
-    @POST("login")
+    @POST("get_userInfo")
     Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
 
 

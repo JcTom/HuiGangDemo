@@ -22,34 +22,49 @@ public class JSONParstObject {
         try {
             JSONObject jsonObject = new JSONObject(userString);
             currentUser = new Users();
-            currentUser.setNid(jsonObject.getString("nid"));//管理员ID
-            currentUser.setUserName(jsonObject.getString("UserName"));// 用户名
-            currentUser.setNickname(jsonObject.getString("nickname"));// 昵称
-            currentUser.setName(jsonObject.getString("Name"));// 真实姓名
-            currentUser.setMobile(jsonObject.getString("mobile"));//手机号码
-            currentUser.setEmail(jsonObject.getString("Email"));// 邮箱
-            currentUser.setAddTime(jsonObject.getString("AddTime"));// 添加时间
-            currentUser.setAvatar(jsonObject.getString("avatar"));// 头像
-            currentUser.setAvatar1(jsonObject.getString("avatar1"));
-            currentUser.setAvatar2(jsonObject.getString("avatar2"));
-            currentUser.setAvatar3(jsonObject.getString("avatar3"));
-            currentUser.setAvatarSet(jsonObject.getString("avatarSet"));// 头像上传的设置
-            if (!jsonObject.getString("balance").isEmpty()) {
-                currentUser.setBalance(new BigDecimal(jsonObject.getString("balance")).setScale(2, BigDecimal.ROUND_HALF_UP));
+            if (jsonObject.getString("user_phone") != null) {
+                currentUser.setUser_phone(jsonObject.getString("user_phone"));
             }
-            currentUser.setIdNumber(jsonObject.getString("IdNumber"));
-            currentUser.setSex(jsonObject.getInt("sex"));
-            currentUser.setBirthday(jsonObject.getString("birthday"));
-            currentUser.setIsReg(jsonObject.getInt("isReg"));
-            currentUser.setSpecialtyName(jsonObject.getString("major"));
-            currentUser.setEducateLevel(jsonObject.getString("degree"));
-            currentUser.setProfessional(jsonObject.getString("professionalTitle"));
-            currentUser.setAddress(jsonObject.getString("address"));
-            currentUser.setOrganizaton(jsonObject.getString("organization"));
-            currentUser.setPrivince(jsonObject.getString("province"));
-            currentUser.setRegTime(jsonObject.getString("regTime"));
-            currentUser.setRegIp(jsonObject.getString("regIp"));
-            currentUser.setSecureId(jsonObject.getString("secureId"));//密保ID
+            if (jsonObject.getString("user_name") != null) {
+                currentUser.setUser_name(jsonObject.getString("user_name"));
+            }
+            if (jsonObject.getString("user_icon") != null) {
+                currentUser.setUser_icon(jsonObject.getString("user_icon"));
+            }
+            if (jsonObject.getString("user_alias") != null) {
+                currentUser.setUser_alias(jsonObject.getString("user_alias"));
+            }
+            if (jsonObject.getString("user_sex") != null) {
+                currentUser.setUser_sex(jsonObject.getInt("user_sex"));
+
+            }
+            if (jsonObject.getString("user_age") != null) {
+                currentUser.setUser_age(jsonObject.getInt("user_age"));
+            }
+            if (jsonObject.getString("user_education") != null) {
+                currentUser.setUser_education(jsonObject.getString("user_education"));
+            }
+            if (jsonObject.getString("user_skill") != null) {
+                currentUser.setUser_skill(jsonObject.getString("user_skill"));
+            }
+            if (jsonObject.getString("user_hobby") != null) {
+                currentUser.setUser_hobby(jsonObject.getString("user_hobby"));
+            }
+            if (jsonObject.getString("user_address") != null) {
+                currentUser.setUser_address(jsonObject.getString("user_address"));
+            }
+            if (jsonObject.getString("user_money") != null) {
+                currentUser.setUser_money(jsonObject.getString("user_money"));
+            }
+            if (jsonObject.getString("user_card") != null) {
+                currentUser.setUser_card(jsonObject.getString("user_card"));
+            }
+            if (jsonObject.getString("user_coupon") != null) {
+                currentUser.setUser_coupon(jsonObject.getString("user_coupon"));
+            }
+            if (jsonObject.getString("is_cooking") != null) {
+                currentUser.setIs_cooking(jsonObject.getInt("is_cooking"));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
