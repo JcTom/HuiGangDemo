@@ -272,5 +272,6 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
 
     @Override
     public void homeInfoDone(HomeBean homeBean) {
+
     }
 }
