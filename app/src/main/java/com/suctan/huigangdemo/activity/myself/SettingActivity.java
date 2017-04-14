@@ -188,7 +188,5 @@ public class SettingActivity extends Activity implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-
-
     }
 }
