@@ -27,16 +27,11 @@ public class my_assess  extends FragmentActivity implements View.OnClickListener
     private FragmentPagerAdapter mAdapter;
     private List<Fragment> mDatas;
     // 控件
-    private TextView text_seller_description = null;
-    private TextView text_common_problem = null;
-    private TextView text_purchase_process = null;
-    private TextView text_same_shop = null;
-    private LinearLayout ll_seller_description = null;
-    private LinearLayout ll_common_problem = null;
-    private LinearLayout ll_purchase_process = null;
-    private LinearLayout ll_same_shop = null;
-    private ImageView img_line;
+    private TextView my_assess = null;
+    private TextView my_get_assess = null;
 
+    private LinearLayout ll_my_assess = null;
+    private LinearLayout ll_my_get_assess = null;
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
@@ -77,19 +72,18 @@ public class my_assess  extends FragmentActivity implements View.OnClickListener
         assess_back_1.setOnClickListener(this);
 
         // 获取颜色
-        select_color = getResources().getColor(R.color.text_orange);
-        unselect_color = getResources().getColor(R.color.black);
+        select_color = getResources().getColor(R.color.common_green);
+        unselect_color = getResources().getColor(R.color.head_border_width_clo);
 
-        text_purchase_process = (TextView) findViewById(R.id.text_purchase_process);
-        text_same_shop = (TextView) findViewById(R.id.text_same_shop);
-        ll_seller_description = (LinearLayout) findViewById(R.id.linear_seller_description);
-        ll_common_problem = (LinearLayout) findViewById(R.id.linear_common_problem);
+        my_assess = (TextView) findViewById(R.id.my_assess);
+        my_get_assess = (TextView) findViewById(R.id.my_get_assess);
+        ll_my_assess = (LinearLayout) findViewById(R.id.linear_my_assess);
+        ll_my_get_assess = (LinearLayout) findViewById(R.id.linear_my_get_assess);
+        //初始化, 传输这个case数值,过去进行判断
+        ll_my_assess.setOnClickListener(new MyOnClickListenser(0));
+        ll_my_get_assess.setOnClickListener(new MyOnClickListenser(1));
 
-
-        ll_purchase_process.setOnClickListener(new MyOnClickListenser(2));
-        ll_same_shop.setOnClickListener(new MyOnClickListenser(3));
-
-        mViewPager = (ViewPager) findViewById(R.id.mViewpager);
+        mViewPager = (ViewPager) findViewById(R.id.assess_vp);
         mDatas = new ArrayList<Fragment>();
     }
 
@@ -110,19 +104,19 @@ public class my_assess  extends FragmentActivity implements View.OnClickListener
     public void onPageSelected(int position) {
         resetTextColor();
         switch (mViewPager.getCurrentItem()) {
-            case 2:
-                text_purchase_process.setTextColor(select_color);
+            case 0:
+                my_assess.setTextColor(select_color);
                 break;
-            case 3:
-                text_same_shop.setTextColor(select_color);
+            case 1:
+                my_get_assess.setTextColor(select_color);
                 break;
         }
 
     }
 
     private void resetTextColor() {
-        text_purchase_process.setTextColor(unselect_color);
-        text_same_shop.setTextColor(unselect_color);
+        my_assess.setTextColor(unselect_color);
+        my_get_assess.setTextColor(unselect_color);
     }
 
     public class MyOnClickListenser implements View.OnClickListener {
@@ -136,11 +130,11 @@ public class my_assess  extends FragmentActivity implements View.OnClickListener
         public void onClick(View v) {
             resetTextColor();
             switch (v.getId()) {
-                case R.id.linear_purchase_process:
-                    text_purchase_process.setTextColor(select_color);
+                case R.id.linear_my_assess:
+                    my_assess.setTextColor(select_color);
                     break;
-                case R.id.linear_same_shop:
-                    text_same_shop.setTextColor(select_color);
+                case R.id.linear_my_get_assess:
+                    my_get_assess.setTextColor(select_color);
                     break;
             }
             mViewPager.setCurrentItem(index);

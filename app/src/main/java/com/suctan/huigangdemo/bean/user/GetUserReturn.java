@@ -5,14 +5,15 @@ package com.suctan.huigangdemo.bean.user;
  */
 
 public class GetUserReturn {
-    private String status;//请求结果状态
+    private int status;//请求结果状态
     private String msg;//返回信息
     private String datas;//返回用户数据
-    public String getStatus() {
+
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

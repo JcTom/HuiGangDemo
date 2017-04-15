@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
+            android:id="@+id/imv_varityBody_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
+            android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="1dp"
             android:layout_weight="1"
-            android:layout_gravity="left|center_vertical"
-            />
+            android:src="@mipmap/return_128" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/midf_real_username"
-            android:textSize="20sp"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:layout_weight="4"
             android:layout_marginRight="25dp"
-            />
-
-
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/midf_real_username"
+            android:textColor="#fff"
+            android:textSize="20sp" />
 
 
     </LinearLayout>
@@ -41,84 +37,83 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="姓名:" />
+
+            <TextView
+                style="@style/usertext"
+                android:text="姓名:" />
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="#d3d3d3"
-            >
+            android:orientation="vertical">
+
             <EditText
+                android:id="@+id/edt_varity_Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:background="@drawable/et_shape"
                 android:hint="@string/warm_real_username"
-                android:layout_gravity="center"
-                android:background="@drawable/et_shape"
                 android:padding="10px"
+                android:textSize="18sp"
 
                 />
         </LinearLayout>
 
 
-
         <LinearLayout style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="@string/real_name_number" />
+
+            <TextView
+                style="@style/usertext"
+                android:text="@string/real_name_number" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="#d3d3d3"
-            >
+            android:orientation="vertical">
+
             <EditText
+                android:id="@+id/edt_varity_IDCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:hint="@string/warm_real_name_number"
                 android:layout_gravity="center"
                 android:background="@drawable/et_shape"
+                android:hint="@string/warm_real_name_number"
                 android:padding="10px"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            >
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_varity_comfirm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="确认"
-                android:textSize="18dp"
                 android:background="@drawable/real_button_selector"
-                >
+                android:text="确认"
+                android:textSize="18dp">
 
             </Button>
 
         </LinearLayout>
 
 
-
-
-
     </LinearLayout>
 
 
-
-    </LinearLayout>
+</LinearLayout>

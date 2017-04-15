@@ -13,6 +13,7 @@
         android:paddingRight="10dp">
 
         <ImageView
+            android:id="@+id/imv_chang_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="left|center_vertical"
@@ -51,11 +52,16 @@
             android:orientation="vertical">
 
             <RadioGroup
+                android:id="@+id/ragp_change_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical"
+
+                >
 
                 <RadioButton
+                    android:id="@+id/rab_aftZero"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -65,6 +71,7 @@
                     android:textSize="18dp" />
 
                 <RadioButton
+                    android:id="@+id/rab_aftNight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -74,6 +81,7 @@
                     android:textSize="18dp" />
 
                 <RadioButton
+                    android:id="@+id/rab_aftEight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -83,6 +91,7 @@
                     android:textSize="18dp" />
 
                 <RadioButton
+                    android:id="@+id/rab_aftseven"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -92,6 +101,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/rab_aftOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -116,6 +126,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_changeAge_comfirm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/real_button_selector"

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -78,6 +80,7 @@
                android:layout_marginLeft="10dp"
                />
            <EditText
+               android:padding="10dp"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:hint="请输入你对此菜色的评论"
@@ -107,6 +110,7 @@
             >
 
             <ImageView
+                android:padding="11dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@mipmap/add_camera"
@@ -133,6 +137,8 @@
             >
             <!--1-->
             <LinearLayout
+                android:layout_weight="1"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -143,26 +149,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:text="描述相符"
                     android:textSize="18sp" />
 
-                <RatingBar
-                    style="@style/roomRatingBar"
+                <com.suctan.huigangdemo.widget.StarBar
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/start_view_0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dip"
-                    android:stepSize="1"
-                    android:numStars="5"
-                    android:rating="3"
-                    >
-                </RatingBar>
-
-
+                    app:mClickImageId="@mipmap/star_n"
+                    app:mDefaultImageId="@mipmap/star_y"
+                    app:mImageHeight="18dp"
+                    app:mImageWidth="18dp"
+                    app:mMargin="2dp"
+                    app:mStarChoose="3"
+                    app:mStarNum="5"/>
             </LinearLayout>
 
             <!--2-->
             <LinearLayout
+                android:layout_weight="1"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -176,21 +185,29 @@
                     android:text="服务准时"
                     android:textSize="18sp" />
 
-                <RatingBar
-                    style="@style/roomRatingBar"
+                <com.suctan.huigangdemo.widget.StarBar
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/start_view_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dip"
-                    android:stepSize="1"
-                    android:numStars="5"
-                    android:rating="3"
-                    >
-                </RatingBar>
+                    app:mClickImageId="@mipmap/star_n"
+                    app:mDefaultImageId="@mipmap/star_y"
+                    app:mImageHeight="18dp"
+                    app:mImageWidth="18dp"
+                    app:mMargin="2dp"
+                    app:mStarChoose="3"
+                    app:mStarNum="5"/>
+
+
 
             </LinearLayout>
 
             <!--3-->
             <LinearLayout
+                android:layout_weight="1"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -204,16 +221,23 @@
                     android:text="好吃程度"
                     android:textSize="18sp" />
 
-                <RatingBar
-                    style="@style/roomRatingBar"
+                <com.suctan.huigangdemo.widget.StarBar
+                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:id="@+id/start_view_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dip"
-                    android:stepSize="1"
-                    android:numStars="5"
-                    android:rating="3"
-                    >
-                </RatingBar>
+                    app:mClickImageId="@mipmap/star_n"
+                    app:mDefaultImageId="@mipmap/star_y"
+                    app:mImageHeight="18dp"
+                    app:mImageWidth="18dp"
+                    app:mMargin="2dp"
+                    app:mStarChoose="3"
+                    app:mStarNum="5"/>
+
+
+
 
             </LinearLayout>
 

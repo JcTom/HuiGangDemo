@@ -13,6 +13,7 @@
         >
 
         <ImageView
+            android:id="@+id/imv_degree_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@mipmap/return_128"
@@ -53,12 +54,14 @@
             >
 
             <RadioGroup
+                android:id="@+id/ragp_degree"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 >
 
                <RadioButton
+                   android:id="@+id/rab_degree_junior"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="@string/edutction_junior"
@@ -69,6 +72,7 @@
                    />
 
                 <RadioButton
+                    android:id="@+id/rab_degree_senior"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_high"
@@ -79,6 +83,7 @@
                     />
 
                 <RadioButton
+                    android:id="@+id/rab_degree_specialist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_junior_college"
@@ -89,6 +94,7 @@
                     />
 
                 <RadioButton
+                    android:id="@+id/rab_degree_underGradte"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_undergarduate"
@@ -99,6 +105,7 @@
                     />
 
                 <RadioButton
+                    android:id="@+id/rab_degree_master"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_master"
@@ -109,6 +116,7 @@
                     />
 
                 <RadioButton
+                    android:id="@+id/rab_degree_doctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_doctor"
@@ -119,6 +127,7 @@
                     />
 
                 <RadioButton
+                    android:id="@+id/rab_degree_other"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_other"
@@ -145,6 +154,7 @@
             >
 
             <Button
+                android:id="@+id/btn_degree_comfirm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="确认"
@@ -155,12 +165,5 @@
 
 
     </LinearLayout>
-
-
-
-
-
-
-
 
 </LinearLayout>

@@ -18,7 +18,7 @@
             android:paddingRight="10dp">
 
             <ImageView
-
+                android:id="@+id/imv_setting_back"
                 android:layout_width="25dp"
                 android:layout_height="25sp"
                 android:layout_gravity="left|center_vertical"
@@ -56,7 +56,7 @@
                     style="@style/usertext"
                     android:text="头像" />
 
-                <ImageView
+                <com.suctan.huigangdemo.widget.RoundImageView
                     android:id="@+id/imv_head"
                     style="@style/user_arrow" />
 
@@ -170,7 +170,7 @@
 
                 <TextView
                     style="@style/usertext"
-                    android:text="@string/special" />
+                    android:text="熟悉领域" />
 
                 <TextView
                     android:id="@+id/tv_knowArea"

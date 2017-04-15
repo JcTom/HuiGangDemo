@@ -17,6 +17,5 @@ public class SeetingForGetPwd extends BaseActivity {
         setContentView(R.layout.activity_forget_password);
 
 
-
     }
 }

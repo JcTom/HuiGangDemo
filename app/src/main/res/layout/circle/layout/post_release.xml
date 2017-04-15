@@ -85,7 +85,8 @@
         android:orientation="horizontal"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
-        android:paddingLeft="13dp">
+        android:paddingLeft="13dp"
+        android:id="@+id/pic_ly">
 
         <FrameLayout
             android:layout_width="95dp"

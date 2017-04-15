@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.androidbase.BaseActivity;
 import com.jaeger.library.StatusBarUtil;
@@ -150,9 +149,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_imv_myselft.setSelected(false);
                         //选中字体
                         main_tv_index.setTextColor(Color.parseColor("#9DB830"));
-                        main_tv_chanel.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_find.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_myselft.setTextColor(Color.parseColor("#D2E587"));
+                        main_tv_chanel.setTextColor(Color.parseColor("#333333"));
+                        main_tv_find.setTextColor(Color.parseColor("#333333"));
+                        main_tv_myselft.setTextColor(Color.parseColor("#333333"));
 
                         login_title.setText("享享我好吗");
                         search.setVisibility(View.VISIBLE);
@@ -164,9 +163,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_imv_find.setSelected(false);
                         main_imv_myselft.setSelected(false);
                         main_tv_chanel.setTextColor(Color.parseColor("#9DB830"));
-                        main_tv_index.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_find.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_myselft.setTextColor(Color.parseColor("#D2E587"));
+                        main_tv_index.setTextColor(Color.parseColor("#333333"));
+                        main_tv_find.setTextColor(Color.parseColor("#333333"));
+                        main_tv_myselft.setTextColor(Color.parseColor("#333333"));
 
                         login_title.setText("共享");
                         search.setVisibility(View.GONE);
@@ -178,9 +177,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_imv_find.setSelected(true);
                         main_imv_myselft.setSelected(false);
                         main_tv_find.setTextColor(Color.parseColor("#9DB830"));
-                        main_tv_chanel.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_index.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_myselft.setTextColor(Color.parseColor("#D2E587"));
+                        main_tv_chanel.setTextColor(Color.parseColor("#333333"));
+                        main_tv_index.setTextColor(Color.parseColor("#333333"));
+                        main_tv_myselft.setTextColor(Color.parseColor("#333333"));
 
                         login_title.setText("圈子");
                         search.setVisibility(View.GONE);
@@ -192,9 +191,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         main_imv_find.setSelected(false);
                         main_imv_myselft.setSelected(true);
                         main_tv_myselft.setTextColor(Color.parseColor("#9DB830"));
-                        main_tv_find.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_chanel.setTextColor(Color.parseColor("#D2E587"));
-                        main_tv_index.setTextColor(Color.parseColor("#D2E587"));
+                        main_tv_find.setTextColor(Color.parseColor("#333333"));
+                        main_tv_chanel.setTextColor(Color.parseColor("#333333"));
+                        main_tv_index.setTextColor(Color.parseColor("#333333"));
 
                         login_title.setText("我的");
                         search.setVisibility(View.GONE);
@@ -231,7 +230,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.add_post:
                 Intent goPostRelease = new Intent(MainActivity.this, PostRelease.class);
                 startActivity(goPostRelease);
-                Toast.makeText(this,"111",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -45,8 +45,6 @@ public class IndexGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        /*Toast.makeText(BaseApplication.getContext(),"companyList.position"+position,Toast.LENGTH_LONG).show();*/
-
         GridViewHolder holder=null;
         IndexGridBean indexGridBean=companyList.get(position);
         if(convertView==null){

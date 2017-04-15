@@ -58,8 +58,9 @@ public class MoreNotice extends AppCompatActivity {
         noticeRelease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goMoreNotice = new Intent(MoreNotice.this,PostRelease.class);
-                startActivity(goMoreNotice);
+                Intent goNoticeRelease = new Intent(MoreNotice.this,PostRelease.class);
+                goNoticeRelease.putExtra("isPic",false);
+                startActivity(goNoticeRelease);
             }
         });
 
