@@ -1,8 +1,6 @@
 package com.suctan.huigangdemo.activity.myself;
 
 import android.Manifest;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -20,13 +18,17 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.androidbase.BaseApplication;
 import com.example.androidbase.Constants;
 import com.example.androidbase.mvp.MvpActivity;
+import com.example.androidbase.utils.ACache;
 import com.example.androidbase.utils.ScreenTools;
 import com.example.androidbase.utils.SdCardTool;
 import com.example.androidbase.utils.ToastTool;
 import com.example.androidbase.widget.loading.WaitDialog;
+import com.google.gson.Gson;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.activity.login.LoginActivity;
 import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
 import com.suctan.huigangdemo.activity.setting.SeetingUserAge;
 import com.suctan.huigangdemo.activity.setting.SeetingUserDegree;
@@ -36,6 +38,7 @@ import com.suctan.huigangdemo.activity.setting.SeetingUserName;
 import com.suctan.huigangdemo.activity.setting.SeetingUserSex;
 import com.suctan.huigangdemo.bean.user.CourseBean;
 import com.suctan.huigangdemo.bean.user.CurrentUser;
+import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
@@ -48,7 +51,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by B-305 on 2017/4/13.
@@ -159,17 +163,22 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         if (mUser.getUser_name() != null) {
             tv_userName.setText(mUser.getUser_name());
         }
-
 //        tv_varityBody
-//        if (mUser.getUser_sex() != -1) {
-//
-//        }
-//        tv_sex
-//                tv_ageDegree
-//
-//        tv_knowArea
-//                tv_degree
-//        tv_hobby
+        if (mUser.getUser_sex() != -1) {
+            if (mUser.getUser_sex() == 0) {
+                tv_sex.setText("男");
+            } else {
+                tv_sex.setText("女");
+            }
+        }
+        if (mUser.getUser_education() != null) {
+            tv_degree.setText(mUser.getUser_education());
+        }
+        tv_ageDegree.setText(mUser.getUser_age() + "");
+//        tv_knowArea.setText(mUser.get);
+        if (mUser.getUser_hobby() != null) {
+            tv_hobby.setText(mUser.getUser_hobby());
+        }
     }
 
     private void initWaitDialog() {
@@ -247,17 +256,63 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 startActivity(intentLogPwd);
                 break;
             case R.id.ly_loginQuit:
-
+                LoginQuitRequest();//暂时放着，通过dialog点击事件触发
                 break;
         }
     }
 
+
+    //注销登录
+    private void LoginQuitRequest() {
+        Map<String, Object> mapQuit = new HashMap<>();
+        mapQuit.put("user_token", TokenManager.getToken());
+        mvpPresenter.LoginQuit(mapQuit);
+    }
+
+
     //更新和设置服务器数据
     private void setServiceData(int resultDataCode, String tempData) {
-        switch (resultDataCode) {
+        Map<String, Object> mapModifyUser = new HashMap<>();
+        mapModifyUser.put("user_token", TokenManager.getToken());
 
+        switch (resultDataCode) {
+            case requestUserName:
+                mapModifyUser.put("user_info", "user_name");
+                break;
+            case requestUserVeriatyBody:
+
+                break;
+            case requestUserSex:
+                mapModifyUser.put("user_info", "user_sex");
+                break;
+            case requestUserAge:
+                mapModifyUser.put("user_info", "user_age");
+                break;
+            case requestUserDegree:
+                mapModifyUser.put("user_info", "user_education");
+
+                break;
+            case requestUserKnowArea:
+//                mapModifyUser.put();
+
+                break;
+            case requestUserHoppy:
+                mapModifyUser.put("user_info", "user_hoppy");
+                break;
 
         }
+        if (resultDataCode == requestUserAge) {
+            mapModifyUser.put("user_data", Integer.parseInt(tempData));
+        } else if (resultDataCode == requestUserSex) {
+            if (tempData.equals("男")) {
+                mapModifyUser.put("user_data", 0);
+            } else {
+                mapModifyUser.put("user_data", 1);
+            }
+        } else {
+            mapModifyUser.put("user_data", tempData);
+        }
+        mvpPresenter.MoidifytyUser(mapModifyUser);
     }
 
     private void goClass(Class<?> goClass, int requestKey, String oldData) {
@@ -350,10 +405,8 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
 
             } else {//相册
                 if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-
                     changeByPic();
                 } else {
-
                     ToastTool.showToast("未获得需要的权限", 2);
                 }
             }
@@ -498,6 +551,21 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     @Override
     public void loadCourseDone(CourseBean courseBean) {
 
+    }
+
+    @Override
+    public void LoginQuitSuc() {
+        ACache aCache = ACache.get(BaseApplication.getContext());
+        //判断缓存中是否存在该对象
+        String userStr = aCache.getAsString("User");
+        if (userStr != null) {
+            aCache.remove("User");
+            CurrentUser.getInstance().setUserBean(null);
+            TokenManager.clearToken();
+            Intent intentLogin = new Intent(this, LoginActivity.class);
+            startActivity(intentLogin);
+            finish();
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.suctan.huigangdemo.mvp.login;
 
 import com.suctan.huigangdemo.bean.user.GetUserReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
+import com.suctan.huigangdemo.bean.user.ModifyReturn;
 
 import java.util.Map;
 
@@ -38,5 +39,10 @@ public interface ApiStores {
     @POST("get_userInfo")
     Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
 
+    /**
+     * 用户信息
+     */
+    @POST("update_userInfo")
+    Observable<ModifyReturn> ModifyUserReturn(@QueryMap Map<String, Object> userReturn);
 
 }

@@ -34,13 +34,8 @@ public class JSONParstObject {
             if (jsonObject.getString("user_alias") != null) {
                 currentUser.setUser_alias(jsonObject.getString("user_alias"));
             }
-            if (jsonObject.getString("user_sex") != null) {
-                currentUser.setUser_sex(jsonObject.getInt("user_sex"));
-
-            }
-            if (jsonObject.getString("user_age") != null) {
-                currentUser.setUser_age(jsonObject.getInt("user_age"));
-            }
+            currentUser.setUser_sex(jsonObject.getInt("user_sex"));
+            currentUser.setUser_age(jsonObject.getInt("user_age"));
             if (jsonObject.getString("user_education") != null) {
                 currentUser.setUser_education(jsonObject.getString("user_education"));
             }
@@ -53,18 +48,17 @@ public class JSONParstObject {
             if (jsonObject.getString("user_address") != null) {
                 currentUser.setUser_address(jsonObject.getString("user_address"));
             }
-            if (jsonObject.getString("user_money") != null) {
-                currentUser.setUser_money(jsonObject.getString("user_money"));
-            }
+            currentUser.setUser_money(jsonObject.getDouble("user_money"));
+
             if (jsonObject.getString("user_card") != null) {
                 currentUser.setUser_card(jsonObject.getString("user_card"));
             }
             if (jsonObject.getString("user_coupon") != null) {
                 currentUser.setUser_coupon(jsonObject.getString("user_coupon"));
             }
-            if (jsonObject.getString("is_cooking") != null) {
-                currentUser.setIs_cooking(jsonObject.getInt("is_cooking"));
-            }
+
+            currentUser.setIs_cooking(jsonObject.getInt("is_cooking"));
+
         } catch (JSONException e) {
             e.printStackTrace();
             return null;

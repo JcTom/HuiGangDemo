@@ -135,7 +135,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
      * @explain 用户登录验证
      */
     private void LoginVariety(String userName, String pwd) {
-        Map mapLogin = new HashMap();
+        Map<String, Object> mapLogin = new HashMap();
         mapLogin.put("user_phone", userName);
         mapLogin.put("user_pass", pwd);
         mvpPresenter.getLoginAction(mapLogin);
