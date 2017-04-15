@@ -26,7 +26,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="240dp"
                     rollviewpager_play_delay="4000"
-                    android:id="@+id/rollViewpager"/>
+                    android:id="@+id/rollViewpager"
+                    />
             </FrameLayout>
             <RadioGroup
                 android:id="@+id/tab_rg_menu"
@@ -55,36 +56,36 @@
                     android:text="@string/tab_do" />
 
             </RadioGroup>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/background"
                 android:orientation="horizontal"
+                android:paddingBottom="5dp"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                >
+                android:paddingTop="5dp">
 
                 <TextView
                     android:id="@+id/recommend_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="菜品推荐"
+                    android:layout_centerVertical="true"
                     android:paddingLeft="25dp"
-                    android:layout_centerVertical="true"/>
+                    android:text="菜品推荐" />
 
                 <TextView
+                    android:id="@+id/more_texts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="更多>>"
-                    android:paddingLeft="25dp"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginRight="25dp"
-                    android:id="@+id/more_texts"
-                    />
+                    android:paddingLeft="25dp"
+                    android:text="更多>>" />
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -100,10 +101,9 @@
                     android:id="@+id/gridview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:numColumns="2"
-                    android:verticalSpacing="10dp"
                     android:horizontalSpacing="10dp"
-                    />
+                    android:numColumns="2"
+                    android:verticalSpacing="10dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

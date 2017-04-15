@@ -63,9 +63,10 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     PullToRefreshView pullToRefreshView;
     @BindView(R.id.gridview)
     GridView gridView;
+
     ArrayList<HashMap<String, Object>> lstImageItem = new ArrayList<HashMap<String, Object>>();
     ArrayList<Recommend_indexBean>companyList;
-
+    private boolean isFirstCreate;
     /*ListView listView;
     List<Map<String, ?>> data;
     String str[] = { "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492068213958&di=530b4e4796309358cc9f3d4ab750b9d7&imgtype=0&src=http%3A%2F%2Fstatic.leiphone.com%2Fuploads%2Fnew%2Farticle%2Fpic%2F201509%2F5602525bec148.jpg",
@@ -81,8 +82,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         ViewGroup localViewGroup = (ViewGroup) this.viewIndex.getParent();
         if (localViewGroup != null)
             localViewGroup.removeView(this.viewIndex);
-        ButterKnife.bind(this, viewIndex);
-        initGridData();
+
 //        item();
         return this.viewIndex;
     }
@@ -101,19 +101,38 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        if(!isFirstCreate){
+            ButterKnife.bind(this, viewIndex);
+            isFirstCreate=true;
+        }
         rollPagerViewSet();
-       /* Toast.makeText(getContext(),"你好",Toast.LENGTH_LONG).show();*/
+        initGridData();
+//        Toast.makeText(getContext(),"你好",Toast.LENGTH_LONG).show();
         Check();
+        pullToRefreshView();
+    }
+
+    private void pullToRefreshView() {
+        pullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshView.setRefreshing(false);
+                    }
+                }, 2000);
+            }
+        });
     }
 
     private void initGridData(){
-        ArrayList<CompanyInfoBean>companyList=new ArrayList<>();
-        for(int i=0;i<=2;i++){
+        ArrayList<CompanyInfoBean>companys=new ArrayList<>();
+        for(int i=0;i<=3;i++){
             CompanyInfoBean companyInfoBean=new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
-            companyList.add(companyInfoBean);
-        }
-        IndexGridAdapter adapter=new IndexGridAdapter(getActivity(),companyList);
+            companys.add(companyInfoBean);
+    }
+        IndexGridAdapter adapter=new IndexGridAdapter(getActivity(),companys);
         gridView.setAdapter(adapter);
 
     }

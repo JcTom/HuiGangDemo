@@ -18,12 +18,13 @@ import java.util.ArrayList;
  * Created by Tom on 2017/4/14.
  */
 
-public class RecommendindexAdapter extends BaseAdapter {
+public class MykitchenAdaper extends BaseAdapter {
+
     private Context context;
     private ArrayList<CompanyInfoBean> companyList;
 
-    public RecommendindexAdapter (Context context,ArrayList<CompanyInfoBean> companyList){
-        this.context=context;
+    public MykitchenAdaper(Context context,ArrayList<CompanyInfoBean> companyList){
+        this.context = context;
         this.companyList = companyList;
     }
 
@@ -44,33 +45,23 @@ public class RecommendindexAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        GridViewHolder holder = null;
-        CompanyInfoBean myCompanyInfoBean = companyList.get(position);
+        GridViewHolder holder= null;
+        CompanyInfoBean companyInfoBean = companyList.get(position);
         if (convertView==null){
-            convertView= LayoutInflater.from(context).inflate(R.layout.list_item_today_food_release,parent,false);
+            convertView= LayoutInflater.from(context).inflate(R.layout.mykitchen_item,parent,false);
             holder = new GridViewHolder();
+            holder.ItemImage= (ImageView) convertView.findViewById(R.id.Mykitchen_ItemImage);
+            holder.ItemText= (TextView) convertView.findViewById(R.id.Mykitchen_ItemTitle);
             convertView.setTag(holder);
-            holder.ItemImage= (ImageView) convertView.findViewById(R.id.recommend_today_ItemImage);
-            holder.ItemText= (TextView) convertView.findViewById(R.id.recommend_today_ItemTitle);
         }else {
-            holder = (GridViewHolder) convertView.getTag();
-        }
-        if(myCompanyInfoBean.getImageUrl()!=null){
-            LoadImageManager.getImageLoader().displayImage(myCompanyInfoBean.getImageUrl(),holder.ItemImage);
-        }
+            holder = (GridViewHolder) convertView.getTag();}
+       if (companyInfoBean.getImageUrl()!=null){
+           LoadImageManager.getImageLoader().displayImage(companyInfoBean.getImageUrl(),holder.ItemImage);
+       }
         return convertView;
     }
     public class GridViewHolder{
         ImageView ItemImage;
         TextView ItemText;
-    }
-
-    Recommend RecommendListener;
-    public void setRecomendLisner(Recommend RecommendListener){
-        this.RecommendListener=RecommendListener;
-    }
-    public interface Recommend{
-        void onCarChange(CompanyInfoBean mcompanyInfoBean);
     }
 }

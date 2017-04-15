@@ -3,6 +3,7 @@
     <!--网路检查-->
     <string name="Test">测试</string>
     <string name="checkNetTip">请检查您的网络！</string>
+    <string name="error">错误</string>
     <string name="inputPwdTip">请输入密码！</string>
     <string name="inputActTip">请输入用户名！</string>
     <string name="loginSucTip">登录成功！</string>
