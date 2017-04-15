@@ -170,7 +170,7 @@
 
                 <TextView
                     style="@style/usertext"
-                    android:text="@string/special1" />
+                    android:text="熟悉领域" />
 
                 <TextView
                     android:id="@+id/tv_knowArea"

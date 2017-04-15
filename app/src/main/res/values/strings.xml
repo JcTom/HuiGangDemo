@@ -3,7 +3,6 @@
     <!--网路检查-->
     <string name="Test">测试</string>
     <string name="checkNetTip">请检查您的网络！</string>
-    <string name="error">错误</string>
     <string name="inputPwdTip">请输入密码！</string>
     <string name="inputActTip">请输入用户名！</string>
     <string name="loginSucTip">登录成功！</string>
@@ -65,7 +64,6 @@
     <!--熟悉领域修改信息-->
     <string name="modf_special">熟悉领域修改</string>
     <string name="special">熟悉领域:</string>
-    <string name="special1">熟悉领域</string>
     <string name="warm_hint_special">请输入你的熟悉领域:</string>
 
     <!--业余爱好修改信息-->
@@ -127,8 +125,23 @@
     <string name="my_assess_go">我的评论</string>
     <string name="my_assess_up">我收到的</string>
 
+    <!--每个菜色的详情,等其他内容-->
+    <string name="one_food_name">我是菜的名字,请设置我吧!</string>
+    <string name="remain">还剩</string>
+    <string name="number">5</string>
+    <string name="danwei">份</string>
+    <string name="number_1">5</string>
+    <string name="danwei_1">人</string>
+    <string name="pinchang">品尝</string>
+    <string name="one_food_money">18.00</string>
+    <string name="one_money_stand">¥</string>
+    <string name="pinglun">谢谢你做出这么好吃的东西,我很喜欢,很好吃!</string>
+    <string name="food_assess">菜品评价</string>
+    <string name="same_food_from_one">同厨房美食</string>
 
     <!--提示dialog-->
     <string name="tipDialogComfirm">确定</string>
     <string name="tipDialogCancel">取消</string>
+
+
 </resources>
