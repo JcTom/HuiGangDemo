@@ -112,6 +112,7 @@ public class ReleaseService extends AppCompatActivity{
 
         };
         pvCustomTime.show();
+
         pvCustomTime.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date) {

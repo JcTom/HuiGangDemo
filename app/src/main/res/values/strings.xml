@@ -126,6 +126,28 @@
     <string name="my_assess_up">我收到的</string>
     <!--我的评价中的,我的评价,和我收到的评价,中的文字设置-->
 
+
+    <!--some title-->
+    <string name="p_title">标题：</string>
+    <string name="fb_title">发布主题</string>
+    <string name="fb_time">发布时间：</string>
+    <string name="shopping_cart">购物车</string>
+    <string name="all_select">全选</string>
+    <string name="all_money">合计：¥</string>
+    <string name="balance">结算</string>
+    <string name="gg_title">公告</string>
+    <string name="qiwang_time">期望时间：</string>
+    <string name="xiangying_time">响应时间：</string>
+    <string name="select_qw_time">请选择期待完成时间</string>
+    <string name="bz">备注</string>
+    <string name="jian">-</string>
+    <string name="add">+</string>
+    <string name="xs">小时</string>
+    <string name="fw_content">服务内容：</string>
+    <string name="lxr">联 系 人：</string>
+    <string name="lxdh">联系电话：</string>
+    <string name="lxdz">联系地址：</string>
+=======
     <!--每个菜色的详情,等其他内容-->
     <string name="one_food_name">我是菜的名字,请设置我吧!</string>
     <string name="remain">还剩</string>
@@ -145,6 +167,7 @@
     <string name="tipDialogComfirm">确定</string>
     <string name="tipDialogCancel">取消</string>
 
+>>>>>>> origin/master
 
 
 

@@ -211,7 +211,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="响应时间："
+                    android:text="@string/xiangying_time"
                     android:layout_gravity="center"
                     style="@style/editor_one"/>
                 <LinearLayout
@@ -223,26 +223,36 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="-"
+                        android:text="@string/jian"
                         android:textSize="25sp"
                         android:textColor="@color/green"
                         android:background="#00000000"
                         android:id="@+id/eat_time_minus"/>
-                    <TextView
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="5"
                         android:layout_height="25dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/holo_red_light"
-                        android:text="1.5h"
-                        android:id="@+id/eat_time"/>
+                        android:layout_gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_light"
+                            android:text="1.5"
+                            android:id="@+id/eat_time"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_light"
+                            android:text="@string/xs" />
+                    </LinearLayout>
+
                     <Button
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:text="+"
+                        android:text="@string/add"
                         android:textColor="@color/green"
                         android:textSize="25sp"
                         android:background="#00000000"
@@ -260,7 +270,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="期望时间："
+                    android:text="@string/qiwang_time"
                     android:layout_gravity="center"
                     style="@style/editor_one"/>
                 <LinearLayout
@@ -274,7 +284,7 @@
                         android:layout_height="match_parent"
                         android:id="@+id/eat_select_time"
                         android:background="@color/bg_gray"
-                        android:hint="请选择期待完成时间"
+                        android:hint="@string/select_qw_time"
                         android:gravity="right|center_vertical">
                     </Button>
 
@@ -294,7 +304,7 @@
                     android:inputType="textMultiLine"
                     android:scrollbars="vertical"
                     android:background="@android:drawable/editbox_background_normal"
-                    android:hint="备注" />
+                    android:hint="@string/bz" />
 
             </LinearLayout>
 
