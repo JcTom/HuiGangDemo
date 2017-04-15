@@ -127,4 +127,8 @@
     <string name="my_assess_go">我的评论</string>
     <string name="my_assess_up">我收到的</string>
 
+
+    <!--提示dialog-->
+    <string name="tipDialogComfirm">确定</string>
+    <string name="tipDialogCancel">取消</string>
 </resources>
