@@ -67,6 +67,9 @@
 
 
         <!--我的页面中的注册文件-->
+        <activity android:name=".activity.search.Search_Result"/>
+
+        <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.SettingActivity"></activity>
         <activity android:name=".activity.myself.addressActivity"></activity>
         <activity android:name=".activity.myself.buyActivity"></activity>

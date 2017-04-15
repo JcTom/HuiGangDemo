@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.androidbase.LoadImageManager;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
+import com.suctan.huigangdemo.bean.user.Recommend_indexBean;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,9 @@ import java.util.ArrayList;
 
 public class RecommendindexAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<CompanyInfoBean> companyList;
+    private ArrayList<Recommend_indexBean> companyList;
 
-    public RecommendindexAdapter (Context context,ArrayList<CompanyInfoBean> companyList){
+    public RecommendindexAdapter (Context context,ArrayList<Recommend_indexBean> companyList){
         this.context=context;
         this.companyList = companyList;
     }
@@ -44,9 +45,8 @@ public class RecommendindexAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         GridViewHolder holder = null;
-        CompanyInfoBean myCompanyInfoBean = companyList.get(position);
+        Recommend_indexBean recommend_indexBean = companyList.get(position);
         if (convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.list_item_today_food_release,parent,false);
             holder = new GridViewHolder();
@@ -56,8 +56,8 @@ public class RecommendindexAdapter extends BaseAdapter {
         }else {
             holder = (GridViewHolder) convertView.getTag();
         }
-        if(myCompanyInfoBean.getImageUrl()!=null){
-            LoadImageManager.getImageLoader().displayImage(myCompanyInfoBean.getImageUrl(),holder.ItemImage);
+        if(recommend_indexBean.getImageUrl()!=null){
+            LoadImageManager.getImageLoader().displayImage(recommend_indexBean.getImageUrl(),holder.ItemImage);
         }
         return convertView;
     }
@@ -70,7 +70,9 @@ public class RecommendindexAdapter extends BaseAdapter {
     public void setRecomendLisner(Recommend RecommendListener){
         this.RecommendListener=RecommendListener;
     }
+
     public interface Recommend{
         void onCarChange(CompanyInfoBean mcompanyInfoBean);
     }
+
 }

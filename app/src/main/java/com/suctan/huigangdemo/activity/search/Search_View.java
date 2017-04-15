@@ -46,6 +46,8 @@ public class Search_View extends LinearLayout{
     private SQLiteOpenHelper helper;
     private SQLiteDatabase db;
 
+
+
     public Search_View(Context context) {
         super(context);
         this.context = context;
@@ -145,15 +147,12 @@ public class Search_View extends LinearLayout{
                 boolean hasData = hasData(et_search.getText().toString().trim());
                 if (!hasData) {
                     insertData(et_search.getText().toString().trim());
-
                     //搜索后显示数据库里所有搜索历史是为了测试
                     queryData("");
                 }
                 //根据输入的内容模糊查询商品，并跳转到另一个界面，这个根据需求实现
-                Toast.makeText(context, "clicked!", Toast.LENGTH_SHORT).show();
-                /*Intent goRecommend = new Intent(getActivity(), RecommendActivity.class);
-                startActivity(goRecommend);*/
-
+                Toast.makeText(context, "搜索!", Toast.LENGTH_SHORT).show();
+                v.getContext().startActivity(new Intent(v.getContext(),Search_Result.class));
             }
         });
 
