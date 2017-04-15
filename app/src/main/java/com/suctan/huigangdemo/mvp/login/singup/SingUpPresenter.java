@@ -8,7 +8,4 @@ import com.suctan.huigangdemo.mvp.login.DemoBasePresenter;
 
 public class SingUpPresenter extends DemoBasePresenter<SingUpView> {
 
-
-
-
 }

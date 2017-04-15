@@ -126,7 +126,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/select_imv_find" />
-
                     <TextView
                         android:id="@+id/main_tv_find"
                         android:layout_width="wrap_content"

@@ -64,7 +64,7 @@
         <activity android:name=".activity.circle.NoticeDetail" />
         <activity android:name=".activity.circle.MoreNotice" />
         <activity android:name=".activity.share.ServiceDetail"></activity>
-
+        <activity android:name=".activity.search.Search_Result"/>
 
         <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.SettingActivity"></activity>
@@ -97,7 +97,6 @@
         <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
         <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
         <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
-
 
 
     </application>

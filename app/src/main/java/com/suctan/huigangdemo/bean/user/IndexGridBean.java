@@ -1,15 +1,12 @@
 package com.suctan.huigangdemo.bean.user;
 
-import android.widget.ImageView;
-
 /**
- * Created by Tom on 2017/4/13.
+ * Created by Tom on 2017/4/15.
  */
 
-public class Recommend_indexBean {
-    private String ImageUrl;
+public class IndexGridBean {
 
-    public Recommend_indexBean(String ImageUrl){
+    public IndexGridBean(String ImageUrl){
         this.ImageUrl=ImageUrl;
     }
 
@@ -20,4 +17,7 @@ public class Recommend_indexBean {
     public void setImageUrl(String imageUrl) {
         ImageUrl = imageUrl;
     }
+
+    private String ImageUrl;
+
 }

@@ -13,6 +13,7 @@ import com.example.androidbase.BaseApplication;
 import com.example.androidbase.LoadImageManager;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
+import com.suctan.huigangdemo.bean.user.IndexGridBean;
 
 import java.util.ArrayList;
 
@@ -22,8 +23,8 @@ import java.util.ArrayList;
 
 public class IndexGridAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<CompanyInfoBean> companyList;
-    public IndexGridAdapter(Context context,ArrayList<CompanyInfoBean> companyList){
+    private ArrayList<IndexGridBean> companyList;
+    public IndexGridAdapter(Context context,ArrayList<IndexGridBean> companyList){
         this.context=context;
         this.companyList=companyList;
     }
@@ -47,7 +48,7 @@ public class IndexGridAdapter extends BaseAdapter {
         /*Toast.makeText(BaseApplication.getContext(),"companyList.position"+position,Toast.LENGTH_LONG).show();*/
 
         GridViewHolder holder=null;
-        CompanyInfoBean mcompanyInfoBean=companyList.get(position);
+        IndexGridBean indexGridBean=companyList.get(position);
         if(convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.recommend_item,parent,false);
             holder=new GridViewHolder();
@@ -58,8 +59,8 @@ public class IndexGridAdapter extends BaseAdapter {
         else{
             holder= (GridViewHolder) convertView.getTag();
         }
-if(mcompanyInfoBean.getImageUrl()!=null){
-   LoadImageManager.getImageLoader().displayImage(mcompanyInfoBean.getImageUrl(),holder.ItemImage);
+if(indexGridBean.getImageUrl()!=null){
+   LoadImageManager.getImageLoader().displayImage(indexGridBean.getImageUrl(),holder.ItemImage);
 }
         /*RecommendListener.onCarChange(mcompanyInfoBean);*/
         return convertView;
@@ -69,13 +70,13 @@ if(mcompanyInfoBean.getImageUrl()!=null){
         ImageView ItemImage;
         TextView ItemText;
     }
-    Recommend RecommendListener;
+    /*Recommend RecommendListener;
     public void setRecomendLisner(Recommend RecommendListener){
-        this.RecommendListener=RecommendListener;
+        this.RecommendListener=RecommendListener;*/
     }
 
-    public interface Recommend{
+    /*public interface Recommend{
         void onCarChange(CompanyInfoBean mcompanyInfoBean);
     }
 
-}
+}*/

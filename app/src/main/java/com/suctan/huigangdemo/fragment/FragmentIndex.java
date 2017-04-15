@@ -26,6 +26,7 @@ import com.suctan.huigangdemo.activity.want.Want;
 import com.suctan.huigangdemo.adapter.IndexGridAdapter;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import com.suctan.huigangdemo.bean.user.HomeBean;
+import com.suctan.huigangdemo.bean.user.IndexGridBean;
 import com.suctan.huigangdemo.bean.user.Recommend_indexBean;
 import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
@@ -126,11 +127,12 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         });
     }
 
+    /*首页下边的item*/
     private void initGridData(){
-        ArrayList<CompanyInfoBean>companys=new ArrayList<>();
+        ArrayList<IndexGridBean>companys=new ArrayList<>();
         for(int i=0;i<=3;i++){
-            CompanyInfoBean companyInfoBean=new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
-            companys.add(companyInfoBean);
+            IndexGridBean indexGridBean=new IndexGridBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
+            companys.add(indexGridBean);
     }
         IndexGridAdapter adapter=new IndexGridAdapter(getActivity(),companys);
         gridView.setAdapter(adapter);
