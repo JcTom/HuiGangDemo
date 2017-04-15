@@ -140,7 +140,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_changPwd = (LinearLayout) findViewById(R.id.ly_changPwd);
         ly_loginQuit = (LinearLayout) findViewById(R.id.ly_loginQuit);
 
-        initViewData();//设置布局的data
+
 
         //设置监听
         ly_head_setting.setOnClickListener(this);
@@ -154,6 +154,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_changPwd.setOnClickListener(this);
         ly_loginQuit.setOnClickListener(this);
         imv_setting_back.setOnClickListener(this);
+        initViewData();//设置布局的data
 //        initWaitDialog();
     }
 

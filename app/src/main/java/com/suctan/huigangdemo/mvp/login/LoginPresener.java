@@ -94,6 +94,8 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                                         InsertToCace(users);
                                         mvpView.loginMessageReturn(users);
                                     }
+                                }else{
+                                    CurrentUser.getInstance().setUserBean(new Users());
                                 }
                             }
                         } else {
