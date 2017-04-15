@@ -92,6 +92,11 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <!-- CustomCheckBox theme -->
+    2     <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+    3         <item name="android:button">@drawable/checkbox_style</item>
+    4     </style>
+
 
 <!--四大主页中   我的页面配置样式-->
     <!--星星样式-->
