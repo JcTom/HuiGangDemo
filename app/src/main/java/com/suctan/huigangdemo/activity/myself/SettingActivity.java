@@ -41,6 +41,7 @@ import com.suctan.huigangdemo.bean.user.CurrentUser;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
+import com.suctan.huigangdemo.widget.TipDialog;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -256,9 +257,29 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 startActivity(intentLogPwd);
                 break;
             case R.id.ly_loginQuit:
-                LoginQuitRequest();//暂时放着，通过dialog点击事件触发
+                showLoginQuitTip();
                 break;
         }
+    }
+
+    private void showLoginQuitTip() {
+        final TipDialog tipDialog = new TipDialog(this);
+        tipDialog.setTipTitle("")
+                .setTipContent("确定退出当前帐号！")
+                .setTipClickLisener(new TipDialog.OnTipLisetner() {
+                    @Override
+                    public void comfirm() {
+                        LoginQuitRequest();//暂时放着，通过dialog点击事件触发
+                        tipDialog.dismiss();
+                    }
+
+                    @Override
+                    public void cancel() {
+                        tipDialog.dismiss();
+                    }
+                });
+
+
     }
 
 
@@ -294,7 +315,6 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 break;
             case requestUserKnowArea:
 //                mapModifyUser.put();
-
                 break;
             case requestUserHoppy:
                 mapModifyUser.put("user_info", "user_hoppy");

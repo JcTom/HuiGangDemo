@@ -14,7 +14,8 @@ public class SecondFragment extends Fragment {
 	//这个fragment对应这个，我卖出的中的两个选项栏中的已完成
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_view, container, false);
+		//加载布局，换成fragment所对应的布局，而这个fragment_view布局，是一个临时调试的布局。
+		return inflater.inflate(R.layout.seconded_fragment, container, false);
 	}
 
 }
