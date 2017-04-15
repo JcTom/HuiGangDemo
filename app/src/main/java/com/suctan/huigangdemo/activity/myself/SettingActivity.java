@@ -610,7 +610,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     private void upload(Bitmap bitmap) {
 //        http://119.29.137.109/tp/index.php/home/index/upload
 //        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
-        String url = "http://119.29.137.109/tp/index.php/home/index/upload";
+        String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
         RequestParams params = new RequestParams(url);
 //        params.setMultipart(true);
 //       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());

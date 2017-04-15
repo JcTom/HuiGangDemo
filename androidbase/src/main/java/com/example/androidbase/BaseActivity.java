@@ -4,7 +4,12 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodManager;
@@ -17,6 +22,7 @@ import java.util.List;
 public class BaseActivity extends AppCompatActivity {
 
     private Context mContext;
+
     public Context getContext() {
         return mContext;
     }
@@ -28,7 +34,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mContext = this;
         tack.addActivity(this);
-        overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
         getWindow().setBackgroundDrawable(null);
     }
 
@@ -36,11 +42,11 @@ public class BaseActivity extends AppCompatActivity {
     public void finish() {
         hideSoftInput();
         tack.removeActivity(this);
-        overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+        overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         super.finish();
     }
 
-	/**
+    /**
      * 隐藏软键盘
      */
     public void hideSoftInput() {
@@ -93,7 +99,7 @@ public class BaseActivity extends AppCompatActivity {
         if (appProcesses == null)
             return false;
 
-        for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+        for (RunningAppProcessInfo appProcess : appProcesses) {
             if (appProcess.processName.equals(packageName) && appProcess.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
                 return true;
             }
@@ -112,4 +118,60 @@ public class BaseActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    /**
+     * 为子类提供一个权限检查方法
+     *
+     * @param permissions 请求的权限
+     * @return
+     */
+    public boolean hasPermission(String... permissions) {
+
+        for (String permission : permissions) {
+
+            if (ContextCompat.checkSelfPermission(this, permission) !=
+                    PackageManager.PERMISSION_GRANTED) {
+
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 为子类提供一个权限请求方法
+     *
+     * @param code        请求码
+     * @param permissions 请求的权限
+     */
+    public void requestPermission(int code, String... permissions) {
+
+        ActivityCompat.requestPermissions(this, permissions, code);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        switch (requestCode) {
+
+            case Constants.WRITE_EXTERNAL_CODE:
+                doSDCardPermission();
+                break;
+
+            case Constants.CAMERA_CODE:
+                doCameraPermission();
+                break;
+        }
+    }
+
+    /**
+     * 默认的写SD卡权限处理
+     */
+    public void doSDCardPermission() {
+    }
+
+    /**
+     * 默认的相机权限处理
+     */
+    public void doCameraPermission() {
+    }
 }
