@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="公告"
+            android:text="@string/gg_title"
             style="@style/title_font"
             android:id="@+id/service_title"/>
         <Button

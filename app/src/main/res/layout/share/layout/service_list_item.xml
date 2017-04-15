@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
-                    android:text="服务内容："/>
+                    android:text="@string/fw_content"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

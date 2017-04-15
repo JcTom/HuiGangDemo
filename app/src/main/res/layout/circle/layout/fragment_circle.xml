@@ -4,32 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<LinearLayout
-        style="@style/tab_title"
-        android:gravity="center"
-        android:orientation="horizontal" >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:gravity="center"
-            android:text="圈子"
-            style="@style/title_font" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/share_fb"
-            android:background="#00000000"
-            style="@style/title_font"
-            android:textSize="16sp"
-            android:id="@+id/circle_fb"/>
-    </LinearLayout>-->
+
     <com.bigkoo.convenientbanner.ConvenientBanner
         android:id="@+id/ad_banner"
         android:layout_width="match_parent"
