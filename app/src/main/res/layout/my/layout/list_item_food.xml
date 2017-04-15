@@ -6,31 +6,31 @@
      android:layout_alignParentLeft="true"
      android:layout_width="100dp"
      android:layout_height="80dp"
-     android:id="@+id/ItemImage"
+     android:id="@+id/food_ItemImage"
      android:src="@mipmap/ic_launcher"
         />
 
     <!--设置菜的名字-->
     <TextView
-        android:id="@+id/ItemTitle"
+        android:id="@+id/food_ItemTitle"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="18sp"
         android:text="000"
         android:textStyle="bold"
-        android:layout_toRightOf="@id/ItemImage"
+        android:layout_toRightOf="@id/food_ItemImage"
         android:lines="1"
         android:ellipsize="end"
         android:maxEms="18"
         />
      <!--设置菜的描述-->
     <TextView
-        android:layout_toRightOf="@id/ItemImage"
-        android:id="@+id/ItemText"
+        android:layout_toRightOf="@id/food_ItemImage"
+        android:id="@+id/food_ItemText"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="12sp"
-        android:layout_below="@+id/ItemTitle"
+        android:layout_below="@+id/food_ItemTitle"
         android:textColor="#d3d3d3"
         android:text="0001"
         android:lines="2"
@@ -39,11 +39,11 @@
         />
    <!--设置菜的价格-->
     <TextView
-        android:id="@+id/ItemMoney"
+        android:id="@+id/food_ItemMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/ItemImage"
-        android:layout_alignLeft="@id/ItemTitle"
+        android:layout_alignBottom="@id/food_ItemImage"
+        android:layout_alignLeft="@id/food_ItemTitle"
         android:text="¥"
         android:textSize="18sp"
         android:textColor="#ff0000"
@@ -51,7 +51,7 @@
      <!--设置返回按钮,src已经在activity里面设置了-->
 
     <ImageView
-        android:id="@+id/ItemReturn"
+        android:id="@+id/food_ItemReturn"
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:layout_alignParentRight="true"

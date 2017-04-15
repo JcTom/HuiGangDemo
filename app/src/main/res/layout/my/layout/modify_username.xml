@@ -14,6 +14,7 @@
         >
 
         <ImageView
+            android:id="@+id/imv_UserName_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@mipmap/return_128"
@@ -59,6 +60,7 @@
             android:orientation="vertical"
             >
             <EditText
+                android:id="@+id/edt_changeUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -80,6 +82,7 @@
             >
 
             <Button
+                android:id="@+id/btn_changUserName_comfirm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="确认"

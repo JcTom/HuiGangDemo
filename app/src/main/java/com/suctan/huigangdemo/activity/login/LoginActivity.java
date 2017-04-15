@@ -46,11 +46,10 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
-        mvpPresenter.getHelloText();
-        //
-        TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        String szImei = TelephonyMgr.getDeviceId();
-        System.out.println("Imei是" + szImei);
+//        mvpPresenter.getHelloText();
+//        //
+//        TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//        String szImei = TelephonyMgr.getDeviceId();
         initView();
     }
 
@@ -91,14 +90,14 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.login_back:
+            case R.id.logins_back:
                 finish();
                 break;
             case R.id.btn_login:
 //              TODO 调试阶段，登陆任意放行
-                toogleBtnClickStyle(false);
-                LoginVariety("1", "1");
-//                Variety();
+//                toogleBtnClickStyle(false);
+//                LoginVariety("1", "1");
+                Variety();
                 break;
         }
     }
@@ -119,7 +118,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
             return;
         } else {
             if (NetConnectUtils.isNetConnected(LoginActivity.this)) {
-                System.out.println("你输入的手机号码和密码是" + userName + pwd);
+//                System.out.println("你输入的手机号码和密码是" + userName + pwd);
                 LoginVariety(userName, pwd);
             } else {
                 ToastTool.showToast(getResources().getString(R.string.checkNetTip), 0);
@@ -136,10 +135,9 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
      * @explain 用户登录验证
      */
     private void LoginVariety(String userName, String pwd) {
-        Map mapLogin = new HashMap();
+        Map<String, Object> mapLogin = new HashMap();
         mapLogin.put("user_phone", userName);
         mapLogin.put("user_pass", pwd);
-        System.out.println("执行LoginVariety");
         mvpPresenter.getLoginAction(mapLogin);
     }
 

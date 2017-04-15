@@ -10,6 +10,9 @@ import com.suctan.huigangdemo.activity.BaseActivity;
  * Created by 黄淑翰 on 2017/4/13.
  */
 public class SeetingUserSex extends BaseActivity {
+
+    private static final int resultUserSex = 1005;//获取性别
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -113,10 +113,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ad01"
+            android:src="@mipmap/bj"
             android:id="@+id/ad1"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
+            android:scaleType="centerCrop"/>
     </LinearLayout>
 
     <LinearLayout
@@ -126,10 +125,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ad02"
+            android:src="@mipmap/my_kitchen_bg"
             android:id="@+id/ad2"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>I
+            android:scaleType="centerCrop"/>I
     </LinearLayout>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import com.suctan.huigangdemo.activity.BaseActivity;
  * Created by 黄淑翰 on 2017/4/13.
  */
 public class SeetingUserFogetPwd extends BaseActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
