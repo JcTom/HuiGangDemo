@@ -60,7 +60,6 @@ public class screen_Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.header_screen);
         initDate();
         initView();
