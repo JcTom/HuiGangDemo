@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
-
+   //标题栏
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -14,7 +15,7 @@
         >
 
         <ImageView
-            android:id="@+id/sell_back"
+            android:id="@+id/assess_back_1"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@mipmap/return_128"
@@ -25,14 +26,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="我卖出的"
+            android:text="我的评价"
             android:textSize="20sp"
             android:textColor="@color/top_title"
             android:gravity="center"
-             android:layout_marginRight="25dp"
+            android:layout_marginRight="25dp"
             />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,49 +43,48 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="37dp"
             android:baselineAligned="false"
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:id="@+id/linear_seller_description"
+                android:id="@+id/linear_purchase_process"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center" >
+
                 <TextView
-                    android:id="@+id/text_seller_description"
+                    android:id="@+id/text_purchase_process"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_sell_new"
+                    android:text="我的评价"
                     android:textColor="#FF9db830"
                     android:textSize="16dp"
                     />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_common_problem"
+                android:id="@+id/linear_same_shop"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
-                    android:id="@+id/text_common_problem"
+                    android:id="@+id/text_same_shop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_sell_old"
+                    android:text="我收到的"
                     android:textSize="16dp"
                     />
             </LinearLayout>
-
         </LinearLayout>
 
 
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/mViewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -166,7 +166,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:id="@+id/wait_assess"
+                    android:id="@+id/wait_real"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -191,7 +191,7 @@
                     android:orientation="vertical"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:id="@+id/wait_real"
+                    android:id="@+id/wait_assess"
                     >
                     <ImageView
                         android:layout_width="wrap_content"
@@ -239,6 +239,7 @@
         <View style="@style/bg_line"/>
 
         <LinearLayout style="@style/mid_layout"
+            android:id="@+id/my_assess_me"
             >
             <ImageView
                 android:layout_width="wrap_content"

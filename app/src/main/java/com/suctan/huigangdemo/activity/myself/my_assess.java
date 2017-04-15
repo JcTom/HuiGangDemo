@@ -11,71 +11,48 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.fragment.FirstFragment;
-import com.suctan.huigangdemo.fragment.SecondFragment;
+import com.suctan.huigangdemo.fragment.FourthFragment;
+import com.suctan.huigangdemo.fragment.ThirdFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by B-305 on 2017/4/13.
+ * Created by B-305 on 2017/4/14.
  */
 
-public class SellActivity  extends FragmentActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
-    private ImageView sell_back;
-    // 四个滑动页面
+public class my_assess  extends FragmentActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
+    private ImageView assess_back_1;
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;
     private List<Fragment> mDatas;
     // 控件
     private TextView text_seller_description = null;
     private TextView text_common_problem = null;
-
+    private TextView text_purchase_process = null;
+    private TextView text_same_shop = null;
     private LinearLayout ll_seller_description = null;
     private LinearLayout ll_common_problem = null;
-
+    private LinearLayout ll_purchase_process = null;
+    private LinearLayout ll_same_shop = null;
     private ImageView img_line;
 
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
 
-    private static int width = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_sell);
+        setContentView(R.layout.my_assess);
         initView();
         initFragment();
-
-    }
-    private void initView() {
-        sell_back = (ImageView) findViewById(R.id.sell_back);
-        sell_back.setOnClickListener(this);
-        // 获取颜色
-        select_color = getResources().getColor(R.color.common_green);
-        unselect_color = getResources().getColor(R.color.black);
-
-        text_seller_description = (TextView) findViewById(R.id.text_seller_description);
-        text_common_problem = (TextView) findViewById(R.id.text_common_problem);
-
-        ll_seller_description = (LinearLayout) findViewById(R.id.linear_seller_description);
-        ll_common_problem = (LinearLayout) findViewById(R.id.linear_common_problem);
-
-
-        ll_seller_description.setOnClickListener(new MyOnClickListenser(0));
-        ll_common_problem.setOnClickListener(new MyOnClickListenser(1));
-
-
-        mViewPager = (ViewPager) findViewById(R.id.mViewpager);
-        mDatas = new ArrayList<Fragment>();
-
     }
 
     private void initFragment() {
-        FirstFragment mSDF = new FirstFragment();
-        SecondFragment mCPF = new SecondFragment();
-        mDatas.add(mSDF);
-        mDatas.add(mCPF);
+        ThirdFragment mPPF = new ThirdFragment();
+        FourthFragment mSSF = new FourthFragment();
+        mDatas.add(mPPF);
+        mDatas.add(mSSF);
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
@@ -95,34 +72,60 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
     }
 
+    private void initView() {
+        assess_back_1 = (ImageView) findViewById(R.id.assess_back_1);
+        assess_back_1.setOnClickListener(this);
+
+        // 获取颜色
+        select_color = getResources().getColor(R.color.text_orange);
+        unselect_color = getResources().getColor(R.color.black);
+
+        text_purchase_process = (TextView) findViewById(R.id.text_purchase_process);
+        text_same_shop = (TextView) findViewById(R.id.text_same_shop);
+        ll_seller_description = (LinearLayout) findViewById(R.id.linear_seller_description);
+        ll_common_problem = (LinearLayout) findViewById(R.id.linear_common_problem);
+
+
+        ll_purchase_process.setOnClickListener(new MyOnClickListenser(2));
+        ll_same_shop.setOnClickListener(new MyOnClickListenser(3));
+
+        mViewPager = (ViewPager) findViewById(R.id.mViewpager);
+        mDatas = new ArrayList<Fragment>();
+    }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.sell_back:
-                finish();
-        }
+         switch (v.getId()){
+             case R.id.assess_back_1:
+                 finish();
+         }
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
     }
 
     @Override
     public void onPageSelected(int position) {
         resetTextColor();
         switch (mViewPager.getCurrentItem()) {
-            case 0:
-                text_seller_description.setTextColor(select_color);
+            case 2:
+                text_purchase_process.setTextColor(select_color);
                 break;
-            case 1:
-                text_common_problem.setTextColor(select_color);
+            case 3:
+                text_same_shop.setTextColor(select_color);
                 break;
         }
 
     }
 
-    public class MyOnClickListenser implements View.OnClickListener{
+    private void resetTextColor() {
+        text_purchase_process.setTextColor(unselect_color);
+        text_same_shop.setTextColor(unselect_color);
+    }
+
+    public class MyOnClickListenser implements View.OnClickListener {
 
         private int index = 0;
 
@@ -130,24 +133,21 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
             index = i;
         }
 
-        @Override
         public void onClick(View v) {
             resetTextColor();
             switch (v.getId()) {
-                case R.id.linear_seller_description:
-                    text_seller_description.setTextColor(select_color);
+                case R.id.linear_purchase_process:
+                    text_purchase_process.setTextColor(select_color);
                     break;
-                case R.id.linear_common_problem:
-                    text_common_problem.setTextColor(select_color);
+                case R.id.linear_same_shop:
+                    text_same_shop.setTextColor(select_color);
                     break;
             }
             mViewPager.setCurrentItem(index);
         }
-    }
 
-    private void resetTextColor() {
-        text_seller_description.setTextColor(unselect_color);
-        text_common_problem.setTextColor(unselect_color);
+        private void resetTextColor() {
+        }
     }
 
     @Override
