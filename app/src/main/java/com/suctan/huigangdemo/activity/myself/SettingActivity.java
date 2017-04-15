@@ -141,7 +141,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_changPwd = (LinearLayout) findViewById(R.id.ly_changPwd);
         ly_loginQuit = (LinearLayout) findViewById(R.id.ly_loginQuit);
 
-        initViewData();//设置布局的data
+
 
         //设置监听
         ly_head_setting.setOnClickListener(this);
@@ -155,6 +155,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_changPwd.setOnClickListener(this);
         ly_loginQuit.setOnClickListener(this);
         imv_setting_back.setOnClickListener(this);
+        initViewData();//设置布局的data
 //        initWaitDialog();
     }
 
@@ -630,7 +631,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     private void upload(Bitmap bitmap) {
 //        http://119.29.137.109/tp/index.php/home/index/upload
 //        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
-        String url = "http://119.29.137.109/tp/index.php/home/index/upload";
+        String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
         RequestParams params = new RequestParams(url);
 //        params.setMultipart(true);
 //       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());

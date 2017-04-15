@@ -111,6 +111,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         if (TextUtils.isEmpty(userName)) {
             Toast.makeText(this, getResources().getString(R.string.inputActTip), Toast.LENGTH_SHORT).show();
             toogleBtnClickStyle(true);
+
             return;
         } else if (TextUtils.isEmpty(pwd)) {
             Toast.makeText(this, getResources().getString(R.string.inputPwdTip), Toast.LENGTH_SHORT).show();

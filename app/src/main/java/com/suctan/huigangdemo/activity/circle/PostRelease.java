@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.suctan.huigangdemo.R;
 
@@ -28,6 +29,7 @@ public class PostRelease extends AppCompatActivity {
     private ImageButton selectImg,deleteImg,postBack;
     private ImageView imageView;
     private FrameLayout imgLayout;
+    private LinearLayout picLy;
 
     /**
      * 所需权限
@@ -40,8 +42,22 @@ public class PostRelease extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initSelectImg();
+
+        initView();
     }
 
+
+
+    //初始化界面
+    private void initView() {
+        picLy = (LinearLayout)findViewById(R.id.pic_ly);
+        Intent it=PostRelease.this.getIntent();
+        Boolean isPic =it.getBooleanExtra("isPic",true);
+        if (isPic==false){
+            picLy.setVisibility(View.GONE);
+        }
+
+    }
 
 
     //初始化图片选择控件,返回

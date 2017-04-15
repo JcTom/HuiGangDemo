@@ -38,13 +38,13 @@
                     style="@style/editor_one"
                     android:text="某某小区用户"
                     android:id="@+id/details_name"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="18dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/tips_font"
                     android:id="@+id/details_time"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="6dp"
                     android:text="28分钟前"/>
             </LinearLayout>
         </LinearLayout>
