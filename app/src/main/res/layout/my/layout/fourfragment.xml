@@ -30,5 +30,11 @@
 
     </LinearLayout>
 
+    <GridView
+        android:id="@+id/I_have_received_Up_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>

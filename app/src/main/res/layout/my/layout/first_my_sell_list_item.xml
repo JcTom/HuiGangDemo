@@ -56,7 +56,6 @@
             android:textSize="18sp"
             android:textColor="#ff0000"
             android:layout_marginLeft="5dp"
-
             />
 
     </LinearLayout>
@@ -101,13 +100,13 @@
 
 
         <!--分隔线-->
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="2px"
             android:layout_marginTop="1dp"
             >
 
-        </view>
+        </View>
 
         <!--查看评价的一栏-->
         <LinearLayout
@@ -151,16 +150,11 @@
 
         </LinearLayout>
 
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="2px"
             android:layout_marginTop="1dp"
             >
-        </view>
+        </View>
     </LinearLayout>
-
-
-
-
-
 </RelativeLayout>

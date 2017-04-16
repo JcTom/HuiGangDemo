@@ -60,8 +60,8 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     RollPagerView rollPagerView;
     @BindView(R.id.more_texts)
     TextView more_text;
-    @BindView(R.id.pull_to_refresh)
-    PullToRefreshView pullToRefreshView;
+    /*@BindView(R.id.pull_to_refresh)
+    PullToRefreshView pullToRefreshView;*/
     @BindView(R.id.gridview)
     GridView gridView;
 
@@ -110,10 +110,10 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         initGridData();
 //        Toast.makeText(getContext(),"你好",Toast.LENGTH_LONG).show();
         Check();
-        pullToRefreshView();
+        /*pullToRefreshView();*/
     }
 
-    private void pullToRefreshView() {
+    /*private void pullToRefreshView() {
         pullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -125,7 +125,7 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
                 }, 2000);
             }
         });
-    }
+    }*/
 
     /*首页下边的item*/
     private void initGridData(){
