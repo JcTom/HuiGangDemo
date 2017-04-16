@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.androidbase.BaseApplication;
 import com.example.androidbase.Constants;
@@ -42,8 +44,11 @@ import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
+import com.suctan.huigangdemo.net.FileUploadService;
+import com.suctan.huigangdemo.net.ServiceGenerator;
 import com.suctan.huigangdemo.widget.TipDialog;
 
+import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
@@ -52,8 +57,13 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit.RetrofitError;
+import retrofit.mime.TypedFile;
 
 /**
  * Created by B-305 on 2017/4/13.
@@ -140,7 +150,6 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         tv_hobby = (TextView) findViewById(R.id.tv_hobby);
         ly_changPwd = (LinearLayout) findViewById(R.id.ly_changPwd);
         ly_loginQuit = (LinearLayout) findViewById(R.id.ly_loginQuit);
-
 
 
         //设置监听
@@ -607,14 +616,12 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     //将bitmap转化成file类型
     public File saveBitmapFile(Bitmap bitmap, String fileName) {
         String filePath = SdCardTool.getRootFilePath();
-        File file = new File(filePath,fileName);//将要保存图片的路径
         File file = new File(filePath, fileName);//将要保存图片的路径
 //        System.err.println(file.getAbsolutePath() + "\n" + file.getAbsoluteFile());
         if (file.exists()) {
             file.delete();
             file = null;
         }
-        File file1 = new File(filePath,fileName);
         File file1 = new File(filePath, fileName);
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file1));
@@ -633,78 +640,36 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     private void upload(final Bitmap bitmap) {
 //        http://119.29.137.109/tp/index.php/home/index/upload
 //        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
-        String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
-        RequestParams params = new RequestParams(url);
-//        params.setMultipart(true);
-//       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
-        params.addBodyParameter("file", saveBitmapFile(bitmap, getNowTime() + ".jpg"));//设置上传的文件路径
-        cancelable = x.http().post(params, new Callback.CommonCallback<JSONObject>() {
-//        String url = "http://119.29.137.109/hello/uploadFile.php";
+//        String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
+//        RequestParams params = new RequestParams(url);
+////        params.setMultipart(true);
+////       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
+//        params.addBodyParameter("file", saveBitmapFile(bitmap, getNowTime() + ".jpg"));//设置上传的文件路径
+//        cancelable = x.http().post(params, new Callback.CommonCallback<JSONObject>() {
+////        String url = "http://119.29.137.109/hello/uploadFile.php";
 
 
         FileUploadService service = ServiceGenerator.createService(FileUploadService.class);
 
-        TypedFile typedFile = new TypedFile("multipart/form-data", saveBitmapFile(bitmap, getNowTime()+".jpg"));
+        TypedFile typedFile = new TypedFile("multipart/form-data", saveBitmapFile(bitmap, getNowTime() + ".jpg"));
         String description = "hello, this is description speaking";
+        int ad = 1;
+        service.upload(typedFile, description,ad, new retrofit.Callback<String>() {
 
-        service.upload(typedFile, description, new retrofit.Callback<String>() {
-            @Override
-            public void onSuccess(JSONObject result) {
-//                waitDialog.cancel();
-                System.out.println("当前上传结果" + result);
-                Toast.makeText(BaseApplication.getContext(), "当前上传结果" + result, Toast.LENGTH_LONG).show();
 
             public void success(String s, retrofit.client.Response response) {
                 Log.e("Upload", "success");
-                System.out.println("=====================上传成功 错误信息"+s);
+                System.out.println("=====================上传成功 错误信息" + s);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 Log.e("Upload", "error");
-                System.out.println("=====================上传失败 错误信息"+error);
-            public void onError(Throwable ex, boolean isOnCallback) {
-                ex.printStackTrace();
-                ToastTool.showToast("头像上传失败" + ex, 2);
+                System.out.println("=====================上传失败 错误信息" + error);
+
             }
         });
 
-//
-//        RequestParams params = new RequestParams(url);
-//
-////        params.setMultipart(true);
-////       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
-//        params.addBodyParameter("myfile", saveBitmapFile(bitmap, getNowTime()+".jpg"));//设置上传的文件路径
-//        cancelable = x.http().post(params, new Callback.CommonCallback<String>() {
-//            @Override
-//            public void onSuccess(String result) {
-////                waitDialog.cancel();
-//                System.out.println("当前上传结果"+result);
-//                Toast.makeText(BaseApplication.getContext(),"当前上传结果"+result, Toast.LENGTH_LONG).show();
-//
-//            }
-//
-//            @Override
-//            public void onError(Throwable ex, boolean isOnCallback) {
-//                ex.printStackTrace();
-//                ToastTool.showToast("头像上传失败"+ex, 2);
-//            }
-//
-//            @Override
-//            public void onCancelled(CancelledException cex) {
-//
-//            }
-//
-//            @Override
-//            public void onFinished() {
-//                hideLoading();
-//            }
-//        });
-
-
-
-
-
 
     }
 
@@ -716,9 +681,5 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     }
 
 
-    public String getNowTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD_hh_mm_ss");
-        String system = dateFormat.format(new Date());
-        return system;
-    }
 }
+  
