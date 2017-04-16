@@ -63,7 +63,7 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
     }
 
     //返回
-    private void postBack(){
+    private void postBack() {
         postDetailsBack = (ImageButton)findViewById(R.id.post_details_back);
         postDetailsBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +78,7 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
     protected void initData()
     {
         mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++)
-        {
+        for (int i = 'A'; i < 'z'; i++) {
             mDatas.add("" + (char) i);
         }
 
@@ -106,16 +105,11 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
         }
 
 
-
-
-
-
         public int getItemCount() {
             return mDatas.size();
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-
             TextView item_name,item_time,item_reply;
             CircleImageView item_tx;
 

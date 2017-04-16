@@ -64,7 +64,46 @@
         <activity android:name=".activity.circle.NoticeDetail" />
         <activity android:name=".activity.circle.MoreNotice" />
         <activity android:name=".activity.share.ServiceDetail"></activity>
+
+
+        <!--我的页面中的注册文件-->
+        <activity android:name=".activity.search.Search_Result"/>
+
+        <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.SettingActivity"></activity>
+        <activity android:name=".activity.myself.addressActivity"></activity>
+        <activity android:name=".activity.myself.buyActivity"></activity>
+        <activity android:name=".activity.myself.SellActivity"></activity>
+        <activity android:name=".activity.myself.MymoneyActivity"></activity>
+        <activity android:name=".activity.myself.MydiscountAcitity"></activity>
+        <activity android:name=".activity.myself.MykitchenActity"></activity>
+        <activity android:name=".activity.myself.WaitOrdersActivity"></activity>
+        <activity android:name=".activity.myself.WaitfoodActitity"></activity>
+        <activity android:name=".activity.myself.WaitassessActivity"></activity>
+        <activity android:name=".activity.myself.WaitrealActivity"></activity>
+        <activity android:name=".activity.myself.release_todayfood_Activiity"></activity>
+        <activity android:name=".activity.myself.release_new_todayfoodActivity"></activity>
+        <activity android:name=".activity.myself.WithdarwasActivity"></activity>
+        <activity android:name=".activity.myself.incaseActivity"></activity>
+        <activity android:name=".activity.myself.foobBookActivity"></activity>
+        <activity android:name=".activity.myself.address_listitemActivity"></activity>
+        <activity android:name=".activity.screen_Activity"></activity>
+        <activity android:name=".activity.myself.my_assess"></activity>
+
+        /*****************************************************************************************************/
+        <!--用户信息修改-->
+
+
+        <activity android:name=".activity.setting.SeetingUserName"></activity>
+        <activity android:name=".activity.setting.SeetingUserAge"></activity>
+        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
+        <activity android:name=".activity.setting.SeetingUserSex"></activity>
+        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
+        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
+        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
+
+
+
     </application>
 
 </manifest>

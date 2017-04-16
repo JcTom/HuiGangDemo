@@ -23,7 +23,7 @@ import java.util.List;
 
 public class SellActivity  extends FragmentActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
     private ImageView sell_back;
-    // 四个滑动页面
+    // 2个滑动页面
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;
     private List<Fragment> mDatas;
@@ -34,13 +34,10 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     private LinearLayout ll_seller_description = null;
     private LinearLayout ll_common_problem = null;
 
-    private ImageView img_line;
-
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
 
-    private static int width = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_sell);
@@ -53,7 +50,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
         sell_back.setOnClickListener(this);
         // 获取颜色
         select_color = getResources().getColor(R.color.common_green);
-        unselect_color = getResources().getColor(R.color.black);
+        unselect_color = getResources().getColor(R.color.head_border_width_clo);
 
         text_seller_description = (TextView) findViewById(R.id.text_seller_description);
         text_common_problem = (TextView) findViewById(R.id.text_common_problem);

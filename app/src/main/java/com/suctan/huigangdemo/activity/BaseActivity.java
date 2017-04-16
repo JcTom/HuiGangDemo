@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.PopupWindow;
 
-
 import com.suctan.huigangdemo.activity.Popupwindow.CommonFilterPop;
 import com.suctan.huigangdemo.bean.user.BaseFilter;
 
@@ -35,6 +34,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.activity = this;
+
     }
 
     /**

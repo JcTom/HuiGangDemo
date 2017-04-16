@@ -47,7 +47,7 @@
          android:layout_width="100dp"
          android:layout_height="wrap_content"
          android:text="收货人:"
-         android:textSize="18sp"
+         android:textSize="16sp"
          android:textColor="#000"
          android:gravity="right"
          />
@@ -58,6 +58,8 @@
             android:hint="请输入你名字"
             android:layout_weight="1"
             android:gravity="right"
+            android:textSize="16sp"
+            android:paddingRight="10dp"
             />
 
     </LinearLayout>
@@ -74,7 +76,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="联系电话:"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="#000"
             android:gravity="right"
             />
@@ -85,6 +87,8 @@
             android:hint="请输入你电话"
             android:layout_weight="1"
             android:gravity="right"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
             />
 
     </LinearLayout>
@@ -98,12 +102,12 @@
 
 
         <TextView
-          android:layout_width="100dp"
-          android:layout_height="wrap_content"
-          android:text="所在地区:"
-            android:textColor="#000"
-            android:gravity="right"
-            android:textSize="18sp"
+              android:layout_width="100dp"
+              android:layout_height="wrap_content"
+              android:text="所在地区:"
+              android:textColor="#000"
+              android:gravity="right"
+              android:textSize="16sp"
             />
 
         <!--点击时间,点击这个text的时候,底部会弹起滑动选择器-->
@@ -114,9 +118,10 @@
              android:layout_height="wrap_content"
              android:layout_weight="1"
              android:hint="请选择你所在的地区"
-             android:textSize="18sp"
+             android:textSize="16sp"
              android:gravity="right"
              android:layout_marginBottom="2dp"
+
              />
 
         <TextView
@@ -125,6 +130,7 @@
             android:layout_height="wrap_content"
             android:text=">"
             android:textSize="18sp"
+            android:paddingRight="10dp"
             />
 
     </LinearLayout>
@@ -142,7 +148,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="小区:"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="#000"
             android:gravity="right"
             />
@@ -153,7 +159,8 @@
             android:hint="请输入你小区的名字"
             android:layout_weight="1"
             android:gravity="right"
-            android:textSize="18sp"
+            android:textSize="16sp"
+            android:paddingRight="10dp"
             />
     </LinearLayout>
 
@@ -170,7 +177,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="详细地址:"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="#000"
             android:gravity="right"
             />
@@ -181,6 +188,8 @@
             android:hint="请输入例如 A栋-A520号"
             android:layout_weight="1"
             android:gravity="right"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
             />
 
 
@@ -202,7 +211,7 @@
             android:text="保存"
             android:textColor="@color/white"
             android:layout_gravity="center"
-            android:textSize="18sp"
+            android:textSize="20sp"
             />
 
     </LinearLayout>

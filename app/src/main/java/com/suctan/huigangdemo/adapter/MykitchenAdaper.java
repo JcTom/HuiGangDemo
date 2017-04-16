@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.androidbase.LoadImageManager;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
+import com.suctan.huigangdemo.bean.user.MykitchenBean;
 
 import java.util.ArrayList;
 
@@ -21,9 +22,9 @@ import java.util.ArrayList;
 public class MykitchenAdaper extends BaseAdapter {
 
     private Context context;
-    private ArrayList<CompanyInfoBean> companyList;
+    private ArrayList<MykitchenBean> companyList;
 
-    public MykitchenAdaper(Context context,ArrayList<CompanyInfoBean> companyList){
+    public MykitchenAdaper(Context context,ArrayList<MykitchenBean> companyList){
         this.context = context;
         this.companyList = companyList;
     }
@@ -46,7 +47,7 @@ public class MykitchenAdaper extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         GridViewHolder holder= null;
-        CompanyInfoBean companyInfoBean = companyList.get(position);
+        MykitchenBean mykitchenBean = companyList.get(position);
         if (convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.mykitchen_item,parent,false);
             holder = new GridViewHolder();
@@ -55,8 +56,8 @@ public class MykitchenAdaper extends BaseAdapter {
             convertView.setTag(holder);
         }else {
             holder = (GridViewHolder) convertView.getTag();}
-       if (companyInfoBean.getImageUrl()!=null){
-           LoadImageManager.getImageLoader().displayImage(companyInfoBean.getImageUrl(),holder.ItemImage);
+       if (mykitchenBean.getImageUrl()!=null){
+           LoadImageManager.getImageLoader().displayImage(mykitchenBean.getImageUrl(),holder.ItemImage);
        }
         return convertView;
     }

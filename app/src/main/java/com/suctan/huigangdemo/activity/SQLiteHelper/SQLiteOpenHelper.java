@@ -19,10 +19,11 @@ public class SQLiteOpenHelper extends android.database.sqlite.SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table records(id integer primary key autoincrement,name varchar(200))");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        
     }
 }

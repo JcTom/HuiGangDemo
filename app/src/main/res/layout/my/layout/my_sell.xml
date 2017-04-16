@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/my_sell_new"
                     android:textColor="#FF9db830"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     />
             </LinearLayout>
 
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/my_sell_old"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     />
             </LinearLayout>
 

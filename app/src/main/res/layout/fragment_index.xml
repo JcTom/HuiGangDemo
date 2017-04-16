@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.yalantis.phoenix.PullToRefreshView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/pull_to_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-   >
+    android:background="@color/background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 
                 <com.jude.rollviewpager.RollPagerView
                     android:layout_width="match_parent"
-                    android:layout_height="240dp"
+                    android:layout_height="200dp"
                     rollviewpager_play_delay="4000"
                     android:id="@+id/rollViewpager"
                     />

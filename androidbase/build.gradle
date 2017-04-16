@@ -93,4 +93,7 @@ dependencies {
     //角标 https://github.com/H07000223/FlycoLabelView
     compile 'com.flyco.labelview:FlycoLabelView_Lib:1.0.2@aar'
 
+    compile 'org.xutils:xutils:3.3.36'
+
+
 }

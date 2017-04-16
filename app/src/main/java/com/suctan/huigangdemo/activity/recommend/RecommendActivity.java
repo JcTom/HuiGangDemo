@@ -1,6 +1,7 @@
 package com.suctan.huigangdemo.activity.recommend;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,13 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidbase.utils.ToastTool;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.BaseActivity;
-import com.suctan.huigangdemo.adapter.IndexGridAdapter;
+import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.adapter.RecommendindexAdapter;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
+import com.suctan.huigangdemo.bean.user.Recommend_indexBean;
+
 import java.util.ArrayList;
 
 
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  * Created by Tom on 2017/4/10.
  */
 
-public class RecommendActivity extends BaseActivity implements View.OnClickListener,RecommendindexAdapter.Recommend{
+public class RecommendActivity extends BaseActivity implements View.OnClickListener{
     private static final String ACTIVITY_TAG="RecommendActivity";
     private ImageView login_recommend_back;
     private TextView login_recommend_title;
@@ -55,13 +57,13 @@ public class RecommendActivity extends BaseActivity implements View.OnClickListe
         /*recommend_ItemImage = (ImageView) findViewById(R.id.recommend_today_ItemImage);*/
         recommend_gridView = (GridView) findViewById(R.id.recommend_gridview);
 
-        recommend_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recommend_gridView.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(RecommendActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-
         login_recommend_back = (ImageView) findViewById(R.id.login_recommend_back);
 
         login_recommend_back.setOnClickListener(new View.OnClickListener() {
@@ -82,25 +84,25 @@ public class RecommendActivity extends BaseActivity implements View.OnClickListe
 
 
     private void addCarListerner(){
-        ArrayList<CompanyInfoBean> companyList=new ArrayList<>();
+        ArrayList<Recommend_indexBean> companyList=new ArrayList<>();
         for(int i=0;i<=10;i++){
-            CompanyInfoBean companyInfoBean=new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
-            companyList.add(companyInfoBean);
+            Recommend_indexBean recommend_indexBean=new Recommend_indexBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
+            companyList.add(recommend_indexBean);
         }
         RecommendindexAdapter adapter=new RecommendindexAdapter(this,companyList);
         recommend_gridView.setAdapter(adapter);
-        adapter.setRecomendLisner(this);
+
+        /*adapter.setRecomendLisner(this);*/
         /*Toast.makeText(this,"我的委托",Toast.LENGTH_SHORT).show();*/
     }
-    @Override
-    public void onCarChange(CompanyInfoBean mcompanyInfoBean) {
+    /*public void onCarChange(CompanyInfoBean mcompanyInfoBean) {
         Toast.makeText(this,"我的委托",Toast.LENGTH_SHORT).show();
         recommend_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Log.d(RecommendActivity.ACTIVITY_TAG, "Error.");*/
+                *//*Log.d(RecommendActivity.ACTIVITY_TAG, "Error.");*//*
             }
         });
-       /* Toast.makeText(this,"我的委托",Toast.LENGTH_SHORT).show();*/
-    }
+       *//* Toast.makeText(this,"我的委托",Toast.LENGTH_SHORT).show();*//*
+    }*/
 }
