@@ -62,11 +62,7 @@
     <!-- 黑色 -->
     <color name="black">#FF000000</color>
     <!-- 橙色 -->
-    <!--dialog-->
     <color name="text_orange">#FFF39A1C</color>
-    <color name="fab_background_color">#FF4081</color>
-    <color name="dialog_background_color">#fafafa</color>
-    <color name="dialog_background_scrim">#99323232</color>
 
 
     <!--下拉刷新-->
@@ -75,3 +71,4 @@
     <color name="gplus_color_3">#427fed</color>
     <color name="gplus_color_4">#b23424</color>
 </resources>
+    </resources>

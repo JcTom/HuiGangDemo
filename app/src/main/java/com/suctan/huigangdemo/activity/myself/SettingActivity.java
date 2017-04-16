@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,9 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.androidbase.ActivityTask;
 import com.example.androidbase.BaseApplication;
 import com.example.androidbase.Constants;
 import com.example.androidbase.mvp.MvpActivity;
@@ -32,7 +28,6 @@ import com.example.androidbase.utils.ToastTool;
 import com.example.androidbase.widget.loading.WaitDialog;
 import com.google.gson.Gson;
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
 import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
 import com.suctan.huigangdemo.activity.setting.SeetingUserAge;
@@ -48,21 +43,15 @@ import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
 import com.suctan.huigangdemo.widget.TipDialog;
-import com.suctan.huigangdemo.widget.TipsUserDialog;
 
-import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -153,6 +142,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         ly_loginQuit = (LinearLayout) findViewById(R.id.ly_loginQuit);
 
 
+
         //设置监听
         ly_head_setting.setOnClickListener(this);
         ly_userName.setOnClickListener(this);
@@ -186,10 +176,8 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         if (mUser.getUser_education() != null) {
             tv_degree.setText(mUser.getUser_education());
         }
-        if (mUser.getUser_age() != null) {
-            tv_ageDegree.setText(mUser.getUser_age() + "");
-        }
-        tv_knowArea.setText(mUser.getUser_skill());
+        tv_ageDegree.setText(mUser.getUser_age() + "");
+//        tv_knowArea.setText(mUser.get);
         if (mUser.getUser_hobby() != null) {
             tv_hobby.setText(mUser.getUser_hobby());
         }
@@ -276,20 +264,23 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     }
 
     private void showLoginQuitTip() {
-        final TipsUserDialog tipDialog = new TipsUserDialog(this);
-        tipDialog.setTipClickLisener(new TipsUserDialog.OnTipLisetner() {
-            @Override
-            public void comfirm() {
-                LoginQuitRequest();//暂时放着，通过dialog点击事件触发
-                tipDialog.dismiss();
-            }
+        final TipDialog tipDialog = new TipDialog(this);
+        tipDialog.setTipTitle("")
+                .setTipContent("确定退出当前帐号！")
+                .setTipClickLisener(new TipDialog.OnTipLisetner() {
+                    @Override
+                    public void comfirm() {
+                        LoginQuitRequest();//暂时放着，通过dialog点击事件触发
+                        tipDialog.dismiss();
+                    }
 
-            @Override
-            public void cancel() {
-                tipDialog.dismiss();
-            }
-        });
-        tipDialog.show();
+                    @Override
+                    public void cancel() {
+                        tipDialog.dismiss();
+                    }
+                });
+
+
     }
 
 
@@ -321,16 +312,18 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 break;
             case requestUserDegree:
                 mapModifyUser.put("user_info", "user_education");
+
                 break;
             case requestUserKnowArea:
-                mapModifyUser.put("user_info", "user_skill");
+//                mapModifyUser.put();
                 break;
             case requestUserHoppy:
                 mapModifyUser.put("user_info", "user_hoppy");
                 break;
+
         }
         if (resultDataCode == requestUserAge) {
-            mapModifyUser.put("user_data", tempData);
+            mapModifyUser.put("user_data", Integer.parseInt(tempData));
         } else if (resultDataCode == requestUserSex) {
             if (tempData.equals("男")) {
                 mapModifyUser.put("user_data", 0);
@@ -340,8 +333,6 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         } else {
             mapModifyUser.put("user_data", tempData);
         }
-        System.out.println("http://119.29.137.109/tp/index.php/home/index/" + "/update_userInfo/" + "user_info/" + "user_token/" + TokenManager.getToken() + "user_name/" + "user_data/" + tempData);
-
         mvpPresenter.MoidifytyUser(mapModifyUser);
     }
 
@@ -449,6 +440,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 setViewResultData(resultCode, tempData);
             }
         }
+
     }
 
     // 设置头像
@@ -458,77 +450,9 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
             Bitmap photo = extras.getParcelable("data");
             imv_head.setImageBitmap(photo);
 //            initWaitDialog();
-            upload(zoomImg(compBitmap(photo), 64, 64));
+            upload(photo);
         }
     }
-
-    //图片按比例大小压缩方法
-    public static Bitmap compBitmap(Bitmap image) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        if (baos.toByteArray().length / 1024 > 1024) {//判断如果图片大于1M,进行压缩避免在生成图片（BitmapFactory.decodeStream）时溢出
-            baos.reset();//重置baos即清空baos
-            image.compress(Bitmap.CompressFormat.JPEG, 50, baos);//这里压缩50%，把压缩后的数据存放到baos中
-        }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
-        BitmapFactory.Options newOpts = new BitmapFactory.Options();
-        //开始读入图片，此时把options.inJustDecodeBounds 设回true了
-        newOpts.inJustDecodeBounds = true;
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, newOpts);
-        newOpts.inJustDecodeBounds = false;
-        int w = newOpts.outWidth;
-        int h = newOpts.outHeight;
-        //现在主流手机比较多是800*480分辨率，所以高和宽我们设置为
-        float hh = 800f;//这里设置高度为800f
-        float ww = 150f;//这里设置宽度为480f
-        //缩放比。由于是固定比例缩放，只用高或者宽其中一个数据进行计算即可
-        int be = 1;//be=1表示不缩放
-        if (w > ww) {//如果宽度大的话根据宽度固定大小缩放
-            be = (int) (newOpts.outWidth / ww);
-        } else if (w < h && h > hh) {//如果高度高的话根据宽度固定大小缩放
-            be = (int) (newOpts.outHeight / hh);
-        }
-        if (be <= 0)
-            be = 1;
-        newOpts.inSampleSize = be;//设置缩放比例
-        //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
-        isBm = new ByteArrayInputStream(baos.toByteArray());
-        bitmap = BitmapFactory.decodeStream(isBm, null, newOpts);
-        return compressImage(bitmap, 50);//压缩好比例大小后再进行质量压缩
-    }
-
-
-    //质量压缩
-    public static Bitmap compressImage(Bitmap image, int size) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        int options = 100;
-        while (baos.toByteArray().length / 1024 > 50) {   //循环判断如果压缩后图片是否大于50kb,大于继续压缩
-            baos.reset();//重置baos即清空baos
-            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
-            options -= 10;//每次都减少10
-        }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
-        return bitmap;
-    }
-
-    /*获取指定高度宽度的图片*/
-    public static Bitmap zoomImg(Bitmap bm, int newWidth, int newHeight) {
-        // 获得图片的宽高
-        int width = bm.getWidth();
-        int height = bm.getHeight();
-        // 计算缩放比例
-        float scaleWidth = ((float) newWidth) / width;
-        float scaleHeight = ((float) newHeight) / height;
-        // 取得想要缩放的matrix参数
-        Matrix matrix = new Matrix();
-        matrix.postScale(scaleWidth, scaleHeight);
-        // 得到新的图片   www.2cto.com
-        Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
-        return newbm;
-    }
-
 
     /**
      * 裁剪图片
@@ -575,7 +499,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
             changeByCamera();
         } else {
 
-            showRequestPermissionReason();
+//            showRequestPermissionReason("当前操作需要相机、读写手机存储的权限");
         }
     }
 
@@ -602,28 +526,8 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             changeByPic();
         } else {
-            showRequestPermissionReason();
+//            showRequestPermissionReason("当前操作需要读写手机存储的权限");
         }
-    }
-
-    /**
-     * 向用户解析需要该权限的原因
-     */
-    private void showRequestPermissionReason() {
-        final TipDialog dialog = new TipDialog(this);
-        dialog.setTipClickLisener(new TipDialog.OnTipLisetner() {
-            @Override
-            public void comfirm() {
-                openSetting();
-                dialog.dismiss();
-            }
-
-            @Override
-            public void cancel() {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
     }
 
 
@@ -676,13 +580,9 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         //判断缓存中是否存在该对象
         String userStr = aCache.getAsString("User");
         if (userStr != null) {
+            aCache.remove("User");
             CurrentUser.getInstance().setUserBean(null);
             TokenManager.clearToken();
-            aCache.remove("User");
-        }
-        MainActivity mainActivity = (MainActivity) ActivityTask.getInstanse().getActivityByClass(MainActivity.class);
-        if (mainActivity != null) {
-            mainActivity.finish();
             Intent intentLogin = new Intent(this, LoginActivity.class);
             startActivity(intentLogin);
             finish();
@@ -707,12 +607,14 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     //将bitmap转化成file类型
     public File saveBitmapFile(Bitmap bitmap, String fileName) {
         String filePath = SdCardTool.getRootFilePath();
+        File file = new File(filePath,fileName);//将要保存图片的路径
         File file = new File(filePath, fileName);//将要保存图片的路径
 //        System.err.println(file.getAbsolutePath() + "\n" + file.getAbsoluteFile());
         if (file.exists()) {
             file.delete();
             file = null;
         }
+        File file1 = new File(filePath,fileName);
         File file1 = new File(filePath, fileName);
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file1));
@@ -728,7 +630,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         return file1;
     }
 
-    private void upload(Bitmap bitmap) {
+    private void upload(final Bitmap bitmap) {
 //        http://119.29.137.109/tp/index.php/home/index/upload
 //        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
         String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
@@ -737,30 +639,80 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
 //       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
         params.addBodyParameter("file", saveBitmapFile(bitmap, getNowTime() + ".jpg"));//设置上传的文件路径
         cancelable = x.http().post(params, new Callback.CommonCallback<JSONObject>() {
+//        String url = "http://119.29.137.109/hello/uploadFile.php";
+
+
+        FileUploadService service = ServiceGenerator.createService(FileUploadService.class);
+
+        TypedFile typedFile = new TypedFile("multipart/form-data", saveBitmapFile(bitmap, getNowTime()+".jpg"));
+        String description = "hello, this is description speaking";
+
+        service.upload(typedFile, description, new retrofit.Callback<String>() {
             @Override
             public void onSuccess(JSONObject result) {
 //                waitDialog.cancel();
                 System.out.println("当前上传结果" + result);
                 Toast.makeText(BaseApplication.getContext(), "当前上传结果" + result, Toast.LENGTH_LONG).show();
 
+            public void success(String s, retrofit.client.Response response) {
+                Log.e("Upload", "success");
+                System.out.println("=====================上传成功 错误信息"+s);
             }
 
             @Override
+            public void failure(RetrofitError error) {
+                Log.e("Upload", "error");
+                System.out.println("=====================上传失败 错误信息"+error);
             public void onError(Throwable ex, boolean isOnCallback) {
                 ex.printStackTrace();
                 ToastTool.showToast("头像上传失败" + ex, 2);
             }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-                hideLoading();
-            }
         });
+
+//
+//        RequestParams params = new RequestParams(url);
+//
+////        params.setMultipart(true);
+////       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
+//        params.addBodyParameter("myfile", saveBitmapFile(bitmap, getNowTime()+".jpg"));//设置上传的文件路径
+//        cancelable = x.http().post(params, new Callback.CommonCallback<String>() {
+//            @Override
+//            public void onSuccess(String result) {
+////                waitDialog.cancel();
+//                System.out.println("当前上传结果"+result);
+//                Toast.makeText(BaseApplication.getContext(),"当前上传结果"+result, Toast.LENGTH_LONG).show();
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//                ex.printStackTrace();
+//                ToastTool.showToast("头像上传失败"+ex, 2);
+//            }
+//
+//            @Override
+//            public void onCancelled(CancelledException cex) {
+//
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//                hideLoading();
+//            }
+//        });
+
+
+
+
+
+
+    }
+
+
+    public String getNowTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD_hh_mm_ss");
+        String system = dateFormat.format(new Date());
+        return system;
     }
 
 

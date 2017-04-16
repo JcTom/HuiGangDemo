@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
 
     <ImageView
      android:layout_alignParentLeft="true"
@@ -22,6 +25,7 @@
         android:lines="1"
         android:ellipsize="end"
         android:maxEms="18"
+        android:layout_marginLeft="10dp"
         />
      <!--设置菜的描述-->
     <TextView
@@ -36,6 +40,7 @@
         android:lines="2"
         android:ellipsize="end"
         android:maxEms="18"
+        android:layout_marginLeft="10dp"
         />
    <!--设置菜的价格-->
     <TextView
@@ -47,6 +52,7 @@
         android:text="¥"
         android:textSize="18sp"
         android:textColor="#ff0000"
+        android:layout_marginLeft="10dp"
         />
      <!--设置返回按钮,src已经在activity里面设置了-->
 

@@ -48,35 +48,35 @@
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:id="@+id/linear_purchase_process"
+                android:id="@+id/linear_my_assess"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
-                    android:id="@+id/text_purchase_process"
+                    android:id="@+id/my_assess"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我的评价"
                     android:textColor="#FF9db830"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linear_same_shop"
+                android:id="@+id/linear_my_get_assess"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
-                    android:id="@+id/text_same_shop"
+                    android:id="@+id/my_get_assess"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我收到的"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -85,6 +85,7 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/assess_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

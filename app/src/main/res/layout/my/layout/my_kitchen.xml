@@ -58,7 +58,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginBottom="20dp"
                 android:src="@mipmap/ic_launcher"
-                app:border_width="5dp"
+                app:border_width="3dp"
                 app:border_color="@color/border_clo"
                 android:layout_gravity="bottom"
                 >
@@ -84,14 +84,32 @@
                     android:layout_marginLeft="5dp"
                     />
 
-                 <TextView
-                     android:layout_marginLeft="5dp"
+                 <LinearLayout
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="♀ 厨娘"
+                     android:orientation="horizontal"
                      android:background="@drawable/textview_shape"
-                     android:padding="2dp"
-                     />
+                     >
+
+                     <TextView
+                         android:id="@+id/textView2"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:padding="2dp"
+                         android:text="♀"
+                         android:textColor="#edfc0377" />
+
+                     <TextView
+                         android:layout_marginLeft="5dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="厨娘"
+                         android:padding="2dp"
+                         />
+
+                         />
+
+                 </LinearLayout>
 
                 </LinearLayout>
                 <TextView
@@ -171,6 +189,7 @@
                 android:text="发布"
                 android:textColor="@color/white"
                 android:background="@color/common_green"
+                android:textSize="20sp"
                 />
 
 

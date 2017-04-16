@@ -99,6 +99,14 @@
             style="@style/text_main"
             android:lineSpacingMultiplier="1.2"
             android:id="@+id/item_content"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bj"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

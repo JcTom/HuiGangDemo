@@ -260,9 +260,6 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         >
 
         <Button
@@ -270,7 +267,9 @@
             android:layout_height="match_parent"
             android:text="发布"
             android:textSize="20dp"
-            android:background="@drawable/real_button_selector">
+            android:background="@drawable/real_button_selector"
+            android:textColor="@color/white"
+            >
 
         </Button>
 

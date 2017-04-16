@@ -22,7 +22,6 @@ import com.suctan.huigangdemo.R;
 
 /**
  * 项目地址：https://github.com/mcxtzhang/AnimShopButton
-
  */
 
 public class AnimShopButton extends View {
@@ -204,7 +203,6 @@ public class AnimShopButton extends View {
         mMaxCount = maxCount;
         return this;
     }
-
     public boolean isReplenish() {
         return isReplenish;
     }
@@ -456,11 +454,9 @@ public class AnimShopButton extends View {
     }
 
     protected void init(Context context, AttributeSet attrs, int defStyleAttr) {
-
         //模拟参数传入(设置初始值)
         initDefaultValue(context);
         //end
-
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.AnimShopButton, defStyleAttr, 0);
         int indexCount = ta.getIndexCount();
         for (int i = 0; i < indexCount; i++) {
@@ -726,15 +722,12 @@ public class AnimShopButton extends View {
                 break;
         }
 
-
         setMeasuredDimension(wSize, hSize);
-
         //先暂停所有动画
         cancelAllAnim();
         //复用时会走这里，所以初始化一些UI显示的参数
         initAnimSettingsByCount();
     }
-
     /**
      * 根据当前count数量 初始化 hint提示语相关变量
      */

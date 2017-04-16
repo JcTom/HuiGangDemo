@@ -11,6 +11,7 @@ import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
+import com.suctan.huigangdemo.bean.user.MykitchenBean;
 
 import java.util.ArrayList;
 
@@ -74,10 +75,10 @@ public class MykitchenActity extends Activity{
         }
 
     private void goMykitchenAdapter() {
-        ArrayList<CompanyInfoBean>companys=new ArrayList<>();
+        ArrayList<MykitchenBean>companys=new ArrayList<>();
         for(int i=0;i<=10;i++){
-            CompanyInfoBean companyInfoBean=new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
-            companys.add(companyInfoBean);
+            MykitchenBean mykitchenBean=new MykitchenBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
+            companys.add(mykitchenBean);
         }
         MykitchenAdaper adapter=new MykitchenAdaper(this,companys);
         Mykitchen_gridview.setAdapter(adapter);

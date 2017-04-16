@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/text_main"
-                    android:text="联  系  人："/>
+                    android:text="@string/lxr"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/text_main"
-                    android:text="联系电话："/>
+                    android:text="@string/lxdh"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/text_main"
-                    android:text="联系地址："/>
+                    android:text="@string/lxdz"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
