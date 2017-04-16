@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.example.androidbase.BaseApplication;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.BaseActivity;
 import com.suctan.huigangdemo.activity.myself.SettingActivity;
@@ -55,6 +57,7 @@ public class SeetingUserAge extends BaseActivity implements View.OnClickListener
         rab_aftOther = (RadioButton) findViewById(R.id.rab_aftOther);
 
         //事件监听
+        imv_chang_back.setOnClickListener(this);
         btn_changeAge_comfirm.setOnClickListener(this);
         ragp_change_age.setOnClickListener(this);
     }
@@ -75,6 +78,8 @@ public class SeetingUserAge extends BaseActivity implements View.OnClickListener
         } else {
             rab_aftOther.setChecked(true);
         }
+
+
     }
 
 

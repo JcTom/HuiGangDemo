@@ -1,6 +1,7 @@
 package com.suctan.huigangdemo.fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.example.androidbase.LoadImageManager;
 import com.example.androidbase.mvp.MvpFragment;
+import com.example.androidbase.widget.CircleImageView;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.myself.MydiscountAcitity;
 import com.suctan.huigangdemo.activity.myself.MykitchenActity;
@@ -23,8 +27,10 @@ import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
 import com.suctan.huigangdemo.activity.myself.addressActivity;
 import com.suctan.huigangdemo.activity.myself.buyActivity;
 import com.suctan.huigangdemo.activity.myself.my_assess;
+import com.suctan.huigangdemo.bean.user.CurrentUser;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftView;
+import com.suctan.huigangdemo.widget.BigImgDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,29 +41,33 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
 
     private View viewMyselft;
     @BindView(R.id.setting)  //绑定这个个人设置界面
-    ImageView setting;
+            ImageView setting;
     @BindView(R.id.address_setting)     //绑定我的中地址管理
-    LinearLayout address;
+            LinearLayout address;
     @BindView(R.id.I_buy)          //绑定我的中  我买的的页面
-    LinearLayout i_buy;
+            LinearLayout i_buy;
     @BindView(R.id.I_sell)    //绑定我的中 我卖出的页面
-    LinearLayout i_sell;
+            LinearLayout i_sell;
     @BindView(R.id.my_money)   //绑定我的中 我的钱包页面
-    LinearLayout my_money;
+            LinearLayout my_money;
     @BindView(R.id.My_discount)    //绑定我的中  我的优惠卷页面
-    LinearLayout my_discount;
+            LinearLayout my_discount;
     @BindView(R.id.Mykitchen)       //绑定我的中  我的厨房
-    LinearLayout mykitchen;
+            LinearLayout mykitchen;
     @BindView(R.id.waiting_orders)     //绑定我的中 待接单选项页面
-    LinearLayout wait_orders;
+            LinearLayout wait_orders;
     @BindView(R.id.wait_food)      //绑定我的中 待送餐选项页面
-    LinearLayout wait_food;
+            LinearLayout wait_food;
     @BindView(R.id.wait_assess)       //绑定我的中 待评价选项页面
-    LinearLayout wait_assess;
+            LinearLayout wait_assess;
     @BindView(R.id.wait_real)      //绑定我的中 待确认选项页面
-    LinearLayout wait_real;
+            LinearLayout wait_real;
     @BindView(R.id.my_assess_me)      //绑定我的中 我的评价页面
-    LinearLayout my_assess_me;
+            LinearLayout my_assess_me;
+    private TextView tv_user_name;//用户名
+    private CircleImageView imv_head;//头像
+
+
     @Nullable
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (viewMyselft == null) {
@@ -67,7 +77,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         if (parent != null) {
             parent.removeView(viewMyselft);
         }
-        ButterKnife.bind(this ,viewMyselft);
+        ButterKnife.bind(this, viewMyselft);
         return this.viewMyselft;
     }
 
@@ -79,7 +89,15 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
     }
 
     private void initview() {
-         //设置个人资料跳转页面
+        tv_user_name = (TextView) viewMyselft.findViewById(R.id.tv_user_name);
+        imv_head = (CircleImageView) viewMyselft.findViewById(R.id.imv_head);
+
+        //监听
+        imv_head.setOnClickListener(this);
+        //设置页面数据
+        initViewData();
+
+        //设置个人资料跳转页面
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +107,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置地址管理跳转页面
-        address.setOnClickListener(new View.OnClickListener(){
+        address.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
@@ -100,7 +118,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置我买到的页面跳转
-        i_buy.setOnClickListener(new View.OnClickListener(){
+        i_buy.setOnClickListener(new View.OnClickListener() {
 
 
             @Override
@@ -111,7 +129,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置我卖出的页面跳转
-        i_sell.setOnClickListener(new View.OnClickListener(){
+        i_sell.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -121,7 +139,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置我的钱包跳转页面
-        my_money.setOnClickListener(new View.OnClickListener(){
+        my_money.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -131,7 +149,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置我的中 我的优惠卷跳转页面
-        my_discount.setOnClickListener(new View.OnClickListener(){
+        my_discount.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -141,7 +159,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置我的中 我的厨房的跳转事件
-        mykitchen.setOnClickListener(new View.OnClickListener(){
+        mykitchen.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -151,7 +169,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //设置我中，横向栏的 待接单事件
-        wait_orders.setOnClickListener(new View.OnClickListener(){
+        wait_orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent wait_orders = new Intent(getActivity(), WaitOrdersActivity.class);
@@ -169,7 +187,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //我的页面中的  待评价
-        wait_assess.setOnClickListener(new View.OnClickListener(){
+        wait_assess.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -179,7 +197,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //我的页面中的 待确认
-        wait_real.setOnClickListener(new View.OnClickListener(){
+        wait_real.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -189,7 +207,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
         //我的页面中的 我的评价页面跳转
-        my_assess_me.setOnClickListener(new View.OnClickListener(){
+        my_assess_me.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -199,12 +217,30 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         });
 
 
+    }
+
+    //设计view的数据
+    private void initViewData() {
+        if (CurrentUser.getInstance().getUserBean().getUser_name() != null) {
+            tv_user_name.setText(CurrentUser.getInstance().getUserBean().getUser_name());
+        }
+        if (CurrentUser.getInstance().getUserBean().getUser_icon() != null) {
+            LoadImageManager.getImageLoader().displayImage(CurrentUser.getInstance().getUserBean().getUser_icon(), imv_head);
+        }
 
     }
 
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.imv_head:
+                Drawable drawavle =getResources().getDrawable(R.mipmap.tou);
+                BigImgDialog bigDialog = new BigImgDialog(getActivity(), 0, drawavle);
+                bigDialog.show();
+                break;
+        }
+
 
     }
 

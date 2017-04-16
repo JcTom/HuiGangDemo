@@ -25,22 +25,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tipdialog_title"
+                android:id="@+id/tipdialog_titles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Dialog标题"
+
                 android:textAppearance="?android:textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/tipdialog_content"
+                android:id="@+id/tipdialog_contents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="这里是dialog的内容,你看看!"
-                android:textAppearance="?android:textAppearanceMedium" />
+                android:text="确定退出当前帐号！"
+                android:textAppearance="?android:textAppearanceLarge" />
 
         </LinearLayout>
 

@@ -35,7 +35,9 @@ public class JSONParstObject {
                 currentUser.setUser_alias(jsonObject.getString("user_alias"));
             }
             currentUser.setUser_sex(jsonObject.getInt("user_sex"));
-            currentUser.setUser_age(jsonObject.getInt("user_age"));
+            if (jsonObject.getString("user_age") != null) {
+                currentUser.setUser_age(jsonObject.getString("user_age"));
+            }
             if (jsonObject.getString("user_education") != null) {
                 currentUser.setUser_education(jsonObject.getString("user_education"));
             }

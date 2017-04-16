@@ -24,14 +24,16 @@ public class BigImgDialog extends AlertDialog {
     private Context context;
     private int width;
     private ImageView img;
+    private Drawable drawable;
 
     protected BigImgDialog(Context context) {
-        this(context, 0);
+        this(context, 0, null);
     }
 
-    public BigImgDialog(Context context, int themeResId) {
+    public BigImgDialog(Context context, int themeResId, Drawable drawable) {
         super(context, themeResId);
         this.context = context;
+        this.drawable = drawable;
     }
 
 
@@ -56,6 +58,14 @@ public class BigImgDialog extends AlertDialog {
                 dismiss();
             }
         });
+
+        if (drawable != null) {
+            ViewGroup.LayoutParams params = img.getLayoutParams();
+            lp.width = lp.height = width;
+            img.setLayoutParams(params);
+            img.setImageDrawable(drawable);
+        }
+
         setContentView(view);
     }
 
@@ -64,17 +74,4 @@ public class BigImgDialog extends AlertDialog {
      *
      * @param drawable
      */
-    public void setImg(Drawable drawable) {
-
-        if (drawable != null) {
-            ViewGroup.LayoutParams lp = img.getLayoutParams();
-            lp.width = lp.height = width;
-            img.setLayoutParams(lp);
-
-            img.setImageDrawable(drawable);
-        }
-
-    }
-
-
 }

@@ -26,8 +26,8 @@ import com.example.androidbase.utils.ScreenTools;
 import com.example.androidbase.utils.SdCardTool;
 import com.example.androidbase.utils.ToastTool;
 import com.example.androidbase.widget.loading.WaitDialog;
+import com.google.gson.Gson;
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
 import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
 import com.suctan.huigangdemo.activity.setting.SeetingUserAge;
@@ -38,6 +38,7 @@ import com.suctan.huigangdemo.activity.setting.SeetingUserName;
 import com.suctan.huigangdemo.activity.setting.SeetingUserSex;
 import com.suctan.huigangdemo.bean.user.CourseBean;
 import com.suctan.huigangdemo.bean.user.CurrentUser;
+import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
@@ -604,15 +605,17 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     }
 
     //将bitmap转化成file类型
-    public File saveBitmapFile(Bitmap bitmap) {
+    public File saveBitmapFile(Bitmap bitmap, String fileName) {
         String filePath = SdCardTool.getRootFilePath();
-        File file = new File(filePath);//将要保存图片的路径
+        File file = new File(filePath,fileName);//将要保存图片的路径
+        File file = new File(filePath, fileName);//将要保存图片的路径
 //        System.err.println(file.getAbsolutePath() + "\n" + file.getAbsoluteFile());
         if (file.exists()) {
             file.delete();
             file = null;
         }
-        File file1 = new File(filePath);
+        File file1 = new File(filePath,fileName);
+        File file1 = new File(filePath, fileName);
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file1));
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
@@ -622,40 +625,100 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
             e.printStackTrace();
         }
         if (file1.exists()) {
-//            System.out.println("头像上传路径" + fileName);
+            System.out.println("头像上传路径" + file1.getPath());
         }
         return file1;
     }
 
-    private void upload(Bitmap bitmap) {
+    private void upload(final Bitmap bitmap) {
 //        http://119.29.137.109/tp/index.php/home/index/upload
 //        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
         String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
         RequestParams params = new RequestParams(url);
 //        params.setMultipart(true);
 //       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
-        params.addBodyParameter("file", saveBitmapFile(bitmap));//设置上传的文件路径
-        cancelable = x.http().get(params, new Callback.CommonCallback<String>() {
+        params.addBodyParameter("file", saveBitmapFile(bitmap, getNowTime() + ".jpg"));//设置上传的文件路径
+        cancelable = x.http().post(params, new Callback.CommonCallback<JSONObject>() {
+//        String url = "http://119.29.137.109/hello/uploadFile.php";
+
+
+        FileUploadService service = ServiceGenerator.createService(FileUploadService.class);
+
+        TypedFile typedFile = new TypedFile("multipart/form-data", saveBitmapFile(bitmap, getNowTime()+".jpg"));
+        String description = "hello, this is description speaking";
+
+        service.upload(typedFile, description, new retrofit.Callback<String>() {
             @Override
-            public void onSuccess(String result) {
-                waitDialog.cancel();
-                ToastTool.showToast("头像上传成功", 2);
+            public void onSuccess(JSONObject result) {
+//                waitDialog.cancel();
+                System.out.println("当前上传结果" + result);
+                Toast.makeText(BaseApplication.getContext(), "当前上传结果" + result, Toast.LENGTH_LONG).show();
+
+            public void success(String s, retrofit.client.Response response) {
+                Log.e("Upload", "success");
+                System.out.println("=====================上传成功 错误信息"+s);
             }
 
             @Override
+            public void failure(RetrofitError error) {
+                Log.e("Upload", "error");
+                System.out.println("=====================上传失败 错误信息"+error);
             public void onError(Throwable ex, boolean isOnCallback) {
                 ex.printStackTrace();
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-                hideLoading();
+                ToastTool.showToast("头像上传失败" + ex, 2);
             }
         });
+
+//
+//        RequestParams params = new RequestParams(url);
+//
+////        params.setMultipart(true);
+////       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
+//        params.addBodyParameter("myfile", saveBitmapFile(bitmap, getNowTime()+".jpg"));//设置上传的文件路径
+//        cancelable = x.http().post(params, new Callback.CommonCallback<String>() {
+//            @Override
+//            public void onSuccess(String result) {
+////                waitDialog.cancel();
+//                System.out.println("当前上传结果"+result);
+//                Toast.makeText(BaseApplication.getContext(),"当前上传结果"+result, Toast.LENGTH_LONG).show();
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//                ex.printStackTrace();
+//                ToastTool.showToast("头像上传失败"+ex, 2);
+//            }
+//
+//            @Override
+//            public void onCancelled(CancelledException cex) {
+//
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//                hideLoading();
+//            }
+//        });
+
+
+
+
+
+
+    }
+
+
+    public String getNowTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD_hh_mm_ss");
+        String system = dateFormat.format(new Date());
+        return system;
+    }
+
+
+    public String getNowTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD_hh_mm_ss");
+        String system = dateFormat.format(new Date());
+        return system;
     }
 }

@@ -104,6 +104,13 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         super.onActivityCreated(savedInstanceState);
         if(!isFirstCreate){
             ButterKnife.bind(this, viewIndex);
+            isFirstCreate = true;
+            initGridData();
+            rollPagerViewSet();
+            Check();
+            initRefreshView();
+//            pullToRefreshView();
+        }
             isFirstCreate=true;
         }
         rollPagerViewSet();
@@ -127,6 +134,15 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         });
     }*/
 
+    //进入推荐菜品列表
+    private void initGridData() {
+        ArrayList<CompanyInfoBean> companys = new ArrayList<>();
+        for (int i = 0; i <= 3; i++) {
+            CompanyInfoBean companyInfoBean = new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
+            companys.add(companyInfoBean);
+        }
+        IndexFoodGridAdapter gridAdapter = new IndexFoodGridAdapter(getActivity(), companys);
+        gridView.setAdapter(gridAdapter);
     /*首页下边的item*/
     private void initGridData(){
         ArrayList<IndexGridBean>companys=new ArrayList<>();
@@ -139,83 +155,6 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
 
     }
 
-
-//    private void item() {
-//
-//        ArrayList<Recommend_indexBean>mrecommend_indexBean=new ArrayList<>();
-//        /*Recommend_indexBean mrecommend = companyList.get(pos);*/
-//        for (int i = 0; i < 2; i++) {
-//            HashMap<String, Object> map = new HashMap<String, Object>();
-//
-//            for (int j=0;j<2;j++){
-//
-//                /*map.put("image",R.mipmap.ic_launcher);
-//                map.put("Name", "No" + String.valueOf(i));*/
-//            }
-//            lstImageItem.add(map);
-//        }
-//
-//        SimpleAdapter saImageItems = new SimpleAdapter(getActivity(),
-//                lstImageItem,
-//                R.layout.recommend_item,
-//                new String[]{"image", "Name"},
-//                new int[]{R.id.ItemImage, R.id.ItemText});
-
-        /*saImageItems.setViewBinder(new SimpleAdapter.ViewBinder() {
-            @Override
-            public boolean setViewValue(View view, Object data, String textRepresentation) {
-
-                if (view instanceof ImageView&& data instanceof Bitmap){
-
-                    ImageView iv= (ImageView) view;
-                    iv.setImageBitmap((Bitmap) data);
-                    return true;
-
-                }
-                return false;
-            }
-        });*/
-//        gridView.setAdapter(saImageItems);
-//       /* getData();*/
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//                HashMap<String, Object> item = (HashMap<String, Object>) arg0.getItemAtPosition(arg2);
-//
-//            }
-//        });
-
-//    }
-
-    /*private List<Map<String,?>> getData() {
-        data = new ArrayList<Map<String,?>>();
-        for (int i=0;i< str.length;i++){
-            Map<String,Object> map = new HashMap<String,Object>();
-        }
-        return data;
-    }*/
-
-    /*private Bitmap  returnBitMap(String url) {
-        Toast.makeText(getContext(),"你好",Toast.LENGTH_LONG).show();
-        URL myFileUrl = null;
-        Bitmap bitmap = null;
-        try {
-            myFileUrl = new URL(url);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpURLConnection conn = (HttpURLConnection) myFileUrl
-                    .openConnection();
-            conn.setDoInput(true);
-            InputStream is = conn.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
-    }*/
 
     private void Check() {
         tab_index.setOnClickListener(new View.OnClickListener() {

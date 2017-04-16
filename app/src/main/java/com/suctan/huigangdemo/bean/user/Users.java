@@ -10,21 +10,18 @@ public class Users {
     private String user_phone;//用户手机号
     private String user_name;//用户名
     private String user_icon;//用户头像
-    private String user_alias;
+    private String user_alias;//别名
     private int user_sex;//用户性别
-    private int user_age;//用户年龄
+    private String user_age;//用户年龄
     private String user_education;//用户学历
-    private String user_skill;//技能
+    private String user_skill;//熟悉领域
     private String user_hobby;//业余爱好
     private String user_address;//用户地址
     private double user_money;//用户金额
     private String user_card;//用户卡卷
-    private String user_coupon;//
+    private String user_coupon;//优惠卷
     private int is_cooking;//是否做饭
     private int is_manager;//是否是管理员
-
-
-
 
 
     public String getUser_phone() {
@@ -67,11 +64,11 @@ public class Users {
         this.user_sex = user_sex;
     }
 
-    public int getUser_age() {
+    public String getUser_age() {
         return user_age;
     }
 
-    public void setUser_age(int user_age) {
+    public void setUser_age(String user_age) {
         this.user_age = user_age;
     }
 
