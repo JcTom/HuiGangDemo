@@ -1,6 +1,7 @@
 package com.suctan.huigangdemo.widget;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -9,14 +10,16 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.androidbase.BaseApplication;
 import com.suctan.huigangdemo.R;
 
 /**
  * Create by kushanmao on 2017/2/28 0028 10:29
  */
 
-public class TipDialog extends AlertDialog implements View.OnClickListener {
+public class TipDialog extends Dialog implements View.OnClickListener {
 
     private Context context;
     private TextView tipdialog_title;
@@ -24,37 +27,28 @@ public class TipDialog extends AlertDialog implements View.OnClickListener {
     private Button tipdialog_comfirm;
     private Button tipdialog_cancel;
 
-
     public TipDialog(Context context) {
-        this(context, 0);
-    }
-
-    public TipDialog(Context context, int themeResId) {
-        super(context, themeResId);
-        this.context = context;
+        super(context);
     }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_dialog, null);
-        initView(view);
-
-        Window win = getWindow();
-        win.getDecorView().setPadding(20, 0, 20, 0);
-        setContentView(view);
-    }
-
-    private void initView(View view) {
-        tipdialog_title = (TextView) findViewById(R.id.tipdialog_title);
-        tipdialog_content = (TextView) findViewById(R.id.tipdialog_content);
+        setContentView(R.layout.activity_dialog);
+        tipdialog_title = (TextView) findViewById(R.id.tipdialog_titles);
+        tipdialog_content = (TextView) findViewById(R.id.tipdialog_contents);
         tipdialog_comfirm = (Button) findViewById(R.id.tipdialog_comfirm);
         tipdialog_cancel = (Button) findViewById(R.id.tipdialog_cancel);
-
+        String tip = "\"当前操作需要的权限\"" + "，请去\"设置\"修改";
+        tipdialog_content.setText(tip);
+        tipdialog_comfirm.setText("打开设置");
+        tipdialog_cancel.setText("取消");
         //监听点击事件
         tipdialog_comfirm.setOnClickListener(this);
         tipdialog_cancel.setOnClickListener(this);
+        Window win = getWindow();
+        win.getDecorView().setPadding(20, 0, 20, 0);
 
     }
 
@@ -76,7 +70,7 @@ public class TipDialog extends AlertDialog implements View.OnClickListener {
 
     //设置确定按钮
     public TipDialog setComfrirm(String str) {
-        if (str != null) {
+        if (str != null && tipdialog_comfirm != null) {
             tipdialog_comfirm.setText(str);
         }
         return this;
@@ -84,8 +78,8 @@ public class TipDialog extends AlertDialog implements View.OnClickListener {
 
     //设置取消按钮
     public TipDialog setCancel(String str) {
-        if (str != null) {
-            tipdialog_content.setText(str);
+        if (str != null && tipdialog_cancel != null) {
+            tipdialog_cancel.setText(str);
         }
         return this;
     }
@@ -111,11 +105,9 @@ public class TipDialog extends AlertDialog implements View.OnClickListener {
 
     }
 
-   public interface OnTipLisetner {
+    public interface OnTipLisetner {
         void comfirm();
 
         void cancel();
     }
-
-
 }

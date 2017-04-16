@@ -2,7 +2,9 @@ package com.suctan.huigangdemo.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,15 +23,20 @@ import com.suctan.huigangdemo.activity.circle.CirclePostDetails;
 import com.suctan.huigangdemo.activity.circle.NoticeDetail;
 import com.suctan.huigangdemo.mvp.login.index.find.FindPresenter;
 import com.suctan.huigangdemo.mvp.login.index.find.FindView;
+import com.suctan.huigangdemo.widget.SwpipeListViewOnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 
-public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnClickListener, FindView {
+public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnClickListener, FindView, SwipeRefreshLayout.OnRefreshListener {
 
     private View viewFind;
+    private SwipeRefreshLayout swipe_circle;
+    private RecyclerView mRecyclerView;
+    private List<String> mDatas;
+    private FragmentFindAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +59,7 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
         initViews();
 
         mRecyclerView = (RecyclerView) getView().findViewById(R.id.circle_item);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter = new FragmentFindAdapter());
         initData();
@@ -59,23 +67,25 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     }
 
 
-    private RecyclerView mRecyclerView;
-    private List<String> mDatas;
-    private FragmentFindAdapter mAdapter;
-
-
-    protected void initData()
-    {
+    protected void initData() {
         mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++)
-        {
+        for (int i = 'A'; i < 'z'; i++) {
             mDatas.add("" + (char) i);
         }
+    }
 
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipe_circle.setRefreshing(false);
+            }
+        }, 3000);
     }
 
 
-    class FragmentFindAdapter extends RecyclerView.Adapter<FragmentFindAdapter.MyViewHolder>{
+    class FragmentFindAdapter extends RecyclerView.Adapter<FragmentFindAdapter.MyViewHolder> {
 
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
@@ -108,7 +118,7 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
 
         class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView item_name,item_time,item_title,item_reply;
+            TextView item_name, item_time, item_title, item_reply;
             CircleImageView item_tx;
 
             public MyViewHolder(View view) {
@@ -125,19 +135,31 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     }
 
 
-
-
-
     /*
     * 轮播图
     * */
     private ArrayList<Integer> localImages = new ArrayList<Integer>();
-    private Integer image[]={R.mipmap.banner01,R.mipmap.banner01,
+    private Integer image[] = {R.mipmap.banner01, R.mipmap.banner01,
             R.mipmap.banner01};
     ConvenientBanner convenientBanner;
 
+
+    private void initRefreshView() {
+        SwpipeListViewOnScrollListener lisetner = new SwpipeListViewOnScrollListener(swipe_circle)
+
+        swipe_circle.setColorSchemeColors(
+                getResources().getColor(R.color.gplus_color_1),
+                getResources().getColor(R.color.gplus_color_2),
+                getResources().getColor(R.color.gplus_color_3),
+                getResources().getColor(R.color.gplus_color_4));
+        swipe_circle.setOnRefreshListener(this);
+    }
+
     private void initViews() {
+        swipe_circle = (SwipeRefreshLayout) viewFind.findViewById(R.id.swipe_circle);
         convenientBanner = (ConvenientBanner) getView().findViewById(R.id.ad_banner);
+        initRefreshView();
+
         convenientBanner.setPages(
                 new CBViewHolderCreator<LocalImageHolderView>() {
                     @Override
@@ -154,11 +176,12 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
         convenientBanner.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent goNotice = new Intent(getActivity(),NoticeDetail.class);
+                Intent goNotice = new Intent(getActivity(), NoticeDetail.class);
                 startActivity(goNotice);
             }
         });
     }
+
     private void loadTestDatas() {
         localImages.clear();
         for (int position = 0; position < 3; position++)

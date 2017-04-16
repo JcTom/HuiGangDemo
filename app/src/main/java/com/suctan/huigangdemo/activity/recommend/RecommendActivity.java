@@ -1,8 +1,6 @@
 package com.suctan.huigangdemo.activity.recommend;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -10,11 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidbase.utils.ToastTool;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.BaseActivity;
-import com.suctan.huigangdemo.adapter.IndexGridAdapter;
 import com.suctan.huigangdemo.adapter.RecommendindexAdapter;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import java.util.ArrayList;

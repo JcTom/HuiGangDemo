@@ -40,7 +40,7 @@ public interface ApiStores {
     Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
 
     /**
-     * 用户信息
+     * 修改用户信息
      */
     @POST("update_userInfo")
     Observable<ModifyReturn> ModifyUserReturn(@QueryMap Map<String, Object> userReturn);

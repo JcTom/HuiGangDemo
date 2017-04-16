@@ -65,6 +65,21 @@
         <activity android:name=".activity.circle.MoreNotice" />
         <activity android:name=".activity.share.ServiceDetail"></activity>
         <activity android:name=".activity.myself.SettingActivity"></activity>
+
+
+        <!--用户信息设置-->
+        <activity android:name=".activity.setting.SeetingForGetPwd"></activity>
+        <activity android:name=".activity.setting.SeetingUserAge"></activity>
+        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
+        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
+        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
+        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
+        <activity android:name=".activity.setting.SeetingUserName"></activity>
+        <activity android:name=".activity.setting.SeetingUserSex"></activity>
+        <activity android:name=".activity.setting.SeetingVeriatyBody"></activity>
+        <activity android:name=".activity.myself.MykitchenActity"></activity>
+
+
     </application>
 
 </manifest>

@@ -49,9 +49,10 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     public void onSuccess(LoginReturn model) {
                         if (model != null) {
                             if (model.getStatus() == 1) {
+
+                                InsertTokenToCace(model.getToken());
                                 getCurrentUser(model.getToken());
                                 mvpView.loginGoMain();
-
                             } else {
                                 mvpView.getDataFail("用户名或者密码错误");
                             }
@@ -90,11 +91,12 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                                 if (model.getDatas() != null && !model.getDatas().isEmpty()) {
                                     Users users = JSONParstObject.GetUserJSonObject(model.getDatas());
                                     if (users != null) {
-                                        InsertTokenToCace(userToken);
                                         InsertToCace(users);
                                         mvpView.loginMessageReturn(users);
+                                    } else {
+                                        CurrentUser.getInstance().setUserBean(new Users());
                                     }
-                                }else{
+                                } else {
                                     CurrentUser.getInstance().setUserBean(new Users());
                                 }
                             }

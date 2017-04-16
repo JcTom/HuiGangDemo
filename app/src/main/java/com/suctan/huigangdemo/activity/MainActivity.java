@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.androidbase.ActivityTask;
 import com.example.androidbase.BaseActivity;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
@@ -64,8 +65,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        new ImmersiveStatusBar(this).initSystemBar(Color.parseColor("#f85408"));
-//        ActivityTask.getInstanse().addActivity(this);//添加进栈
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+        ActivityTask.getInstanse().addActivity(this);//添加进栈
         initBarStatus();//初始化状态栏
         initView();//初始化组件
         initViewPage();//初始化viewPage
@@ -73,7 +74,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void initBarStatus() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
-}
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityTask.getInstanse().removeActivity(this);
+    }
 
     private void initViewPage() {
         viewMyselft = new FragmentMySelft();
@@ -113,7 +120,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         search = (ImageView) findViewById(R.id.search);
         addPost = (Button) findViewById(R.id.add_post);
         login_back = (ImageView) findViewById(R.id.login_back);
-        login_title= (TextView) findViewById(R.id.login_title);
+        login_title = (TextView) findViewById(R.id.login_title);
         login_title.setText("享享我好吗");
        /* tab_index = (BGABadgeRadioButton) findViewById(R.id.tab_index);*/
 //      txt_index_tipNumber = (TextView) findViewById(R.id.txt_index_tipNumber);
