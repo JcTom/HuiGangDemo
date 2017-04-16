@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="4"
-    >
+    android:orientation="vertical"
+    android:weightSum="4">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/food_book_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
             android:layout_gravity="left|center_vertical"
-            />
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/cook_book"
-            android:textSize="20sp"
-            android:textColor="@color/top_title"
-            android:gravity="center"
             android:layout_marginRight="25dp"
-            />
+            android:gravity="center"
+            android:text="@string/cook_book"
+            android:textColor="@color/top_title"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -39,27 +36,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_weight="1"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/food_material"
-            android:textSize="18sp"
-            android:textColor="@color/mid_title"
             android:layout_marginLeft="12dp"
-            />
+            android:text="@string/food_material"
+            android:textColor="@color/mid_title"
+            android:textSize="18sp" />
+
         <EditText
+            android:id="@+id/edt_makefood_matiria"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minLines="3"
-            android:hint="@string/food_material_edit"
             android:layout_gravity="center"
-            android:gravity="top"
             android:background="@drawable/et_shape"
-            />
+            android:gravity="top"
+            android:hint="@string/food_material_edit"
+            android:minLines="3" />
 
     </LinearLayout>
 
@@ -67,27 +63,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_weight="1"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/food_making_process"
-            android:textSize="18sp"
-            android:textColor="@color/mid_title"
             android:layout_marginLeft="12dp"
-            />
+            android:text="@string/food_making_process"
+            android:textColor="@color/mid_title"
+            android:textSize="18sp" />
+
         <EditText
+            android:id="@+id/edt_makefood_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minLines="3"
-            android:hint="@string/food_making_process_edit"
             android:layout_gravity="center"
-            android:gravity="top"
             android:background="@drawable/et_shape"
-            />
+            android:gravity="top"
+            android:hint="@string/food_making_process_edit"
+            android:minLines="3" />
 
     </LinearLayout>
 
@@ -95,27 +90,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_weight="1"
-        >
+        android:orientation="vertical">
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/food_attention"
-            android:textSize="18sp"
-            android:textColor="@color/mid_title"
             android:layout_marginLeft="12dp"
-            />
+            android:text="@string/food_attention"
+            android:textColor="@color/mid_title"
+            android:textSize="18sp" />
+
         <EditText
+            android:id="@+id/edt_makefood_care"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minLines="3"
-            android:hint="@string/food_attention_edit"
             android:layout_gravity="center"
-            android:gravity="top"
             android:background="@drawable/et_shape"
-            />
+            android:gravity="top"
+            android:hint="@string/food_attention_edit"
+            android:minLines="3" />
 
     </LinearLayout>
 
@@ -124,22 +119,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:gravity="center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        >
+        android:gravity="center">
+
         <Button
+            android:id="@+id/btn_makefood_sure"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/release"
-            android:textSize="18dp"
             android:background="@drawable/real_button_selector"
-            />
+            android:text="@string/release"
+            android:textSize="18dp" />
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>

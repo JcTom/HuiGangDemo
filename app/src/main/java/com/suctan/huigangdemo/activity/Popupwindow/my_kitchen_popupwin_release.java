@@ -18,7 +18,7 @@ import com.suctan.huigangdemo.activity.myself.release_todayfood_Activiity;
  * Created by B-305 on 2017/4/10.
  */
 
-public class my_kitchen_popupwin_release extends PopupWindow{
+public class my_kitchen_popupwin_release extends PopupWindow implements View.OnClickListener {
 
     private Context mContext;
 
@@ -27,41 +27,15 @@ public class my_kitchen_popupwin_release extends PopupWindow{
     private Button btn_add_today_food, btn_add_new_food, btn_cancel;
 
 
-    public my_kitchen_popupwin_release(Context mContext, View.OnClickListener itemsOnClick) {
-
+    public my_kitchen_popupwin_release(Context mContext) {
         this.view = LayoutInflater.from(mContext).inflate(R.layout.my_kitchen_popupwindow, null);
-
         btn_add_today_food = (Button) view.findViewById(R.id.btn_add_today_food);
-        btn_add_new_food   = (Button) view.findViewById(R.id.btn_add_new_food);
+        btn_add_new_food = (Button) view.findViewById(R.id.btn_add_new_food);
         btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
-        // 取消按钮
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                // 销毁弹出框
-                dismiss();
-            }
-        });
+        btn_add_today_food.setOnClickListener(this);
+        btn_add_new_food.setOnClickListener(this);
+        btn_cancel.setOnClickListener(this);
         // 设置按钮监听
-        //点击发布今日菜色
-        btn_add_today_food.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                Intent gotoTodayfood =new Intent(v.getContext(), release_todayfood_Activiity.class);
-                v.getContext().startActivity(gotoTodayfood);
-            }
-        });
-        //点击发布今日新菜色
-        btn_add_new_food.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                Intent gotoNewfood = new Intent(v.getContext(), release_new_todayfoodActivity.class);
-                v.getContext().startActivity(gotoNewfood);
-            }
-        });
 
         // 设置外部可点击
         this.setOutsideTouchable(true);
@@ -102,4 +76,39 @@ public class my_kitchen_popupwin_release extends PopupWindow{
         this.setAnimationStyle(R.style.take_photo_anim);
 
     }
+
+    private AddKitChen Lisetner;
+
+    public void setAddChiChenLisetner(AddKitChen Lisetner) {
+        this.Lisetner = Lisetner;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_add_today_food:
+                Lisetner.AddToDayFood();
+                dismiss();
+                break;
+            case R.id.btn_add_new_food:
+                Lisetner.AddNewFood();
+                dismiss();
+                break;
+            case R.id.btn_cancel:
+                dismiss();
+                break;
+
+        }
+    }
+
+
+    public interface AddKitChen {
+        void AddToDayFood();
+
+        void AddNewFood();
+
+
+    }
+
+
 }

@@ -16,4 +16,17 @@ public interface FileUploadService {
     void upload(@Part("file") TypedFile file,
                 @Part("description") String description,
                 Callback<String> cb);
+
+    @Multipart
+    @POST("/tp/index.php/Home/Index/pub_makeFood")
+    void FoodPublic(
+            @Part("order_pic") TypedFile file,
+            @Part("user_token") String token,
+            @Part("order_title") String order_title,
+            @Part("order_price") double order_price,
+            @Part("order_type") int order_type,
+            @Part("makeFood_res") String makeFood_res,
+            @Part("makeFood_float") String makeFood_float,
+            @Part("makeFood_note") String makeFood_note,
+            Callback<String> cb);
 }

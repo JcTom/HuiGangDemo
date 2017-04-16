@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:id="@+id/main_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -13,27 +13,24 @@
         android:background="#9db830"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/Mykitchen_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
             android:layout_gravity="left|center_vertical"
-            />
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/my_kitchen"
-            android:textSize="20sp"
-            android:textColor="@color/top_title"
-            android:gravity="center"
             android:layout_marginRight="26dp"
-            />
+            android:gravity="center"
+            android:text="@string/my_kitchen"
+            android:textColor="@color/top_title"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -42,85 +39,80 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@mipmap/my_kitchen_bg"
-        android:orientation="vertical"
         android:gravity="bottom"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="bottom"
-            >
+            android:orientation="horizontal">
+
             <com.example.androidbase.widget.CircleImageView
+                android:id="@+id/chiken_UserHead"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="20dp"
-                android:src="@mipmap/ic_launcher"
-                app:border_width="3dp"
-                app:border_color="@color/border_clo"
                 android:layout_gravity="bottom"
-                >
-            </com.example.androidbase.widget.CircleImageView>
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/ic_launcher"
+                app:border_color="@color/border_clo"
+                app:border_width="3dp"></com.example.androidbase.widget.CircleImageView>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="15dp"
-                    >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="Lee"
-                    android:textColor="#000"
-                    android:layout_marginLeft="5dp"
-                    />
+                    android:orientation="horizontal">
 
-                 <LinearLayout
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:orientation="horizontal"
-                     android:background="@drawable/textview_shape"
-                     >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Lee"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
 
-                     <TextView
-                         android:id="@+id/textView2"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:padding="2dp"
-                         android:text="♀"
-                         android:textColor="#edfc0377" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textview_shape"
+                        android:orientation="horizontal">
 
-                     <TextView
-                         android:layout_marginLeft="5dp"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:text="厨娘"
-                         android:padding="2dp"
-                         />
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="2dp"
+                            android:text="♀"
+                            android:textColor="#edfc0377" />
 
-                         />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:padding="2dp"
+                            android:text="厨娘" />
 
-                 </LinearLayout>
+                        />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#999"
-                    android:textSize="15sp"
-                    android:text="厨龄"
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    />
+                    android:layout_marginTop="5dp"
+                    android:text="厨龄"
+                    android:textColor="#999"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
@@ -134,77 +126,64 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        >
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@mipmap/my_food_mark"
-            />
+            android:src="@mipmap/my_food_mark" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/back"
-            android:textSize="18sp"
             android:text="@string/my_food"
-            />
+            android:textColor="@color/back"
+            android:textSize="18sp" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="3px"
-        android:background="#d3d3d3"
         android:layout_marginTop="5dp"
-        />
+        android:background="#d3d3d3" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-        <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".screen.screen_Activity"
-            >
+            tools:context=".screen.screen_Activity">
 
 
             <GridView
                 android:id="@+id/Mykitchen_gridview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:verticalSpacing="10dp"
                 android:horizontalSpacing="10dp"
-                />
+                android:verticalSpacing="10dp" />
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="showPopFormBottom"
                 android:layout_gravity="bottom|right"
+                android:background="@color/common_green"
+                android:onClick="showPopFormBottom"
                 android:text="发布"
                 android:textColor="@color/white"
-                android:background="@color/common_green"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
 
         </FrameLayout>
 
 
     </LinearLayout>
-
-
-
-
-
-
-
-
 
 
 </LinearLayout>

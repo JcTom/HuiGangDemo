@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
-        android:background="@color/colorPrimary"
-      >
+        android:background="@color/colorPrimary">
+
         <ImageView
             android:id="@+id/login_recommend_back"
             android:layout_width="@dimen/title_height"
             android:layout_height="match_parent"
             android:background="?android:selectableItemBackground"
             android:padding="14dp"
-            android:src="@mipmap/arrow_left"
-            />
+            android:src="@mipmap/arrow_left" />
+
         <TextView
             android:id="@+id/login_recommend_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:text="@string/recommend"
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:text="@string/recommend"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/shopping_cart"
             android:layout_width="@dimen/title_height"
             android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
             android:background="?android:selectableItemBackground"
             android:padding="14dp"
-            android:src="@mipmap/shopping_cart"
-            android:layout_alignParentRight="true" />
+            android:src="@mipmap/shopping_cart" />
     </RelativeLayout>
 
     <GridView
         android:id="@+id/recommend_gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
-        />
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>
 
