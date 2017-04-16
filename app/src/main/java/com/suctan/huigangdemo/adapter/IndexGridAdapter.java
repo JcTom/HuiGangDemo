@@ -55,8 +55,7 @@ public class IndexGridAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
         else{
-            holder= (GridViewHolder) convertView.getTag();
-        }
+            holder= (GridViewHolder) convertView.getTag();}
 if(indexGridBean.getImageUrl()!=null){
    LoadImageManager.getImageLoader().displayImage(indexGridBean.getImageUrl(),holder.ItemImage);
 }
