@@ -34,21 +34,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginTop="16dp">
+        <LinearLayout style="@style/mid_layout">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hobby"
-                android:textColor="@color/text_clo"
-                android:textSize="18sp" />
+                style="@style/usertext"
+                android:text="@string/hobby" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -59,6 +50,8 @@
             >
 
             <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/edt_hobby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,7 +78,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/real_button_selector"
                 android:text="确认"
-                android:textSize="18dp"></Button>
+                android:textColor="@color/white"
+                android:textSize="20sp"></Button>
 
         </LinearLayout>
 

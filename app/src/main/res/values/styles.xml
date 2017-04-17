@@ -93,18 +93,11 @@
     </style>
 
     <!-- CustomCheckBox theme -->
-    2     <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
-    3         <item name="android:button">@drawable/checkbox_style</item>
-    4     </style>
+     <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+     </style>
 
 
-    <!--四大主页中   我的页面配置样式-->
-    <!--星星样式-->
-    <style name="roomRatingBar">
-        <item name="android:progressDrawable">@drawable/ratingbar</item>
-        <item name="android:minHeight">32dp</item>
-        <item name="android:maxHeight">32dp</item>
-    </style>
 
 <!--四大主页中   我的页面配置样式-->
     <!--popupwindow我的厨房里面添加发布弹出窗口和点击头像，更改图片的谈起窗口-->

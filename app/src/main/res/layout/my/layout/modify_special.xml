@@ -57,6 +57,8 @@
             android:orientation="vertical">
 
             <EditText
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/edt_know_Area"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,6 +66,7 @@
                 android:background="@drawable/et_shape"
                 android:hint="@string/warm_hint_special"
                 android:padding="10px" />
+
 
         </LinearLayout>
 
@@ -82,7 +85,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/real_button_selector"
                 android:text="确认"
-                android:textSize="18dp"></Button>
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                ></Button>
 
         </LinearLayout>
 

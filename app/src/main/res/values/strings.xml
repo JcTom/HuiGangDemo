@@ -120,6 +120,7 @@
     <string name="photo">图库</string>
 
     <!--viewpager-->
+    <string name="my_sell_already_food">上架的菜</string>
     <string name="my_sell_new">进行中</string>
     <string name="my_sell_old">已完成</string>
     <string name="my_assess_go">我的评论</string>

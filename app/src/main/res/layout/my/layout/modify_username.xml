@@ -66,8 +66,11 @@
                 android:layout_gravity="center"
                 android:background="@drawable/et_shape"
                 android:padding="10px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:hint="@string/setting_username"
                 />
+
 
         </LinearLayout>
 
@@ -86,7 +89,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="确认"
-                android:textSize="18dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
                 android:background="@drawable/real_button_selector"></Button>
 
         </LinearLayout>

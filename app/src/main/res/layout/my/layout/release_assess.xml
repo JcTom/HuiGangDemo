@@ -103,31 +103,6 @@
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <ImageView
-                android:padding="11dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@mipmap/add_camera"
-                />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/grey"
-            android:layout_marginTop="10dp"
-            ></View>
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -199,9 +174,6 @@
                     app:mMargin="2dp"
                     app:mStarChoose="3"
                     app:mStarNum="5"/>
-
-
-
             </LinearLayout>
 
             <!--3-->
@@ -220,7 +192,6 @@
                     android:layout_weight="1"
                     android:text="好吃程度"
                     android:textSize="18sp" />
-
                 <com.suctan.huigangdemo.widget.StarBar
                     android:layout_weight="1"
                     android:layout_marginLeft="20dp"
@@ -235,10 +206,6 @@
                     app:mMargin="2dp"
                     app:mStarChoose="3"
                     app:mStarNum="5"/>
-
-
-
-
             </LinearLayout>
 
 

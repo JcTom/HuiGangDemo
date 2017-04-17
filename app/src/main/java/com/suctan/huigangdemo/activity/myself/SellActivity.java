@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.fragment.FirstFragment;
 import com.suctan.huigangdemo.fragment.SecondFragment;
+import com.suctan.huigangdemo.fragment.ZeroFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +31,13 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     // 控件
     private TextView text_seller_description = null;
     private TextView text_common_problem = null;
+    //新增加的今日上架的菜色
+    private TextView text_release_food=null;
 
     private LinearLayout ll_seller_description = null;
     private LinearLayout ll_common_problem = null;
+    //新增加的 今日上架的菜色 的布局
+    private  LinearLayout linear_release_food=null;
 
     // 滑动条颜色
     private int select_color;
@@ -54,14 +59,20 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
         text_seller_description = (TextView) findViewById(R.id.text_seller_description);
         text_common_problem = (TextView) findViewById(R.id.text_common_problem);
+        //新增加的今日上架的文本
+        text_release_food = (TextView) findViewById(R.id.text_release_food);
+
 
         ll_seller_description = (LinearLayout) findViewById(R.id.linear_seller_description);
         ll_common_problem = (LinearLayout) findViewById(R.id.linear_common_problem);
+        //新增加的今日上架的文本的布局
+        linear_release_food = (LinearLayout) findViewById(R.id.linear_release_food);
 
 
         ll_seller_description.setOnClickListener(new MyOnClickListenser(0));
         ll_common_problem.setOnClickListener(new MyOnClickListenser(1));
-
+        //新增加的今日上架的文本的布局的点击事件
+        linear_release_food.setOnClickListener(new MyOnClickListenser(2));
 
         mViewPager = (ViewPager) findViewById(R.id.mViewpager);
         mDatas = new ArrayList<Fragment>();
@@ -69,10 +80,14 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     }
 
     private void initFragment() {
+        //新增加的zerofragmentactivity 初始化
         FirstFragment mSDF = new FirstFragment();
         SecondFragment mCPF = new SecondFragment();
+        ZeroFragment rlDF = new ZeroFragment();
         mDatas.add(mSDF);
         mDatas.add(mCPF);
+        //新增加的fragment 数据对接 添加入口
+        mDatas.add(rlDF);
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
@@ -115,6 +130,9 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
             case 1:
                 text_common_problem.setTextColor(select_color);
                 break;
+            case 2:
+                text_release_food.setTextColor(select_color);
+                break;
         }
 
     }
@@ -137,6 +155,8 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
                 case R.id.linear_common_problem:
                     text_common_problem.setTextColor(select_color);
                     break;
+                case R.id.linear_release_food:
+                    text_release_food.setTextColor(select_color);
             }
             mViewPager.setCurrentItem(index);
         }
@@ -145,6 +165,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     private void resetTextColor() {
         text_seller_description.setTextColor(unselect_color);
         text_common_problem.setTextColor(unselect_color);
+        text_release_food.setTextColor(unselect_color);
     }
 
     @Override

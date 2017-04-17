@@ -63,6 +63,20 @@
     <color name="black">#FF000000</color>
     <!-- 橙色 -->
     <color name="text_orange">#FFF39A1C</color>
+    <!-- 红色 -->
+    <color name="red">#ff0000</color>
+
+    <!--dailogview 自定义布局 颜色配置-->
+    <color name="fab_background_color">#FF4081</color>
+    <color name="dialog_background_color">#fafafa</color>
+    <color name="dialog_background_scrim">#99323232</color>
+
+
+    <!--我收到的评价中的  订单详情连接,背景透明状态的颜色设置-->
+    <color name="ordrs_backg">#99e7e5e5</color>
+    <color name="all_backg">#d3d3d3</color>
+
+
 
 
     <!--下拉刷新-->
@@ -70,5 +84,4 @@
     <color name="gplus_color_2">#f4b400</color>
     <color name="gplus_color_3">#427fed</color>
     <color name="gplus_color_4">#b23424</color>
-</resources>
     </resources>

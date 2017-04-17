@@ -1,148 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#d3d3d3"
+    >
 
-  <!--标题名字，订做午餐-->
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content">
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="订做午餐"
-             android:textSize="18sp"
-             android:textColor="#333"
-             android:padding="10dp"
-             />
 
-     </LinearLayout>
-
-    <!--地址，价格,和配送方式-->
     <LinearLayout
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3栋-A001"
-            android:textSize="15sp"
-            android:textColor="#999"
-            android:padding="10dp"
-            />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="·"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="送上门"
-            android:textColor="#999"
-            android:layout_marginLeft="10dp"
-            android:textSize="15sp"
-            />
-        </LinearLayout>
-
-        <!--价格-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right|center_vertical"
-            android:layout_gravity="center"
-            >
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¥"
-            android:textColor="#ff00"
-            android:textSize="18sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50"
-            android:textColor="#ff00"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="8dp"
-            />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!--截止时间-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="距离截止接单"
-            android:padding="8dp"
-            android:layout_weight="1"
-            android:textSize="15sp"
-            android:textColor="#999"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00:00"
-            android:textSize="15sp"
-            android:layout_marginRight="8dp"
-            android:textColor="#d999"
-            />
-
-    </LinearLayout>
-
-    <!--分隔线-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#d3d3d3"
         android:orientation="vertical"
-        >
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="right"
+        android:background="@color/white"
+        android:padding="5dp"
         >
 
+            <!--标题名字，订做午餐-->
+            <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal"
+                      >
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="订做午餐"
+                         android:textSize="18sp"
+                         android:textColor="#333"
+                         android:padding="10dp"
+                         android:layout_weight="1"
+                         />
+
+                  <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/textviewstyle_circular"
+                        android:text="等待接单"
+                        android:layout_gravity="right|center_vertical"
+                        android:textSize="16sp" />
+
+
+            </LinearLayout>
+            //总体背景颜色设置
+            <!--地址，价格,和配送方式-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3栋-A001"
+                    android:textSize="15sp"
+                    android:textColor="#999"
+                    android:padding="10dp"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="·"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="送上门"
+                    android:textColor="#999"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    />
+                </LinearLayout>
+
+                <!--价格-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical"
+                    android:layout_gravity="center"
+                    >
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥"
+                    android:textColor="#ff00"
+                    android:textSize="18sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50"
+                    android:textColor="#ff00"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="8dp"
+                    />
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--截止时间-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                //距离截止时间
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="距离截止接单"
+                    android:padding="8dp"
+                    android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textColor="#999"
+                    />
+                //00:00
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textSize="15sp"
+                    android:layout_marginRight="8dp"
+                    android:textColor="#d999"
+                    />
+            </LinearLayout>
+            <!--分隔线-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#d3d3d3"
+                android:orientation="vertical"
+                >
+            </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 
 
 </LinearLayout>
