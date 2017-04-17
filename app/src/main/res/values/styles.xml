@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="Login_edt" parent="Base_edt">
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">10dp</item>
@@ -25,10 +26,12 @@
         <item name="android:textSize">16sp</item>
         <item name="android:background">@null</item>
     </style>
+
     <style name="Login_btn" parent="Base_Button">
         <item name="android:layout_marginLeft">50dp</item>
         <item name="android:layout_marginRight">50dp</item>
     </style>
+
     <style name="Base_Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
@@ -70,35 +73,39 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:background">@color/green</item>
     </style>
+
     <style name="title_font">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">20sp</item>
     </style>
+
     <style name="tips_font">
         <item name="android:textColor">@color/txtgray</item>
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="two_title">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">18sp</item>
     </style>
+
     <style name="editor_one">
         <item name="android:textColor">@color/gray_h</item>
         <item name="android:textSize">15sp</item>
     </style>
+
     <style name="text_main">
         <item name="android:textColor">@color/gray_h</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <!-- CustomCheckBox theme -->
-    2     <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
-    3         <item name="android:button">@drawable/checkbox_style</item>
-    4     </style>
+    <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+    </style>
 
-
-<!--四大主页中   我的页面配置样式-->
+    <!--四大主页中   我的页面配置样式-->
     <!--popupwindow我的厨房里面添加发布弹出窗口和点击头像，更改图片的谈起窗口-->
     <style name="take_photo_anim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/pop_enter_anim</item>
@@ -130,7 +137,6 @@
     </style>
 
 
-
     <!-- textview样式 -->
     <style name="usertext">
         <item name="android:textSize">16sp</item>
@@ -146,6 +152,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0.3</item>
+        <item name="android:gravity">left</item>
 
     </style>
 
@@ -181,7 +188,7 @@
     </style>
 
     <!-- 下圆角样式 -->
-    <style name="bottom_layout"  parent="base_layout">
+    <style name="bottom_layout" parent="base_layout">
         <item name="android:background">@drawable/bottom_layout_selector</item>
     </style>
     <!-- 全圆角样式 -->

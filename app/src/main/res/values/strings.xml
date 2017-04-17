@@ -124,6 +124,7 @@
     <string name="my_sell_old">已完成</string>
     <string name="my_assess_go">我的评论</string>
     <string name="my_assess_up">我收到的</string>
+    <!--我的评价中的,我的评价,和我收到的评价,中的文字设置-->
 
 
     <!--some title-->
@@ -157,13 +158,16 @@
     <string name="pinchang">品尝</string>
     <string name="one_food_money">18.00</string>
     <string name="one_money_stand">¥</string>
-    <string name="pinglun">谢谢你做出这么好吃的东西,我很喜欢,很好吃!</string>
+    <string name="pinglun">谢谢你做出这么好吃的东西,我很喜欢,很好吃!但是呢,有个别的菜色,还是比较嫌弃</string>
     <string name="food_assess">菜品评价</string>
     <string name="same_food_from_one">同厨房美食</string>
+
 
     <!--提示dialog-->
     <string name="tipDialogComfirm">确定</string>
     <string name="tipDialogCancel">取消</string>
+
+
 
 
 

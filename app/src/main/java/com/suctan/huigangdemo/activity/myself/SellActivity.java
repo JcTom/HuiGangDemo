@@ -6,11 +6,17 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.adapter.IndexGridAdapter;
+import com.suctan.huigangdemo.adapter.MyAssessGoAdapter;
+import com.suctan.huigangdemo.bean.user.IndexGridBean;
+import com.suctan.huigangdemo.bean.user.MyAssessGoBean;
 import com.suctan.huigangdemo.fragment.FirstFragment;
 import com.suctan.huigangdemo.fragment.SecondFragment;
 
@@ -34,6 +40,9 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     private LinearLayout ll_seller_description = null;
     private LinearLayout ll_common_problem = null;
 
+    GridView my_first_framgment_gridview;
+    /*GridView My_evaluation_thridFrament_gridview;*/
+
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
@@ -42,10 +51,25 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_sell);
         initView();
+        /*My_evaluation_thridFrament_gridview= (GridView) findViewById(R.id.My_evaluation_thridFrament_gridview);
+        MyAssessGoAdapter();*/
         initFragment();
 
     }
+
+    /*private void MyAssessGoAdapter() {
+        Toast.makeText(this, getResources().getString(R.string.inputActTip), Toast.LENGTH_SHORT).show();
+        ArrayList<MyAssessGoBean>companys=new ArrayList<>();
+        for(int i=0;i<=3;i++){
+            MyAssessGoBean myAssessGoBean=new MyAssessGoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg"
+                    ,"http://img2.imgtn.bdimg.com/it/u=2324580144,3531001861&fm=214&gp=0.jpg");
+            companys.add(myAssessGoBean);
+        }
+        MyAssessGoAdapter adapter=new MyAssessGoAdapter(this,companys);
+        My_evaluation_thridFrament_gridview.setAdapter(adapter);
+    }*/
     private void initView() {
+        my_first_framgment_gridview = (GridView) findViewById(R.id.my_first_framgment_gridview);
         sell_back = (ImageView) findViewById(R.id.sell_back);
         sell_back.setOnClickListener(this);
         // 获取颜色
@@ -61,8 +85,6 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
         ll_seller_description.setOnClickListener(new MyOnClickListenser(0));
         ll_common_problem.setOnClickListener(new MyOnClickListenser(1));
-
-
         mViewPager = (ViewPager) findViewById(R.id.mViewpager);
         mDatas = new ArrayList<Fragment>();
 
@@ -80,7 +102,6 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
             public int getCount() {
                 return mDatas == null ? 0 : mDatas.size();
             }
-
             @Override
             public Fragment getItem(int position) {
                 return mDatas.get(position);
@@ -89,9 +110,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
         mViewPager.setAdapter(mAdapter);
         mViewPager.addOnPageChangeListener(this);
         mViewPager.setCurrentItem(0);
-
     }
-
 
     @Override
     public void onClick(View v) {

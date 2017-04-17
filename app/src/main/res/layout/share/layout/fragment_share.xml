@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:paddingTop="18dp">
+
             <RadioGroup
                 android:id="@+id/one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <cn.bingoogolapple.badgeview.BGABadgeRadioButton
                     android:id="@+id/share_jz"
@@ -34,6 +37,7 @@
                     style="@style/share_style"
                     android:drawableTop="@mipmap/share_dg"
                     android:text="@string/share_dg" />
+
                 <cn.bingoogolapple.badgeview.BGABadgeRadioButton
                     android:id="@+id/share_sfc"
                     style="@style/share_style"
@@ -47,18 +51,20 @@
                     android:text="@string/share_dskd" />
             </RadioGroup>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:paddingTop="5dp">
+
             <RadioGroup
                 android:id="@+id/two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <cn.bingoogolapple.badgeview.BGABadgeRadioButton
                     android:id="@+id/share_jsxh"
@@ -71,6 +77,7 @@
                     style="@style/share_style"
                     android:drawableTop="@mipmap/share_lrph"
                     android:text="@string/share_phlr" />
+
                 <cn.bingoogolapple.badgeview.BGABadgeRadioButton
                     android:id="@+id/share_esjy"
                     style="@style/share_style"
@@ -90,24 +97,26 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7">
+
         <ImageView
+            android:id="@+id/ad1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/bj"
-            android:id="@+id/ad1"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bj" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7">
+
         <ImageView
+            android:id="@+id/ad2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/my_kitchen_bg"
-            android:id="@+id/ad2"
-            android:scaleType="centerCrop"/>I
+            android:scaleType="centerCrop"
+            android:src="@mipmap/my_kitchen_bg" />
     </LinearLayout>
 
 </LinearLayout>

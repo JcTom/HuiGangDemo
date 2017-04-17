@@ -25,7 +25,7 @@ public class RceycleImageTool {
         bitmapDrawable = null;
     }
 
-    private static void rceycleBitmap(Bitmap bitmap) {
+    public static void rceycleBitmap(Bitmap bitmap) {
         if (bitmap != null && !bitmap.isRecycled()) {
             bitmap.recycle();
             bitmap = null;

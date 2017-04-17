@@ -124,7 +124,7 @@
              android:textSize="18sp"
              android:textColor="#000"
              android:layout_gravity="center"
-             android:layout_marginLeft="5dp"
+             android:layout_marginLeft="10dp"
              />
 
             <!--数字-->
@@ -142,7 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="1dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/textviewstyle_circular"
                 android:text="查看评价"
                 android:textSize="16sp" />
