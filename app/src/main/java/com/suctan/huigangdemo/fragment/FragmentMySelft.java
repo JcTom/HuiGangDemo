@@ -215,8 +215,6 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
                 startActivity(gotoassess);
             }
         });
-
-
     }
 
     //设计view的数据
@@ -235,7 +233,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.imv_head:
-                Drawable drawavle =getResources().getDrawable(R.mipmap.tou);
+                Drawable drawavle = getResources().getDrawable(R.mipmap.tou);
                 BigImgDialog bigDialog = new BigImgDialog(getActivity(), 0, drawavle);
                 bigDialog.show();
                 break;

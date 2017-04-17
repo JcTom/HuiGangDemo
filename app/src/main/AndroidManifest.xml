@@ -69,7 +69,8 @@
         <!--我的页面中的注册文件-->
         <activity android:name=".activity.search.Search_Result"/>
 
-
+        <!--我的页面中的注册文件-->
+        <activity android:name=".activity.myself.SettingActivity"></activity>
 
 
         <!--用户信息设置-->
@@ -90,6 +91,7 @@
         <activity android:name=".activity.myself.SellActivity"></activity>
         <activity android:name=".activity.myself.MymoneyActivity"></activity>
         <activity android:name=".activity.myself.MydiscountAcitity"></activity>
+        <activity android:name=".activity.myself.MykitchenActity"></activity>
         <activity android:name=".activity.myself.WaitOrdersActivity"></activity>
         <activity android:name=".activity.myself.WaitfoodActitity"></activity>
         <activity android:name=".activity.myself.WaitassessActivity"></activity>
@@ -104,6 +106,16 @@
         <activity android:name=".activity.myself.my_assess"></activity>
 
         /*****************************************************************************************************/
+        <!--用户信息修改-->
+
+
+        <activity android:name=".activity.setting.SeetingUserName"></activity>
+        <activity android:name=".activity.setting.SeetingUserAge"></activity>
+        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
+        <activity android:name=".activity.setting.SeetingUserSex"></activity>
+        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
+        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
+        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
 
 
 

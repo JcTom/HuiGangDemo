@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,16 +42,19 @@
         <LinearLayout style="@style/mid_layout">
 
             <TextView
-                style="@style/usertext"
-                android:text="@string/age" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_clo"
+                android:textSize="18sp"
+                android:text="@string/age"/>
         </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <RadioGroup
                 android:id="@+id/ragp_change_age"
                 android:layout_width="match_parent"
@@ -68,6 +72,7 @@
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
                     android:text="@string/age_00"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18dp" />
 
                 <RadioButton
@@ -78,6 +83,7 @@
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
                     android:text="@string/age_90"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18dp" />
 
                 <RadioButton
@@ -88,6 +94,7 @@
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
                     android:text="@string/age_80"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18dp" />
 
                 <RadioButton
@@ -98,8 +105,8 @@
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
                     android:text="@string/age_70"
+                    android:layout_marginBottom="5dp"
                     android:textSize="17dp" />
-
 
                 <RadioButton
                     android:id="@+id/rab_aftOther"
@@ -109,6 +116,7 @@
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
                     android:text="@string/age_other"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18dp" />
 
 
@@ -129,11 +137,10 @@
             <Button
                 android:id="@+id/btn_changeAge_comfirm"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:background="@drawable/real_button_selector"
                 android:text="确认"
-                android:textColor="@color/white"
-                android:textSize="20sp"></Button>
+                style="@style/title_font"/>
 
         </LinearLayout>
 

@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
-import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import com.suctan.huigangdemo.bean.user.MykitchenBean;
 
 import java.util.ArrayList;
@@ -72,7 +71,7 @@ public class MykitchenActity extends Activity{
 
 
             });*/
-        }
+    }
 
     private void goMykitchenAdapter() {
         ArrayList<MykitchenBean>companys=new ArrayList<>();

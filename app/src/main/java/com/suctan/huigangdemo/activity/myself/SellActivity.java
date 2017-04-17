@@ -9,8 +9,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.adapter.IndexGridAdapter;
+import com.suctan.huigangdemo.adapter.MyAssessGoAdapter;
+import com.suctan.huigangdemo.bean.user.IndexGridBean;
+import com.suctan.huigangdemo.bean.user.MyAssessGoBean;
 import com.suctan.huigangdemo.fragment.FirstFragment;
 import com.suctan.huigangdemo.fragment.SecondFragment;
 import com.suctan.huigangdemo.fragment.ZeroFragment;
@@ -39,6 +44,9 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     //新增加的 今日上架的菜色 的布局
     private  LinearLayout linear_release_food=null;
 
+    GridView my_first_framgment_gridview;
+    /*GridView My_evaluation_thridFrament_gridview;*/
+
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
@@ -51,6 +59,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
     }
     private void initView() {
+        my_first_framgment_gridview = (GridView) findViewById(R.id.my_first_framgment_gridview);
         sell_back = (ImageView) findViewById(R.id.sell_back);
         sell_back.setOnClickListener(this);
         // 获取颜色

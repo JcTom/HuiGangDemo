@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
     <LinearLayout
@@ -37,248 +38,243 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
-        android:fillViewport="true"
-
-        >
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginRight="5dp"
-            android:paddingTop="5dp"
-            >
-            <TextView
-                style="@style/usertext"
-                android:text="@string/food_name"
-                android:textColor="@color/mid_title"
-                android:layout_marginLeft="12dp"
-                />
-            <EditText
-                android:layout_width="251dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/et_shape"
-                android:padding="10px"
-                android:hint="@string/food_name_edit"
-                />
-        </LinearLayout>
-
-        <!--分隔线-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#d3d3d3"
-            android:layout_marginTop="5dp"
-            ></View>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginRight="5dp"
-            android:paddingTop="5dp"
-            >
-            <TextView
-                style="@style/usertext"
-                android:text="@string/food_money"
-                android:textColor="@color/mid_title"
-                android:layout_marginLeft="12dp"
-                />
-            <EditText
-                android:layout_width="251dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/et_shape"
-                android:padding="10px"
-                android:hint="@string/food_money_edit"
-                />
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#d3d3d3"
-            android:layout_marginTop="5dp"
-            ></View>
+        android:fillViewport="true">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            >
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@mipmap/add_camera"
-                />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#d3d3d3"
-            android:layout_marginTop="10dp"></View>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/food_describe"
-            android:textColor="@color/mid_title"
-            android:textSize="20sp"
-            android:layout_marginLeft="12dp"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/please_food_describe"
-            android:background="@drawable/et_shape"
-            android:padding="10px"
-            android:minLines="3"
-            android:gravity="top"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#d3d3d3"
-        android:layout_marginTop="5dp"></View>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/service_type"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:textColor="@color/mid_title"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            android:layout_marginLeft="12dp"
-            />
+            android:orientation="vertical"
+            >
 
-        <com.sevenheaven.segmentcontrol.SegmentControl
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:textSize="18sp"
-            app:selectedColor="@color/selected_service"
-            app:normalColor="@color/white"
-            app:cornerRadius="5dp"
-            app:separatorWidth="2dp"
-            app:boundWidth="4dp"
-            app:texts="@string/type"
-            app:verticalGap="10dp"
-            app:horizonGap="10dp"
-            android:layout_gravity="center"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/two_title"
+                        android:layout_marginRight="20dp"
+                        android:text="@string/food_name"
+                        android:textColor="@color/mid_title"
+                        android:layout_marginLeft="12dp" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/et_shape"
+                        android:padding="10px"
+                        android:hint="@string/food_name_edit"
+                        android:layout_marginRight="10dp"/>
+                </LinearLayout>
+
+                <!--分隔线-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#d3d3d3"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:paddingTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/two_title"
+                        android:text="@string/food_money"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="12dp"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/et_shape"
+                        android:padding="10px"
+                        android:hint="@string/food_money_edit"
+                        android:layout_marginRight="10dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
 
 
-    </LinearLayout>
-
-    <!--分隔线-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#d3d3d3"
-        android:layout_marginTop="5dp"></View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
 
-    <!--release_new_todayfoodActivity 在这个acticity中进行点击事件-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    >
 
-    <LinearLayout style="@style/mid_layout"
-        android:id="@+id/new_food_ideas"
-        >
-        <TextView style="@style/usertext" android:text="@string/food_book" />
-        <ImageView style="@style/img_arrow"/>
-    </LinearLayout>
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@mipmap/upload_img"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
 
-    <!--分隔线-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#d3d3d3"
-        android:layout_marginTop="5dp"></View>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#d3d3d3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
 
-    </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <!--<ImageButton
+                        android:layout_width="3dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/green"/>-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/food_describe"
+                        style="@style/two_title"
+                        android:layout_marginLeft="10dp"
+                        />
+                </LinearLayout>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/please_food_describe"
+                    android:background="@drawable/et_shape"
+                    android:padding="10px"
+                    android:minLines="6"
+                    android:gravity="top"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.1"
+                        android:text="服务类型"
+                        android:layout_gravity="center"
+                        style="@style/editor_one"/>
+
+                    <com.sevenheaven.segmentcontrol.SegmentControl
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/segment_control"
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:layout_height="30dp"
+                        android:textSize="18sp"
+                        app:block_direction="horizon"
+                        app:selectedColor="@color/green"
+                        app:normalColor="@color/bg_gray"
+                        app:cornerRadius="5dp"
+                        app:separatorWidth="2dp"
+                        app:texts="上门做|送上门|自提"
+                        app:verticalGap="10dp"
+                        app:horizonGap="10dp"/>
+                </LinearLayout>
+
+                <!--分隔线-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#d3d3d3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+                <!--release_new_todayfoodActivity 在这个acticity中进行点击事件-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/new_food_ideas"
+                    android:background="@drawable/mid_layout_selector">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/editor_one"
+                        android:text="@string/food_book" />
+                    <ImageView
+                        style="@style/img_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
-
     <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="center"
+        style="@style/tab_title"
+        android:background="#00000000"
         android:gravity="center"
-        >
-
+        android:orientation="horizontal">
         <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="发布"
-            android:textSize="20dp"
-            android:background="@drawable/real_button_selector"
-            android:textColor="@color/white"
-            >
-
-        </Button>
-
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="@string/share_fb"
+            android:background="@color/green"
+            style="@style/title_font"
+            android:id="@+id/post_fb"/>
     </LinearLayout>
-
-
-
-
-
 
 
 

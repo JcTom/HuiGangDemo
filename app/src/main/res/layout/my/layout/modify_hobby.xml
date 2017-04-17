@@ -34,12 +34,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout style="@style/mid_layout">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="18dp">
 
             <TextView
-                style="@style/usertext"
-                android:text="@string/hobby" />
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hobby"
+                android:textColor="@color/text_clo"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -50,15 +59,14 @@
             >
 
             <EditText
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:id="@+id/edt_hobby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/et_shape"
                 android:hint="@string/warm_hint_hobby"
-                android:padding="10px" />
+                android:padding="8dp"
+                android:layout_margin="10dp" />
 
 
         </LinearLayout>
@@ -75,11 +83,10 @@
             <Button
                 android:id="@+id/btn_hoppy_comfirm"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
+                style="@style/title_font"
                 android:background="@drawable/real_button_selector"
-                android:text="确认"
-                android:textColor="@color/white"
-                android:textSize="20sp"></Button>
+                android:text="确认" />
 
         </LinearLayout>
 

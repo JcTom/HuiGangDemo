@@ -42,6 +42,7 @@ public class SeetingUserDegree extends BaseActivity implements View.OnClickListe
     private void getIntentData() {
         tempDegreeString = getIntent().getStringExtra("oldData");
         setChoseRadioButton();
+        getChoseData();
     }
 
     private void initView() {
@@ -112,6 +113,7 @@ public class SeetingUserDegree extends BaseActivity implements View.OnClickListe
             }
         });
     }
+
     //设置回调数据
     private void setResultData(String temAgeString) {
         Intent intent = new Intent(this, SettingActivity.class);
