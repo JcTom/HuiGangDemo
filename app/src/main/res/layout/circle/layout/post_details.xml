@@ -27,107 +27,120 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
     </LinearLayout>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.example.androidbase.widget.CircleImageView
-                android:id="@+id/item_tx"
-                android:layout_width="0dp"
-                android:layout_height="42dp"
-                android:layout_weight="1"
-                android:src="@mipmap/default_image"
-                app:border_width="1dp"
-                android:layout_marginTop="15dp"/>
-
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
                 android:orientation="vertical"
                 android:background="@color/white">
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    style="@style/editor_one"
-                    android:text="某某用户"
-                    android:id="@+id/item_name"
-                    android:layout_marginTop="16dp" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <com.example.androidbase.widget.CircleImageView
+                        android:id="@+id/item_tx"
+                        android:layout_width="0dp"
+                        android:layout_height="42dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/default_image"
+                        app:border_width="1dp"
+                        android:layout_marginTop="15dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:orientation="vertical"
+                        android:background="@color/white">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            style="@style/editor_one"
+                            android:text="某某用户"
+                            android:id="@+id/item_name"
+                            android:layout_marginTop="16dp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="1dp"
+                            style="@style/tips_font"
+                            android:id="@+id/item_time"
+                            android:text="28分钟前"/>
+                    </LinearLayout>
+                    <ImageButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/delete_post"
+                        android:background="#00000000"
+                        android:id="@+id/delete_post"/>
+                </LinearLayout>
                 <TextView
+                    android:paddingRight="10dp"
+                    android:paddingLeft="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="1dp"
-                    style="@style/tips_font"
-                    android:id="@+id/item_time"
-                    android:text="28分钟前"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="求推荐好玩的地方"
+                    style="@style/two_title"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:id="@+id/item_title"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="求付款了时间发了多少了推荐好撒疯狂的身份求推荐好玩的地方求推荐好玩的地方"
+                    style="@style/text_main"
+                    android:lineSpacingMultiplier="1.2"
+                    android:id="@+id/item_content"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/bj"/>
             </LinearLayout>
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/line_gray"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@mipmap/delete_post"
-                android:background="#00000000"
-                android:id="@+id/delete_post"/>
+                android:background="@color/bg_gray"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/post_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
         </LinearLayout>
-        <TextView
-            android:paddingRight="10dp"
-            android:paddingLeft="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="求推荐好玩的地方"
-            style="@style/two_title"
-            android:singleLine="true"
-            android:ellipsize="end"
-            android:id="@+id/item_title"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="10dp"
-            android:paddingLeft="12dp"
-            android:layout_marginTop="12dp"
-            android:text="求付款了时间发了多少了推荐好撒疯狂的身份求推荐好玩的地方求推荐好玩的地方"
-            style="@style/text_main"
-            android:lineSpacingMultiplier="1.2"
-            android:id="@+id/item_content"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/bj"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/line_gray"
-        android:layout_marginTop="10dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/bg_gray"
-        android:orientation="vertical">
+    </ScrollView>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/post_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
-
-    </LinearLayout>
 
 
     <LinearLayout

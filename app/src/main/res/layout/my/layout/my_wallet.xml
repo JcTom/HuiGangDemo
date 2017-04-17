@@ -106,27 +106,24 @@
         <Button
             android:id="@+id/incase"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/Recharge"
-            android:textSize="22sp"
-            android:textColor="#000"
-            android:background="#9db830"
-            />
+            style="@style/title_font"
+            android:background="@drawable/real_button_selector"/>
 
         <Button
              android:id="@+id/withdarwas"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:text="@string/Withdrawals"
-            android:textSize="22sp"
-            android:textColor="#000"
-            android:background="#d3d3d3"
-            android:layout_marginTop="20dp"
-            />
+            android:textSize="20sp"
+            android:textColor="@color/gray_h"
+            android:background="@drawable/real_button_gray_select"
+            android:layout_marginTop="20dp" />
 
 
 

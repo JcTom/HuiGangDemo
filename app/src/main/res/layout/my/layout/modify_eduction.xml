@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +44,12 @@
 
 
         <LinearLayout style="@style/mid_layout">
-            <TextView style="@style/usertext" android:text="@string/eduction" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_clo"
+                android:textSize="18sp"
+                android:text="@string/eduction" />
         </LinearLayout>
 
 
@@ -58,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                >
+                android:paddingLeft="10dp">
 
                <RadioButton
                    android:id="@+id/rab_degree_junior"
@@ -68,6 +74,7 @@
                    android:textSize="18dp"
                    android:button="@drawable/radio"
                    android:paddingLeft="10dp"
+                   android:layout_marginBottom="5dp"
                    android:layout_marginTop="8dp"
                    />
 
@@ -79,6 +86,7 @@
                     android:textSize="18dp"
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="8dp"
                     />
 
@@ -90,6 +98,7 @@
                     android:textSize="18dp"
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="8dp"
                     />
 
@@ -101,6 +110,7 @@
                     android:textSize="18dp"
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="8dp"
                     />
 
@@ -112,6 +122,7 @@
                     android:textSize="18dp"
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="8dp"
                     />
 
@@ -123,6 +134,7 @@
                     android:textSize="18dp"
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="8dp"
                     />
 
@@ -131,6 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edutction_other"
+                    android:layout_marginBottom="5dp"
                     android:textSize="18dp"
                     android:button="@drawable/radio"
                     android:paddingLeft="10dp"
@@ -156,10 +169,10 @@
             <Button
                 android:id="@+id/btn_degree_comfirm"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
+                style="@style/title_font"
                 android:text="确认"
-                android:textSize="18dp"
-                android:background="@drawable/real_button_selector"></Button>
+                android:background="@drawable/real_button_selector"/>
 
         </LinearLayout>
 

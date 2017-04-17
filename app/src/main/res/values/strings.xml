@@ -26,7 +26,7 @@
     <!--用户名修改信息-->
     <string name="midf_setting_username">用户名修改</string>
     <string name="setting_username">请输入用户名</string>
-    <string name="warm_setting_name">用户名(昵称):</string>
+    <string name="warm_setting_name">用户名:</string>
 
     <!--实名认证修改信息-->
     <string name="midf_real_username">实名认证</string>
@@ -95,13 +95,13 @@
     <string name="please_food_describe">请输入菜品描述</string>
     <string name="service_type">服务类型</string>
     <string name="type">自提|送上门|上门提</string>
-    <string name="food_book">菜谱(可事后添加)</string>
+    <string name="food_book">菜谱(可选)</string>
     <string name="release">发布</string>
 
 
     <!--菜谱发布文字设置-->
     <string name="cook_book">菜谱</string>
-    <string name="food_material">菜所需材料:</string>
+    <string name="food_material">所需材料:</string>
     <string name="food_material_edit">请输入制作菜所需要的材料</string>
     <string name="food_making_process">制作流程:</string>
     <string name="food_making_process_edit">请简述此菜的制作流程</string>
@@ -146,7 +146,7 @@
     <string name="lxr">联 系 人：</string>
     <string name="lxdh">联系电话：</string>
     <string name="lxdz">联系地址：</string>
-=======
+
     <!--每个菜色的详情,等其他内容-->
     <string name="one_food_name">我是菜的名字,请设置我吧!</string>
     <string name="remain">还剩</string>
@@ -165,6 +165,6 @@
     <string name="tipDialogComfirm">确定</string>
     <string name="tipDialogCancel">取消</string>
 
->>>>>>> origin/master
+
 
 </resources>

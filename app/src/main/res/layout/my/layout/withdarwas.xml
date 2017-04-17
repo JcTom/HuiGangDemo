@@ -3,15 +3,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        >
+        android:paddingLeft="10dp">
 
         <ImageView
             android:id="@+id/withdarwas_back"
@@ -29,160 +26,148 @@
             android:textSize="20sp"
             android:textColor="#fff"
             android:gravity="center"
-            android:layout_gravity="center_horizontal"
-
-            />
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:background="@color/bj_withdarwas"
-        >
-
-
-        <!--支付框架-->
+        android:layout_marginTop="30dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="15dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/white"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            >
-
+            android:paddingLeft="8dp">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="支付方式"
-                android:textSize="18sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="left"
-                android:textColor="#000"
-                />
-
-            <LinearLayout
+                android:text="提  现  至"
+                style="@style/text_main"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left"/>
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                >
+                android:entries="@array/payment_mode"
+                style="@style/text_main">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支付宝"
-                android:textSize="18sp"
-                                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text=">"
-                android:textSize="20sp"
-                android:textColor="#000"
-                android:layout_marginLeft="50dp"
-                />
-
-
-            </LinearLayout>
-
-
+            </Spinner>
         </LinearLayout>
-
-        <!--提现框架-->
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/white"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="5dp"
-            >
-
+            android:gravity="center"
+            android:paddingLeft="8dp">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="提现金额"
-                android:textSize="18sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="left"
-                android:textColor="#000"
-                />
+                android:gravity="left"
+                style="@style/text_main"
+                android:layout_gravity="left" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_height="60dp"
                 android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                >
-
-
+                android:layout_marginTop="8dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="¥"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="15dp"
-                    />
-
+                    android:textSize="28sp"
+                    android:textColor="@color/back"
+                    android:layout_gravity="center"/>
                 <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/payment_mode"
+                    android:textSize="30sp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/back"
+                    android:background="#00000000">
+                </EditText>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bg_gray"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="12dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="请输入你要提现的金额"
-                    android:layout_gravity="center"
-                    android:background="@drawable/et_shape"
-                    android:padding="8px"
-                    android:layout_weight="1"
-                    android:layout_marginRight="1dp"
-                    android:inputType="number"
-                    />
-
-
+                    style="@style/tips_font"
+                    android:text="当前零钱余额"
+                    android:layout_gravity="left"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tips_font"
+                    android:text="9.00"
+                    android:layout_gravity="left"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tips_font"
+                    android:text="元，"
+                    android:layout_gravity="left"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部提现"
+                    android:textSize="15sp"
+                    android:textColor="@color/green"
+                    android:layout_gravity="left"/>
             </LinearLayout>
 
 
-
-
         </LinearLayout>
 
 
 
-        <LinearLayout
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            >
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="确认"
-                android:textSize="18dp"
-                android:background="@drawable/real_button_selector"></Button>
+            android:layout_height="40dp"
+            android:text="提现"
+            style="@style/title_font"
+            android:background="@drawable/real_button_selector"/>
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 
-</LinearLayout>
 
 
 </LinearLayout>

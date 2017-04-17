@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
 
     <ImageView
      android:layout_alignParentLeft="true"
@@ -8,7 +10,8 @@
      android:layout_height="80dp"
      android:id="@+id/food_ItemImage"
      android:src="@mipmap/ic_launcher"
-        />
+     android:layout_marginLeft="10dp"
+     android:layout_marginRight="10dp"/>
 
     <!--设置菜的名字-->
     <TextView
@@ -22,21 +25,22 @@
         android:lines="1"
         android:ellipsize="end"
         android:maxEms="18"
-        />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"/>
      <!--设置菜的描述-->
     <TextView
         android:layout_toRightOf="@id/food_ItemImage"
         android:id="@+id/food_ItemText"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textSize="12sp"
+        style="@style/tips_font"
         android:layout_below="@+id/food_ItemTitle"
-        android:textColor="#d3d3d3"
         android:text="0001"
         android:lines="2"
         android:ellipsize="end"
         android:maxEms="18"
-        />
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"/>
    <!--设置菜的价格-->
     <TextView
         android:id="@+id/food_ItemMoney"
@@ -47,7 +51,7 @@
         android:text="¥"
         android:textSize="18sp"
         android:textColor="#ff0000"
-        />
+        android:layout_marginLeft="5dp"/>
      <!--设置返回按钮,src已经在activity里面设置了-->
 
     <ImageView
@@ -55,9 +59,15 @@
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:layout_alignParentRight="true"
-        android:paddingRight="20dp"
+        android:paddingRight="10dp"
         android:textSize="18sp"
         android:src="@mipmap/setting_arrow"
         android:layout_marginTop="40dp"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/bg_gray"
+        android:layout_below="@id/food_ItemImage"/>
 </RelativeLayout>

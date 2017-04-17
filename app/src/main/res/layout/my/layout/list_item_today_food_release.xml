@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="12dp">
 
     <ImageView
         android:layout_alignParentLeft="true"
@@ -10,7 +11,8 @@
         android:layout_height="80dp"
         android:id="@+id/recommend_today_ItemImage"
         android:src="@mipmap/ic_launcher"
-        />
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp" />
 
     <!--设置菜的名字-->
     <TextView
@@ -19,7 +21,6 @@
         android:layout_width="wrap_content"
         android:textSize="18sp"
         android:text="000"
-        android:textStyle="bold"
         android:layout_toRightOf="@id/recommend_today_ItemImage"
         android:lines="1"
         android:ellipsize="end"
@@ -58,12 +59,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:count="3"
-        app:gapBetweenCircle="50dp"
+        app:gapBetweenCircle="30dp"
         app:hintFgColor="#ffffff"
-        app:hintText="增加数量就点我吧！"
+        app:hintText="添加到购物车"
         app:maxCount="99"
         app:perAnimDuration="200"
-        />
+        android:layout_marginRight="12dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/bg_gray"
+        android:layout_below="@id/recommend_today_ItemImage"/>
 
 
 

@@ -126,9 +126,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         search.setOnClickListener(this);
         ly_index_select.setOnClickListener(this);
         main_tv_index.setTextColor(Color.parseColor("#9DB830"));//初始颜色
-        main_tv_chanel.setTextColor(Color.parseColor("#9DB830"));//初始颜色
-        main_tv_myselft.setTextColor(Color.parseColor("#9DB830"));//初始颜色
-        main_tv_find.setTextColor(Color.parseColor("#9DB830"));//初始颜色
+        main_tv_chanel.setTextColor(Color.parseColor("#333333"));//初始颜色
+        main_tv_myselft.setTextColor(Color.parseColor("#333333"));//初始颜色
+        main_tv_find.setTextColor(Color.parseColor("#333333"));//初始颜色
         ly_find_select.setOnClickListener(this);
         ly_chanel_select.setOnClickListener(this);
         ly_myselft_select.setOnClickListener(this);

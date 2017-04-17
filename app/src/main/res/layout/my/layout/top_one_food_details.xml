@@ -136,7 +136,7 @@
     //设置分隔线
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:orientation="horizontal"
         android:background="@color/head_border_width_clo"
         android:layout_marginLeft="10dp"
@@ -157,6 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/one_money_stand"
+            android:layout_marginLeft="5dp"
             android:textSize="18sp"
             android:textColor="@color/red"
             />
@@ -197,21 +198,21 @@
             >
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/my_food_mark"
-                />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="2dp"
+                android:src="@mipmap/my_food_mark" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/back"
-                android:textSize="18sp"
-                android:text="@string/my_food"
+                style="@style/two_title"
+                android:text="菜品描述"
                 android:layout_weight="1"
                 />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/setting_arrow"
+                android:src="@mipmap/more_black"
                 android:paddingRight="10dp"
                 android:layout_gravity="center_vertical"
                 />
@@ -229,6 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="这个是菜品描述,需要替换"
+                android:layout_marginLeft="5dp"
                  style="@style/text_main"
                 android:maxLines="3"
                 android:ellipsize="end"

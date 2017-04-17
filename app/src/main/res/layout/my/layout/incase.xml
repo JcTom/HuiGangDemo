@@ -10,8 +10,7 @@
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        >
+        android:paddingLeft="10dp">
 
         <ImageView
             android:id="@+id/incase_back"
@@ -37,152 +36,90 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:background="@color/bj_withdarwas"
-        >
-
-
-        <!--支付框架-->
+        android:layout_marginTop="30dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="18dp"
+        android:paddingBottom="20dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            >
-
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="支付方式"
-                android:textSize="18sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="left"
-                android:textColor="#000"
-                />
+                style="@style/text_main"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="left"/>
 
-            <LinearLayout
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                >
+                android:entries="@array/payment_mode"
+                style="@style/text_main">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="支付宝"
-                    android:textSize="18sp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text=">"
-                    android:textSize="20sp"
-                    android:textColor="#000"
-                    android:layout_marginLeft="50dp"
-                    />
-
-
-            </LinearLayout>
-
-
+            </Spinner>
         </LinearLayout>
-
-        <!--提现框架-->
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:layout_marginTop="5dp"
-            >
-
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="充值金额"
-                android:textSize="18sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="left"
-                android:textColor="#000"
-                />
+                android:text="金    额(¥)"
+                android:gravity="left"
+                style="@style/text_main"
+                android:layout_gravity="left" />
 
-            <LinearLayout
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center_horizontal"
-                >
+                android:entries="@array/payment_mode"
+                style="@style/text_main"
+                android:background="#00000000"
+                android:layout_marginLeft="5dp"
+                android:hint="请填写充值金额">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¥"
-                    android:textColor="#000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="15dp"
-                    />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="请输入你要充值的金额"
-                    android:layout_gravity="center"
-                    android:background="@drawable/et_shape"
-                    android:padding="8px"
-                    android:layout_weight="1"
-                    android:layout_marginRight="1dp"
-                    android:inputType="number"
-                    />
-
-
-            </LinearLayout>
-
-
-
-
+            </EditText>
         </LinearLayout>
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            >
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="确认"
-                android:textSize="18dp"
-                android:background="@drawable/real_button_selector"></Button>
-
-
-        </LinearLayout>
 
 
     </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="确认"
+            style="@style/title_font"
+            android:background="@drawable/real_button_selector"/>
+
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

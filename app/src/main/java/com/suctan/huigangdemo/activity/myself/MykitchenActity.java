@@ -4,22 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
-import com.suctan.huigangdemo.adapter.IndexGridAdapter;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
-import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import com.suctan.huigangdemo.bean.user.MykitchenBean;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by B-305 on 2017/4/13.
@@ -78,7 +71,7 @@ public class MykitchenActity extends Activity{
 
 
             });*/
-        }
+    }
 
     private void goMykitchenAdapter() {
         ArrayList<MykitchenBean>companys=new ArrayList<>();

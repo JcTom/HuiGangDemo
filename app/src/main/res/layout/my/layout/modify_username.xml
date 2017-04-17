@@ -65,9 +65,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/et_shape"
-                android:padding="10px"
-                android:hint="@string/setting_username"
-                />
+                android:padding="8dp"
+                android:layout_margin="10dp"
+                android:hint="@string/setting_username" />
 
         </LinearLayout>
 
@@ -84,10 +84,10 @@
             <Button
                 android:id="@+id/btn_changUserName_comfirm"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
+                style="@style/title_font"
                 android:text="确认"
-                android:textSize="18dp"
-                android:background="@drawable/real_button_selector"></Button>
+                android:background="@drawable/real_button_selector"/>
 
         </LinearLayout>
 

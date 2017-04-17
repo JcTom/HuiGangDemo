@@ -10,8 +10,7 @@
         android:background="#9db830"
         android:orientation="horizontal"
         android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        >
+        android:paddingLeft="10dp">
 
         <ImageView
             android:id="@+id/add_address_back"
@@ -19,8 +18,7 @@
             android:layout_height="25dp"
             android:src="@mipmap/return_128"
             android:layout_marginLeft="1dp"
-            android:layout_gravity="left|center_vertical"
-            />
+            android:layout_gravity="left|center_vertical" />
 
         <TextView
             android:layout_width="match_parent"
@@ -34,176 +32,160 @@
 
     </LinearLayout>
 
-
-  <!--收件人-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        >
-
-     <TextView
-         android:layout_width="100dp"
-         android:layout_height="wrap_content"
-         android:text="收货人:"
-         android:textSize="18sp"
-         android:textColor="#000"
-         android:gravity="right"
-         />
-
-        <EditText
-            android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
+        <!--收件人-->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="请输入你名字"
-            android:layout_weight="1"
-            android:gravity="right"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="18dp">
 
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="收  货  人："
+                style="@style/two_title"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入你的名字"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="@drawable/et_shape"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+        <!--联系电话-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="联系电话："
+                style="@style/two_title"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入你的电话"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="@drawable/et_shape"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+        <!--所在地区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="所在地区："
+                android:gravity="center"
+                style="@style/two_title" />
+
+            <!--点击时间,点击这个text的时候,底部会弹起滑动选择器-->
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请选择所在地区"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="@drawable/et_shape"
+                android:padding="5dp"/>
+
+        </LinearLayout>
+
+
+        <!--所在小区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="小        区："
+                style="@style/two_title"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入小区名字"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textSize="18sp"
+                android:background="@drawable/et_shape"
+                android:padding="5dp"/>
+        </LinearLayout>
+
+        <!--详细地址-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="详细地址："
+                style="@style/two_title"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入详细地址"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:background="@drawable/et_shape"
+                android:padding="5dp"/>
+        </LinearLayout>
     </LinearLayout>
 
-    <!--联系电话-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        >
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="联系电话:"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:gravity="right"
-            />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入你电话"
-            android:layout_weight="1"
-            android:gravity="right"
-            />
-
-    </LinearLayout>
-
-    <!--所在地区-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        >
-
-
-        <TextView
-          android:layout_width="100dp"
-          android:layout_height="wrap_content"
-          android:text="所在地区:"
-            android:textColor="#000"
-            android:gravity="right"
-            android:textSize="18sp"
-            />
-
-        <!--点击时间,点击这个text的时候,底部会弹起滑动选择器-->
-         <TextView
-             android:id="@+id/btn_show"
-             android:layout_marginTop="2dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"
-             android:hint="请选择你所在的地区"
-             android:textSize="18sp"
-             android:gravity="right"
-             android:layout_marginBottom="2dp"
-             />
-
-        <TextView
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=">"
-            android:textSize="18sp"
-            />
-
-    </LinearLayout>
-
-
-    <!--所在小区-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        >
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="小区:"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:gravity="right"
-            />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入你小区的名字"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
-
-
-    <!--详细地址-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        >
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="详细地址:"
-            android:textSize="18sp"
-            android:textColor="#000"
-            android:gravity="right"
-            />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="请输入例如 A栋-A520号"
-            android:layout_weight="1"
-            android:gravity="right"
-            />
-
-
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/common_green"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/btn_degree_comfirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            style="@style/title_font"
             android:text="保存"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            />
+            android:background="@drawable/real_button_selector"/>
 
     </LinearLayout>
 

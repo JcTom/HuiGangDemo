@@ -42,52 +42,54 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    >
+                    android:orientation="horizontal">
                     <com.suctan.huigangdemo.widget.StarBar
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:id="@+id/start_view_3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:mClickImageId="@mipmap/star_n"
-                        app:mDefaultImageId="@mipmap/star_y"
+                        app:mClickImageId="@mipmap/star_pj_y"
+                        app:mDefaultImageId="@mipmap/star_pj_w"
                         app:mImageHeight="15dp"
                         app:mImageWidth="15dp"
-                        app:mMargin="2dp"
+                        app:mMargin="0dp"
                         app:mStarChoose="3"
                         app:mStarNum="5"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        style="@style/tips_font"
+                        android:text="5.0"
+                        android:gravity="center"/>
 
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/tips_font"
+                        android:text="分"
+                        android:gravity="center"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                style="@style/tips_font"
-                                android:text="5"
-                                android:gravity="center"/>
-
-                            <TextView
-                                android:layout_marginLeft="5dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/tips_font"
-                                android:text="分"
-                                android:gravity="center"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:layout_marginRight="5dp"
-                                style="@style/tips_font"
-                                android:text="2017/04/15"/>
+                    android:layout_weight="1"
+                    android:gravity="right">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:layout_marginRight="10dp"
+                            style="@style/tips_font"
+                            android:text="2017/04/15"/>
                 </LinearLayout>
 
             </LinearLayout>

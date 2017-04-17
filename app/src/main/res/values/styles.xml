@@ -153,7 +153,7 @@
     <style name="img_arrow">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:src">@mipmap/setting_arrow</item>
+        <item name="android:src">@mipmap/more_gray</item>
     </style>
 
     <!-- 设置用户头像-->

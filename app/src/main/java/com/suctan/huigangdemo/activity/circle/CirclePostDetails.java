@@ -56,6 +56,8 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter = new CirclePostAdapter());
 
+        mRecyclerView.setFocusable(false);
+
         initData();
 
         postBack();

@@ -40,7 +40,7 @@
     <!--背景图片和头像，名字设置-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:background="@mipmap/my_kitchen_bg"
         android:orientation="vertical"
         android:gravity="bottom"
@@ -118,12 +118,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        >
+        android:paddingLeft="8dp">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@mipmap/my_food_mark"
-            />
+            android:layout_marginRight="2dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -135,7 +136,7 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="3px"
+        android:layout_height="1px"
         android:background="#d3d3d3"
         android:layout_marginTop="5dp"
         />
@@ -145,36 +146,23 @@
         android:orientation="vertical"
         >
 
-        <FrameLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
+
+        <GridView
+            android:id="@+id/Mykitchen_gridview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".screen.screen_Activity"
-            >
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
 
-            <GridView
-                android:id="@+id/Mykitchen_gridview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-                />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="showPopFormBottom"
+            android:layout_gravity="bottom|right"
+            android:text="@string/share_fb"
+            style="@style/title_font"
+            android:background="@color/common_green" />
 
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="showPopFormBottom"
-                android:layout_gravity="bottom|right"
-                android:text="发布"
-                android:textColor="@color/white"
-                android:background="@color/common_green"
-                />
-
-
-        </FrameLayout>
 
 
     </LinearLayout>
