@@ -1,7 +1,6 @@
 package com.suctan.huigangdemo.activity.Popupwindow;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -11,8 +10,6 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.activity.myself.release_new_todayfoodActivity;
-import com.suctan.huigangdemo.activity.myself.release_todayfood_Activiity;
 
 /**
  * Created by B-305 on 2017/4/10.

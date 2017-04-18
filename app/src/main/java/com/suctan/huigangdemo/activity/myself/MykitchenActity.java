@@ -1,46 +1,45 @@
 package com.suctan.huigangdemo.activity.myself;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.example.androidbase.LoadImageManager;
+import com.example.androidbase.mvp.MvpActivity;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
+import com.suctan.huigangdemo.bean.user.CurrentUser;
 import com.suctan.huigangdemo.bean.user.MykitchenBean;
+import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenPresenter;
+import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by B-305 on 2017/4/13.
  */
 
-public class MykitchenActity extends Activity{
+public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements View.OnClickListener, MyChikenView {
 
     /*private  ListView lv;*/
     private ImageView Mykitchen_back;
     GridView Mykitchen_gridview;
+    private ImageView chiken_UserHead;//头像
+
+
     public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.my_kitchen);
-
-        Mykitchen_gridview = (GridView) findViewById(R.id.Mykitchen_gridview);
-        Mykitchen_back  = (ImageView) findViewById(R.id.Mykitchen_back);  //定义一个返回按钮
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.my_kitchen);
+        initView();
+        initViewData();
+        getMyChikenData();
         goMykitchenAdapter();
-        //实现返回按钮的点击事件
-        Mykitchen_back.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
-
 
             /*lv = (ListView) findViewById(R.id.list_view_food);*//*定义一个动态数组*//*
             ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();*//*在数组中存放数据*//*
@@ -73,32 +72,84 @@ public class MykitchenActity extends Activity{
             });*/
     }
 
+    @Override
+    protected MyChikenPresenter createPresenter() {
+        return new MyChikenPresenter(this);
+    }
+
+    private void initView() {
+        Mykitchen_gridview = (GridView) findViewById(R.id.Mykitchen_gridview);
+        Mykitchen_back = (ImageView) findViewById(R.id.Mykitchen_back);  //定义一个返回按钮
+        chiken_UserHead = (ImageView) findViewById(R.id.chiken_UserHead);
+//监听
+        Mykitchen_back.setOnClickListener(this);
+    }
+
+    private void initViewData() {
+        if (CurrentUser.getInstance().getUserBean().getUser_icon() != null) {
+            LoadImageManager.getImageLoader().displayImage(CurrentUser.getInstance().getUserBean().getUser_icon(), chiken_UserHead);
+        }
+
+    }
+
     private void goMykitchenAdapter() {
-        ArrayList<MykitchenBean>companys=new ArrayList<>();
-        for(int i=0;i<=10;i++){
-            MykitchenBean mykitchenBean=new MykitchenBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
+        ArrayList<MykitchenBean> companys = new ArrayList<>();
+        for (int i = 0; i <= 10; i++) {
+            MykitchenBean mykitchenBean = new MykitchenBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
             companys.add(mykitchenBean);
         }
-        MykitchenAdaper adapter=new MykitchenAdaper(this,companys);
+        MykitchenAdaper adapter = new MykitchenAdaper(this, companys);
         Mykitchen_gridview.setAdapter(adapter);
     }
 
     /*这个功能是我的厨房中的发布按钮弹出的popupwindow*/
     public void showPopFormBottom(View view) {
-        my_kitchen_popupwin_release my_kitchen_popupwin_release = new my_kitchen_popupwin_release(this, onClickListener);
+        my_kitchen_popupwin_release my_kitchen_popupwin_release = new my_kitchen_popupwin_release(this);
         my_kitchen_popupwin_release.showAtLocation(findViewById(R.id.main_view), Gravity.CENTER, 0, 0);
-}
 
-    private View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            switch (v.getId()) {
-                case R.id.btn_add_today_food:
-                    break;
-                case R.id.btn_add_new_food:
-                    break;
+        my_kitchen_popupwin_release.setAddChiChenLisetner(new my_kitchen_popupwin_release.AddKitChen() {
+            @Override
+            public void AddToDayFood() {
+                Intent gotoTodayfood = new Intent(MykitchenActity.this, release_todayfood_Activiity.class);
+                startActivity(gotoTodayfood);
             }
+
+            @Override
+            public void AddNewFood() {
+                Intent gotoNewfood = new Intent(MykitchenActity.this, release_new_todayfoodActivity.class);
+                startActivity(gotoNewfood);
+            }
+        });
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.Mykitchen_back:
+                finish();
+                break;
         }
-    };
+
+    }
+
+    @Override
+    public void getDataFail(String msg) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    public void getMyChikenData() {
+        Map<String, Object> myChikenMap = new HashMap<String, Object>();
+
+    }
 }

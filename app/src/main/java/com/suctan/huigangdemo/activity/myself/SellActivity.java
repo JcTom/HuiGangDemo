@@ -6,16 +6,12 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.adapter.IndexGridAdapter;
-import com.suctan.huigangdemo.adapter.MyAssessGoAdapter;
-import com.suctan.huigangdemo.bean.user.IndexGridBean;
-import com.suctan.huigangdemo.bean.user.MyAssessGoBean;
 import com.suctan.huigangdemo.fragment.FirstFragment;
 import com.suctan.huigangdemo.fragment.SecondFragment;
 import com.suctan.huigangdemo.fragment.ZeroFragment;
