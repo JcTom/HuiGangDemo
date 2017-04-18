@@ -1,106 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
+            android:id="@+id/imv_sex_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
             android:layout_gravity="left|center_vertical"
-            />
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/midf_sex"
-            android:textSize="20sp"
-            android:textColor="#fff"
-            android:gravity="center"
             android:layout_marginRight="25dp"
-            />
+            android:gravity="center"
+            android:text="@string/midf_sex"
+            android:textColor="#fff"
+            android:textSize="20sp" />
     </LinearLayout>
-
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-    <LinearLayout style="@style/mid_layout">
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout style="@style/mid_layout">
+
+            <TextView
+                style="@style/usertext"
+                android:text="性别:" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_clo"
-            android:textSize="18sp"
-            android:text="性别:" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="vertical"
-         >
+            <RadioGroup
+                android:layout_marginLeft="10dp"
+                android:id="@+id/ragp_change_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-         <RadioGroup
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="vertical"
-             android:paddingRight="10dp"
-             android:paddingLeft="10dp">
-             <RadioButton
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/boy"
-                 android:textSize="18sp"
-                 android:button="@drawable/radio"
-                 android:paddingLeft="10dp"
-                 android:layout_marginBottom="5dp"
-                 android:layout_marginTop="5dp"
-                 />
-             <RadioButton
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/girl"
-                 android:textSize="18sp"
-                 android:paddingLeft="10dp"
-                 android:button="@drawable/radio"
-                 android:layout_marginTop="10dp"
-                 />
-         </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rab_sex_boy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/radio"
+                    android:paddingLeft="10dp"
+                    android:text="@string/boy"
+                    android:textSize="18sp" />
 
-     </LinearLayout>
+                <RadioButton
+                    android:id="@+id/rag_sex_girl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:button="@drawable/radio"
+                    android:paddingLeft="10dp"
+                    android:text="@string/girl"
+                    android:textSize="18sp" />
+            </RadioGroup>
+
+        </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            >
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
 
             <Button
+                android:id="@+id/btn_sex_comfirm"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                style="@style/title_font"
+                android:layout_height="match_parent"
+                android:background="@drawable/real_button_selector"
                 android:text="确认"
-                android:background="@drawable/real_button_selector"/>
+                android:textColor="@color/white"
+                android:textSize="20sp"></Button>
 
         </LinearLayout>
 

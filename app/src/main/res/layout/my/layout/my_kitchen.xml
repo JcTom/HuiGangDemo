@@ -61,6 +61,7 @@
                 app:border_width="5dp"
                 app:border_color="@color/border_clo"
                 android:layout_gravity="bottom"
+                android:id="@+id/chiken_UserHead"
                 >
             </com.example.androidbase.widget.CircleImageView>
 

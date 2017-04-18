@@ -44,6 +44,8 @@
             android:layout_height="40dp"
             android:baselineAligned="false"
             android:orientation="horizontal" >
+
+            //进行中
             <LinearLayout
                 android:id="@+id/linear_seller_description"
                 android:layout_width="0dp"
@@ -59,7 +61,7 @@
                     android:textSize="18dp"
                     />
             </LinearLayout>
-
+            //已完成
             <LinearLayout
                 android:id="@+id/linear_common_problem"
                 android:layout_width="0dp"
@@ -76,10 +78,29 @@
                     />
             </LinearLayout>
 
+            //今日发布要做的菜色
+            <LinearLayout
+                android:id="@+id/linear_release_food"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+                <TextView
+                    android:id="@+id/text_release_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_sell_already_food"
+                    android:textSize="18dp"
+                    />
+            </LinearLayout>
+
+
+
         </LinearLayout>
 
 
     </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/mViewpager"
         android:layout_width="match_parent"

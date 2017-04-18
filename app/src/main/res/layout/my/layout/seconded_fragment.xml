@@ -9,28 +9,46 @@
     填充
     -->
 
-    <!--滑动底部线段-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/head_border_width_clo"
-            android:layout_weight="1"
-            >
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/common_green"
-            android:layout_weight="1"
-            >
-        </LinearLayout>
+            <!--滑动底部线段-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:orientation="horizontal"
+                >
+                //第一条线段
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/head_border_width_clo"
+                    android:layout_weight="1"
+                    >
+                </LinearLayout>
+                //第二条线段
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/common_green"
+                    android:layout_weight="1"
+                    >
+                </LinearLayout>
+                第三条线段
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/head_border_width_clo"
+                    android:layout_weight="1"
+                    >
+                </LinearLayout>
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
+                >
+            </GridView>
 
 
 </LinearLayout>

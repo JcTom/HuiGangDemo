@@ -39,6 +39,7 @@
         android:background="#d3d3d3"
         android:orientation="vertical">
 
+        //订做午餐
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -55,6 +56,7 @@
                 android:textSize="18dp" />
         </LinearLayout>
 
+        //把控菜品详情以下的全部内容
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,6 +65,7 @@
             android:background="@color/white"
             android:orientation="vertical">
 
+            //订单详情
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,30 +78,31 @@
                     android:text="菜品详情"
                     android:textColor="#565656"
                     android:textSize="18dp" />
-            </LinearLayout>
 
+
+
+            </LinearLayout>
+            //订单详情下面的列表内同
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
-
+                //这个子布局,用来装载gridview的内容
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical">
-
                     // 不同的菜显示，可能需要采用到滑动的布局。
-
                     <GridView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"></GridView>
+                        android:layout_height="match_parent">
+                    </GridView>
                 </LinearLayout>
             </ScrollView>
 
             //留言信息
-
-            <LinearLayout
+          <!--  <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -108,25 +112,26 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="69dp"
+                    android:layout_height="match_parent"
                     android:hint="客户留言信息"
                     android:padding="5dp"
                     android:textSize="12sp" />
-            </LinearLayout>
+            </LinearLayout>-->
 
 
             //总的出价 单个linearlayout 设置
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right">
+                android:gravity="right"
+                android:orientation="horizontal"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="总出价:"
+                    android:text="总计:"
                     android:textColor="#fc1515"
                     android:textSize="16sp" />
 
@@ -146,10 +151,7 @@
                     android:textColor="#fc1515"
                     android:textSize="16sp" />
             </LinearLayout>
-
-
             //分隔线
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -171,7 +173,6 @@
                 android:orientation="vertical">
 
                 //收货人的信息
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -182,7 +183,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="收 货 人:"
+                        android:text="订单编号:"
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
@@ -190,12 +191,86 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="刘女士"
+                        android:text="20170417002"
                         android:textColor="@color/back"
                         android:textSize="15sp" />
                 </LinearLayout>
-                //收货方式
+                //收货人
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+                    <!--还可以用上面菜品详情的颜色  #565656-->
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="收  货  人:"
+                        android:textColor="@color/back"
+                        android:textSize="15sp" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="xxx"
+                        android:textColor="@color/back"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+                //联系电话
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+                    <!--还可以用上面菜品详情的颜色  #565656-->
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="联系电话:"
+                        android:textColor="@color/back"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13433447124"
+                        android:textColor="@color/back"
+                        android:textSize="15sp" />
+                </LinearLayout>
+                //地址
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+                    <!--还可以用上面菜品详情的颜色  #565656-->
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="联系地址:"
+                        android:textColor="@color/back"
+                        android:textSize="15sp" />
+                    //栋和房间号分开两个textview 第一个栋
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A 栋"
+                        android:textColor="@color/back"
+                        android:textSize="15sp" />
+                    //栋和房间号分开两个textview 第二个是房间号
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A 105"
+                        android:textColor="@color/back" />
+                </LinearLayout>
+                //收货方式
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -217,92 +292,10 @@
                         android:textColor="@color/back"
                         android:textSize="15sp" />
                 </LinearLayout>
-                //地址
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-                    <!--还可以用上面菜品详情的颜色  #565656-->
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="地        址:"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-                    //栋和房间号分开两个textview 第一个栋
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="A 栋"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-                    //栋和房间号分开两个textview 第二个是房间号
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="A 105"
-                        android:textColor="@color/back" />
-                </LinearLayout>
-                //联系电话
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-                    <!--还可以用上面菜品详情的颜色  #565656-->
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="联系方式:"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="13433447124"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-                </LinearLayout>
-
-                //期望时间
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-                    <!--还可以用上面菜品详情的颜色  #565656-->
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="期望时间:"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10:00"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="前"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-                </LinearLayout>
             </LinearLayout>
 
             //底部的信息
@@ -318,9 +311,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/common_green"
-                    android:text="接单"
+                    android:text="确认收货"
                     android:textColor="#fff"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
