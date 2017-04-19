@@ -14,8 +14,10 @@ import android.widget.TextView;
 
 import com.example.androidbase.ActivityTask;
 import com.example.androidbase.BaseActivity;
+import com.example.androidbase.utils.ToastTool;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.circle.PostRelease;
 import com.suctan.huigangdemo.activity.search.SearchActivity;
 import com.suctan.huigangdemo.adapter.FragmentViewPage;
@@ -61,12 +63,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private FragmentFind viewFind;
     private FragmentMySelft viewMyselft;
 
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
         ActivityTask.getInstanse().addActivity(this);//添加进栈
+         ToastTool.showToast(TokenManager.getToken(),2);
+        System.out.println("token是："+TokenManager.getToken());
         initBarStatus();//初始化状态栏
         initView();//初始化组件
         initViewPage();//初始化viewPage
@@ -143,9 +152,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         main_fragment_viewPage.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
-
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
