@@ -17,10 +17,9 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
+//    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
     String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
-
-
 /**********************************************************************************************************************/
     /**
      * 用户登录请求
@@ -32,12 +31,21 @@ public interface ApiStores {
 //    Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
 //    @POST("login")
 //    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
-
     /**
      * 获取用户信息
      */
     @POST("get_userInfo")
-    Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
+    Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);  /**
+
+     * 发布共享需求
+     */
+    @POST("pub_need")
+    Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
+
+    /* 发布共享需求
+     */
+    @POST("pub_need")
+    Observable<ModifyReturn> PubNoticeReturn(@QueryMap Map<String, Object> needReturn);
 
     /**
      * 修改用户信息
