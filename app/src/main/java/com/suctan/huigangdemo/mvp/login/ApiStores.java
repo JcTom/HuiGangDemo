@@ -45,4 +45,11 @@ public interface ApiStores {
     @POST("update_userInfo")
     Observable<ModifyReturn> ModifyUserReturn(@QueryMap Map<String, Object> userReturn);
 
+    /**
+     * 修改用户密码
+     */
+    @POST("update_pswInfo")
+    Observable<ModifyReturn> ModifyPswReturn(@QueryMap Map<String, Object> userReturn);
+
+
 }

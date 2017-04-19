@@ -79,7 +79,7 @@
             </LinearLayout>
 
             //今日发布要做的菜色
-            <LinearLayout
+           <!-- <LinearLayout
                 android:id="@+id/linear_release_food"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -92,7 +92,7 @@
                     android:text="@string/my_sell_already_food"
                     android:textSize="18dp"
                     />
-            </LinearLayout>
+            </LinearLayout>-->
 
 
 
