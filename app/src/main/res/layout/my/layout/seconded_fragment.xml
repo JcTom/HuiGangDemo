@@ -39,6 +39,13 @@
                     android:layout_weight="1"
                     >
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/head_border_width_clo"
+                    android:layout_weight="1"
+                    >
+                </LinearLayout>
 
             </LinearLayout>
 

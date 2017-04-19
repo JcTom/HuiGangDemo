@@ -40,6 +40,7 @@
         android:orientation="vertical">
 
         //订做午餐
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -57,6 +58,7 @@
         </LinearLayout>
 
         //把控菜品详情以下的全部内容
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,6 +68,7 @@
             android:orientation="vertical">
 
             //订单详情
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,52 +83,36 @@
                     android:textSize="18dp" />
 
 
-
             </LinearLayout>
             //订单详情下面的列表内同
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 //这个子布局,用来装载gridview的内容
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical">
                     // 不同的菜显示，可能需要采用到滑动的布局。
+
                     <GridView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    </GridView>
+                        android:layout_height="match_parent"></GridView>
                 </LinearLayout>
             </ScrollView>
 
-            //留言信息
-          <!--  <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="2"
-                android:background="#d3d3d3">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="客户留言信息"
-                    android:padding="5dp"
-                    android:textSize="12sp" />
-            </LinearLayout>-->
-
 
             //总的出价 单个linearlayout 设置
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,6 +139,7 @@
                     android:textSize="16sp" />
             </LinearLayout>
             //分隔线
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
@@ -173,6 +161,7 @@
                 android:orientation="vertical">
 
                 //收货人的信息
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -196,6 +185,7 @@
                         android:textSize="15sp" />
                 </LinearLayout>
                 //收货人
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,6 +209,7 @@
 
                 </LinearLayout>
                 //联系电话
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -241,6 +232,7 @@
                         android:textSize="15sp" />
                 </LinearLayout>
                 //地址
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -271,6 +263,7 @@
                         android:textColor="@color/back" />
                 </LinearLayout>
                 //收货方式
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -294,13 +287,11 @@
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
 
             //底部的信息
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/common_green"
@@ -314,7 +305,7 @@
                     android:text="确认收货"
                     android:textColor="#fff"
                     android:textSize="20sp" />
-            </LinearLayout>
+            </LinearLayout>-->
 
 
         </LinearLayout>

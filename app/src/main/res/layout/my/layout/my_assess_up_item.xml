@@ -3,21 +3,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 
-   <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical"
-      android:background="#d3d3d3"
 
-      >
-       //第一个用户对我的评价,那就是我收到的评价,用户上传了图片,那么直接就设置为空即可.
-        <LinearLayout
-            android:layout_margin="10dp"
+    <!--第一个用户对我的评价,那就是我收到的评价,用户上传了图片,那么直接就设置为空即可.-->
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -34,7 +26,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="250dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:orientation="vertical">
 
@@ -91,43 +83,40 @@
                     </com.suctan.huigangdemo.widget.StarBar>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="10dp"
-                    >
-                    <TextView
-                        android:id="@+id/I_have_received_Up_Text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pinglun"
-                        android:textSize="16sp"
-                        android:padding="2dp"
-                        />
-                    <ImageView
-                        android:id="@+id/I_have_received_Up_Image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/logo5"
-                        android:scaleType="fitStart"
-                        />
-
-                </LinearLayout>
-
              </LinearLayout>
         </LinearLayout>
-       //第二个用户对我的评价,用户没有上传图片,这个直接,imageview这个控件就不显示
-       <!-- //当你调用这个item的时候,因为布局里面,写了两个小item.一个有图
-      // 一个无图,引用的时候,需要把布局中的其中一个item删除
-      //最好是把无图的删除了
-      //第二个用户对我的评价,用户没有上传图片,这个直接,imageview这个控件就不显示-->
+    <!--第二个用户对我的评价,用户没有上传图片,这个直接,imageview这个控件就不显示
+    当你调用这个item的时候,因为布局里面,写了两个小item.一个有图
+    一个无图,引用的时候,需要把布局中的其中一个item删除
+    最好是把无图的删除了
+    第二个用户对我的评价,用户没有上传图片,这个直接,imageview这个控件就不显示-->
 
 
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <TextView
+            android:id="@+id/I_have_received_Up_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pinglun"
+            android:textSize="16sp"
+            android:padding="2dp"
+            />
+        <ImageView
+            android:id="@+id/I_have_received_Up_Image"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@mipmap/logo5"
+            android:scaleType="fitStart"
+            android:layout_gravity="center"/>
 
-   </LinearLayout>
-
+    </LinearLayout>
 
 
 

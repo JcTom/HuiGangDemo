@@ -3,8 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--这个布局被用来加载第一个firrstfragment
-    并且这个布局下面的每个item  是被 first_my_sell_list_item
+
+    <!--这个布局被用来加载第一个secondedfragment
+    并且这个布局下面的每个item  是被 seconded_my_sell_list_item
     填充
     -->
 
@@ -17,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/common_green"
+            android:background="@color/head_border_width_clo"
             android:layout_weight="1"
             >
         </LinearLayout>
@@ -34,20 +35,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/head_border_width_clo"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            >
         </LinearLayout>
+        <!--4-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/head_border_width_clo"
+            android:background="@color/common_green"
             android:layout_weight="1"
             >
         </LinearLayout>
 
     </LinearLayout>
+
     <GridView
-        android:id="@+id/my_first_framgment_gridview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        >
+    </GridView>
+
 
 </LinearLayout>
