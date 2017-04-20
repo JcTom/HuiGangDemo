@@ -12,6 +12,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
+import com.suctan.huigangdemo.bean.index.EatFoodReturn;
 import com.suctan.huigangdemo.bean.user.HomeBean;
 import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
@@ -77,8 +78,25 @@ public class HomeActivity extends MvpActivity<HomePresenter> implements HomeView
         return null;
     }
 
+
     @Override
-    public void homeInfoDone(HomeBean homeBean) {
+    public void getRollViewListSuc(EatFoodReturn mEatFoodReturn) {
+
+    }
+
+    @Override
+    public void getRollViewListFail() {
+
+    }
+
+    @Override
+    public void getEatfoodListSuc(EatFoodReturn mEatFoodReturn) {
+
+    }
+
+
+    @Override
+    public void getEatfoodListFail() {
 
     }
 }

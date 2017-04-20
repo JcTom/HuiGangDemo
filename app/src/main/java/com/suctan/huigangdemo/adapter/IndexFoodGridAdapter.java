@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.androidbase.LoadImageManager;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 
 import java.util.ArrayList;
@@ -19,21 +20,21 @@ import java.util.ArrayList;
  */
 public class IndexFoodGridAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<CompanyInfoBean> companyLists;
+    private ArrayList<EatFoodBean> eatFoodBeenList;
 
-    public IndexFoodGridAdapter(Context context, ArrayList<CompanyInfoBean> companyLists) {
+    public IndexFoodGridAdapter(Context context, ArrayList<EatFoodBean> eatFoodBeenList) {
         this.context = context;
-        this.companyLists = companyLists;
+        this.eatFoodBeenList = eatFoodBeenList;
     }
 
     @Override
     public int getCount() {
-        return companyLists.size();
+        return eatFoodBeenList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return companyLists.get(i);
+        return eatFoodBeenList.get(i);
     }
 
     @Override
@@ -44,7 +45,7 @@ public class IndexFoodGridAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         FootGridHolder viewHolder = null;
-        CompanyInfoBean companyInfoBean = companyLists.get(i);
+        EatFoodBean eatFoodBean = eatFoodBeenList.get(i);
 
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.recommend_item, viewGroup, false);
@@ -55,7 +56,10 @@ public class IndexFoodGridAdapter extends BaseAdapter {
         } else {
             viewHolder = (FootGridHolder) view.getTag();
         }
-        LoadImageManager.getImageLoader().displayImage(companyInfoBean.getImageUrl(), viewHolder.ItemImage);
+        if (eatFoodBean.getOrder_pic() != null) {
+            LoadImageManager.getImageLoader().displayImage(eatFoodBean.getOrder_pic(), viewHolder.ItemImage);
+        }
+        viewHolder.ItemText.setText(eatFoodBean.getOrder_title());
         return view;
     }
 

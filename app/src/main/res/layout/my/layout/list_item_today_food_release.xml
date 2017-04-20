@@ -26,10 +26,11 @@
         android:ellipsize="end"
         android:maxEms="18"
         />
+
     <!--设置菜的描述-->
     <TextView
         android:layout_toRightOf="@id/recommend_today_ItemImage"
-        android:id="@+id/recommend_today_ItemText"
+        android:id="@+id/recommend_today_descript"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="12sp"
@@ -53,7 +54,7 @@
         />
     <!--设置添加份量按钮-->
     <com.suctan.huigangdemo.numlib.AnimShopButton
-        android:id="@+id/btn2"
+        android:id="@+id/btn_book_eatfood"
         android:layout_alignParentRight="true"
         android:layout_alignBottom="@id/recommend_today_ItemImage"
         android:layout_width="wrap_content"
