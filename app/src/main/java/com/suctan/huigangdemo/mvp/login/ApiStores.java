@@ -35,7 +35,7 @@ public interface ApiStores {
      * 获取用户信息
      */
     @POST("get_userInfo")
-    Observable<GetUserReturn> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);  /**
+    Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);  /**
 
      * 发布共享需求
      */
