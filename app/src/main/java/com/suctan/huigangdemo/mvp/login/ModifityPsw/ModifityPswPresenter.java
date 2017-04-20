@@ -25,9 +25,7 @@ public class ModifityPswPresenter extends DemoBasePresenter<ModifityPswView>{
                    new SubscriberCallBack<>(new ApiCallback<ModifyReturn>() {
                        @Override
                        public void onStart() {
-
                        }
-
                        @Override
                        public void onSuccess(ModifyReturn model) {
                            Toast.makeText(BaseApplication.getContext(),"修改用户密码成功" + model.getStatus()+model.getMsg(),Toast.LENGTH_SHORT).show();
@@ -43,9 +41,6 @@ public class ModifityPswPresenter extends DemoBasePresenter<ModifityPswView>{
                              mvpView.hideLoading();
                        }
                    })
-
-
-
            );
         }
 

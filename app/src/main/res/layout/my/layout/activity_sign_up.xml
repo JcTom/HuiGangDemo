@@ -66,7 +66,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="手机号"
-               android:textColor="#000"
                 android:textSize="16sp" />
 
             <EditText
@@ -100,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:text="密    码"
-                android:textColor="#000"
                 android:textSize="16sp" />
 
             <EditText

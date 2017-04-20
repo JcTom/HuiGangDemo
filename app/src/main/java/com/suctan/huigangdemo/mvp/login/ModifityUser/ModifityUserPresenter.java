@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Tom on 2017/4/11.
  */
-
+//这个presenter 写的是,设置里面的退出登录
 public class ModifityUserPresenter extends DemoBasePresenter<ModifityUserView> {
     public ModifityUserPresenter(ModifityUserView mvpView) {
         attachView(mvpView);

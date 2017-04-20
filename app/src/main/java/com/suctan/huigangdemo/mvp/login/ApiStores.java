@@ -56,8 +56,13 @@ public interface ApiStores {
     /**
      * 修改用户密码
      */
-    @POST("update_pswInfo")
+    @POST("update_pass")
     Observable<ModifyReturn> ModifyPswReturn(@QueryMap Map<String, Object> userReturn);
 
+    /**
+     * 发布帖子或者话题
+     */
+    @POST("pub_ topic")
+    Observable<ModifyReturn> postReleaseReturn(@QueryMap Map<String, Object> userReturn);
 
 }

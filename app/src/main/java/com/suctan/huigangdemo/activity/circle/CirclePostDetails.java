@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -28,41 +29,38 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by B-305 on 2017/4/8.
  */
 
-public class CirclePostDetails extends AppCompatActivity implements FaceFragment.OnEmojiClickListener{
+public class CirclePostDetails extends AppCompatActivity implements FaceFragment.OnEmojiClickListener,View.OnClickListener{
 
     ImageButton post_emoticon;
     EditText et_reply;
     FrameLayout emojicons_layout;
-
     ImageButton postDetailsBack;
-
-
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
     private CirclePostAdapter mAdapter;
-
+    @BindView(R.id.btn_fs)     //发送消息按钮
+    Button btnfs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_details);
-
+        ButterKnife.bind(this);
         initEmotion();
-
         mRecyclerView = (RecyclerView) findViewById(R.id.post_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter = new CirclePostAdapter());
-
         mRecyclerView.setFocusable(false);
-
         initData();
-
         postBack();
-
     }
+
 
     //返回
     private void postBack() {
@@ -71,6 +69,7 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
             @Override
             public void onClick(View view) {
                 finish();
+                btnfs.setOnClickListener(this);
             }
         });
     }
@@ -84,6 +83,19 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
             mDatas.add("" + (char) i);
         }
 
+
+    }
+     //按钮的点击事件,并且对数据进行传输
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_fs:
+                fsVariety();
+        }
+
+    }
+   //里面map的数据集合,把数据封装起来,传输给另外一处,待完成
+    private void fsVariety() {
 
     }
 

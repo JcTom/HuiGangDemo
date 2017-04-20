@@ -2,7 +2,6 @@ package com.suctan.huigangdemo.activity.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +16,8 @@ import com.example.androidbase.utils.ToastTool;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.MainActivity;
+import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
+import com.suctan.huigangdemo.activity.signup.signupActivity;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.LoginPresener;
 import com.suctan.huigangdemo.mvp.login.LoginView;
@@ -35,8 +36,8 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     //title
     private ImageView imgBack;
     private TextView txtTitle;
-    private Button btnLogin;
-
+    private Button btnLogin,btn_signup;
+    private TextView forgetpsw;
     //edt
     private EditText edtUserName;
     private EditText edtPwd;
@@ -62,6 +63,13 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         imgBack = (ImageView) findViewById(R.id.logins_back);
         imgBack.setOnClickListener(this);
 
+        //注册
+        btn_signup = (Button) findViewById(R.id.btn_signup);
+        btn_signup.setOnClickListener(this);
+
+        //忘记密码
+        forgetpsw = (TextView) findViewById(R.id.forgetpsw);
+        forgetpsw.setOnClickListener(this);
 
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(this);
@@ -98,6 +106,14 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
 //                toogleBtnClickStyle(false);
 //                LoginVariety("1", "1");
                 Variety();
+                break;
+            case R.id.forgetpsw:
+                Intent intentLogPwd = new Intent(this, SeetingForGetPwd.class);
+                startActivity(intentLogPwd);
+                break;
+            case R.id.btn_signup:
+                Intent intentsignup= new Intent(this, signupActivity.class);
+                startActivity(intentsignup);
                 break;
         }
     }

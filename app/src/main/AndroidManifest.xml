@@ -83,7 +83,7 @@
         <activity android:name=".activity.setting.SeetingUserName"></activity>
         <activity android:name=".activity.setting.SeetingUserSex"></activity>
         <activity android:name=".activity.setting.SeetingVeriatyBody"></activity>
-        <activity android:name=".activity.myself.MykitchenActity"></activity>
+
 
         <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.addressActivity"></activity>
@@ -104,20 +104,8 @@
         <activity android:name=".activity.myself.address_listitemActivity"></activity>
         <activity android:name=".activity.screen_Activity"></activity>
         <activity android:name=".activity.myself.my_assess"></activity>
-
-        /*****************************************************************************************************/
-        <!--用户信息修改-->
-
-
-        <activity android:name=".activity.setting.SeetingUserName"></activity>
-        <activity android:name=".activity.setting.SeetingUserAge"></activity>
-        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
-        <activity android:name=".activity.setting.SeetingUserSex"></activity>
-        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
-        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
-        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
-
-
+        <activity android:name=".activity.password.PasswordActivity"></activity>
+        <activity android:name=".activity.signup.signupActivity"></activity>
 
     </application>
 
