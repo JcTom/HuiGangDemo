@@ -1,7 +1,9 @@
 package com.suctan.huigangdemo.activity.setting;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,6 +34,7 @@ import cn.bmob.v3.listener.VerifySMSCodeListener;
 public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements ResetPassView, View.OnClickListener {
     private EditText user_phone, user_pass, identityCode;
     private Button btnResetPass, btnIdentityCode;
+    private TimeCount time;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements 
         btnIdentityCode = (Button) findViewById(R.id.btnIdentityCode);
         btnResetPass.setOnClickListener(this);
         btnIdentityCode.setOnClickListener(this);
+        time = new TimeCount(60000, 1000);
 
 
     }
@@ -120,7 +124,6 @@ public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnIdentityCode:
-
                 getIdentityCode();
 
                 break;
@@ -143,7 +146,7 @@ public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements 
             return;
 
         } else {
-
+            time.start();
             BmobSMS.requestSMSCode(this, user_phone.getText().toString(), "resetPass", new RequestSMSCodeListener() {
                 @Override
                 public void done(Integer integer, BmobException e) {
@@ -182,5 +185,26 @@ public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements 
     public void resetPassDone() {
            //重置密码成功后跳转到登陆页面
         startActivity(new Intent(SeetingFogetPwd.this, LoginActivity.class));
+    }
+
+    class TimeCount extends CountDownTimer {
+        public TimeCount(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            btnIdentityCode.setBackgroundColor(Color.parseColor("#B6B6D8"));
+            btnIdentityCode.setClickable(false);
+            btnIdentityCode.setText("("+millisUntilFinished / 1000 +") 秒");
+        }
+
+        @Override
+        public void onFinish() {
+            btnIdentityCode.setText("验证码");
+            btnIdentityCode.setClickable(true);
+            btnIdentityCode.setBackgroundColor(Color.parseColor("#4EB84A"));
+
+        }
     }
 }

@@ -21,7 +21,6 @@ public class addressActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.address_manager);
         initView();
-
     }
 
     private void initView() {

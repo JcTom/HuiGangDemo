@@ -1,14 +1,14 @@
 package com.suctan.huigangdemo.activity.signup;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidbase.mvp.MvpActivity;
@@ -16,7 +16,6 @@ import com.example.androidbase.utils.NetConnectUtils;
 import com.example.androidbase.utils.ToastTool;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
-import com.suctan.huigangdemo.bean.user.CourseBean;
 import com.suctan.huigangdemo.mvp.login.singup.SingUpPresenter;
 import com.suctan.huigangdemo.mvp.login.singup.SingUpView;
 
@@ -35,6 +34,7 @@ import cn.bmob.v3.listener.VerifySMSCodeListener;
 public class signupActivity extends MvpActivity<SingUpPresenter> implements SingUpView, View.OnClickListener {
     private EditText user_phone, user_pass, identityCode;
     private Button btnRegister, btnIdentityCode;
+    private TimeCount time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
         btnIdentityCode = (Button) findViewById(R.id.btnIdentityCode);
         btnRegister.setOnClickListener(this);
         btnIdentityCode.setOnClickListener(this);
+        time = new TimeCount(60000, 1000);
 
     }
 
@@ -153,6 +154,7 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
 
         } else {
 
+            time.start();
             BmobSMS.requestSMSCode(this, user_phone.getText().toString(), "register", new RequestSMSCodeListener() {
 
                 @Override
@@ -200,4 +202,25 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
         startActivity(new Intent(signupActivity.this,LoginActivity.class));
     }
 
+     class TimeCount extends CountDownTimer {
+
+         public TimeCount(long millisInFuture, long countDownInterval) {
+             super(millisInFuture, countDownInterval);
+         }
+
+         @Override
+         public void onTick(long millisUntilFinished) {
+             btnIdentityCode.setBackgroundColor(Color.parseColor("#B6B6D8"));
+             btnIdentityCode.setClickable(false);
+             btnIdentityCode.setText("("+millisUntilFinished / 1000 +") 秒");
+         }
+
+         @Override
+         public void onFinish() {
+             btnIdentityCode.setText("验证码");
+             btnIdentityCode.setClickable(true);
+             btnIdentityCode.setBackgroundColor(Color.parseColor("#4EB84A"));
+
+         }
+    }
 }

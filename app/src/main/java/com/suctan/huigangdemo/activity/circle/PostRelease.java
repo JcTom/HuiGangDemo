@@ -114,15 +114,11 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
 
 
         });
-
-
-
     }
      //实现把数据传给Presenter进行处理
     private void postVariety() {
          String topic_title =post_title.getText().toString().trim();
          String topic_content=post_content.getText().toString().trim();
-
         //上传图片,有些问题,这个接口,晚点再写
 
     }

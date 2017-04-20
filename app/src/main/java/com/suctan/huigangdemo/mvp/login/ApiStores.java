@@ -16,9 +16,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
-//    String ImageUrl = "http://119.29.137.109/tp/uploads/";
-//    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+//    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
+    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**
@@ -49,6 +48,7 @@ public interface ApiStores {
     @POST("get_userInfo")
     Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
     /**
+
      * 发布共享需求
      */
     @POST("pub_need")
@@ -77,6 +77,27 @@ public interface ApiStores {
      * 发布帖子或者话题
      */
     @POST("pub_ topic")
-    Observable<ModifyReturn> postReleaseReturn(@QueryMap Map<String, Object> userReturn);
+    Observable<ModifyReturn> postReleaseReturn(@QueryMap Map<String, Object> topicReturn);
+
+    /**
+     * 我的钱包,里面的充值功能
+     */
+    @POST("put_money")
+    Observable<ModifyReturn> addmoneyReturn(@QueryMap Map<String, Object> moneyReturn);
+
+    /**
+     * 我的钱包,里面的提现功能
+     */
+    @POST("get_money")
+    Observable<ModifyReturn> outmoneyReturn(@QueryMap Map<String, Object> outmoneyReturn);
+
+    /**
+     * 地址管理,里面的添加地址管理功能,目前这个功能待定
+     */
+    @POST("get_money")
+    Observable<ModifyReturn> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
+
+
+
 
 }

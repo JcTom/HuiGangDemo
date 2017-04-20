@@ -87,7 +87,6 @@ public class PasswordActivity extends MvpActivity<ModifityPswPresenter> implemen
         map.put("user_token",token);
         map.put("user_pass",psweditold);
         map.put("user_newPass",psweditnew);
-        ToastTool.showToast("我是修改密码",2);
         mvpPresenter.ModifityPsw(map);
 
     }

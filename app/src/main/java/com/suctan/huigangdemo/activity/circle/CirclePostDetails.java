@@ -97,6 +97,7 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
    //里面map的数据集合,把数据封装起来,传输给另外一处,待完成
     private void fsVariety() {
 
+
     }
 
     class CirclePostAdapter extends RecyclerView.Adapter<CirclePostAdapter.MyViewHolder> {
