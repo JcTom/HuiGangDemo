@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/all_backg"
+        android:background="@color/colorAccent"
 
         >
        <!--我对商品的评价页面,用户上传了图片,那么直接就设置为空即可.-->
@@ -105,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:background="@color/ordrs_backg"
+                        android:background="@color/text_orange"
                         >
                         <ImageView
                             android:id="@+id/myAssessGo_ImageView"

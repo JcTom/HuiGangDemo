@@ -36,7 +36,6 @@ import static com.bigkoo.pickerview.TimePickerView.Type.HOURS_MINS;
  */
 
 public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubNeedView, View.OnClickListener {
-
     @BindView(R.id.login_back)
     ImageView loginBack;
     @BindView(R.id.login_title)
@@ -55,17 +54,16 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
     TextView service_title;
     @BindView(R.id.service_content)
     TextView service_content;
-
-
     @BindView(R.id.eat_select_time)
     Button eat_select_time;
 
     @BindView(R.id.service_fb)
     Button service_fb;
     //此处定义共享需求类型常量
-    private static final int HOME_SERVICES=1; //家政
-    private static final int HELP_BUY= 2;     //代购
-    private static final int FREE_CAR = 3;    //顺风车
+//    private  int need_type = 8  ;
+//    private static final int HOME_SERVICES=1; //家政
+//    private static final int HELP_BUY= 2;     //代购
+//    private static final int FREE_CAR = 3;    //顺风车
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,15 +84,16 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
 
     //初始化标题
     private void initView() {
-        final Intent it = ReleaseService.this.getIntent();
-        final String serviceType = it.getStringExtra("serviceType");
+        Intent it = getIntent();
+         String serviceType = it.getStringExtra("serviceType");
+         int needType = it.getIntExtra("needType",0);
+        System.out.println("serviceType是"+serviceType+"需求类型是"+needType);
         loginTitle.setText("发布" + serviceType + "服务");
         search.setVisibility(View.GONE);
         service_fb.setOnClickListener(this);
         loginBack.setOnClickListener(this);
 
     }
-
     //响应时间
     private void initServiceTime() {
         service_time.setText("1.0");
@@ -181,11 +180,9 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
         map.put("need_price", money);
         map.put("response_time", response_time);
         map.put("expect_time", expect_time);
-        map.put("need_type", HOME_SERVICES);
+//        map.put("need_type", need_type);
         System.out.println(map);
         mvpPresenter.pub_needAction(map);
-
-
     }
 
     @Override
@@ -195,32 +192,9 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
                 finish();
                 break;
             case R.id.service_fb:
-                ToastTool.showToast("我是发布", 2);
-                String token = TokenManager.getToken();
-                String response_time =  service_time.getText().toString().trim();
-                String expect_time =  eat_select_time.getText().toString().trim();
-                System.out.println("响应时间是:"+ "期望时间是：");
-
-                String title = service_title.getText().toString().trim();
-                String content = service_content.getText().toString().trim();
-                String money = service_money.getText().toString().trim();
-
-                Map<String, Object> map = new HashMap();
-                map.put("user_token", token);
-                map.put("need_title", title);
-                map.put("need_content", content);
-                map.put("need_price", money);
-                map.put("response_time", response_time);
-                map.put("expect_time", expect_time);
-                map.put("need_type", HOME_SERVICES);
-                System.out.println(map);
-                mvpPresenter.pub_needAction(map);
-
-//                pubNeedVariety();
+                pubNeedVariety();
                 break;
-
         }
-
     }
 
     @Override

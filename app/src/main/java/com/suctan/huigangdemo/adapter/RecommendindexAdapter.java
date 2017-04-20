@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.androidbase.LoadImageManager;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.activity.recommend.RecommendActivity;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import com.suctan.huigangdemo.bean.user.Recommend_indexBean;
 
@@ -27,6 +28,8 @@ public class RecommendindexAdapter extends BaseAdapter {
         this.context=context;
         this.companyList = companyList;
     }
+
+
 
     @Override
     public int getCount() {

@@ -36,7 +36,7 @@
 
     <!-- 调用手机相册 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
     <application
         android:name=".acache.HuiGangApplication"
         android:allowBackup="true"
@@ -45,13 +45,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.login.LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity" >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".activity.Home_Page.HomeActivity" />
         <activity android:name=".activity.search.SearchActivity" />
         <activity android:name=".activity.recommend.RecommendActivity" />
@@ -74,10 +84,9 @@
 
 
         <!--用户信息设置-->
-        <activity android:name=".activity.setting.SeetingForGetPwd"></activity>
+        <activity android:name=".activity.setting.SeetingFogetPwd"></activity>
         <activity android:name=".activity.setting.SeetingUserAge"></activity>
         <activity android:name=".activity.setting.SeetingUserDegree"></activity>
-        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
         <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
         <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
         <activity android:name=".activity.setting.SeetingUserName"></activity>

@@ -8,5 +8,5 @@ import com.suctan.huigangdemo.bean.user.CourseBean;
  */
 
 public interface SingUpView extends BaseMvpView {
-    void loadCourseDone(CourseBean courseBean);
+    void registerDone();
 }

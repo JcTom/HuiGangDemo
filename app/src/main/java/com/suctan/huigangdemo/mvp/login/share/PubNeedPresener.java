@@ -22,7 +22,7 @@ public class PubNeedPresener extends DemoBasePresenter<PubNeedView> {
      */
     public void pub_needAction(Map map) {
 
-        addSubscription(apiStores.PubNeedReturn(map),
+        addSubscription(apiStores.PubNeed(map),
                 new SubscriberCallBack<>(new ApiCallback<ModifyReturn>() {
                     @Override
                     public void onStart() {

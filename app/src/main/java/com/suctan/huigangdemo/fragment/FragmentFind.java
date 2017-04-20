@@ -146,6 +146,7 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
 
     private void initRefreshView() {
         SwpipeListViewOnScrollListener lisetner = new SwpipeListViewOnScrollListener(swipe_circle);
+//        SwpipeListViewOnScrollListener lisetner = new SwpipeListViewOnScrollListener(swipe_circle);
 
         swipe_circle.setColorSchemeColors(
                 getResources().getColor(R.color.gplus_color_1),
