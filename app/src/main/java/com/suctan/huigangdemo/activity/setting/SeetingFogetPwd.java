@@ -1,14 +1,13 @@
-package com.suctan.huigangdemo.activity.signup;
+package com.suctan.huigangdemo.activity.setting;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidbase.mvp.MvpActivity;
@@ -16,9 +15,8 @@ import com.example.androidbase.utils.NetConnectUtils;
 import com.example.androidbase.utils.ToastTool;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
-import com.suctan.huigangdemo.bean.user.CourseBean;
-import com.suctan.huigangdemo.mvp.login.singup.SingUpPresenter;
-import com.suctan.huigangdemo.mvp.login.singup.SingUpView;
+import com.suctan.huigangdemo.mvp.login.resetpass.ResetPassPresenter;
+import com.suctan.huigangdemo.mvp.login.resetpass.ResetPassView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,25 +27,30 @@ import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.VerifySMSCodeListener;
 
 /**
- * Created by B-305 on 2017/4/19.
+ * Created by 黄淑翰 on 2017/4/13.
  */
-
-public class signupActivity extends MvpActivity<SingUpPresenter> implements SingUpView, View.OnClickListener {
+public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements ResetPassView, View.OnClickListener {
     private EditText user_phone, user_pass, identityCode;
-    private Button btnRegister, btnIdentityCode;
+    private Button btnResetPass, btnIdentityCode;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_forget_password);
         user_phone = (EditText) findViewById(R.id.user_phone);
         user_pass = (EditText) findViewById(R.id.user_pass);
         identityCode = (EditText) findViewById(R.id.identityCode);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnResetPass = (Button) findViewById(R.id.btnReset);
         btnIdentityCode = (Button) findViewById(R.id.btnIdentityCode);
-        btnRegister.setOnClickListener(this);
+        btnResetPass.setOnClickListener(this);
         btnIdentityCode.setOnClickListener(this);
 
+
+    }
+
+    @Override
+    protected ResetPassPresenter createPresenter() {
+        return new ResetPassPresenter(this);
     }
 
 
@@ -59,57 +62,45 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
      */
     private void toogleBtnClickStyle(boolean canClick) {
         if (canClick) {
-            btnRegister.setClickable(true);
+            btnResetPass.setClickable(true);
         } else {
-            btnRegister.setClickable(false);
+            btnResetPass.setClickable(false);
         }
     }
-
-
-
 
     /**
      * created at 2017/3/23 15:57
      *
-     * @param userName 用户名
+     * @param userPhone 手机号
      * @param pwd      密码
      * @explain 用户注册账号
      */
-    private void LoginVariety(String userName, String pwd) {
+    private void LoginVariety(String userPhone, String pwd) {
         Map<String, Object> mapLogin = new HashMap();
-        mapLogin.put("user_phone", userName);
+        mapLogin.put("user_phone", userPhone);
         mapLogin.put("user_pass", pwd);
-        mvpPresenter.registerAction(mapLogin);
+        mvpPresenter.resetPassAction(mapLogin);
     }
-
-
 
     /**
      * 判断用户名与密码是否为空，网路是否正常
      */
     private void registerVariety() {
-         final String userName = user_phone.getText().toString().trim();
         final String pwd = user_pass.getText().toString().trim();
-        if (TextUtils.isEmpty(userName)) {
-            Toast.makeText(this, getResources().getString(R.string.inputActTip), Toast.LENGTH_SHORT).show();
-            toogleBtnClickStyle(true);
-
-            return;
-
-        } else if (TextUtils.isEmpty(pwd)) {
+        final String phone = user_phone.getText().toString().trim();
+        if (TextUtils.isEmpty(pwd)) {
             Toast.makeText(this, getResources().getString(R.string.inputPwdTip), Toast.LENGTH_SHORT).show();
             toogleBtnClickStyle(true);
             return;
         } else {
-            if (NetConnectUtils.isNetConnected(signupActivity.this)) {
+            if (NetConnectUtils.isNetConnected(SeetingFogetPwd.this)) {
                 BmobSMS.verifySmsCode(this, user_phone.getText().toString(), identityCode.getText().toString(), new VerifySMSCodeListener() {
                     @Override
                     public void done(BmobException ex) {
                         // TODO Auto-generated method stub
                         if (ex == null) {//短信验证码已验证成功
-                            Log.i("smile", "验证通过"+userName+pwd);
-
-                            LoginVariety(userName,pwd);
+                            Log.i("smile", "验证通过");
+                            LoginVariety(phone,pwd);
 
                         } else {
                             Log.i("smile", "验证失败：code =" + ex.getErrorCode() + ",msg = " + ex.getLocalizedMessage());
@@ -134,7 +125,7 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
 
                 break;
 
-            case R.id.btnRegister:
+            case R.id.btnReset:
                 registerVariety();
 
 
@@ -153,8 +144,7 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
 
         } else {
 
-            BmobSMS.requestSMSCode(this, user_phone.getText().toString(), "register", new RequestSMSCodeListener() {
-
+            BmobSMS.requestSMSCode(this, user_phone.getText().toString(), "resetPass", new RequestSMSCodeListener() {
                 @Override
                 public void done(Integer integer, BmobException e) {
                     if (e == null) {
@@ -162,10 +152,8 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
 
                     } else {
 
-                        ToastTool.showToast("短信验证码发送失败" + "错误信息" +e.toString(),0);
+                        ToastTool.showToast("短信验证码发送失败" + "错误信息" + e.toString(), 0);
                     }
-
-
                 }
             });
 
@@ -173,6 +161,7 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
         }
 
     }
+
 
     @Override
     public void getDataFail(String msg) {
@@ -190,14 +179,8 @@ public class signupActivity extends MvpActivity<SingUpPresenter> implements Sing
     }
 
     @Override
-    protected SingUpPresenter createPresenter() {
-        return new SingUpPresenter(this);
+    public void resetPassDone() {
+           //重置密码成功后跳转到登陆页面
+        startActivity(new Intent(SeetingFogetPwd.this, LoginActivity.class));
     }
-
-    @Override
-    public void registerDone() {
-        //注册成功后跳转到登陆页面
-        startActivity(new Intent(signupActivity.this,LoginActivity.class));
-    }
-
 }

@@ -62,8 +62,12 @@ public class ServiceList extends AppCompatActivity {
         search.setVisibility(View.GONE);
         serviceFb.setVisibility(View.VISIBLE);
 
-        final Intent it=ServiceList.this.getIntent();
-        final String serviceType=it.getStringExtra("serviceType");
+
+
+        Intent it = getIntent();
+        final String serviceType = it.getStringExtra("serviceType");
+        final int needType = it.getIntExtra("needType",0);
+
         loginTitle.setText(serviceType);
         loginBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +80,7 @@ public class ServiceList extends AppCompatActivity {
             public void onClick(View view) {
                 Intent goReleaseService = new Intent(ServiceList.this, ReleaseService.class);
                 goReleaseService.putExtra("serviceType",serviceType);
+                goReleaseService.putExtra("needType",needType);
                 startActivity(goReleaseService);
             }
         });

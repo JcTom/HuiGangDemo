@@ -2,7 +2,9 @@ package com.suctan.huigangdemo.activity.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +17,9 @@ import com.example.androidbase.utils.NetConnectUtils;
 import com.example.androidbase.utils.ToastTool;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.MainActivity;
-import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
+import com.suctan.huigangdemo.activity.setting.SeetingFogetPwd;
 import com.suctan.huigangdemo.activity.signup.signupActivity;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.LoginPresener;
@@ -24,6 +27,8 @@ import com.suctan.huigangdemo.mvp.login.LoginView;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.bmob.v3.Bmob;
 
 /**
  * create at 2017/3/23 17:23
@@ -41,12 +46,16 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     //edt
     private EditText edtUserName;
     private EditText edtPwd;
+    private String TAG ="LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //第一：默认初始化
+        Bmob.initialize(this, "1fe47f6bb8ec6a3eb640c3617952b5a6");
         setContentView(R.layout.activity_login);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+         ToastTool.showToast(TokenManager.getToken(),2);
 //        mvpPresenter.getHelloText();
 //        //
 //        TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
@@ -101,6 +110,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
             case R.id.logins_back:
                 finish();
                 break;
+
             case R.id.btn_login:
 //              TODO 调试阶段，登陆任意放行
 //                toogleBtnClickStyle(false);
@@ -108,7 +118,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
                 Variety();
                 break;
             case R.id.forgetpsw:
-                Intent intentLogPwd = new Intent(this, SeetingForGetPwd.class);
+                Intent intentLogPwd = new Intent(this, SeetingFogetPwd.class);
                 startActivity(intentLogPwd);
                 break;
             case R.id.btn_signup:
@@ -119,7 +129,7 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     }
 
     /**
-     * 判断用户名与密码是否为空
+     * 判断用户名与密码是否为空，网路是否正常
      */
     private void Variety() {
         String userName = edtUserName.getText().toString().trim();
@@ -175,7 +185,8 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
 
     @Override
     public void loginMessageReturn(Users users) {
-        goActivity();
+        Log.i(TAG, "loginMessageReturn: 电话号码是 " +users.getUser_phone() );
+
     }
 
     @Override

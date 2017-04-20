@@ -18,6 +18,16 @@ import butterknife.ButterKnife;
 import cn.bingoogolapple.badgeview.BGABadgeRadioButton;
 
 public class FragmentChanel extends MvpFragment<ChanelPresenter> implements View.OnClickListener, ChanelView {
+    //此处定义共享需求类型常量
+    private static final int SHARE_JZ= 1; //家政
+    private static final int SHARE_DG= 2;     //代购
+    private static final int SHARE_SFC = 3;    //顺风车
+    private static final int SHARE_DSKD = 4;    //代收快递
+    private static final int SHARE_JSXH = 5;    //接送小孩
+    private static final int SHARE_PHLR = 6;    //陪护老人
+    private static final int SHARE_ESJY = 7;    //二手交易
+    private static final int SHARE_GD = 8;    //二手交易
+
 
     View viewChanel;
     @BindView(R.id.share_jz)
@@ -55,7 +65,6 @@ public class FragmentChanel extends MvpFragment<ChanelPresenter> implements View
         super.onActivityCreated(savedInstanceState);
 
         initOnclick();
-
     }
 
     private void initOnclick(){
@@ -68,10 +77,13 @@ public class FragmentChanel extends MvpFragment<ChanelPresenter> implements View
         share_esjy.setOnClickListener(this);
         share_jqqd.setOnClickListener(this);
     }
-
-    private void Check(String ServiceType) {
+/***
+ *
+ */
+    private void Check(String ServiceType , int needType) {
         Intent goService = new Intent(getActivity(), ServiceList.class);
         goService.putExtra("serviceType",ServiceType);
+        goService.putExtra("needType", needType);
         startActivity(goService);
     }
 
@@ -80,28 +92,28 @@ public class FragmentChanel extends MvpFragment<ChanelPresenter> implements View
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.share_jz:
-                Check(share_jz.getText().toString());
+                Check(share_jz.getText().toString(),SHARE_JZ);
                 break;
             case R.id.share_dg:
-                Check(share_dg.getText().toString());
+                Check(share_dg.getText().toString(),SHARE_DG);
                 break;
             case R.id.share_sfc:
-                Check(share_sfc.getText().toString());
+                Check(share_sfc.getText().toString(),SHARE_SFC);
                 break;
             case R.id.share_dskd:
-                Check(share_dskd.getText().toString());
+                Check(share_dskd.getText().toString(),SHARE_DSKD);
                 break;
             case R.id.share_jsxh:
-                Check(share_jsxh.getText().toString());
+                Check(share_jsxh.getText().toString(),SHARE_JSXH);
                 break;
             case R.id.share_phlr:
-                Check(share_phlr.getText().toString());
+                Check(share_phlr.getText().toString(),SHARE_PHLR);
                 break;
             case R.id.share_esjy:
-                Check(share_esjy.getText().toString());
+                Check(share_esjy.getText().toString(),SHARE_ESJY);
                 break;
             case R.id.share_jqqd:
-
+               //敬请期待
                 break;
             default:
                 break;

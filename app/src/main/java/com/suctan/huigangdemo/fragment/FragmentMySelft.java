@@ -15,6 +15,7 @@ import com.example.androidbase.LoadImageManager;
 import com.example.androidbase.mvp.MvpFragment;
 import com.example.androidbase.widget.CircleImageView;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.activity.myself.MydiscountAcitity;
 import com.suctan.huigangdemo.activity.myself.MykitchenActity;
 import com.suctan.huigangdemo.activity.myself.MymoneyActivity;
@@ -27,7 +28,6 @@ import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
 import com.suctan.huigangdemo.activity.myself.addressActivity;
 import com.suctan.huigangdemo.activity.myself.buyActivity;
 import com.suctan.huigangdemo.activity.myself.my_assess;
-import com.suctan.huigangdemo.bean.user.CurrentUser;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftView;
 import com.suctan.huigangdemo.widget.BigImgDialog;
@@ -219,16 +219,14 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
 
     //设计view的数据
     private void initViewData() {
+        System.out.println("当前user对象"+ CurrentUser.getInstance().getUserBean());
         if (CurrentUser.getInstance().getUserBean().getUser_name() != null) {
             tv_user_name.setText(CurrentUser.getInstance().getUserBean().getUser_name());
         }
         if (CurrentUser.getInstance().getUserBean().getUser_icon() != null) {
             LoadImageManager.getImageLoader().displayImage(CurrentUser.getInstance().getUserBean().getUser_icon(), imv_head);
         }
-
     }
-
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -239,9 +237,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
                 break;
         }
 
-
     }
-
     @Override
     public void getDataFail(String msg) {
 

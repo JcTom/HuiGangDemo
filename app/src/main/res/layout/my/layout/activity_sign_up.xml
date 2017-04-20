@@ -69,19 +69,19 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/user_phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="请输入手机号"
-                android:paddingLeft="4dp"
-                android:paddingRight="10dp"
-                android:gravity="center_vertical"
-                android:ellipsize="end"
-                android:lines="1"
-                android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:background="@null"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:hint="请输入手机号"
                 android:inputType="number"
-                />
+                android:lines="1"
+                android:paddingLeft="4dp"
+                android:paddingRight="10dp"
+                android:textSize="16sp" />
         </LinearLayout>
         <!--密码-->
         <LinearLayout
@@ -102,19 +102,19 @@
                 android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/user_pass"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="请输入密码"
-                android:paddingLeft="4dp"
-                android:paddingRight="10dp"
-                android:gravity="center_vertical"
-                android:ellipsize="end"
-                android:lines="1"
-                android:textSize="16sp"
                 android:layout_marginLeft="5dp"
                 android:background="@null"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:hint="请输入密码"
                 android:inputType="textPassword"
-                />
+                android:lines="1"
+                android:paddingLeft="4dp"
+                android:paddingRight="10dp"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -131,51 +131,48 @@
             android:orientation="horizontal">
 
 
-
-
             <EditText
+                android:id="@+id/identityCode"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
                 android:hint="请输入验证码"
+                android:inputType="number"
+                android:lines="1"
                 android:paddingLeft="4dp"
                 android:paddingRight="10dp"
-                android:gravity="center_vertical"
-                android:ellipsize="end"
-                android:lines="1"
-                android:textSize="16sp"
-                android:layout_marginLeft="5dp"
-                android:background="@null"
-                android:inputType="number"
-                android:layout_weight="1"
-                />
-
+                android:textSize="16sp" />
 
 
             <Button
+                android:id="@+id/btnIdentityCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
+                android:background="#4261fc"
                 android:text="验证码"
                 android:textColor="#fff"
-                android:textSize="16sp"
-                android:background="#4261fc"
-                />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
 
         <!--登录按钮-->
         <Button
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/set_btn_sign_up_bg"
-            android:layout_marginRight="50dp"
             android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
             android:layout_marginTop="50dp"
+            android:background="@drawable/set_btn_sign_up_bg"
             android:text="注册"
             android:textColor="#fff"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
 
     </LinearLayout>
