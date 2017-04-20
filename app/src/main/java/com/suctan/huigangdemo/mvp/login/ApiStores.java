@@ -17,8 +17,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-//    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
-    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
+//    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**
@@ -64,5 +64,20 @@ public interface ApiStores {
      */
     @POST("pub_ topic")
     Observable<ModifyReturn> postReleaseReturn(@QueryMap Map<String, Object> userReturn);
+
+
+    /**
+     * 首页获取所有轮播图
+     */
+    @POST("get_ad_photo")
+    Observable<String> getRollPageListReturn(@QueryMap Map<String, Object>rollviewReturn);
+
+
+    /**
+     * 首页获取所有菜列表
+     */
+    @POST("get_makeFoodList")
+    Observable<String> getEatFoodList(@QueryMap Map<String, Object> EatListReturn);
+
 
 }

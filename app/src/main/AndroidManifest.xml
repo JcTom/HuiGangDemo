@@ -67,7 +67,7 @@
 
 
         <!--我的页面中的注册文件-->
-        <activity android:name=".activity.search.Search_Result"/>
+        <activity android:name=".activity.search.Search_Result" />
 
         <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.SettingActivity"></activity>
@@ -106,7 +106,6 @@
         <activity android:name=".activity.myself.my_assess"></activity>
         <activity android:name=".activity.password.PasswordActivity"></activity>
         <activity android:name=".activity.signup.signupActivity"></activity>
-
+        <activity android:name=".activity.eatfood.EatFoodDetail"></activity>
     </application>
-
 </manifest>

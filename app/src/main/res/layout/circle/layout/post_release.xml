@@ -1,105 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         style="@style/tab_title"
         android:gravity="center"
         android:orientation="horizontal">
+
         <ImageButton
+            android:id="@+id/post_back"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/back_white"
             android:background="#00000000"
-            android:id="@+id/post_back"/>
+            android:src="@mipmap/back_white" />
+
         <TextView
+            style="@style/title_font"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="@string/fb_title"
-            style="@style/title_font" />
+            android:text="@string/fb_title" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/bg_gray"
         android:orientation="vertical"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="@color/bg_gray">
+        android:paddingRight="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
             <TextView
+                style="@style/two_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/two_title"
-                android:text="@string/p_title"/>
+                android:text="@string/p_title" />
+
             <EditText
+                android:id="@+id/post_title"
+                style="@style/two_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:maxLength="15"
-                style="@style/two_title"
-                android:id="@+id/post_title"/>
+                android:maxLength="15" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/line_gray"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:background="@color/line_gray" />
     </LinearLayout>
 
     <EditText
-        android:windowSoftInputMode="adjustResize"
-        android:layout_marginTop="10dp"
+        android:id="@+id/post_content"
+        style="@style/text_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:paddingTop="10dp"
-        android:id="@+id/post_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
+        android:background="@android:drawable/editbox_background_normal"
         android:enabled="true"
         android:gravity="top"
-        android:lineSpacingMultiplier="1.2"
+        android:hint="内容"
         android:inputType="textMultiLine"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingTop="10dp"
         android:scrollbars="vertical"
-        android:background="@android:drawable/editbox_background_normal"
-        style="@style/text_main"
-        android:hint="内容"  >
-    </EditText>
+        android:windowSoftInputMode="adjustResize"></EditText>
 
 
     <LinearLayout
+        android:id="@+id/pic_ly"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:orientation="horizontal"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
-        android:paddingLeft="13dp"
-        android:id="@+id/pic_ly">
+        android:orientation="horizontal"
+        android:paddingLeft="13dp">
 
         <FrameLayout
+            android:id="@+id/img_layout"
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:id="@+id/img_layout"
             android:visibility="gone">
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:scaleType="centerCrop"
-                android:layout_gravity="bottom"/>
+                android:layout_gravity="bottom"
+                android:scaleType="centerCrop" />
 
             <ImageButton
                 android:id="@+id/delete_img"
@@ -115,10 +124,10 @@
             android:id="@+id/select_img"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@mipmap/upload_img"
-            android:scaleType="fitCenter"
+            android:layout_gravity="bottom"
             android:background="#00000000"
-            android:layout_gravity="bottom"/>
+            android:scaleType="fitCenter"
+            android:src="@mipmap/upload_img" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,14 +135,15 @@
         android:background="#00000000"
         android:gravity="center"
         android:orientation="horizontal">
+
         <Button
+            android:id="@+id/post_fb"
+            style="@style/title_font"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:gravity="center"
-            android:text="@string/share_fb"
             android:background="@color/green"
-            style="@style/title_font"
-            android:id="@+id/post_fb"/>
+            android:gravity="center"
+            android:text="@string/share_fb" />
     </LinearLayout>
 </LinearLayout>

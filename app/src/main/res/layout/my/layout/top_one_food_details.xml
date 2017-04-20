@@ -1,265 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    //标题栏
+    <!--标题栏-->
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#9db830"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="45sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="菜名字随时变化的"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/shopping_cart" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/ly_arroud_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            //菜代表的图片, 也是实时更新的!
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="#9db830"
-                android:orientation="horizontal"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                >
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@mipmap/return_128"
-                    android:layout_marginLeft="1dp"
-                    android:layout_gravity="left|center_vertical"
-                    />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="45sp"
-                    android:text="菜名字随时变化的"
-                    android:textSize="20sp"
-                    android:textColor="#fff"
-                    android:gravity="center"
-                    />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/shopping_cart"
-            android:layout_gravity="center_vertical"
-            />
+                    android:id="@+id/imv_eat_deail"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/my_kitchen_bg" />
             </LinearLayout>
 
-     //菜代表的图片, 也是实时更新的!
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:src="@mipmap/my_kitchen_bg"
-            android:scaleType="fitXY"
+            //菜的名字 和 菜的剩余数量 ,还有多少人品尝过
 
-            />
-    </LinearLayout>
-
-    //菜的名字 和 菜的剩余数量 ,还有多少人品尝过
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/one_food_name"
-            android:textSize="18sp"
-            android:textColor="#000"
-            />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/remain"
-            android:textSize="15sp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/number"
-            android:textSize="15sp"
-            android:layout_marginLeft="5dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/danwei"
-            android:textSize="15sp"
-            android:layout_marginLeft="5dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="·"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/number_1"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/danwei_1"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pinchang"
-            android:textSize="15sp"
-            android:layout_marginLeft="10dp"
-            />
-
-    </LinearLayout>
-
-    </LinearLayout>
-
-    //设置分隔线
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="horizontal"
-        android:background="@color/head_border_width_clo"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        >
-    </LinearLayout>
-
-    //设置菜的价格
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left|center_horizontal"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        >
-        //菜的价钱
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/one_money_stand"
-            android:layout_marginLeft="5dp"
-            android:textSize="18sp"
-            android:textColor="@color/red"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/one_food_money"
-            android:layout_marginLeft="10dp"
-            android:textSize="18sp"
-            android:textColor="@color/red"
-            />
-    </LinearLayout>
-
-    //设置分隔线
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:orientation="horizontal"
-        android:background="@color/divider_line"
-        >
-    </LinearLayout>
-
-    // 一个大的线性布局 ,包含三个小的布局,其中有我的菜色
-    //还有 菜品描述
-    //还有加入购物车按钮
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        //我的菜色 和 竖直的 标志
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="2dp"
-                android:src="@mipmap/my_food_mark" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tv_eat_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/one_food_name"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/remain"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/number"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/danwei"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="·"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_eat_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/number_1"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/danwei_1"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/pinchang"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            //设置分隔线
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/head_border_width_clo"
+                android:orientation="horizontal"></LinearLayout>
+
+            //设置菜的价格
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/two_title"
-                android:text="菜品描述"
-                android:layout_weight="1"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/more_black"
-                android:paddingRight="10dp"
-                android:layout_gravity="center_vertical"
-                />
+                android:gravity="left|center_horizontal"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                //菜的价钱
+
+                <TextView
+                    android:id="@+id/tv_eat_momeny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/one_food_money"
+                    android:textColor="@color/red"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            //设置分隔线
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/divider_line"
+                android:orientation="horizontal"></LinearLayout>
+
+            // 一个大的线性布局 ,包含三个小的布局,其中有我的菜色
+            //还有 菜品描述
+            //还有加入购物车按钮
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                //我的菜色 和 竖直的 标志
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="2dp"
+                        android:src="@mipmap/my_food_mark" />
+
+                    <TextView
+                        style="@style/two_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="菜品描述" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingRight="10dp"
+                        android:src="@mipmap/more_black" />
+                </LinearLayout>
+
+                //菜品描述 ,一般都是四行字体左右,不过最大的设置行数,为3
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        style="@style/text_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:text="这个是菜品描述,需要替换" />
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
 
-        //菜品描述 ,一般都是四行字体左右,不过最大的设置行数,为3
-        <LinearLayout
+    </ScrollView>
+
+
+    //加入购物车按钮
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:layout_weight="1"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="这个是菜品描述,需要替换"
-                android:layout_marginLeft="5dp"
-                 style="@style/text_main"
-                android:maxLines="3"
-                android:ellipsize="end"
-                />
-        </LinearLayout>
-
-        //加入购物车按钮
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-           <Button
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@color/common_green"
-               android:text="加入购物车"
-               android:textSize="18sp"
-               android:textColor="@color/white"
-               />
-        </LinearLayout>
-
+            android:background="@color/common_green"
+            android:text="加入购物车"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
     </LinearLayout>
-
-
-
-
-
-
-
 
 </LinearLayout>
+

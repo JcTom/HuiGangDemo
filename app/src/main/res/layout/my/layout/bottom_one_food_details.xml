@@ -1,178 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    //标题栏,和上一个页面是相同的,这个也许可以不用设置,待定!
-     <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:background="#9db830"
-                android:orientation="horizontal"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                >
+    <!--//标题栏,和上一个页面是相同的,这个也许可以不用设置,待定!-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45dp"-->
+    <!--android:background="#9db830"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:paddingRight="10dp"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--&gt;-->
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@mipmap/return_128"
-                        android:layout_marginLeft="1dp"
-                        android:layout_gravity="left|center_vertical"
-                        />
+    <!--<ImageView-->
+    <!--android:layout_width="25dp"-->
+    <!--android:layout_height="25dp"-->
+    <!--android:src="@mipmap/return_128"-->
+    <!--android:layout_marginLeft="1dp"-->
+    <!--android:layout_gravity="left|center_vertical"-->
+    <!--/>-->
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="45sp"
-                        android:text="菜名字随时变化的"
-                        android:textSize="20sp"
-                        android:textColor="#fff"
-                        android:gravity="center"
-                        android:layout_marginRight="25dp"
-                    />
-            </LinearLayout>
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="45sp"-->
+    <!--android:text="菜名字随时变化的"-->
+    <!--android:textSize="20sp"-->
+    <!--android:textColor="#fff"-->
+    <!--android:gravity="center"-->
+    <!--android:layout_marginRight="25dp"-->
+    <!--/>-->
+    <!--</LinearLayout>-->
 
 
-
-    //设置菜的价格
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left|center_horizontal"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        >
-        //菜的价钱
-        <TextView
-            android:layout_width="wrap_content"
+    <!--    //设置菜的价格
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/one_money_stand"
-            android:textSize="18sp"
-            android:textColor="@color/red"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/one_food_money"
-            android:layout_marginLeft="10dp"
-            android:textSize="18sp"
-            android:textColor="@color/red"
-            />
-    </LinearLayout>
+            android:gravity="left|center_horizontal"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            >
+            //菜的价钱
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/one_money_stand"
+                android:textSize="18sp"
+                android:textColor="@color/red"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/one_food_money"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/red"
+                />
+        </LinearLayout>-->
 
 
     //设置分隔线
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:orientation="horizontal"
         android:background="@color/head_border_width_clo"
-        >
-    </LinearLayout>
+        android:orientation="horizontal"></LinearLayout>
 
     //我的同城美食 和 竖直的 标志
+
     <LinearLayout
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        >
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@mipmap/my_food_mark"
-            />
+            android:src="@mipmap/my_food_mark" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/back"
-            android:textSize="16sp"
             android:text="@string/same_food_from_one"
-            />
+            android:textColor="@color/back"
+            android:textSize="16sp" />
     </LinearLayout>
 
     //设置这个这个同城美食下面的菜色内容,对于同一个厨房的阿姨,进行其他菜色的购买
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:orientation="vertical"
-       android:layout_weight="1.5"
-       >
-                 //进行防置item的东西
-                <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:scrollbars="none"
-                    >
-                </android.support.v7.widget.RecyclerView>
 
-   </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="vertical">
+        //进行防置item的东西
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/bottom_recycle_detail"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        //设置分隔线
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:layout_weight="2"
-            >
-                //设置分隔线
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:orientation="horizontal"
-                    android:background="#d3d3d3"
-                    >
-                </LinearLayout>
+            android:layout_height="10dp"
+            android:background="#d3d3d3"
+            android:orientation="horizontal"></LinearLayout>
 
-                //我的菜色评价 和 竖直的 标志
-                <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    >
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/my_food_mark"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/back"
-                        android:textSize="16sp"
-                        android:text="@string/food_assess"
-                        />
-                </LinearLayout>
+        //我的菜色评价 和 竖直的 标志
 
-                //设置对这个菜品评价一些listview,其中对应的item已经做好,叫bottom_one_food_details_listitem
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/my_food_mark" />
 
-                        >
-                        //这个ScrollView下面只有一个LinearLayout
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
-                            //进行防置item的东西
-                             <GridView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food_assess"
+                android:textColor="@color/back"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-                             </GridView>
-                        </LinearLayout>
+        //设置对这个菜品评价一些listview,其中对应的item已经做好,叫bottom_one_food_details_listitem
 
-                    </ScrollView>
-       </LinearLayout>
+        <com.example.androidbase.widget.CustomListView
+            android:id="@+id/bottom_listview_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.example.androidbase.widget.CustomListView>
+    </LinearLayout>
 
 </LinearLayout>
