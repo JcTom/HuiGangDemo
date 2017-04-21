@@ -23,19 +23,20 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
                         android:text="订做午餐"
                         android:textSize="18sp"
                         android:textColor="#000"
                         android:padding="10dp"
                         />
+
                     <TextView
+                        android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
                         android:layout_margin="5dp"
                         android:background="@drawable/textviewstyle_circular"
                         android:text="确认收货"
-                        android:layout_gravity="right|center_vertical"
                         android:textSize="16sp" />
 
                 </LinearLayout>

@@ -8,7 +8,6 @@ import com.example.androidbase.rxjava.SubscriberCallBack;
 import com.suctan.huigangdemo.bean.user.ModifyReturn;
 import com.suctan.huigangdemo.mvp.login.DemoBasePresenter;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,7 +20,7 @@ public class ModifityPswPresenter extends DemoBasePresenter<ModifityPswView>{
     }
         //把在activity里面定义好的参数,把封装在map里面的数据提取过来.
         public void ModifityPsw(Map map){
-           addSubscription(apiStores.ModifyPswReturn(new HashMap<String, Object>()),
+           addSubscription(apiStores.ModifyPswReturn(map),
                    new SubscriberCallBack<>(new ApiCallback<ModifyReturn>() {
                        @Override
                        public void onStart() {

@@ -30,7 +30,6 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                 new SubscriberCallBack<>(new ApiCallback<String>() {
                     @Override
                     public void onStart() {
-
                     }
 
                     @Override

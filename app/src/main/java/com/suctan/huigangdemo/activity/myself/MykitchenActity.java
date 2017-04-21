@@ -1,5 +1,4 @@
 package com.suctan.huigangdemo.activity.myself;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;

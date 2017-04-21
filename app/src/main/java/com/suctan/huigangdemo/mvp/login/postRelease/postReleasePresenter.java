@@ -8,7 +8,6 @@ import com.example.androidbase.rxjava.SubscriberCallBack;
 import com.suctan.huigangdemo.bean.user.ModifyReturn;
 import com.suctan.huigangdemo.mvp.login.DemoBasePresenter;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,7 +21,7 @@ public class postReleasePresenter extends DemoBasePresenter<postReleaseView>{
 
     //把在activity里面定义好的参数,把封装在map里面的数据提取过来.
     public void postRelease_Action(Map map){
-        addSubscription(apiStores.postReleaseReturn(new HashMap<String, Object>()),
+        addSubscription(apiStores.postReleaseReturn(map),
                 new SubscriberCallBack<>(new ApiCallback<ModifyReturn>() {
 
                     @Override

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--这个布局被用来加载第一个secondedfragment
+    并且这个布局下面的每个item  是被 seconded_my_sell_list_item
+    填充
+    -->
+
+    <!--滑动底部线段-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:orientation="horizontal"
+        >
+        <!--第一条线段-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_green"
+            android:layout_weight="1"
+            >
+        </LinearLayout>
+        <!--第二条线段-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/head_border_width_clo"
+            android:layout_weight="1"
+            >
+        </LinearLayout>
+        <!--第三条线段-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/head_border_width_clo"
+            android:layout_weight="1"
+            >
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/head_border_width_clo"
+            android:layout_weight="1"
+            >
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:id="@+id/mybuy_one_gridview">
+    </GridView>
+
+
+</LinearLayout>

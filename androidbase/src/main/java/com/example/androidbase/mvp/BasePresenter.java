@@ -49,4 +49,5 @@ public abstract class BasePresenter<V> implements Presenter<V> {
     }
     protected abstract void initApiStores();
 
+
 }

@@ -45,60 +45,72 @@
             android:baselineAligned="false"
             android:orientation="horizontal" >
 
-            //进行中
+            <!--全部-->
             <LinearLayout
-                android:id="@+id/linear_seller_description"
+                android:id="@+id/llmysell_all"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center" >
                 <TextView
-                    android:id="@+id/text_seller_description"
+                    android:id="@+id/tvmysell_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/my_sell_new"
-                    android:textColor="#FF9db830"
-                    android:textSize="18dp"
-                    />
+                    android:text="全部"
+                    android:textSize="16dp"
+                    android:textColor="#FF9db830"/>
             </LinearLayout>
-            //已完成
+
+
+            <!--待同意-->
             <LinearLayout
-                android:id="@+id/linear_common_problem"
+                android:id="@+id/llmysell_dty"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center" >
 
                 <TextView
-                    android:id="@+id/text_common_problem"
+                    android:id="@+id/tvmysell_dty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待同意"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <!--进行中-->
+            <LinearLayout
+                android:id="@+id/llmysell_jxz"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/tvmysell_jxz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="进行中"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+            <!--已完成-->
+            <LinearLayout
+                android:id="@+id/llmysell_ywc"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tvmysell_ywc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/my_sell_old"
-                    android:textSize="18dp"
-                    />
+                    android:textSize="16dp" />
             </LinearLayout>
 
-            //今日发布要做的菜色
-           <!-- <LinearLayout
-                android:id="@+id/linear_release_food"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center" >
-                <TextView
-                    android:id="@+id/text_release_food"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/my_sell_already_food"
-                    android:textSize="18dp"
-                    />
-            </LinearLayout>-->
-
-
-
         </LinearLayout>
-
-
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

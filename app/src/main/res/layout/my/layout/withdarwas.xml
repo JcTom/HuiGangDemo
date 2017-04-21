@@ -94,6 +94,7 @@
                     android:textColor="@color/back"
                     android:layout_gravity="center"/>
                 <EditText
+                    android:id="@+id/witharwals"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:entries="@array/payment_mode"
@@ -158,6 +159,7 @@
         >
 
         <Button
+            android:id="@+id/btnwitharwals"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="提现"

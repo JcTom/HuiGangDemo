@@ -12,9 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:orientation="horizontal"
-        >
-        //第一条线段
+        android:orientation="horizontal">
+        <!--第一条线段-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,7 +21,7 @@
             android:layout_weight="1"
             >
         </LinearLayout>
-        //第二条线段
+        <!--第二条线段-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,20 +29,25 @@
             android:layout_weight="1"
             >
         </LinearLayout>
-        第三条线段
-       <!-- <LinearLayout
+        <!--第三条线段-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/head_border_width_clo"
+            android:layout_weight="1">
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/head_border_width_clo"
             android:layout_weight="1"
             >
-        </LinearLayout>-->
+        </LinearLayout>
 
     </LinearLayout>
     <GridView
         android:id="@+id/my_first_framgment_gridview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

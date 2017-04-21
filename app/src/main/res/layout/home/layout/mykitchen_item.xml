@@ -4,15 +4,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp">
 
         <ImageView
             android:layout_alignParentLeft="true"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:id="@+id/Mykitchen_ItemImage"
-            android:src="@mipmap/ic_launcher"
-            />
+            android:src="@mipmap/ic_launcher" />
 
         <!--设置菜的名字-->
         <TextView
@@ -52,9 +53,7 @@
             android:layout_alignLeft="@id/Mykitchen_ItemTitle"
             android:text="¥25"
             android:textSize="18sp"
-            android:textColor="#ff0000"
-            android:layout_marginLeft="10dp"
-            />
+            android:textColor="#ff0000" />
 
 
         <ImageView
