@@ -1,6 +1,4 @@
 package com.suctan.huigangdemo.mvp.login;
-
-import com.suctan.huigangdemo.bean.user.GetUserReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
 import com.suctan.huigangdemo.bean.user.ModifyReturn;
 
@@ -79,29 +77,6 @@ public interface ApiStores {
      */
     @POST("pub_ topic")
     Observable<ModifyReturn> postReleaseReturn(@QueryMap Map<String, Object> topicReturn);
-
-    /**
-     * 我的钱包,里面的充值功能
-     */
-    @POST("put_money")
-    Observable<ModifyReturn> addmoneyReturn(@QueryMap Map<String, Object> moneyReturn);
-
-    /**
-     * 我的钱包,里面的提现功能
-     */
-    @POST("get_money")
-    Observable<ModifyReturn> outmoneyReturn(@QueryMap Map<String, Object> outmoneyReturn);
-
-    /**
-     * 地址管理,里面的添加地址管理功能,目前这个功能待定
-     */
-    @POST("get_money")
-    Observable<ModifyReturn> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
-
-
-
-
-
     /**
      * 首页获取所有轮播图
      */
@@ -133,18 +108,6 @@ public interface ApiStores {
      */
     @POST("get_money")
     Observable<ModifyReturn> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
-
-    /**
-     * 用户注册请求
-     */
-    @POST("register")
-    Observable<ModifyReturn> Register(@QueryMap Map<String, Object> loginMap);
-
-    /**
-     * 用户重置密码请求
-     */
-    @POST("resetPass")
-    Observable<ModifyReturn> resetPass(@QueryMap Map<String, Object> loginMap);
 
     /*
         * 发布共享需求

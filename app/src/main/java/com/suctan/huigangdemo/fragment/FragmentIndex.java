@@ -9,18 +9,21 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.androidbase.mvp.MvpFragment;
 import com.jude.rollviewpager.RollPagerView;
+import com.jude.rollviewpager.hintview.ColorPointHintView;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.do_want.DoWant;
+import com.suctan.huigangdemo.activity.eatfood.EatFoodDetail;
 import com.suctan.huigangdemo.activity.recommend.RecommendActivity;
 import com.suctan.huigangdemo.activity.want.Want;
 import com.suctan.huigangdemo.adapter.IndexFoodGridAdapter;
-import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
-import com.suctan.huigangdemo.bean.user.HomeBean;
+import com.suctan.huigangdemo.bean.index.EatFoodBean;
+import com.suctan.huigangdemo.bean.index.EatFoodReturn;
 import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
 import com.suctan.huigangdemo.widget.SwpipeListViewOnScrollListener;
@@ -31,7 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.bingoogolapple.badgeview.BGABadgeRadioButton;
 
-public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPager.OnPageChangeListener, View.OnClickListener, HomeView, SwipeRefreshLayout.OnRefreshListener {
+public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPager.OnPageChangeListener, View.OnClickListener, HomeView, SwipeRefreshLayout.OnRefreshListener, RollViewpagerAdapter.OnItemRollLisener {
     View viewIndex;
     @BindView(R.id.tab_index)
     BGABadgeRadioButton tab_index;
@@ -48,6 +51,10 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     @BindView(R.id.gridview)
     GridView gridView;
     private boolean isFirstCreate;
+    private boolean isFirstRollViewPage;
+    private boolean isFirstRequestGridData;
+    private ArrayList<EatFoodBean> eatRollFoodBeanList = new ArrayList<>();
+    private ArrayList<EatFoodBean> eatFoodBeanList = new ArrayList<>();
 
     @Nullable
     public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
@@ -56,21 +63,19 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         ViewGroup localViewGroup = (ViewGroup) this.viewIndex.getParent();
         if (localViewGroup != null)
             localViewGroup.removeView(this.viewIndex);
-
-//        item();
         return this.viewIndex;
     }
 
 
+    //设置轮播图
     private void rollPagerViewSet() {
-        rollPagerView.setPlayDelay(3000);//*播放间隔
-        rollPagerView.setAnimationDurtion(500);//透明度
-        ArrayList<CompanyInfoBean> companyList = new ArrayList<>();
-        for (int i = 0; i <= 3; i++) {
-            CompanyInfoBean companyInfoBean = new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
-            companyList.add(companyInfoBean);
-        }
-        rollPagerView.setAdapter(new RollViewpagerAdapter(getActivity(), companyList));//配置适配器
+        ColorPointHintView hintView = new ColorPointHintView(getActivity(), getResources().getColor(R.color.colorPrimary), getResources().getColor(R.color.colord2));
+        rollPagerView.setHintView(hintView);
+        rollPagerView.setPlayDelay(3000);
+        rollPagerView.setAnimationDurtion(500);
+        mvpPresenter.getRollPageList();
+
+
     }
 
     @Override
@@ -79,13 +84,11 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         if (!isFirstCreate) {
             ButterKnife.bind(this, viewIndex);
             isFirstCreate = true;
-            initGridData();
             rollPagerViewSet();
+            initGridData();
             Check();
             initRefreshView();
-//            pullToRefreshView();
         }
-        isFirstCreate = true;
     }
 
     private void initRefreshView() {
@@ -97,33 +100,33 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
                 getResources().getColor(R.color.gplus_color_2),
                 getResources().getColor(R.color.gplus_color_3),
                 getResources().getColor(R.color.gplus_color_4));
-    }
 
-//    private void pullToRefreshView() {
-//        pullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                pullToRefreshView.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pullToRefreshView.setRefreshing(false);
-//                    }
-//                }, 2000);
-//            }
-//        });
-//    }
+
+    }
 
     //进入推荐菜品列表
     private void initGridData() {
-        ArrayList<CompanyInfoBean> companys = new ArrayList<>();
-        for (int i = 0; i <= 3; i++) {
-            CompanyInfoBean companyInfoBean = new CompanyInfoBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
-            companys.add(companyInfoBean);
-        }
-        IndexFoodGridAdapter gridAdapter = new IndexFoodGridAdapter(getActivity(), companys);
-        gridView.setAdapter(gridAdapter);
+        mvpPresenter.getEatFoodList();
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                goEatDetail(i);
+            }
+        });
     }
 
+    //跳到想吃的详情页
+    private void goEatDetail(int position) {
+        Intent intent = new Intent(getActivity(), EatFoodDetail.class);
+        intent.putExtra("nowEatFood", eatFoodBeanList.get(position));
+        startActivity(intent);
+    }
+
+    private void goEatDetailForRoll(int position) {
+        Intent intent = new Intent(getActivity(), EatFoodDetail.class);
+        intent.putExtra("nowEatFood", eatRollFoodBeanList.get(position));
+        startActivity(intent);
+    }
 
     private void Check() {
         tab_index.setOnClickListener(new View.OnClickListener() {
@@ -200,11 +203,6 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     }
 
     @Override
-    public void homeInfoDone(HomeBean homeBean) {
-
-    }
-
-    @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -212,5 +210,54 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
                 swipeRayout.setRefreshing(false);
             }
         }, 3000);
+    }
+
+    private RollViewpagerAdapter rollAdapter;
+
+    @Override
+    public void getRollViewListSuc(EatFoodReturn mEatFoodReturn) {
+        this.eatRollFoodBeanList.addAll(mEatFoodReturn.getEatFoodBeanList());
+        if (eatRollFoodBeanList != null) {
+            if (!isFirstRollViewPage) {
+                rollAdapter = new RollViewpagerAdapter(getActivity(), mEatFoodReturn.getEatFoodBeanList());
+                rollPagerView.setAdapter(rollAdapter);//配置适配器
+                rollAdapter.setOnRollItemt(this);
+                isFirstRollViewPage = true;
+            } else {
+                rollAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+    @Override
+    public void getRollViewListFail() {
+
+    }
+
+    private IndexFoodGridAdapter gridAdapter;
+
+    @Override
+    public void getEatfoodListSuc(EatFoodReturn mEatFoodReturn) {
+        this.eatFoodBeanList.addAll(mEatFoodReturn.getEatFoodBeanList());
+        if (eatFoodBeanList != null) {
+            if (!isFirstRequestGridData) {
+                gridAdapter = new IndexFoodGridAdapter(getActivity(), mEatFoodReturn.getEatFoodBeanList());
+                gridView.setAdapter(gridAdapter);
+                isFirstRequestGridData = true;
+            } else {
+                gridAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
+
+    @Override
+    public void getEatfoodListFail() {
+
+    }
+
+    @Override
+    public void nowRollViewPageItem(int position) {
+        goEatDetailForRoll(position);
     }
 }

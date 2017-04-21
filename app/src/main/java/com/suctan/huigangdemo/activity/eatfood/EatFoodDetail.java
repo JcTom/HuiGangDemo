@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -64,10 +63,6 @@ public class EatFoodDetail extends AppCompatActivity {
         tv_eat_name = (TextView) findViewById(R.id.tv_eat_name);
         tv_eat_num = (TextView) findViewById(R.id.tv_eat_num);
         tv_eat_momeny = (TextView) findViewById(R.id.tv_eat_momeny);
-
-
-
-
         /*底部*/
         /**********************************************************************************/
         View view = LayoutInflater.from(this).inflate(R.layout.bottom_one_food_details, null, false);
