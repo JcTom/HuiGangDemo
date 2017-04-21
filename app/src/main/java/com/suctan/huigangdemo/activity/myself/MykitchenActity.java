@@ -1,5 +1,4 @@
 package com.suctan.huigangdemo.activity.myself;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -13,7 +12,6 @@ import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
-import com.suctan.huigangdemo.bean.user.CurrentUser;
 import com.suctan.huigangdemo.bean.user.MykitchenBean;
 import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenPresenter;
 import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenView;

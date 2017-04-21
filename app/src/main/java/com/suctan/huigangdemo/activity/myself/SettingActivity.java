@@ -30,11 +30,12 @@ import com.example.androidbase.utils.ScreenTools;
 import com.example.androidbase.utils.SdCardTool;
 import com.example.androidbase.utils.ToastTool;
 import com.example.androidbase.widget.loading.WaitDialog;
-import com.google.gson.Gson;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.CurrentUser;
+import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
-import com.suctan.huigangdemo.activity.setting.SeetingForGetPwd;
+import com.suctan.huigangdemo.activity.setting.SeetingFogetPwd;
 import com.suctan.huigangdemo.activity.setting.SeetingUserAge;
 import com.suctan.huigangdemo.activity.setting.SeetingUserDegree;
 import com.suctan.huigangdemo.activity.setting.SeetingUserHoppy;
@@ -42,8 +43,6 @@ import com.suctan.huigangdemo.activity.setting.SeetingUserKnowArea;
 import com.suctan.huigangdemo.activity.setting.SeetingUserName;
 import com.suctan.huigangdemo.activity.setting.SeetingUserSex;
 import com.suctan.huigangdemo.bean.user.CourseBean;
-import com.suctan.huigangdemo.bean.user.CurrentUser;
-import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
@@ -266,7 +265,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 goClass(SeetingUserHoppy.class, requestUserHoppy, tv_hobby.getText().toString());
                 break;
             case R.id.ly_changPwd:
-                Intent intentLogPwd = new Intent(this, SeetingForGetPwd.class);
+                Intent intentLogPwd = new Intent(this, SeetingFogetPwd.class);
                 startActivity(intentLogPwd);
                 break;
             case R.id.ly_loginQuit:
