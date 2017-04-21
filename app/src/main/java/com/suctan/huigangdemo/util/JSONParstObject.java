@@ -1,12 +1,16 @@
 package com.suctan.huigangdemo.util;
 
 
+import com.suctan.huigangdemo.bean.index.EatFoodBean;
+import com.suctan.huigangdemo.bean.index.EatFoodReturn;
 import com.suctan.huigangdemo.bean.user.Users;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 
 /**
@@ -66,6 +70,51 @@ public class JSONParstObject {
             return null;
         }
         return currentUser;
+    }
+
+
+    /**
+     * 获取轮播图列表
+     *
+     * @param userString
+     * @param requestKey 0为获取轮播图 1为获取首页列表的菜
+     * @return
+     */
+    public static EatFoodReturn getRollViewDataList(String userString, int requestKey) {
+
+        EatFoodReturn eatFoodReturn = null;
+        ArrayList<EatFoodBean> eatFoodList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(userString);
+            eatFoodReturn = new EatFoodReturn();
+            eatFoodList = new ArrayList<>();
+            eatFoodReturn.setStatus(jsonObject.getInt("status"));
+            eatFoodReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            if (requestKey == 0) {
+                jsonArray = jsonObject.getJSONArray("makeOorderList");
+            } else {
+                jsonArray = jsonObject.getJSONArray("makeOrderList");
+            }
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    EatFoodBean eatFoodBean = new EatFoodBean();
+                    eatFoodBean.setOrder_id(Integer.parseInt(jsonObject1.getString("order_id")));
+                    eatFoodBean.setOrder_pic("http://119.29.137.109/tp/uploads/"+jsonObject1.getString("order_pic"));
+                    eatFoodBean.setOrder_title(jsonObject1.getString("order_title"));
+                    eatFoodBean.setOrder_price(Double.parseDouble(jsonObject1.getString("order_price")));
+                    eatFoodBean.setFood_description(jsonObject1.getString("food_description"));
+                    eatFoodBean.setNum(Integer.parseInt(jsonObject1.getString("order_num")));
+                    eatFoodList.add(eatFoodBean);
+                }
+                eatFoodReturn.setEatFoodBeanList(eatFoodList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return eatFoodReturn;
     }
 }
 

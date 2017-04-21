@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.example.androidbase.LoadImageManager;
 import com.example.androidbase.mvp.MvpActivity;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
 import com.suctan.huigangdemo.bean.user.CurrentUser;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/common_swipe_fresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,10 +15,10 @@
             android:layout_height="200dp">
 
             <com.jude.rollviewpager.RollPagerView
-                android:id="@+id/rollViewpager"
-                rollviewpager_play_delay="4000"
-                android:layout_width="match_parent"
-                android:layout_height="240dp" />
+            android:id="@+id/rollViewpager"
+            rollviewpager_play_delay="3000"
+            android:layout_width="match_parent"
+            android:layout_height="240dp" />
         </FrameLayout>
 
         <RadioGroup

@@ -42,7 +42,9 @@
                 android:gravity="center"
                 android:text="编辑"
                 android:textColor="#fff"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:visibility="invisible"
+                />
         </LinearLayout>
 
 

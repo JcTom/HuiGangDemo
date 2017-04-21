@@ -1,7 +1,6 @@
 package com.suctan.huigangdemo.activity.myself;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -142,6 +141,7 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
                 startActivityForResult(gotofoodbook, getFoodMatria);
                 break;
             case R.id.btn_addFood_comfirm:
+
                 getPublishData();
                 break;
         }

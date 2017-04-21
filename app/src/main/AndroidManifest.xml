@@ -36,7 +36,7 @@
 
     <!-- 调用手机相册 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
     <application
         android:name=".acache.HuiGangApplication"
         android:allowBackup="true"
@@ -45,13 +45,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.login.LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity" >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".activity.Home_Page.HomeActivity" />
         <activity android:name=".activity.search.SearchActivity" />
         <activity android:name=".activity.recommend.RecommendActivity" />
@@ -74,23 +84,23 @@
 
 
         <!--用户信息设置-->
-        <activity android:name=".activity.setting.SeetingForGetPwd"></activity>
+        <activity android:name=".activity.setting.SeetingFogetPwd"></activity>
         <activity android:name=".activity.setting.SeetingUserAge"></activity>
         <activity android:name=".activity.setting.SeetingUserDegree"></activity>
-        <activity android:name=".activity.setting.SeetingUserFogetPwd"></activity>
         <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
         <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
         <activity android:name=".activity.setting.SeetingUserName"></activity>
         <activity android:name=".activity.setting.SeetingUserSex"></activity>
         <activity android:name=".activity.setting.SeetingVeriatyBody"></activity>
-        <activity android:name=".activity.myself.MykitchenActity"></activity>
 
 
+        <!--我的页面中的注册文件-->
         <activity android:name=".activity.myself.addressActivity"></activity>
         <activity android:name=".activity.myself.buyActivity"></activity>
         <activity android:name=".activity.myself.SellActivity"></activity>
         <activity android:name=".activity.myself.MymoneyActivity"></activity>
         <activity android:name=".activity.myself.MydiscountAcitity"></activity>
+        <activity android:name=".activity.myself.MykitchenActity"></activity>
         <activity android:name=".activity.myself.WaitOrdersActivity"></activity>
         <activity android:name=".activity.myself.WaitfoodActitity"></activity>
         <activity android:name=".activity.myself.WaitassessActivity"></activity>
@@ -103,11 +113,8 @@
         <activity android:name=".activity.myself.address_listitemActivity"></activity>
         <activity android:name=".activity.screen_Activity"></activity>
         <activity android:name=".activity.myself.my_assess"></activity>
-
-        /*****************************************************************************************************/
-        <!--用户信息修改-->
-
-
+        <activity android:name=".activity.password.PasswordActivity"></activity>
+        <activity android:name=".activity.signup.signupActivity"></activity>
+        <activity android:name=".activity.eatfood.EatFoodDetail"></activity>
     </application>
-
 </manifest>

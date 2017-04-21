@@ -54,6 +54,7 @@
                 />
 
             <EditText
+                android:id="@+id/addressPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="请输入你的名字"
@@ -80,13 +81,16 @@
                 />
 
             <EditText
+                android:id="@+id/addressPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="请输入你的电话"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:background="@drawable/et_shape"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:inputType="number"
+                />
 
         </LinearLayout>
 
@@ -106,6 +110,7 @@
 
             <!--点击时间,点击这个text的时候,底部会弹起滑动选择器-->
             <EditText
+                android:id="@+id/addressArea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="请选择所在地区"
@@ -133,6 +138,7 @@
                 />
 
             <EditText
+                android:id="@+id/addressCommunity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="请输入小区名字"
@@ -159,6 +165,7 @@
                 />
 
             <EditText
+                android:id="@+id/addressAllAera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="请输入详细地址"
@@ -179,8 +186,9 @@
         android:layout_marginRight="10dp"
         >
 
+        <!--android:id="@+id/btn_degree_comfirm"-->
         <Button
-            android:id="@+id/btn_degree_comfirm"
+            android:id="@+id/btnadressSave"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             style="@style/title_font"

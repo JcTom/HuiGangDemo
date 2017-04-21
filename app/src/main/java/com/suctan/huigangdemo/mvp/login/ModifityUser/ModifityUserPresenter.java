@@ -1,6 +1,5 @@
 package com.suctan.huigangdemo.mvp.login.ModifityUser;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.androidbase.BaseApplication;
@@ -8,8 +7,6 @@ import com.example.androidbase.rxjava.ApiCallback;
 import com.example.androidbase.rxjava.SubscriberCallBack;
 import com.suctan.huigangdemo.bean.user.ModifyReturn;
 import com.suctan.huigangdemo.mvp.login.DemoBasePresenter;
-import com.suctan.huigangdemo.mvp.login.LoginView;
-import com.suctan.huigangdemo.mvp.login.singup.SingUpView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Tom on 2017/4/11.
  */
-
+//这个presenter 写的是,设置里面的退出登录
 public class ModifityUserPresenter extends DemoBasePresenter<ModifityUserView> {
     public ModifityUserPresenter(ModifityUserView mvpView) {
         attachView(mvpView);
@@ -54,9 +51,7 @@ public class ModifityUserPresenter extends DemoBasePresenter<ModifityUserView> {
                 new SubscriberCallBack<>(new ApiCallback<ModifyReturn>() {
                     @Override
                     public void onStart() {
-
                     }
-
                     @Override
                     public void onCompleted() {
                         mvpView.hideLoading();
