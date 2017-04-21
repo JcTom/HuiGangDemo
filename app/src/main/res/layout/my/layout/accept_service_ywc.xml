@@ -39,59 +39,58 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
 
-            <!--菜图片-->
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="80dp"
-                android:id="@+id/ItemImage"
-                android:src="@mipmap/ic_launcher" />
-
+            <!--设置菜的名字-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp">
-
-                <!--设置菜的名字-->
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
                 <TextView
                     android:id="@+id/ItemTitle"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     style="@style/text_main"
-                    android:text="番茄炒鸡蛋、麻婆豆腐、宫保鸡丁"
+                    android:text="家政服务"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="#000" />
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="打扫卫生"
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textColor="#000"
-                    android:layout_marginTop="10dp"/>
+                    android:textSize="14sp"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignLeft="@id/ItemTitle"
+                android:layout_below="@id/ItemTitle"
+                android:layout_marginTop="12dp">
 
-                <LinearLayout
+                <!--设置菜的价格-->
+                <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_alignLeft="@id/ItemTitle"
-                    android:layout_below="@id/ItemTitle"
-                    android:layout_marginTop="20dp">
+                    android:text="¥"
+                    android:textSize="16sp"
+                    android:textColor="#ff0000" />
 
-                    <!--设置菜的价格-->
-                    <TextView
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="¥"
-                        android:textSize="16sp"
-                        android:textColor="#ff0000" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="350.00"
-                        android:textSize="16sp"
-                        android:textColor="#ff0000"
-                        android:layout_marginLeft="5dp" />
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="350.00"
+                    android:textSize="16sp"
+                    android:textColor="#ff0000"
+                    android:layout_marginLeft="5dp" />
 
             </LinearLayout>
 
@@ -142,47 +141,6 @@
                 android:text="评价"
                 android:textColor="@color/green"
                 android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/textviewstyle_circular"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:text="详情"
-                android:textColor="@color/text_orange"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/bg_gray"
-            android:layout_marginTop="8dp" />
-
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="right">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/et_shape"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:text="评价"
-                android:textColor="@color/green"
-                android:textSize="14sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -195,7 +153,14 @@
                 android:gravity="center"
                 android:textColor="@color/text_orange"
                 android:textSize="14sp"/>
-        </LinearLayout>-->
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_gray"
+            android:layout_marginTop="8dp" />
+
     </LinearLayout>
 
 

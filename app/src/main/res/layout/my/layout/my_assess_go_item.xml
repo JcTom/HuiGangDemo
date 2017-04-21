@@ -51,6 +51,12 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="评分"
+                    android:layout_marginRight="10dp"/>
+
                 <com.suctan.huigangdemo.widget.StarBar
                     android:id="@+id/evaluate_star"
                     android:layout_width="wrap_content"
@@ -76,67 +82,97 @@
         //第二个用户对我的评价,用户没有上传图片,这个直接,imageview这个控件就不显示-->
 
     <LinearLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
+
         <TextView
             android:id="@+id/evaluate_Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/pinglun"
-            android:textSize="16sp"
             android:padding="2dp"
-            />
+            android:text="@string/pinglun"
+            android:textSize="16sp" />
+
         <LinearLayout
-            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
             android:background="@color/ordrs_backg"
-            android:layout_marginBottom="5dp">
-            <ImageView
+            android:orientation="horizontal">
+            <!--<ImageView
                 android:id="@+id/myAssessGo_ImageView"
                 android:padding="5dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@mipmap/logo6"
                 android:scaleType="fitCenter"
-                />
+                />-->
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
-                >
+                android:paddingLeft="10dp">
+
                 <TextView
                     android:id="@+id/myAssessGo_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="麻婆豆腐"
-                    android:textSize="15sp"
                     android:textColor="@color/back"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    />
-                <TextView
+                    android:textSize="15sp" />
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="交易成功时间"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15sp"
-                    android:layout_marginTop="10dp"
-                    />
-                <TextView
-                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单编号   "
+                        android:textColor="@color/gray_h" />
+
+                    <TextView
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="201704191049001"
+                        android:textColor="@color/gray_h" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2017.04.15.22:22"
-                    android:textSize="15sp"
-                    android:layout_marginLeft="10dp" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="完成时间   "
+                        android:textColor="@color/gray_h" />
+
+                    <TextView
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2017/04/21 16:48"
+                        android:textColor="@color/gray_h" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
