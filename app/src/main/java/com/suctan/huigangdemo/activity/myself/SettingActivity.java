@@ -31,6 +31,7 @@ import com.example.androidbase.utils.SdCardTool;
 import com.example.androidbase.utils.ToastTool;
 import com.example.androidbase.widget.loading.WaitDialog;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.MainActivity;
 import com.suctan.huigangdemo.activity.login.LoginActivity;
@@ -42,7 +43,7 @@ import com.suctan.huigangdemo.activity.setting.SeetingUserKnowArea;
 import com.suctan.huigangdemo.activity.setting.SeetingUserName;
 import com.suctan.huigangdemo.activity.setting.SeetingUserSex;
 import com.suctan.huigangdemo.bean.user.CourseBean;
-import com.suctan.huigangdemo.bean.user.CurrentUser;
+
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
@@ -219,7 +220,6 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
 
         window.setContentView(viewHeadChose, layoutParams);
         window.setBackgroundDrawableResource(android.R.color.transparent);//去除自定义是保留的棱角
-
     }
 
 
