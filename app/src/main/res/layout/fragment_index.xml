@@ -12,13 +12,13 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="180dp">
 
             <com.jude.rollviewpager.RollPagerView
-            android:id="@+id/rollViewpager"
-            rollviewpager_play_delay="3000"
-            android:layout_width="match_parent"
-            android:layout_height="240dp" />
+                android:id="@+id/rollViewpager"
+                rollviewpager_play_delay="3000"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
         </FrameLayout>
 
         <RadioGroup

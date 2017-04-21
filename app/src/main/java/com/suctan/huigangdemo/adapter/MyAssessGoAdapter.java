@@ -48,7 +48,7 @@ public class MyAssessGoAdapter extends BaseAdapter {
         if(convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.my_assess_go_item,parent,false);
             holder = new GridViewHolder();
-            holder.myAssessGo_ImageView= (ImageView) convertView.findViewById(R.id.myAssessGo_ImageView);
+            //holder.myAssessGo_ImageView= (ImageView) convertView.findViewById(R.id.myAssessGo_ImageView);
             holder.evaluate_hand_Image = (ImageView) convertView.findViewById(R.id.evaluate_hand_Image);
             //holder.evaluate_star = (ImageView) convertView.findViewById(R.id.evaluate_star);
             holder.evaluate_user = (TextView) convertView.findViewById(R.id.evaluate_user);
