@@ -56,7 +56,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="农业银行储蓄卡(4865)"
+                android:text="农业银行储蓄卡(4854)"
                 style="@style/text_main"
                 android:textColor="#878637">
 
@@ -161,11 +161,11 @@
 
         <Button
             android:id="@+id/btnwitharwals"
-            style="@style/title_font"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/real_button_selector"
-            android:text="提现" />
+            android:text="提现"
+            style="@style/title_font"
+            android:background="@drawable/real_button_selector"/>
 
 
     </LinearLayout>
