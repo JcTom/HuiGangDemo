@@ -36,7 +36,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#d3d3d3"
+        android:background="@color/bg_gray"
         android:orientation="vertical">
 
         <LinearLayout
@@ -51,14 +51,13 @@
                 android:layout_gravity="left|center"
                 android:layout_marginLeft="10dp"
                 android:text="订做午餐"
-                android:textColor="#000"
-                android:textSize="18dp" />
+                style="@style/two_title" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:background="@color/white"
             android:orientation="vertical">
@@ -73,8 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left|center"
                     android:text="菜品详情"
-                    android:textColor="#565656"
-                    android:textSize="18dp" />
+                    style="@style/text_main" />
             </LinearLayout>
 
             <ScrollView
@@ -103,15 +101,15 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="2"
-                android:background="#d3d3d3">
+                android:layout_weight="1.2"
+                android:background="@color/bg_gray">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="69dp"
                     android:hint="客户留言信息"
                     android:padding="5dp"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"/>
             </LinearLayout>
 
 
@@ -128,7 +126,7 @@
                     android:padding="10dp"
                     android:text="总出价:"
                     android:textColor="#fc1515"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -136,7 +134,7 @@
                     android:padding="5dp"
                     android:text="¥"
                     android:textColor="#fc1515"
-                    android:textSize="16sp" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,8 +150,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#d3d3d3"></LinearLayout>
+                android:layout_height="5dp"
+                android:background="@color/bg_gray"></LinearLayout>
         </LinearLayout>
 
 
@@ -182,7 +180,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="收 货 人:"
+                        android:text="收  货  人："
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
@@ -206,7 +204,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="收货方式:"
+                        android:text="收货方式："
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
@@ -229,7 +227,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="地        址:"
+                        android:text="地        址："
                         android:textColor="@color/back"
                         android:textSize="15sp" />
                     //栋和房间号分开两个textview 第一个栋
@@ -260,7 +258,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="联系方式:"
+                        android:text="联系方式："
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
@@ -284,7 +282,7 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="期望时间:"
+                        android:text="期望时间："
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
@@ -309,7 +307,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:background="@color/common_green"
                 android:orientation="vertical">
                 //底部的接单按钮
