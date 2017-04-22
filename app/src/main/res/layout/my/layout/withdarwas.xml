@@ -49,17 +49,18 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="提  现  至"
+                android:text="银  行  卡"
                 style="@style/text_main"
                 android:layout_gravity="left|center_vertical"
                 android:gravity="left"/>
-            <Spinner
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/payment_mode"
-                style="@style/text_main">
+                android:text="农业银行储蓄卡(4865)"
+                style="@style/text_main"
+                android:textColor="#878637">
 
-            </Spinner>
+            </TextView>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -137,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:text="全部提现"
                     android:textSize="15sp"
-                    android:textColor="@color/green"
+                    android:textColor="#878637"
                     android:layout_gravity="left"/>
             </LinearLayout>
 
@@ -160,11 +161,11 @@
 
         <Button
             android:id="@+id/btnwitharwals"
+            style="@style/title_font"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="提现"
-            style="@style/title_font"
-            android:background="@drawable/real_button_selector"/>
+            android:background="@drawable/real_button_selector"
+            android:text="提现" />
 
 
     </LinearLayout>
