@@ -116,5 +116,6 @@
         <activity android:name=".activity.password.PasswordActivity"></activity>
         <activity android:name=".activity.signup.signupActivity"></activity>
         <activity android:name=".activity.eatfood.EatFoodDetail"></activity>
+        <activity android:name=".activity.myself.Already_release_today_foodActivity"></activity>
     </application>
 </manifest>

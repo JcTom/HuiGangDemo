@@ -21,14 +21,16 @@ public class my_kitchen_popupwin_release extends PopupWindow implements View.OnC
 
     private View view;
 
-    private Button btn_add_today_food, btn_add_new_food, btn_cancel;
+    private Button btn_add_today_food, btn_add_new_food, btn_cancel,aleady_today_food;
 
 
     public my_kitchen_popupwin_release(Context mContext) {
         this.view = LayoutInflater.from(mContext).inflate(R.layout.my_kitchen_popupwindow, null);
-        btn_add_today_food = (Button) view.findViewById(R.id.btn_add_today_food);
-        btn_add_new_food = (Button) view.findViewById(R.id.btn_add_new_food);
-        btn_cancel = (Button) view.findViewById(R.id.btn_cancel);
+        btn_add_today_food = (Button) view.findViewById(R.id.btn_add_today_food); //上架今日菜色
+        btn_add_new_food = (Button) view.findViewById(R.id.btn_add_new_food);    //添加新的菜色
+        btn_cancel = (Button) view.findViewById(R.id.btn_cancel);    //取消按钮 ,毁灭弹出框
+        aleady_today_food = (Button) view.findViewById(R.id.btn_aleady_today_food);   //查看今日被上架的菜
+        aleady_today_food.setOnClickListener(this);
         btn_add_today_food.setOnClickListener(this);
         btn_add_new_food.setOnClickListener(this);
         btn_cancel.setOnClickListener(this);
@@ -94,7 +96,10 @@ public class my_kitchen_popupwin_release extends PopupWindow implements View.OnC
             case R.id.btn_cancel:
                 dismiss();
                 break;
-
+            case R.id.btn_aleady_today_food:
+              Lisetner.AlreadyFood();
+              dismiss();
+                break;
         }
     }
 
@@ -104,7 +109,7 @@ public class my_kitchen_popupwin_release extends PopupWindow implements View.OnC
 
         void AddNewFood();
 
-
+        void AlreadyFood();
     }
 
 

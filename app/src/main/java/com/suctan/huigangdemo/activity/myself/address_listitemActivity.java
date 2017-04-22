@@ -93,17 +93,15 @@ public class address_listitemActivity extends MvpActivity<addressPresenter> impl
             Toast.makeText(this,"不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-       //api接口还没有写,待定
+       //api接口还没有写,待定,还有一个addressList返回值无法接的,等待
         Map<String,Object> map = new HashMap<>();
-        map.put("",token);
-        map.put("",people1);
-        map.put("",phone1);
-        map.put("",Area1);
-        map.put("",AllArea1);
-        map.put("",community1);
+        map.put("user_token",token);
+        map.put("name",people1);
+        map.put("phone",phone1);
+        map.put("area",Area1);
+        map.put("address",AllArea1);
+        map.put("community",community1);
         mvpPresenter.addressActoin(map);
-
-
     }
 
     @Override
