@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:coupon="http://schemas.android.com/apk/res-auto"
-    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    //标题栏
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
+
         >
 
         <ImageView
-            android:id="@+id/My_discount_back"
+            android:id="@+id/AlreadyBack"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@mipmap/return_128"
@@ -27,29 +24,31 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="我的优惠券"
+            android:text="已上架的菜品"
             android:textSize="20sp"
-            android:textColor="@color/top_title"
+            android:textColor="#fff"
             android:gravity="center"
             android:layout_marginRight="25dp"
             />
-
     </LinearLayout>
 
+    //标题栏以下的东西
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center_vertical|center"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="暂无优惠劵"
-            android:textSize="20sp"
 
-            />
+        <!--对应的item名字叫already_release_today_food_listitem-->
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </ListView>
 
     </LinearLayout>
+
 
 </LinearLayout>

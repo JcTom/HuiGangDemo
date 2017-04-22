@@ -50,6 +50,29 @@
         <attr name="replenishTextColor" format="color"/>
         <attr name="replenishTextSize" format="dimension"/>
         <attr name="replenishText" format="string"/>
-
     </declare-styleable>
+
+    <!--RoundImageView-->
+    <attr name="borderRadius" format="dimension" />
+    <attr name="borderType">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" />
+        <attr name="borderType" />
+    </declare-styleable>
+
+    //星星的样式
+    <declare-styleable name="StarView">
+        <attr name="mImageWidth" format="dimension"/>
+        <attr name="mImageHeight" format="dimension" />
+        <attr name="mDefaultImageId" format="reference" />
+        <attr name="mClickImageId" format="reference" />
+        <attr name="mMargin" format="dimension" />
+        <attr name="mStarNum" format="integer" />
+        <attr name="mStarChoose" format="integer" />
+    </declare-styleable>
+
+
 </resources>
