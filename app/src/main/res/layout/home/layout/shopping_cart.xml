@@ -39,13 +39,14 @@
             android:layout_height="40dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="使用默认地址"
+                android:layout_weight="1"
+                android:text="默认地址"
                 android:textColor="@color/gray_h"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -58,35 +59,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@mipmap/more_gray"/>
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/bg_gray"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="选择收货方式"
-                android:textColor="@color/gray_h"
-                android:textSize="14sp"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/gray"
-                android:text="送上门"
-                android:layout_marginRight="10dp"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/more_gray" />
         </LinearLayout>
         <View
         android:layout_width="match_parent"
@@ -102,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="期望送达时间"
+                android:text="送达时间"
                 android:textColor="@color/gray_h"
                 android:textSize="14sp" />
             <TextView
@@ -118,10 +90,43 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/more_gray"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_gray"/>
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="收货方式"
+                android:textColor="@color/gray_h"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/gray"
+                android:text="送上门"
+                android:layout_marginRight="10dp"/>
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/more_gray"
+                android:visibility="invisible"/>
+        </LinearLayout>-->
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="15dp"
+        android:layout_height="10dp"
         android:background="@color/bg_gray"/>
 
     <ListView
