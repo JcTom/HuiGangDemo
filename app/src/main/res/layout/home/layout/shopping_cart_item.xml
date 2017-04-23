@@ -43,7 +43,7 @@
                     android:layout_height="match_parent"
                     style="@style/two_title"
                     android:text="猪肉炖粉条"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/grey" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
