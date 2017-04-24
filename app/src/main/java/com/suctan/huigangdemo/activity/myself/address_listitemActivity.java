@@ -127,11 +127,27 @@ public class address_listitemActivity extends MvpActivity<addressPresenter> impl
     }
 
     @Override
-    public void loadCourseDone(CourseBean courseBean) {
-
-    }
-    @Override
     protected addressPresenter createPresenter() {
         return new addressPresenter(this);
+    }
+
+    @Override
+    public void addAdressSuc() {
+
+    }
+
+    @Override
+    public void addAdressFail() {
+
+    }
+
+    @Override
+    public void getAddressListSuc() {
+
+    }
+
+    @Override
+    public void getAddressListFail() {
+
     }
 }

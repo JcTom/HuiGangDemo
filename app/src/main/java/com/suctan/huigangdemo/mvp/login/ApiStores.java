@@ -1,4 +1,6 @@
 package com.suctan.huigangdemo.mvp.login;
+import com.suctan.huigangdemo.bean.topic.AddCommentBean;
+import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
 import com.suctan.huigangdemo.bean.user.ModifyReturn;
 
@@ -48,17 +50,12 @@ public interface ApiStores {
     Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
     /**
 
-     * 发布共享需求
-     */
+ /*    * 发布共享需求
+     *//*
     @POST("pub_need")
     Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
 
-
-    /**
-     * 发布我要吃的饭菜
-     */
-    @POST("pub_eatFood")
-    Observable<ModifyReturn> PubEatFood(@QueryMap Map<String, Object> needReturn);
+*/
 
     /**
      * 修改用户信息
@@ -127,8 +124,6 @@ public interface ApiStores {
     /**
      * 地址管理,里面的添加地址管理功能,目前这个功能待定
      */
-    @POST("add_address")
-    Observable<ModifyReturn> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
     @POST("add_address")
     Observable<String> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
 
