@@ -174,7 +174,18 @@
                 android:background="@drawable/et_shape"
                 android:padding="5dp"/>
         </LinearLayout>
+
     </LinearLayout>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置为默认地址"
+        android:padding="5dp"
+        android:textColor="#9db830"
+        android:layout_margin="8dp"
+        android:textSize="16sp"
+        />
 
 
     <LinearLayout

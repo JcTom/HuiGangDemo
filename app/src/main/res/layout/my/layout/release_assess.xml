@@ -2,219 +2,221 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical"
-       >
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="#9db830"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
-
-            android:layout_gravity="left|center_vertical"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="@string/assess"
-            android:textSize="20sp"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:layout_weight="4"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:text="@string/Release"
-            android:textSize="18sp"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:layout_marginRight="1dp"
-            />
-    </LinearLayout>
-
-
-
-
-   <!--标题栏以下-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#fff"
-        >
-
-     <!--评价部分-->
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical"
-           >
-
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textColor="#9db830"
-               android:text="评价留言:"
-               android:textSize="18sp"
-               android:layout_marginTop="10dp"
-               android:layout_marginLeft="10dp"
-               />
-           <EditText
-               android:padding="10dp"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="请输入你对此菜色的评论"
-               android:minLines="3"
-               android:gravity="top"
-               android:background="@drawable/et_shape"
-               android:textSize="15dp"
-               android:layout_margin="10dp"
-               />
-
-           <!--分隔线-->
-
-           <View
-               android:layout_width="match_parent"
-               android:layout_height="1px"
-               android:background="@color/grey"
-               android:layout_marginTop="20dp"
-               />
-
-       </LinearLayout>
-
-
-
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            >
-            <!--1-->
-            <LinearLayout
-                android:layout_weight="1"
-                android:padding="10dp"
+            android:layout_height="45dp"
+            android:background="#9db830"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/return_128"
+                android:layout_marginLeft="1dp"
+
+                android:layout_gravity="left|center_vertical"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="@string/assess"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_weight="4"
+                />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="描述相符"
-                    android:textSize="18sp" />
-
-                <com.suctan.huigangdemo.widget.StarBar
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/start_view_0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:mClickImageId="@mipmap/star_n"
-                    app:mDefaultImageId="@mipmap/star_y"
-                    app:mImageHeight="18dp"
-                    app:mImageWidth="18dp"
-                    app:mMargin="2dp"
-                    app:mStarChoose="3"
-                    app:mStarNum="5"/>
-            </LinearLayout>
-
-            <!--2-->
-            <LinearLayout
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="服务准时"
-                    android:textSize="18sp" />
-
-                <com.suctan.huigangdemo.widget.StarBar
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/start_view_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:mClickImageId="@mipmap/star_n"
-                    app:mDefaultImageId="@mipmap/star_y"
-                    app:mImageHeight="18dp"
-                    app:mImageWidth="18dp"
-                    app:mMargin="2dp"
-                    app:mStarChoose="3"
-                    app:mStarNum="5"/>
-            </LinearLayout>
-
-            <!--3-->
-            <LinearLayout
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="好吃程度"
-                    android:textSize="18sp" />
-                <com.suctan.huigangdemo.widget.StarBar
-                    android:layout_weight="1"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="10dp"
-                    android:id="@+id/start_view_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:mClickImageId="@mipmap/star_n"
-                    app:mDefaultImageId="@mipmap/star_y"
-                    app:mImageHeight="18dp"
-                    app:mImageWidth="18dp"
-                    app:mMargin="2dp"
-                    app:mStarChoose="3"
-                    app:mStarNum="5"/>
-            </LinearLayout>
-
-
+                android:layout_height="25dp"
+                android:textSize="18sp"
+                android:textColor="#fff"
+                android:gravity="center"
+                android:layout_marginRight="1dp"
+                />
         </LinearLayout>
 
+        <!--标题栏以下-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical">
+
+            <!--评价部分-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="评价留言:"
+                    android:textColor="#9db830"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/et_shape"
+                    android:gravity="top"
+                    android:hint="请输入你对此菜色的评论"
+                    android:minLines="8"
+                    android:padding="10dp"
+                    android:textSize="15dp" />
+
+                <!--分隔线-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/bg_gray" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+                <!--1-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="描述相符"
+                        android:textSize="18sp" />
+
+                    <com.suctan.huigangdemo.widget.StarBar
+                        android:id="@+id/start_view_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:mClickImageId="@mipmap/star_n"
+                        app:mDefaultImageId="@mipmap/star_y"
+                        app:mImageHeight="18dp"
+                        app:mImageWidth="18dp"
+                        app:mMargin="2dp"
+                        app:mStarChoose="3"
+                        app:mStarNum="5" />
+                </LinearLayout>
+
+                <!--2-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="服务准时"
+                        android:textSize="18sp" />
+
+                    <com.suctan.huigangdemo.widget.StarBar
+                        android:id="@+id/start_view_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:mClickImageId="@mipmap/star_n"
+                        app:mDefaultImageId="@mipmap/star_y"
+                        app:mImageHeight="18dp"
+                        app:mImageWidth="18dp"
+                        app:mMargin="2dp"
+                        app:mStarChoose="3"
+                        app:mStarNum="5" />
+                </LinearLayout>
+
+                <!--3-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="好吃程度"
+                        android:textSize="18sp" />
+
+                    <com.suctan.huigangdemo.widget.StarBar
+                        android:id="@+id/start_view_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:mClickImageId="@mipmap/star_n"
+                        app:mDefaultImageId="@mipmap/star_y"
+                        app:mImageHeight="18dp"
+                        app:mImageWidth="18dp"
+                        app:mMargin="2dp"
+                        app:mStarChoose="3"
+                        app:mStarNum="5" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
 
-   </LinearLayout>
+    <LinearLayout
+        style="@style/tab_title"
+        android:background="#00000000"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/post_fb"
+            style="@style/title_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/green"
+            android:gravity="center"
+            android:text="@string/share_fb" />
+    </LinearLayout>
+
 
 </LinearLayout>

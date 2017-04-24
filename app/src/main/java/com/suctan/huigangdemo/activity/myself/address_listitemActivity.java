@@ -28,7 +28,7 @@ import butterknife.BindView;
  */
 
 //这里的activity 用来加载数据进入数据库,并且传递给addressActivity,从而在这里显示出来
-public class address_listitemActivity extends MvpActivity<addressPresenter> implements View.OnClickListener, addressView {
+public class address_listitemActivity extends MvpActivity<addressPresenter> implements View.OnClickListener,addressView {
 
     @BindView(R.id.addressPeople)
     EditText people;    //收货人
@@ -42,10 +42,7 @@ public class address_listitemActivity extends MvpActivity<addressPresenter> impl
     EditText AllAera;    //详细地址
     @BindView(R.id.btnadressSave)
     Button Save;       //保存按钮
-    private ImageView add_address_back;
-
-    private CatLoadingView catLoadingView;
-
+   private ImageView add_address_back;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_address_list_item);
@@ -53,8 +50,8 @@ public class address_listitemActivity extends MvpActivity<addressPresenter> impl
     }
 
 
+
     private void initView() {
-        catLoadingView = new CatLoadingView();
         //返回按钮点击事件
         add_address_back = (ImageView) findViewById(R.id.add_address_back);
         add_address_back.setOnClickListener(this);
@@ -62,65 +59,41 @@ public class address_listitemActivity extends MvpActivity<addressPresenter> impl
         Save.setOnClickListener(this);
     }
 
-    //
-    private void toogleShowCatLoading(boolean isShowLoad) {
-        if (isShowLoad) {
-            Save.setClickable(false);
-            catLoadingView.show(getSupportFragmentManager(), "");
-        } else {
-            Save.setClickable(true);
-            catLoadingView.dismiss();
-        }
-    }
-
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.add_address_back:
                 finish();
             case R.id.btnadressSave:
-                toogleShowCatLoading(true);
                 addressVarity();
         }
     }
-
     //封装数据,传递给presenter
-    private void addressVarity() {
-        String people1 = people.getText().toString().trim();  //收货人
-        String phone1 = phone.getText().toString().trim();    //手机号
-        String Area1 = Area.getText().toString().trim();   //所在地区
-        String AllArea1 = AllAera.getText().toString().trim();  //详细地址
-        String community1 = Community.getText().toString().trim(); //小区
-        if (TextUtils.isEmpty(people1)) {
-            Toast.makeText(this, "收货人填写不能为空", Toast.LENGTH_SHORT).show();
-            toogleShowCatLoading(false);
+    private void addressVarity(){
+          String token = TokenManager.getToken();
+          String people1 = people.getText().toString().trim();
+          String phone1  =phone.getText().toString().trim();
+          String Area1   =Area.getText().toString().trim();
+          String AllArea1=AllAera.getText().toString().trim();
+          String community1 = Community.getText().toString().trim();
+         if (TextUtils.isEmpty(people1)){
+             Toast.makeText(this,"不能为空", Toast.LENGTH_SHORT).show();
+             return;
+         }
+        if (TextUtils.isEmpty(phone1)){
+            Toast.makeText(this,"不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(phone1)) {
-            toogleShowCatLoading(false);
-            Toast.makeText(this, "手机号填写不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        } else {
-            if (VerifyTool.isMobileNO(phone1)) {
-                toogleShowCatLoading(false);
-                Toast.makeText(this, "手机号格式输入有误！", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-        if (TextUtils.isEmpty(Area1)) {
-            toogleShowCatLoading(false);
-            Toast.makeText(this, "所在地区填写不能为空", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(Area1)){
+            Toast.makeText(this,"不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(AllArea1)) {
-            toogleShowCatLoading(false);
-            Toast.makeText(this, "详细地址填写不能为空", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(AllArea1)){
+            Toast.makeText(this,"不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (TextUtils.isEmpty(community1)) {
-            toogleShowCatLoading(false);
-            Toast.makeText(this, "所在小区填写不能为空", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(community1)){
+            Toast.makeText(this,"不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
         //api接口还没有写,待定
@@ -153,29 +126,12 @@ public class address_listitemActivity extends MvpActivity<addressPresenter> impl
 
     }
 
+    @Override
+    public void loadCourseDone(CourseBean courseBean) {
 
+    }
     @Override
     protected addressPresenter createPresenter() {
         return new addressPresenter(this);
-    }
-
-    @Override
-    public void addAdressSuc() {
-        toogleShowCatLoading(false);
-    }
-
-    @Override
-    public void addAdressFail() {
-        toogleShowCatLoading(false);
-    }
-
-    @Override
-    public void getAddressListSuc() {
-
-    }
-
-    @Override
-    public void getAddressListFail() {
-
     }
 }

@@ -97,77 +97,6 @@
 
         </LinearLayout>
 
-        <!-- <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3栋-A001"
-                android:textSize="15sp"
-                android:textColor="#999"
-                android:padding="10dp"
-                />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="·"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="送上门"
-                android:textColor="#999"
-                android:layout_marginLeft="10dp"
-                android:textSize="15sp"
-                />
-            </LinearLayout>
-
-            &lt;!&ndash;价格&ndash;&gt;
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right|center_vertical"
-                android:layout_gravity="center"
-                >
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="¥"
-                android:textColor="#ff00"
-                android:textSize="18sp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="50"
-                android:textColor="#ff00"
-                android:textSize="18sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="8dp"
-                />
-            </LinearLayout>
-
-        </LinearLayout>-->
 
         <View
             android:layout_width="match_parent"
@@ -234,19 +163,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/et_shape"
-                android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:text="接受订单"
-                android:textColor="@color/green"
-                android:textSize="14sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:background="@android:drawable/editbox_background"
                 android:gravity="center"
                 android:paddingBottom="8dp"
@@ -255,6 +171,19 @@
                 android:paddingTop="8dp"
                 android:text="取消订单"
                 android:textColor="@color/gray"
+                android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/et_shape"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="接受订单"
+                android:textColor="@color/green"
                 android:textSize="14sp" />
             <TextView
                 android:layout_width="wrap_content"

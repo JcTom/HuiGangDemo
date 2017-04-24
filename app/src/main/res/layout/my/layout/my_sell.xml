@@ -29,8 +29,7 @@
             android:textSize="20sp"
             android:textColor="@color/top_title"
             android:gravity="center"
-             android:layout_marginRight="25dp"
-            />
+            android:layout_marginRight="25dp" />
 
     </LinearLayout>
 

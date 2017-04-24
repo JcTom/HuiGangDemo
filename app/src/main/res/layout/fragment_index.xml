@@ -12,13 +12,13 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="180dp">
 
             <com.jude.rollviewpager.RollPagerView
-            android:id="@+id/rollViewpager"
-            rollviewpager_play_delay="3000"
-            android:layout_width="match_parent"
-            android:layout_height="240dp" />
+                android:id="@+id/rollViewpager"
+                rollviewpager_play_delay="3000"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
         </FrameLayout>
 
         <RadioGroup
@@ -53,31 +53,55 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@color/background"
             android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingTop="5dp">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center">
 
-            <TextView
-                android:id="@+id/recommend_text"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:paddingLeft="25dp"
-                android:text="菜品推荐" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/my_food_mark"
+                    android:layout_gravity="center" />
+                <TextView
+                    android:id="@+id/recommend_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="菜品推荐"
+                    style="@style/text_main"/>
 
-            <TextView
-                android:id="@+id/more_texts"
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:paddingLeft="25dp"
-                android:text="更多>>" />
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/more_texts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="更多"
+                    android:layout_centerVertical="true" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/more_gray"/>
+            </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout

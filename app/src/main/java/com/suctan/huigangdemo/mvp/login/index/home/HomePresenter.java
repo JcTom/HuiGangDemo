@@ -4,14 +4,10 @@ package com.suctan.huigangdemo.mvp.login.index.home;
 import com.example.androidbase.rxjava.ApiCallback;
 import com.example.androidbase.rxjava.SubscriberCallBack;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
-import com.suctan.huigangdemo.bean.user.ModifyReturn;
 import com.suctan.huigangdemo.mvp.login.DemoBasePresenter;
 import com.suctan.huigangdemo.util.JSONParstObject;
 
-import org.json.JSONObject;
-
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/3/4.
@@ -41,8 +37,8 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                     public void onSuccess(String model) {
                         if (model != null) {
                             System.out.println("获取轮播图的信息" + model);
-                            EatFoodReturn eatFoodReturn = JSONParstObject.getRollViewDataList(model, 0);
-                            if (eatFoodReturn != null) {
+                            EatFoodReturn eatFoodReturn=JSONParstObject.getRollViewDataList(model,0);
+                            if(eatFoodReturn!=null){
                                 mvpView.getRollViewListSuc(eatFoodReturn);
                             }
                         }
@@ -74,9 +70,8 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                     @Override
                     public void onSuccess(String model) {
                         if (model != null) {
-
-                            EatFoodReturn eatFoodReturn = JSONParstObject.getRollViewDataList(model, 1);
-                            if (eatFoodReturn != null) {
+                            EatFoodReturn eatFoodReturn=JSONParstObject.getRollViewDataList(model,1);
+                            if(eatFoodReturn!=null){
                                 System.out.println("首页获取菜的列表" + model);
                                 mvpView.getEatfoodListSuc(eatFoodReturn);
                             }

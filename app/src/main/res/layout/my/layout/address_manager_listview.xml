@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d3d3d3"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        >
+        //单选按钮
+       <LinearLayout
+           android:layout_marginLeft="5dp"
+           android:layout_gravity="center_vertical"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           >
+          <RadioButton
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:button="@drawable/radio"
+              />
+       </LinearLayout>
+        //其他地址详情
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            >
+            //我的名字 和电话号码
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="董家锋"
+                    android:textSize="16sp"
+                    android:textColor="#434141"
+                    android:layout_margin="10dp"
+                    />
+                <TextView
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="13433447124"
+                    android:textSize="16sp"
+                    android:textColor="#434141"
+                    android:layout_margin="10dp"
+                    />
+            </LinearLayout>
+
+            //设置具体的地址
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                >
+                //当地址被设置为默认值的时候,出现,否则隐藏
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="[默认]"
+                    android:textColor="@color/common_green"
+                    android:layout_margin="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所在地区"
+                    android:textSize="16sp"
+                    android:textColor="#434141"
+                    android:layout_margin="10dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小区"
+                    android:textSize="16sp"
+                    android:textColor="#434141"
+                    android:layout_margin="10dp"
+                    />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="详细地址"
+                    android:textSize="16sp"
+                    android:textColor="#434141"
+                    android:layout_margin="10dp"
+                    />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    //分隔线
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray">
+    </LinearLayout>
+
+
+</LinearLayout>

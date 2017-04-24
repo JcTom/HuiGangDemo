@@ -88,7 +88,7 @@
                     android:id="@+id/tv_mybuy_dsc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="待送餐"
+                    android:text="待完成"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -108,7 +108,6 @@
                     />
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 
 

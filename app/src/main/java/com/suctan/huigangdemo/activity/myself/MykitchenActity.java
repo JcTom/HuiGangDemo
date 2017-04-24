@@ -118,6 +118,15 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
                 Intent gotoNewfood = new Intent(MykitchenActity.this, release_new_todayfoodActivity.class);
                 startActivity(gotoNewfood);
             }
+
+            public void AlreadyFood(){
+                Intent gotoaleadyfood = new Intent(MykitchenActity.this, Already_release_today_foodActivity.class);
+                startActivity(gotoaleadyfood);
+
+            }
+
+
+
         });
     }
 

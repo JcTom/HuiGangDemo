@@ -38,12 +38,19 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="18dp">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="match_parent"
                     style="@style/two_title"
                     android:text="猪肉炖粉条"
-                    android:textColor="@color/gray"
-                    android:gravity="center"/>
+                    android:textColor="@color/grey" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/tips_font"
+                    android:text="送上门"
+                    android:gravity="center"
+                    android:layout_marginRight="5dp"/>
 
             </LinearLayout>
 
