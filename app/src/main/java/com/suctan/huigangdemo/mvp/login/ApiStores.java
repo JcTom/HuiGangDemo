@@ -1,4 +1,5 @@
 package com.suctan.huigangdemo.mvp.login;
+
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
 import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
@@ -17,8 +18,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-//    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
-    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+  String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
+  //  String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**
@@ -50,12 +51,17 @@ public interface ApiStores {
     Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
     /**
 
- /*    * 发布共享需求
-     *//*
+     * 发布共享需求
+     */
     @POST("pub_need")
-    Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
+    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
-*/
+
+    /**
+     * 发布我要吃的饭菜
+     */
+    @POST("pub_eatFood")
+    Observable<ModifyReturn> PubEatFood(@QueryMap Map<String, Object> needReturn);
 
     /**
      * 修改用户信息
@@ -116,6 +122,12 @@ public interface ApiStores {
     Observable<ModifyReturn> addmoneyReturn(@QueryMap Map<String, Object> moneyReturn);
 
     /**
+     * 我的钱包,里面的显示金额功能
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn( @QueryMap Map<String, Object>  moneyReturn);
+
+    /**
      * 我的钱包,里面的提现功能
      */
     @POST("get_money")
@@ -129,12 +141,6 @@ public interface ApiStores {
 
     @POST("show_address")
     Observable<String> getAddressListReturn(@QueryMap Map<String, Object> addaddressList);
-
-    /*
-        * 发布共享需求
-        */
-    @POST("pub_need")
-    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
 
     /*发布我想要吃*/

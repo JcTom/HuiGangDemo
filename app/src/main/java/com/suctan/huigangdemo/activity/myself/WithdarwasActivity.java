@@ -1,5 +1,6 @@
 package com.suctan.huigangdemo.activity.myself;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -26,6 +27,7 @@ import butterknife.ButterKnife;
  */
 
 public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implements View.OnClickListener,tx_walletView {
+    double s1;
      private ImageView withdarwas_back;
     @BindView(R.id.btnwitharwals)
     Button btnwitharwals;
@@ -39,7 +41,6 @@ public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implemen
     }
 
 
-
     private void initView() {
         //提现页面的返回按钮
         withdarwas_back = (ImageView) findViewById(R.id.withdarwas_back);
@@ -47,6 +48,12 @@ public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implemen
 
         //提现页面的确认按钮
         btnwitharwals.setOnClickListener(this);
+
+        //得到从我的钱包的页面调回来的参数 多少钱
+        Intent intent=new Intent();
+        String money = intent.getStringExtra("money");
+
+        s1 = Double.parseDouble(money);
 
     }
 
@@ -62,16 +69,26 @@ public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implemen
     }
 
     private void witharwalsVariety() {
+          double s;
           String outmoney = witharwals.getText().toString().trim();
+          s=Double.parseDouble(outmoney);
           String token = TokenManager.getToken();
           if (TextUtils.isEmpty(outmoney)){
               Toast.makeText(this, "你还没有输入提现的数字,谢谢", Toast.LENGTH_SHORT).show();
               return;
+          }else{
+                    if(s1>s) {
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("user_token", token);
+                        map.put("money", s);
+                        mvpPresenter.withrawalsAction(map);
+                        return;
+                    }else{
+                        Toast.makeText(this, "你并没有这么多钱!", Toast.LENGTH_SHORT).show();
+                    }
+
           }
-        Map<String,Object> map= new HashMap();
-        map.put("user_token",token);
-        map.put("money",outmoney);
-        mvpPresenter.withrawalsAction(map);
+
 
     }
 

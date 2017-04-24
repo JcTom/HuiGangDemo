@@ -1,11 +1,9 @@
 package com.suctan.huigangdemo.mvp.login.postRelease;
 
 import com.example.androidbase.mvp.BaseMvpView;
-import com.suctan.huigangdemo.bean.topic.AddCommentBean;
 import com.suctan.huigangdemo.bean.topic.AddCommentReturn;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
-import com.suctan.huigangdemo.bean.user.CourseBean;
 
 import java.util.ArrayList;
 
@@ -22,7 +20,7 @@ public interface PostPublishView extends BaseMvpView {
 
     void postPublishCommentFail(String msg);
 
-    void getCommentListSuc(ArrayList<TopicCommentBean>topicCommentBeen);
+    void getCommentListSuc(ArrayList<TopicCommentBean> topicCommentBeen);
 
     void getComemtnListFail();
 
