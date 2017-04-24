@@ -14,6 +14,7 @@ import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.user.CompanyInfoBean;
 import com.suctan.huigangdemo.bean.user.Recommend_indexBean;
 import com.suctan.huigangdemo.numlib.AnimShopButton;
+import com.suctan.huigangdemo.numlib.IOnAddDelListener;
 
 import java.util.ArrayList;
 
@@ -67,9 +68,30 @@ public class RecommendindexAdapter extends BaseAdapter {
         }
         holder.recommend_today_ItemTitle.setText(mFoodBean.getOrder_title());
         holder.recommend_today_descript.setText(mFoodBean.getFood_description());
-        holder.recommend_today_ItemMoney.setText("￥"+mFoodBean.getOrder_price());
+        holder.recommend_today_ItemMoney.setText("￥" + mFoodBean.getOrder_price());
         holder.btn_book_eatfood.setCount(mFoodBean.getNum());
         holder.btn_book_eatfood.setMaxCount(mFoodBean.getNum());
+        holder.btn_book_eatfood.setOnAddDelListener(new IOnAddDelListener() {
+            @Override
+            public void onAddSuccess(int count) {
+
+            }
+
+            @Override
+            public void onAddFailed(int count, FailType failType) {
+
+            }
+
+            @Override
+            public void onDelSuccess(int count) {
+
+            }
+
+            @Override
+            public void onDelFaild(int count, FailType failType) {
+
+            }
+        });
         return convertView;
     }
 

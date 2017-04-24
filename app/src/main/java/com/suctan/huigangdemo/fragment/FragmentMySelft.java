@@ -219,7 +219,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
 
     //设计view的数据
     private void initViewData() {
-        System.out.println("当前user对象"+ CurrentUser.getInstance().getUserBean());
+        System.out.println("当前user对象" + CurrentUser.getInstance().getUserBean());
         if (CurrentUser.getInstance().getUserBean().getUser_name() != null) {
             tv_user_name.setText(CurrentUser.getInstance().getUserBean().getUser_name());
         }
@@ -227,6 +227,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
             LoadImageManager.getImageLoader().displayImage(CurrentUser.getInstance().getUserBean().getUser_icon(), imv_head);
         }
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -238,6 +239,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
         }
 
     }
+
     @Override
     public void getDataFail(String msg) {
 
@@ -256,5 +258,10 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
     @Override
     protected MySelftPresenter createPresenter() {
         return new MySelftPresenter(this);
+    }
+
+    @Override
+    protected void lazyLoad() {
+
     }
 }

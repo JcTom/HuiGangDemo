@@ -1,8 +1,15 @@
 package com.suctan.huigangdemo.util;
 
 
+import com.suctan.huigangdemo.bean.dowant.DoWantOrderBean;
+import com.suctan.huigangdemo.bean.dowant.DoWantOrderReturn;
 import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
+import com.suctan.huigangdemo.bean.topic.AddCommentBean;
+import com.suctan.huigangdemo.bean.topic.TopicBean;
+import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
+import com.suctan.huigangdemo.bean.topic.TopicCommentReturn;
+import com.suctan.huigangdemo.bean.topic.TopicReturn;
 import com.suctan.huigangdemo.bean.user.Users;
 
 import org.json.JSONArray;
@@ -76,32 +83,31 @@ public class JSONParstObject {
     /**
      * 获取轮播图列表
      *
-     * @param userString
-     * @param requestKey 0为获取轮播图 1为获取首页列表的菜
+     * @param eatFoodListString
+     * @param requestKey        0为获取轮播图 1为获取首页列表的菜
      * @return
      */
-    public static EatFoodReturn getRollViewDataList(String userString, int requestKey) {
+    public static EatFoodReturn getRollViewDataList(String eatFoodListString, int requestKey) {
 
         EatFoodReturn eatFoodReturn = null;
         ArrayList<EatFoodBean> eatFoodList = null;
         try {
-            JSONObject jsonObject = new JSONObject(userString);
+            JSONObject jsonObject = new JSONObject(eatFoodListString);
             eatFoodReturn = new EatFoodReturn();
             eatFoodList = new ArrayList<>();
             eatFoodReturn.setStatus(jsonObject.getInt("status"));
             eatFoodReturn.setMsg(jsonObject.getString("msg"));
             JSONArray jsonArray = null;
-            if (requestKey == 0) {
-                jsonArray = jsonObject.getJSONArray("makeOorderList");
-            } else {
-                jsonArray = jsonObject.getJSONArray("makeOrderList");
-            }
+
+            jsonArray = jsonObject.getJSONArray("makeOrderList");
+
             if (jsonArray != null) {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
                     EatFoodBean eatFoodBean = new EatFoodBean();
+                    eatFoodBean.setUser_name(jsonObject1.getString("user_name"));
                     eatFoodBean.setOrder_id(Integer.parseInt(jsonObject1.getString("order_id")));
-                    eatFoodBean.setOrder_pic("http://119.29.137.109/tp/uploads/"+jsonObject1.getString("order_pic"));
+                    eatFoodBean.setOrder_pic("http://119.29.137.109/tp/uploads/" + jsonObject1.getString("order_pic"));
                     eatFoodBean.setOrder_title(jsonObject1.getString("order_title"));
                     eatFoodBean.setOrder_price(Double.parseDouble(jsonObject1.getString("order_price")));
                     eatFoodBean.setFood_description(jsonObject1.getString("food_description"));
@@ -116,6 +122,149 @@ public class JSONParstObject {
         }
         return eatFoodReturn;
     }
+
+    /**
+     * 获取话题列表
+     *
+     * @param topString
+     * @return
+     */
+    public static TopicReturn getTopicStringObject(String topString) {
+        TopicReturn topicReturn = null;
+        ArrayList<TopicBean> topicBeenList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(topString);
+            topicReturn = new TopicReturn();
+            topicBeenList = new ArrayList<>();
+            topicReturn.setStatus(jsonObject.getInt("status"));
+            topicReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            jsonArray = jsonObject.getJSONArray("topics");
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    TopicBean topicBean = new TopicBean();
+                    String topicID = jsonObject1.getString("topic_id");
+                    if (topicID != null) {
+                        topicBean.setTopic_id(Integer.parseInt(topicID));
+                    }
+                    topicBean.setUser_icon("http://119.29.137.109/tp/uploads/" + jsonObject1.getString("user_icon"));
+                    topicBean.setUser_name(jsonObject1.getString("user_name"));
+
+                    topicBean.setTopic_title(jsonObject1.getString("topic_title"));
+                    topicBean.setTopic_content(jsonObject1.getString("topic_content"));
+                    topicBean.setTopic_picture("http://119.29.137.109/tp/uploads/" + jsonObject1.getString("topic_picture"));
+                    String commentNum = jsonObject1.getString("comment_num");
+                    if (commentNum != null) {
+                        topicBean.setComment_num(Integer.parseInt(commentNum));
+                    }
+                    topicBean.setPub_topic_time(jsonObject1.getString("pub_topic_time"));
+                    topicBeenList.add(topicBean);
+                }
+                topicReturn.setTipBeanList(topicBeenList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return topicReturn;
+    }
+
+
+    /**
+     * 获取某话题评论列表
+     *
+     * @param topcommentString
+     * @return
+     */
+    public static TopicCommentReturn getTopicCommentObject(String topcommentString) {
+        TopicCommentReturn topicCommentReturn = null;
+        ArrayList<TopicCommentBean> topicCommentList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(topcommentString);
+            topicCommentReturn = new TopicCommentReturn();
+            topicCommentList = new ArrayList<>();
+            topicCommentReturn.setStatus(jsonObject.getInt("status"));
+            topicCommentReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            jsonArray = jsonObject.getJSONArray("topic_commentS");
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    TopicCommentBean topicCommentBean = new TopicCommentBean();
+                    topicCommentBean.setUser_name(jsonObject1.getString("user_name"));
+                    topicCommentBean.setUser_icon("http://119.29.137.109/tp/uploads/" + jsonObject1.getString("user_icon"));
+                    topicCommentBean.setContent(jsonObject1.getString("content"));
+                    topicCommentBean.setComment_time(jsonObject1.getString("comment_time"));
+                    String commendId = jsonObject1.getString("comment_id");
+                    if (commendId != null) {
+                        topicCommentBean.setComment_id(Integer.parseInt(commendId));
+                    }
+
+                    topicCommentList.add(topicCommentBean);
+                }
+                topicCommentReturn.setTopicCommentList(topicCommentList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return topicCommentReturn;
+    }
+
+
+    /**
+     * 获取我要做的订单列表
+     *
+     * @param doorderString
+     * @return
+     */
+    public static DoWantOrderReturn getDoWantListObject(String doorderString) {
+        DoWantOrderReturn doWantOrderReturn = null;
+        ArrayList<DoWantOrderBean> doWantOrderBeanList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(doorderString);
+            doWantOrderReturn = new DoWantOrderReturn();
+            doWantOrderBeanList = new ArrayList<>();
+            doWantOrderReturn.setStatus(jsonObject.getInt("status"));
+            doWantOrderReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            jsonArray = jsonObject.getJSONArray("eat_orderS");
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    DoWantOrderBean mdowantOrderBean = new DoWantOrderBean();
+                    mdowantOrderBean.setUser_name(jsonObject1.getString("user_name"));
+                    mdowantOrderBean.setUser_phone(jsonObject1.getString("user_phone"));
+                    mdowantOrderBean.setUser_address(jsonObject1.getString("user_address"));
+                    String orderId = jsonObject1.getString("order_id");
+                    if (orderId != null) {
+                        mdowantOrderBean.setOrder_id(Integer.parseInt(orderId));
+                    }
+                    mdowantOrderBean.setOrder_title(jsonObject1.getString("order_title"));
+                    String orderPrice = jsonObject1.getString("order_price");
+                    if (orderPrice != null) {
+                        mdowantOrderBean.setOrder_price(Double.parseDouble(orderPrice));
+                    }
+                    String order_type = jsonObject1.getString("order_type");
+                    if (order_type != null) {
+                        mdowantOrderBean.setOrder_type(Integer.parseInt(order_type));
+                    }
+                    mdowantOrderBean.setOrder_note(jsonObject1.getString("order_note"));
+                    mdowantOrderBean.setEatstrarr(jsonObject1.getString("eatstrarr"));
+                    mdowantOrderBean.setOrder_res_time(jsonObject1.getString("order_res_time"));
+                    mdowantOrderBean.setOrder_expect_time(jsonObject1.getString("order_expect_time"));
+                    doWantOrderBeanList.add(mdowantOrderBean);
+                }
+                doWantOrderReturn.setDoWantOrderBeenList(doWantOrderBeanList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return doWantOrderReturn;
+    }
+
 }
 
 

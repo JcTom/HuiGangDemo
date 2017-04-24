@@ -10,33 +10,36 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.bigkoo.convenientbanner.ConvenientBanner;
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.example.androidbase.mvp.MvpFragment;
-import com.example.androidbase.widget.CircleImageView;
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.activity.LocalImageHolderView;
+import com.suctan.huigangdemo.acache.TokenManager;
+
 import com.suctan.huigangdemo.activity.circle.CirclePostDetails;
-import com.suctan.huigangdemo.activity.circle.NoticeDetail;
-import com.suctan.huigangdemo.mvp.login.index.find.FindPresenter;
-import com.suctan.huigangdemo.mvp.login.index.find.FindView;
-import com.suctan.huigangdemo.widget.SwpipeListViewOnScrollListener;
+import com.suctan.huigangdemo.adapter.topic.TopicRecycleAdapter;
+import com.suctan.huigangdemo.bean.topic.AddCommentReturn;
+import com.suctan.huigangdemo.bean.topic.TopicBean;
+import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
+
+import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishPresenter;
+import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishView;
+
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 
-public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnClickListener, FindView, SwipeRefreshLayout.OnRefreshListener {
+public class FragmentFind extends MvpFragment<PostPublishPresenter> implements View.OnClickListener, PostPublishView, SwipeRefreshLayout.OnRefreshListener, TopicRecycleAdapter.OnTopicListenter {
 
     private View viewFind;
     private SwipeRefreshLayout swipe_circle;
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
-    private FragmentFindAdapter mAdapter;
+    private ArrayList<TopicBean> topicBeanList = new ArrayList<>();
+    private boolean isFirstCreateRecycle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,24 +57,15 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        loadTestDatas();
         initViews();
-
-        mRecyclerView = (RecyclerView) getView().findViewById(R.id.circle_item);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mAdapter = new FragmentFindAdapter());
-        initData();
+        getTopicData();
 
     }
 
-
-    protected void initData() {
-        mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++) {
-            mDatas.add("" + (char) i);
-        }
+    private void getTopicData() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_token", TokenManager.getToken());
+        mvpPresenter.getTopicList(map);
     }
 
     @Override
@@ -85,69 +79,7 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     }
 
 
-    class FragmentFindAdapter extends RecyclerView.Adapter<FragmentFindAdapter.MyViewHolder> {
-
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                    getActivity()).inflate(R.layout.circle_list, parent,
-                    false));
-            return holder;
-        }
-
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-
-            holder.item_name.setText(mDatas.get(position));
-            holder.item_time.setText(mDatas.get(position));
-            holder.item_reply.setText(mDatas.get(position));
-            //LoadImageManager.getImageLoader().displayImage("",holder.item_tx);
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent goPostDetails = new Intent(getActivity(), CirclePostDetails.class);
-                    startActivity(goPostDetails);
-                }
-            });
-
-        }
-
-        public int getItemCount() {
-            return mDatas.size();
-        }
-
-
-        class MyViewHolder extends RecyclerView.ViewHolder {
-
-            TextView item_name, item_time, item_title, item_reply;
-            CircleImageView item_tx;
-
-            public MyViewHolder(View view) {
-                super(view);
-                item_name = (TextView) view.findViewById(R.id.item_name);
-                item_time = (TextView) view.findViewById(R.id.item_time);
-                item_title = (TextView) view.findViewById(R.id.item_title);
-                item_reply = (TextView) view.findViewById(R.id.item_reply);
-                item_tx = (CircleImageView) view.findViewById(R.id.item_tx);
-            }
-        }
-
-
-    }
-
-
-    /*
-    * 轮播图
-    * */
-    private ArrayList<Integer> localImages = new ArrayList<Integer>();
-    private Integer image[] = {R.mipmap.banner01, R.mipmap.banner01,
-            R.mipmap.banner01};
-    ConvenientBanner convenientBanner;
-
-
     private void initRefreshView() {
-        SwpipeListViewOnScrollListener lisetner = new SwpipeListViewOnScrollListener(swipe_circle);
-//        SwpipeListViewOnScrollListener lisetner = new SwpipeListViewOnScrollListener(swipe_circle);
-
         swipe_circle.setColorSchemeColors(
                 getResources().getColor(R.color.gplus_color_1),
                 getResources().getColor(R.color.gplus_color_2),
@@ -157,36 +89,10 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     }
 
     private void initViews() {
+        mRecyclerView = (RecyclerView) getView().findViewById(R.id.circleView_topic);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         swipe_circle = (SwipeRefreshLayout) viewFind.findViewById(R.id.swipe_circle);
-        convenientBanner = (ConvenientBanner) getView().findViewById(R.id.ad_banner);
         initRefreshView();
-
-        convenientBanner.setPages(
-                new CBViewHolderCreator<LocalImageHolderView>() {
-                    @Override
-                    public LocalImageHolderView createHolder() {
-                        return new LocalImageHolderView();
-                    }
-                }, localImages)
-                //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
-                .setPageIndicator(new int[]{R.mipmap.point_w, R.mipmap.point_g})
-                //设置指示器的方向
-                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
-                .startTurning(3000)//设置自动切换（同时设置了切换时间间隔）
-                .setManualPageable(true);
-        convenientBanner.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Intent goNotice = new Intent(getActivity(), NoticeDetail.class);
-                startActivity(goNotice);
-            }
-        });
-    }
-
-    private void loadTestDatas() {
-        localImages.clear();
-        for (int position = 0; position < 3; position++)
-            localImages.add(image[position]);
 
     }
 
@@ -212,7 +118,67 @@ public class FragmentFind extends MvpFragment<FindPresenter> implements View.OnC
     }
 
     @Override
-    protected FindPresenter createPresenter() {
-        return new FindPresenter(this);
+    protected PostPublishPresenter createPresenter() {
+        return new PostPublishPresenter(this);
+    }
+
+    private TopicRecycleAdapter topListAdatper;
+
+    @Override
+    public void getTopicListSrc(ArrayList<TopicBean> topicBeenList) {
+
+        this.topicBeanList.addAll(topicBeenList);
+        if (!isFirstCreateRecycle) {
+            isFirstCreateRecycle = true;
+            InitRecycleViewAdapter(this.topicBeanList);
+        } else {
+            topListAdatper.notifyDataSetChanged();
+        }
+    }
+
+    private void InitRecycleViewAdapter(ArrayList<TopicBean> topicBeenList) {
+        topListAdatper = new TopicRecycleAdapter(getActivity(), topicBeenList);
+        topListAdatper.setOnClickTopicListner(this);
+        mRecyclerView.setAdapter(topListAdatper);
+    }
+
+    @Override
+    public void getTopicListFail() {
+
+    }
+
+    @Override
+    public void postPublishCommentSuc(AddCommentReturn addCommentBean) {
+
+    }
+
+
+    @Override
+    public void postPublishCommentFail(String msg) {
+
+    }
+
+    @Override
+    public void getCommentListSuc(ArrayList<TopicCommentBean> topicCommentBeen) {
+
+    }
+
+    @Override
+    public void getComemtnListFail() {
+
+    }
+
+    @Override
+    public void onClickTopicItem(int position) {
+        if (topicBeanList != null) {
+            Intent intent = new Intent(getActivity(), CirclePostDetails.class);
+            intent.putExtra("nowTopic", topicBeanList.get(position));
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void lazyLoad() {
+
     }
 }

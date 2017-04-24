@@ -36,7 +36,8 @@
 
     <!-- 调用手机相册 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+
     <application
         android:name=".acache.HuiGangApplication"
         android:allowBackup="true"
@@ -52,69 +53,221 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" >
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.Home_Page.HomeActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.search.SearchActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.recommend.RecommendActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.do_want.DoWant"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.want.Want"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.share.ServiceList"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.share.ReleaseService"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.circle.PostRelease"
 
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.circle.CirclePostDetails"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.circle.NoticeDetail"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.circle.MoreNotice"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activity.share.ServiceDetail"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-        <activity android:name=".activity.Home_Page.HomeActivity" />
-        <activity android:name=".activity.search.SearchActivity" />
-        <activity android:name=".activity.recommend.RecommendActivity" />
-        <activity android:name=".activity.do_want.DoWant" />
-        <activity android:name=".activity.want.Want" />
-        <activity android:name=".activity.share.ServiceList" />
-        <activity android:name=".activity.share.ReleaseService" />
-        <activity android:name=".activity.circle.PostRelease" />
-        <activity android:name=".activity.circle.CirclePostDetails" />
-        <activity android:name=".activity.circle.NoticeDetail" />
-        <activity android:name=".activity.circle.MoreNotice" />
-        <activity android:name=".activity.share.ServiceDetail"></activity>
+            ></activity>
 
 
         <!--我的页面中的注册文件-->
-        <activity android:name=".activity.search.Search_Result" />
+        <activity
+            android:name=".activity.search.Search_Result"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <!--我的页面中的注册文件-->
-        <activity android:name=".activity.myself.SettingActivity"></activity>
+        <activity
+            android:name=".activity.myself.SettingActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
 
 
         <!--用户信息设置-->
-        <activity android:name=".activity.setting.SeetingFogetPwd"></activity>
-        <activity android:name=".activity.setting.SeetingUserAge"></activity>
-        <activity android:name=".activity.setting.SeetingUserDegree"></activity>
-        <activity android:name=".activity.setting.SeetingUserHoppy"></activity>
-        <activity android:name=".activity.setting.SeetingUserKnowArea"></activity>
-        <activity android:name=".activity.setting.SeetingUserName"></activity>
-        <activity android:name=".activity.setting.SeetingUserSex"></activity>
-        <activity android:name=".activity.setting.SeetingVeriatyBody"></activity>
+        <activity
+            android:name=".activity.setting.SeetingFogetPwd"
+
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.setting.SeetingUserAge"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.setting.SeetingUserDegree"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
+        <activity
+            android:name=".activity.setting.SeetingUserHoppy"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
+        <activity
+            android:name=".activity.setting.SeetingUserKnowArea"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.setting.SeetingUserName"
+
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.setting.SeetingUserSex"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
+        <activity
+            android:name=".activity.setting.SeetingVeriatyBody"
+
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
 
 
         <!--我的页面中的注册文件-->
-        <activity android:name=".activity.myself.addressActivity"></activity>
-        <activity android:name=".activity.myself.buyActivity"></activity>
-        <activity android:name=".activity.myself.SellActivity"></activity>
-        <activity android:name=".activity.myself.MymoneyActivity"></activity>
-        <activity android:name=".activity.myself.MydiscountAcitity"></activity>
-        <activity android:name=".activity.myself.MykitchenActity"></activity>
-        <activity android:name=".activity.myself.WaitOrdersActivity"></activity>
-        <activity android:name=".activity.myself.WaitfoodActitity"></activity>
-        <activity android:name=".activity.myself.WaitassessActivity"></activity>
-        <activity android:name=".activity.myself.WaitrealActivity"></activity>
-        <activity android:name=".activity.myself.release_todayfood_Activiity"></activity>
-        <activity android:name=".activity.myself.release_new_todayfoodActivity"></activity>
-        <activity android:name=".activity.myself.WithdarwasActivity"></activity>
-        <activity android:name=".activity.myself.incaseActivity"></activity>
-        <activity android:name=".activity.myself.foobBookActivity"></activity>
-        <activity android:name=".activity.myself.address_listitemActivity"></activity>
-        <activity android:name=".activity.screen_Activity"></activity>
-        <activity android:name=".activity.myself.my_assess"></activity>
-        <activity android:name=".activity.password.PasswordActivity"></activity>
-        <activity android:name=".activity.signup.signupActivity"></activity>
-        <activity android:name=".activity.eatfood.EatFoodDetail"></activity>
+        <activity
+            android:name=".activity.myself.addressActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.buyActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
+        <activity
+            android:name=".activity.myself.SellActivity"
+
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.MymoneyActivity"
+
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.MydiscountAcitity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.MykitchenActity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.WaitOrdersActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
+        <activity
+            android:name=".activity.myself.WaitfoodActitity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.WaitassessActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.WaitrealActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+
+            ></activity>
+        <activity
+            android:name=".activity.myself.release_todayfood_Activiity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.release_new_todayfoodActivity"
+
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.WithdarwasActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.incaseActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.foobBookActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.address_listitemActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.screen_Activity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.myself.my_assess"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.password.PasswordActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.signup.signupActivity"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+        <activity
+            android:name=".activity.eatfood.EatFoodDetail"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
+
+        <activity
+            android:name=".activity.do_want.DoWantOrderDetatil"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
     </application>
 </manifest>

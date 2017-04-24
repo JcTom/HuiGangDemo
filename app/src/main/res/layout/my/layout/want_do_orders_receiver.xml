@@ -14,7 +14,7 @@
         android:paddingRight="10dp">
 
         <ImageView
-            android:id="@+id/buy_back"
+            android:id="@+id/dowant_ordertail_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="left|center_vertical"
@@ -40,12 +40,14 @@
         android:orientation="vertical">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@color/white"
             android:gravity="left">
 
             <TextView
+                android:id="@+id/tv_dodeatil_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center"
@@ -77,38 +79,36 @@
                     android:textSize="18dp" />
             </LinearLayout>
 
-            <ScrollView
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                <LinearLayout
+                // 不同的菜显示，可能需要采用到滑动的布局。
+
+                <ListView
+                    android:id="@+id/lv_dowant_detail"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"></ListView>
+            </LinearLayout>
 
-                    // 不同的菜显示，可能需要采用到滑动的布局。
-
-                    <GridView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"></GridView>
-                </LinearLayout>
-            </ScrollView>
 
             //留言信息
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_weight="2"
                 android:background="#d3d3d3">
 
                 <TextView
+                    android:id="@+id/tv_note_dodetail"
                     android:layout_width="match_parent"
-                    android:layout_height="69dp"
+                    android:layout_height="60dp"
                     android:hint="客户留言信息"
                     android:padding="5dp"
                     android:textSize="12sp" />
@@ -139,6 +139,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/tv_dowant_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -187,6 +188,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/tv_dodetailreceivername"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -209,8 +211,10 @@
                         android:text="收货方式:"
                         android:textColor="@color/back"
                         android:textSize="15sp" />
+                    e
 
                     <TextView
+                        android:id="@+id/tv_dowant_servicetype"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="送上门"
@@ -234,15 +238,9 @@
                         android:textSize="15sp" />
                     //栋和房间号分开两个textview 第一个栋
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="A 栋"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
-                    //栋和房间号分开两个textview 第二个是房间号
 
                     <TextView
+                        android:id="@+id/tv_receiver_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="A 105"
@@ -265,6 +263,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/tv_receiver_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="13433447124"
@@ -284,24 +283,19 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="期望时间:"
+                        android:text="距离截至时间:"
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/tv_dowant_reponsetime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10:00"
                         android:textColor="@color/back"
                         android:textSize="15sp" />
 
-                    <TextView
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="前"
-                        android:textColor="@color/back"
-                        android:textSize="15sp" />
+
                 </LinearLayout>
             </LinearLayout>
 

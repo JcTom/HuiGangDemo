@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!--这个布局被用来加载第一个firrstfragment
     并且这个布局下面的每个item  是被 first_my_sell_list_item
@@ -17,37 +18,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/common_green"
             android:layout_weight="1"
-            >
-        </LinearLayout>
+            android:background="@color/common_green"></LinearLayout>
         <!--第二条线段-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/head_border_width_clo"
             android:layout_weight="1"
-            >
-        </LinearLayout>
+            android:background="@color/head_border_width_clo"></LinearLayout>
         <!--第三条线段-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/head_border_width_clo"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"
+            android:background="@color/head_border_width_clo"></LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/head_border_width_clo"
             android:layout_weight="1"
-            >
-        </LinearLayout>
+            android:background="@color/head_border_width_clo"></LinearLayout>
 
     </LinearLayout>
-    <GridView
-        android:id="@+id/my_first_framgment_gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+
+    <include layout="@layout/common_swiperefresh_listview"></include>
 
 </LinearLayout>

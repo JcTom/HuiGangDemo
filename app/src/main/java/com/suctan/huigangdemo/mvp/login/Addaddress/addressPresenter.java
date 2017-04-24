@@ -11,30 +11,61 @@ import java.util.Map;
  * Created by B-305 on 2017/4/20.
  */
 
-public class addressPresenter extends DemoBasePresenter<addressView>{
-    public addressPresenter(addressView mvpView){
+public class addressPresenter extends DemoBasePresenter<addressView> {
+    public addressPresenter(addressView mvpView) {
         attachView(mvpView);
     }
+
     //把在activity里面定义好的参数,把封装在map里面的数据提取过来.
-    public void addressActoin(Map map){
+    /*添加用户地址*/
+    public void addAddressActoin(Map map) {
         addSubscription(apiStores.addressReturn(map),
-                new SubscriberCallBack<>(new ApiCallback<ModifyReturn>() {
+                new SubscriberCallBack<>(new ApiCallback<String>() {
                     @Override
                     public void onStart() {
                         System.out.println("onStart");
                     }
 
                     @Override
-                    public void onSuccess(ModifyReturn model) {
-                        System.out.println("onSuccess");
-                        System.out.println("status="+model.getStatus()+"msg="+model.getMsg());
+                    public void onSuccess(String model) {
+                        mvpView.addAdressSuc();
+                        System.out.println("添加地址回调信息" + model);
                     }
 
 
                     @Override
                     public void onFailed(String msg) {
-                        System.out.println("status="+msg);
-                        System.out.println("onFailed");
+                        System.out.println("status=" + msg);
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        mvpView.hideLoading();
+                    }
+                })
+        );
+
+    }
+
+
+    /*获取用户地址列表*/
+    public void getAddressList(Map map) {
+        addSubscription(apiStores.getAddressListReturn(map),
+                new SubscriberCallBack<>(new ApiCallback<String>() {
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onSuccess(String model) {
+                        System.out.println("获取用户地址列表" + model);
+                    }
+
+
+                    @Override
+                    public void onFailed(String msg) {
+                        System.out.println("status=" + msg);
                     }
 
                     @Override

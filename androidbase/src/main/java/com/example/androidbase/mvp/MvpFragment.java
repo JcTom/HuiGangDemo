@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
-public abstract class MvpFragment<P extends BasePresenter> extends Fragment {
+import com.example.androidbase.BaseFragment;
+
+public abstract class MvpFragment<P extends BasePresenter> extends BaseFragment {
     protected P mvpPresenter;
 
     @Override
@@ -12,6 +14,7 @@ public abstract class MvpFragment<P extends BasePresenter> extends Fragment {
         super.onCreate(savedInstanceState);
         mvpPresenter = createPresenter();
     }
+
     protected abstract P createPresenter();
 
     @Override
@@ -21,4 +24,5 @@ public abstract class MvpFragment<P extends BasePresenter> extends Fragment {
         }
         super.onDestroy();
     }
+
 }

@@ -48,13 +48,9 @@
 
     </LinearLayout>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="10dp"
-        >
-    </GridView>
+    <include layout="@layout/common_swiperefresh_listview"
+
+        ></include>
 
 
 </LinearLayout>

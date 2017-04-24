@@ -140,6 +140,11 @@ public class FragmentChanel extends MvpFragment<ChanelPresenter> implements View
     protected ChanelPresenter createPresenter() {
         return new ChanelPresenter(this);
     }
+
+    @Override
+    protected void lazyLoad() {
+
+    }
 }
 
 

@@ -8,12 +8,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.androidbase.LoadImageManager;
+import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.adapter.eatfood.EatGridAdapter;
 import com.suctan.huigangdemo.adapter.eatfood.EatRecycleViewAdapter;
@@ -31,12 +33,14 @@ public class EatFoodDetail extends AppCompatActivity {
     private TextView tv_eat_name;
     private TextView tv_eat_num;
     private TextView tv_eat_momeny;
+    private TextView tv_user_name;
 
     @Override
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top_one_food_details);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
         initView();
         getIntentData();
     }
@@ -54,6 +58,7 @@ public class EatFoodDetail extends AppCompatActivity {
             tv_eat_name.setText(mEatBean.getOrder_title());
             tv_eat_num.setText(mEatBean.getNum() + "");
             tv_eat_momeny.setText("￥" + mEatBean.getOrder_price());
+            tv_user_name.setText(mEatBean.getUser_name());
         }
     }
 
@@ -63,6 +68,10 @@ public class EatFoodDetail extends AppCompatActivity {
         tv_eat_name = (TextView) findViewById(R.id.tv_eat_name);
         tv_eat_num = (TextView) findViewById(R.id.tv_eat_num);
         tv_eat_momeny = (TextView) findViewById(R.id.tv_eat_momeny);
+        tv_user_name= (TextView) findViewById(R.id.tv_user_name);
+
+
+
         /*底部*/
         /**********************************************************************************/
         View view = LayoutInflater.from(this).inflate(R.layout.bottom_one_food_details, null, false);
@@ -90,6 +99,4 @@ public class EatFoodDetail extends AppCompatActivity {
         bottom_listview_comment.setAdapter(commentAdapter);
 
     }
-
-
 }

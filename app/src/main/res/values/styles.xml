@@ -32,6 +32,23 @@
         <item name="android:layout_marginRight">50dp</item>
     </style>
 
+
+    <style name="tv_paoma">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#d2d2d2</item>
+        <item name="android:textColor">#FF000000</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+
     <style name="Base_Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>

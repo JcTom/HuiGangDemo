@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <!--这个布局被用来加载第一个secondedfragment
@@ -9,53 +10,42 @@
     填充
     -->
 
-            <!--滑动底部线段-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:orientation="horizontal"
-                >
-                //第一条线段
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/head_border_width_clo"
-                    android:layout_weight="1"
-                    >
-                </LinearLayout>
-                //第二条线段
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/common_green"
-                    android:layout_weight="1"
-                    >
-                </LinearLayout>
-                第三条线段
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/head_border_width_clo"
-                    android:layout_weight="1"
-                    >
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/head_border_width_clo"
-                    android:layout_weight="1"
-                    >
-                </LinearLayout>
+    <!--滑动底部线段-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:orientation="horizontal">
+        //第一条线段
 
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/head_border_width_clo"></LinearLayout>
+        //第二条线段
 
-            <GridView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-                >
-            </GridView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/common_green"></LinearLayout>
+        第三条线段
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/head_border_width_clo"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/head_border_width_clo"></LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/common_swiperefresh_listview"></include>
 
 
 </LinearLayout>

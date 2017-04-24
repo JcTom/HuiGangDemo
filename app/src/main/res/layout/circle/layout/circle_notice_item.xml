@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,37 +14,42 @@
         android:paddingRight="18dp">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/notice_item_title"
+                    style="@style/two_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:text="非官方的广泛地"
-                    style="@style/two_title"
-                    android:id="@+id/notice_item_title"/>
+                    android:text="非官方的广泛地" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
+                        style="@style/tips_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/tips_font"
                         android:layout_marginTop="6dp"
-                        android:text="@string/fb_time"/>
+                        android:text="@string/fb_time" />
+
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/tips_font"
                         android:id="@+id/notice_item_time"
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="2017/3/24 17:52:32"/>
+                        android:text="2017/3/24 17:52:32" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -59,18 +64,19 @@
             <TextView
                 android:id="@+id/notice_item_content"
                 style="@style/text_main"
-                android:lineSpacingMultiplier="1.5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.5"
                 android:lines="2"
                 android:maxLines="2"
-                android:ellipsize="end"
-                android:layout_marginBottom="2dp"
                 android:text="需要打扫卫生，需要打扫卫生，需要鲨卷风蓝色礼服" />
 
         </LinearLayout>
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

@@ -168,7 +168,10 @@
     <string name="tipDialogComfirm">确定</string>
     <string name="tipDialogCancel">取消</string>
 
-
+    <!--加载框-->
+    <string name="hardLoeading">正在加载。。。</string>
+    <string name="txt_empty_tip">空空如野！</string>
+    <string name="common_load_more_end">没有更多了</string>
 
 
 

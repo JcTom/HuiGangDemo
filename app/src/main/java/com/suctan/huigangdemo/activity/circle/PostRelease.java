@@ -1,15 +1,12 @@
 package com.suctan.huigangdemo.activity.circle;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.provider.Settings;
+
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,17 +15,26 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.androidbase.BaseApplication;
 import com.example.androidbase.Constants;
 import com.example.androidbase.mvp.MvpActivity;
 import com.example.androidbase.utils.RceycleImageTool;
 import com.example.androidbase.utils.SdCardTool;
 import com.example.androidbase.utils.ToastTool;
+import com.jaeger.library.StatusBarUtil;
+import com.roger.catloadinglibrary.CatLoadingView;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.TokenManager;
+import com.suctan.huigangdemo.bean.topic.AddCommentReturn;
+import com.suctan.huigangdemo.bean.topic.TopicBean;
+import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
 import com.suctan.huigangdemo.bean.user.CourseBean;
-import com.suctan.huigangdemo.bean.user.MyChikenFoodBean;
-import com.suctan.huigangdemo.mvp.login.postRelease.postReleasePresenter;
-import com.suctan.huigangdemo.mvp.login.postRelease.postReleaseView;
+import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishPresenter;
+import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishView;
+import com.suctan.huigangdemo.net.FileUploadService;
+import com.suctan.huigangdemo.net.ServiceGenerator;
 import com.suctan.huigangdemo.widget.TipDialog;
 
 import java.io.BufferedOutputStream;
@@ -36,26 +42,31 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+
+import retrofit.RetrofitError;
+import retrofit.mime.TypedFile;
 
 /**
  * Created by B-305 on 2017/4/9.
  */
 
-public class PostRelease extends MvpActivity<postReleasePresenter> implements postReleaseView {
+public class PostRelease extends MvpActivity<PostPublishPresenter> implements PostPublishView, View.OnClickListener {
     private static final int CHOSE_PICTRUE = 1;// 选择本地图片
     private static final int CROP_SMALL_PICTURE = 2;// 裁剪
     private static final int OPEN_SETTING = 0x1001;//打开应用信息
     private Uri tempUri;//图片Uri
     private Bitmap tempBitmap;//当前选中的图片
     private File tempImageFile;//当前选中的图片
-
+    private CatLoadingView catLoadingView;
 
     private ImageButton selectImg, deleteImg, postBack;
     private ImageView imageView;
     private FrameLayout imgLayout;
     private LinearLayout picLy;
     private EditText post_title, post_content;
+    private Button post_fb;
 
     /**
      * 所需权限
@@ -65,89 +76,54 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_release);
-
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         initSelectImg();
         initView();
     }
 
     @Override
-    protected postReleasePresenter createPresenter() {
-        return new postReleasePresenter(this);
+    protected PostPublishPresenter createPresenter() {
+        return new PostPublishPresenter(this);
     }
 
 
     //初始化界面
     private void initView() {
+        catLoadingView = new CatLoadingView();
         picLy = (LinearLayout) findViewById(R.id.pic_ly);
+    }
+
+    private void toogleShowCatLoading(boolean isShow) {
+        if (isShow) {
+            post_fb.setClickable(false);
+            catLoadingView.show(getSupportFragmentManager(), "");
+        } else {
+            post_fb.setClickable(true);
+            catLoadingView.dismiss();
+        }
     }
 
 
     //初始化图片选择控件,返回
     private void initSelectImg() {
         postBack = (ImageButton) findViewById(R.id.post_back);
-        Button post_fb = (Button) findViewById(R.id.post_fb);
+        post_fb = (Button) findViewById(R.id.post_fb);
         imgLayout = (FrameLayout) findViewById(R.id.img_layout);
         selectImg = (ImageButton) findViewById(R.id.select_img);
         deleteImg = (ImageButton) findViewById(R.id.delete_img);
         post_title = (EditText) findViewById(R.id.post_title);
         post_content = (EditText) findViewById(R.id.post_content);
-
-        selectImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        deleteImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageView.setWillNotDraw(true);
-                imgLayout.setVisibility(View.GONE);
-                selectImg.setVisibility(View.VISIBLE);
-            }
-        });
-
-        postBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-
-        post_fb.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                postVariety();
-            }
-
-
-        });
-
+        post_fb.setOnClickListener(this);
+        postBack.setOnClickListener(this);
+        selectImg.setOnClickListener(this);
+        deleteImg.setOnClickListener(this);
 
     }
-
-    //实现把数据传给Presenter进行处理
-    private void postVariety() {
-        String topic_title = post_title.getText().toString().trim();
-        String topic_content = post_content.getText().toString().trim();
-
-        //上传图片,有些问题,这个接口,晚点再写
-
-    }
-
 
     @Override
     public void getDataFail(String msg) {
 
-    }
-
-
-    @Override
-    public void loadCourseDone(CourseBean courseBean) {
-        ToastTool.showToast("发布帖子成功", 1);
     }
 
 
@@ -167,7 +143,6 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
     private void checkWriteExternalPermission() {
 
         if (hasPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-
             changeByPic();
         } else {
             //请求权限
@@ -175,7 +150,6 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
                     Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
     }
-
 
     @Override
     public void showLoading() {
@@ -212,7 +186,6 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
     public File saveBitmapFile(Bitmap bitmap, String fileName) {
         String filePath = SdCardTool.getRootFilePath();
         File file = new File(filePath, fileName);//将要保存图片的路径
-//        System.err.println(file.getAbsolutePath() + "\n" + file.getAbsoluteFile());
         if (file.exists()) {
             file.delete();
             file = null;
@@ -227,7 +200,7 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
             e.printStackTrace();
         }
         if (file1.exists()) {
-            System.out.println("头像上传路径" + file1.getPath());
+
         }
         return file1;
     }
@@ -242,8 +215,9 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
                 RceycleImageTool.rceycleBitmap(tempBitmap);
             }
             this.tempBitmap = photo;
-            deleteImg.setImageBitmap(tempBitmap);
-            tempImageFile = saveBitmapFile(tempBitmap, getNowTime() + ".jpg");
+            tempImageFile = saveBitmapFile(tempBitmap, getNowTime() + ".png");
+            selectImg.setImageBitmap(tempBitmap);
+            toggleShowDeleteImag(true);
         }
     }
 
@@ -319,5 +293,120 @@ public class PostRelease extends MvpActivity<postReleasePresenter> implements po
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-DD_hh_mm_ss");
         String system = dateFormat.format(new Date());
         return system;
+    }
+
+    private void postVeriaty() {
+        if (post_title.getText().toString().isEmpty()) {
+            Toast.makeText(BaseApplication.getContext(), "请输入标题", Toast.LENGTH_LONG).show();
+            toogleShowCatLoading(false);
+            return;
+        }
+        if (post_content.getText().toString().isEmpty()) {
+            Toast.makeText(BaseApplication.getContext(), "请输入描述内容", Toast.LENGTH_LONG).show();
+            toogleShowCatLoading(false);
+            return;
+        }
+        if (tempImageFile == null) {
+            toogleShowCatLoading(false);
+
+            Toast.makeText(BaseApplication.getContext(), "请您选择需要发布的图片", Toast.LENGTH_LONG).show();
+            return;
+        } else if (!tempImageFile.exists()) {
+            toogleShowCatLoading(false);
+            Toast.makeText(BaseApplication.getContext(), "请您选择需要发布的图片", Toast.LENGTH_LONG).show();
+            return;
+        }
+        AddFoodPublic(tempImageFile);//上传文件附带其它参数
+    }
+
+    //控制显示图片删除按钮
+    private void toggleShowDeleteImag(boolean showImage) {
+        if (showImage) {
+            deleteImg.setVisibility(View.VISIBLE);
+        } else {
+            deleteImg.setVisibility(View.GONE);
+        }
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.post_back:
+                finish();
+                break;
+            case R.id.post_fb:
+                toogleShowCatLoading(true);
+                postVeriaty();
+                break;
+            case R.id.select_img:
+                checkWriteExternalPermission();
+                break;
+            case R.id.delete_img:
+                toggleShowDeleteImag(false);
+                if (tempBitmap != null) {
+                    RceycleImageTool.rceycleBitmap(tempBitmap);
+                }
+                if (tempImageFile != null) {
+                    tempImageFile.delete();
+                }
+                selectImg.setImageResource(R.mipmap.upload_img);
+                break;
+        }
+    }
+
+    /*, */
+    //将信息发布到服务器中
+    private void AddFoodPublic(File file) {
+        FileUploadService serviceGenerator = ServiceGenerator.createService(FileUploadService.class);
+        TypedFile typedFile = new TypedFile("multipart/form-data", file);
+        serviceGenerator.TopicPublic(typedFile, TokenManager.getToken(), post_title.getText().toString(), post_content.getText().toString()
+                , new retrofit.Callback<String>() {
+                    @Override
+                    public void success(String s, retrofit.client.Response response) {
+                        System.out.println("发布成功" + s);
+                        toogleShowCatLoading(false);
+                        Toast.makeText(BaseApplication.getContext(), "发布成功！", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError retrofitError) {
+                        System.out.println("发布成功" + retrofitError.toString());
+                        Toast.makeText(BaseApplication.getContext(), "发布失败！", Toast.LENGTH_LONG).show();
+                        toogleShowCatLoading(false);
+                    }
+                });
+    }
+
+
+    @Override
+    public void getTopicListSrc(ArrayList<TopicBean> topicBeenList) {
+
+    }
+
+    @Override
+    public void getTopicListFail() {
+
+    }
+
+    @Override
+    public void postPublishCommentSuc(AddCommentReturn addCommentBean) {
+
+    }
+
+    @Override
+    public void postPublishCommentFail(String msg) {
+
+    }
+
+    @Override
+    public void getCommentListSuc(ArrayList<TopicCommentBean> topicCommentBeen) {
+
+    }
+
+    @Override
+    public void getComemtnListFail() {
+
     }
 }

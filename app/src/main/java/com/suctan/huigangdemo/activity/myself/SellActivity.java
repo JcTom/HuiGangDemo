@@ -12,8 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.fragment.FirstFragment;
-import com.suctan.huigangdemo.fragment.SecondFragment;
+import com.suctan.huigangdemo.fragment.my.MysellAllFrag;
+import com.suctan.huigangdemo.fragment.my.MysellWaitAgreeFrag;
 import com.suctan.huigangdemo.fragment.my.MySell_Four;
 import com.suctan.huigangdemo.fragment.my.MySell_Three;
 
@@ -35,7 +35,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     private TextView tvmysell_all,tvmysell_dty,tvmysell_jxz,tvmysell_ywc;
     private LinearLayout llmysell_all,llmysell_dty,llmysell_jxz,llmysell_ywc;
 
-    GridView my_first_framgment_gridview;
+//    GridView my_first_framgment_gridview;
     /*GridView My_evaluation_thridFrament_gridview;*/
 
     // 滑动条颜色
@@ -50,7 +50,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
     }
     private void initView() {
-        my_first_framgment_gridview = (GridView) findViewById(R.id.my_first_framgment_gridview);
+//        my_first_framgment_gridview = (GridView) findViewById(R.id.my_first_framgment_gridview);
         sell_back = (ImageView) findViewById(R.id.sell_back);
         sell_back.setOnClickListener(this);
         // 获取颜色
@@ -79,8 +79,8 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
     private void initFragment() {
 
-        FirstFragment mSDF = new FirstFragment();
-        SecondFragment mCPF = new SecondFragment();
+        MysellAllFrag mSDF = new MysellAllFrag();
+        MysellWaitAgreeFrag mCPF = new MysellWaitAgreeFrag();
         MySell_Three mTDF = new MySell_Three();
         MySell_Four mFPF = new MySell_Four();
 

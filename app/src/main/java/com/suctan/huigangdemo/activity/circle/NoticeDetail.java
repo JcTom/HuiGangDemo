@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 
 /**
@@ -22,7 +23,7 @@ public class NoticeDetail extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.circle_notice_details);
-
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
         initButton();
     }
 

@@ -11,10 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.fragment.my.MyBuy_Four;
-import com.suctan.huigangdemo.fragment.my.MyBuy_One;
-import com.suctan.huigangdemo.fragment.my.MyBuy_Three;
-import com.suctan.huigangdemo.fragment.my.MyBuy_Two;
+import com.suctan.huigangdemo.fragment.my.MyFinishOrder;
+import com.suctan.huigangdemo.fragment.my.MyAllOrder;
+import com.suctan.huigangdemo.fragment.my.MyWaitSendOrder;
+import com.suctan.huigangdemo.fragment.my.MyWaitOrder;
+import com.suctan.huigangdemo.fragmentinterface.InterFaceOrderState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +24,11 @@ import java.util.List;
  * Created by B-305 on 2017/4/13.
  */
 
-public class buyActivity  extends FragmentActivity implements View.OnClickListener,ViewPager.OnPageChangeListener{
+public class buyActivity extends FragmentActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, InterFaceOrderState {
 
 
-    private TextView tv_mybuy_all,tv_mybuy_djd,tv_mybuy_dsc,tv_mybuy_ywc;
-    private LinearLayout ll_mybuy_all,ll_mybuy_djd,ll_mybuy_dsc,ll_mybuy_ywc;
+    private TextView tv_mybuy_all, tv_mybuy_djd, tv_mybuy_dsc, tv_mybuy_ywc;
+    private LinearLayout ll_mybuy_all, ll_mybuy_djd, ll_mybuy_dsc, ll_mybuy_ywc;
     private ViewPager myBuyViewpager;
 
     // 滑动条颜色
@@ -76,16 +77,18 @@ public class buyActivity  extends FragmentActivity implements View.OnClickListen
 
     private void initFragment() {
 
-        MyBuy_One mSDF = new MyBuy_One();
-        MyBuy_Two mCPF = new MyBuy_Two();
-        MyBuy_Three mTDF = new MyBuy_Three();
-        MyBuy_Four mFPF = new MyBuy_Four();
-
+        MyAllOrder mSDF = MyAllOrder.getFragmentInstant();
+        mSDF.setFragListner(this);
+        MyWaitOrder mCPF = MyWaitOrder.getFragmentInstant();
+        mCPF.setFragListner(this);
+        MyWaitSendOrder mTDF = MyWaitSendOrder.getFragmentInstant();
+        mTDF.setFragListner(this);
+        MyFinishOrder mFPF = MyFinishOrder.getFragmentInstant();
+        mFPF.setFragListner(this);
         mDatas.add(mSDF);
         mDatas.add(mCPF);
         mDatas.add(mTDF);
         mDatas.add(mFPF);
-
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
@@ -102,7 +105,6 @@ public class buyActivity  extends FragmentActivity implements View.OnClickListen
         myBuyViewpager.setAdapter(mAdapter);
         myBuyViewpager.addOnPageChangeListener(this);
         myBuyViewpager.setCurrentItem(0);
-
     }
 
     @Override
@@ -114,7 +116,7 @@ public class buyActivity  extends FragmentActivity implements View.OnClickListen
     }
 
 
-    public class MyOnClickListenser implements View.OnClickListener{
+    public class MyOnClickListenser implements View.OnClickListener {
 
         private int index = 0;
 
@@ -138,7 +140,6 @@ public class buyActivity  extends FragmentActivity implements View.OnClickListen
                 case R.id.tv_mybuy_ywc:
                     tv_mybuy_ywc.setTextColor(select_color);
                     break;
-
             }
             myBuyViewpager.setCurrentItem(index);
         }

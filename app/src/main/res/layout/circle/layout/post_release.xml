@@ -101,14 +101,16 @@
             android:id="@+id/img_layout"
             android:layout_width="95dp"
             android:layout_height="95dp"
-            android:visibility="gone">
+            >
 
-            <ImageView
-                android:id="@+id/image"
+            <ImageButton
+                android:id="@+id/select_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="bottom"
-                android:scaleType="centerCrop" />
+                android:background="#00000000"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/upload_img" />
 
             <ImageButton
                 android:id="@+id/delete_img"
@@ -117,17 +119,11 @@
                 android:layout_gravity="right"
                 android:background="#00000000"
                 android:scaleType="fitXY"
-                android:src="@mipmap/delete_img" />
+                android:src="@mipmap/delete_img"
+                android:visibility="gone" />
         </FrameLayout>
 
-        <ImageButton
-            android:id="@+id/select_img"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="bottom"
-            android:background="#00000000"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/upload_img" />
+
     </LinearLayout>
 
     <LinearLayout

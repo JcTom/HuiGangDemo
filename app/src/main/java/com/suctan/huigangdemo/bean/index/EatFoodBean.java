@@ -12,7 +12,16 @@ public class EatFoodBean implements Serializable {
     private String food_description;//菜的描述
     private double order_price;//
     private int num;
+    private String user_name;
 
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
 
     public String getOrder_pic() {
         return order_pic;

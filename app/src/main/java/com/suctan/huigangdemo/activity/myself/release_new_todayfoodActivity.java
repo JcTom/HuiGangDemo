@@ -19,6 +19,7 @@ import com.example.androidbase.mvp.MvpActivity;
 import com.example.androidbase.utils.RceycleImageTool;
 import com.example.androidbase.utils.SdCardTool;
 import com.example.androidbase.utils.ToastTool;
+import com.roger.catloadinglibrary.CatLoadingView;
 import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.TokenManager;
@@ -54,6 +55,8 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
     private Bitmap tempBitmap;//当前选中的图片
     private File tempImageFile;//当前选中的图片
     private MyChikenFoodBean tempMyChikenBean = new MyChikenFoodBean();
+    private CatLoadingView catLoadingView;
+
 
     @BindView(R.id.new_food_ideas)   //定义 添加新菜谱
             LinearLayout new_food_idea;
@@ -78,8 +81,23 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_kitchen_release);
         ButterKnife.bind(this);  //绑定布局
+        initViewClickListener();
+    }
+
+    //控制进度条的显示
+    private void toogleShowCatLoading(boolean isShowLoad) {
+        if (isShowLoad) {
+            btn_addFood_comfirm.setClickable(false);
+            catLoadingView.show(getSupportFragmentManager(), "");
+        } else {
+            btn_addFood_comfirm.setClickable(true);
+            catLoadingView.dismiss();
+        }
+    }
 
 
+    private void initViewClickListener() {
+        catLoadingView = new CatLoadingView();
         new_food_idea.setOnClickListener(this);
         new_food_back.setOnClickListener(this);
         btn_addFood_comfirm.setOnClickListener(this);
@@ -92,12 +110,14 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
     private void getPublishData() {
         if (edt_addFood_name.getText().toString() == null | edt_addFood_name.getText().toString().isEmpty()) {
             Toast.makeText(BaseApplication.getContext(), "请添加菜名！", Toast.LENGTH_LONG).show();
+            toogleShowCatLoading(false);
             return;
         } else {
             tempMyChikenBean.setOrder_title(edt_addFood_name.getText().toString());
         }
         if (edt_addFood_moneny.getText().toString() == null | edt_addFood_moneny.getText().toString().isEmpty()) {
             Toast.makeText(BaseApplication.getContext(), "请添加菜的金额！", Toast.LENGTH_LONG).show();
+            toogleShowCatLoading(false);
             return;
 
         } else {
@@ -105,16 +125,19 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
 
         }
         if (tempImageFile == null) {
+            toogleShowCatLoading(false);
             Toast.makeText(BaseApplication.getContext(), "请添加菜的图片！", Toast.LENGTH_LONG).show();
             return;
         }
         if (edt_addFood_detail.getText().toString() == null | edt_addFood_detail.getText().toString().isEmpty()) {
             Toast.makeText(BaseApplication.getContext(), "请添加菜的描述！", Toast.LENGTH_LONG).show();
+            toogleShowCatLoading(false);
             return;
         } else {
             tempMyChikenBean.setFood_description(edt_addFood_detail.getText().toString());
         }
         if (tempMyChikenBean.getMakeFood_res() == null | tempMyChikenBean.getMakeFood_float() == null | tempMyChikenBean.getMakeFood_note() == null) {
+            toogleShowCatLoading(false);
             Toast.makeText(BaseApplication.getContext(), "请前往添加菜的详细制作流程,材料和注意事项", Toast.LENGTH_LONG);
             return;
         }
@@ -141,7 +164,7 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
                 startActivityForResult(gotofoodbook, getFoodMatria);
                 break;
             case R.id.btn_addFood_comfirm:
-
+                toogleShowCatLoading(true);
                 getPublishData();
                 break;
         }
@@ -244,7 +267,7 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
             }
             this.tempBitmap = photo;
             imv_addFood.setImageBitmap(tempBitmap);
-            tempImageFile = saveBitmapFile(tempBitmap, getNowTime()+".jpg");
+            tempImageFile = saveBitmapFile(tempBitmap, getNowTime() + ".jpg");
         }
     }
 
@@ -348,19 +371,19 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
     private void AddFoodPublic(File file) {
         FileUploadService serviceGenerator = ServiceGenerator.createService(FileUploadService.class);
         TypedFile typedFile = new TypedFile("multipart/form-data", file);
-
         serviceGenerator.FoodPublic(typedFile, TokenManager.getToken(), tempMyChikenBean.getOrder_title(), tempMyChikenBean.getOrder_price()
                 , tempMyChikenBean.getOrder_type(), tempMyChikenBean.getMakeFood_res(), tempMyChikenBean.getMakeFood_float(), tempMyChikenBean.getMakeFood_note()
                 , new retrofit.Callback<String>() {
                     @Override
                     public void success(String s, retrofit.client.Response response) {
                         Toast.makeText(BaseApplication.getContext(), "上传成功！", Toast.LENGTH_LONG).show();
-
+                        toogleShowCatLoading(false);
+                        finish();
                     }
 
                     @Override
                     public void failure(RetrofitError retrofitError) {
-
+                        toogleShowCatLoading(false);
                     }
                 });
     }

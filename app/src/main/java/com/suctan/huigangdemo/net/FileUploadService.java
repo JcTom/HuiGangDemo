@@ -29,4 +29,15 @@ public interface FileUploadService {
             @Part("makeFood_float") String makeFood_float,
             @Part("makeFood_note") String makeFood_note,
             Callback<String> cb);
+
+
+    @Multipart
+    @POST("/tp/index.php/Home/Index/pub_topic")
+    void TopicPublic(
+            @Part("topic_picture") TypedFile file,
+            @Part("user_token") String user_token,
+            @Part("topic_title") String topic_title,
+            @Part("topic_content") String topic_content,
+            Callback<String> cb);
+/*    ,*/
 }

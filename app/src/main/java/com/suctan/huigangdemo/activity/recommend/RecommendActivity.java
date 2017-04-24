@@ -38,6 +38,7 @@ public class RecommendActivity extends MvpActivity<HomePresenter> implements Vie
     private TextView login_recommend_title;
     private ImageView recommend_ItemImage;
     GridView recommend_gridView;
+
     private boolean initFirstCreateGrid;
 
     private ArrayList<EatFoodBean> eatFoodList = new ArrayList<>();
@@ -108,13 +109,13 @@ public class RecommendActivity extends MvpActivity<HomePresenter> implements Vie
 
     @Override
     public void onCarChange(CompanyInfoBean mcompanyInfoBean) {
-        Toast.makeText(this, "我的委托", Toast.LENGTH_SHORT).show();
-        recommend_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Log.d(RecommendActivity.ACTIVITY_TAG, "Error.");*/
-            }
-        });
+//        Toast.makeText(this, "我的委托", Toast.LENGTH_SHORT).show();
+//        recommend_gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                /*Log.d(RecommendActivity.ACTIVITY_TAG, "Error.");*/
+//            }
+//        });
        /* Toast.makeText(this,"我的委托",Toast.LENGTH_SHORT).show();*/
     }
 
@@ -135,11 +136,16 @@ public class RecommendActivity extends MvpActivity<HomePresenter> implements Vie
     public void getEatfoodListSuc(EatFoodReturn mEatFoodReturn) {
         this.eatFoodList.addAll(mEatFoodReturn.getEatFoodBeanList());
         if (!initFirstCreateGrid) {
-            eatFoodAdapter = new RecommendindexAdapter(this, mEatFoodReturn.getEatFoodBeanList());
+            initEataFoodAdapter();
             initFirstCreateGrid = true;
         } else {
-            recommend_gridView.setAdapter(eatFoodAdapter);
+            eatFoodAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void initEataFoodAdapter() {
+        eatFoodAdapter = new RecommendindexAdapter(this, eatFoodList);
+        recommend_gridView.setAdapter(eatFoodAdapter);
     }
 
     @Override

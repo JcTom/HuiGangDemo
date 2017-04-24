@@ -260,4 +260,9 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
     public void nowRollViewPageItem(int position) {
         goEatDetailForRoll(position);
     }
+
+    @Override
+    protected void lazyLoad() {
+
+    }
 }

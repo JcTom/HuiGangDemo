@@ -17,17 +17,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.androidbase.BaseApplication;
+import com.example.androidbase.LoadImageManager;
+import com.example.androidbase.mvp.MvpActivity;
 import com.example.androidbase.widget.CircleImageView;
+import com.jaeger.library.StatusBarUtil;
 import com.sqk.emojirelease.Emoji;
 import com.sqk.emojirelease.EmojiUtil;
 import com.sqk.emojirelease.FaceFragment;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.CurrentUser;
+import com.suctan.huigangdemo.acache.TokenManager;
+import com.suctan.huigangdemo.adapter.topic.CirclePostAdapter;
+import com.suctan.huigangdemo.bean.topic.AddCommentBean;
+import com.suctan.huigangdemo.bean.topic.AddCommentReturn;
+import com.suctan.huigangdemo.bean.topic.TopicBean;
+import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
+import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishPresenter;
+import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,147 +53,233 @@ import butterknife.ButterKnife;
  * Created by B-305 on 2017/4/8.
  */
 
-public class CirclePostDetails extends AppCompatActivity implements FaceFragment.OnEmojiClickListener,View.OnClickListener{
-
-    ImageButton post_emoticon;
-    EditText et_reply;
-    FrameLayout emojicons_layout;
-    ImageButton postDetailsBack;
+public class CirclePostDetails extends MvpActivity<PostPublishPresenter> implements FaceFragment.OnEmojiClickListener, View.OnClickListener, PostPublishView {
+    private ImageButton post_emoticon;
+    private EditText et_reply;
+    private FrameLayout emojicons_layout;
+    private ImageButton postDetailsBack;
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
+    private CircleImageView circleImv_psb_userHead;
+    private TextView tv_pbs_userName;
+    private TextView tv_pbs_title;
+    private TextView tv_pbs_commentTime;
+    private TextView tv_pbs_content;
+    private ImageView imv_pbs_imvdetail;
+    private ImageView imv_pbs_delete;
+    private Button btn_send_comment;
+    private ArrayList<TopicCommentBean> topicCommentList = new ArrayList<>();
     private CirclePostAdapter mAdapter;
-    @BindView(R.id.btn_fs)     //发送消息按钮
-    Button btnfs;
+
+    private TopicBean mTopicBean;//当前的话题对象
+    private boolean isFirstCreateRecycleAdatper;
+    private String tempContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_details);
-        ButterKnife.bind(this);
-        initEmotion();
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+        initView();
+        getIntentData();
+        getCommmentList();
+
+    }
+
+    /*获取当前话题的评论*/
+    private void getCommmentList() {
+        Map map = new HashMap();
+        map.put("topic_id", mTopicBean.getTopic_id());
+        mvpPresenter.getTopicCommentList(map);
+    }
+
+    private void getIntentData() {
+        mTopicBean = (TopicBean) getIntent().getSerializableExtra("nowTopic");
+        if (mTopicBean != null) {
+            initData(mTopicBean);
+        }
+
+    }
+
+    private void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.post_recyclerview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mAdapter = new CirclePostAdapter());
-        mRecyclerView.setFocusable(false);
-        initData();
-        postBack();
-    }
+        postDetailsBack = (ImageButton) findViewById(R.id.post_details_back);
+        circleImv_psb_userHead = (CircleImageView) findViewById(R.id.circleImv_psb_userHead);
+        tv_pbs_userName = (TextView) findViewById(R.id.tv_pbs_userName);
+        tv_pbs_commentTime = (TextView) findViewById(R.id.tv_pbs_commentTime);
+        tv_pbs_content = (TextView) findViewById(R.id.tv_pbs_content);
+        imv_pbs_imvdetail = (ImageView) findViewById(R.id.imv_pbs_imvdetail);
+        imv_pbs_delete = (ImageView) findViewById(R.id.imv_pbs_delete);
+        btn_send_comment = (Button) findViewById(R.id.btn_send_comment);
+        tv_pbs_title = (TextView) findViewById(R.id.tv_pbs_title);
 
-
-    //返回
-    private void postBack() {
-        postDetailsBack = (ImageButton)findViewById(R.id.post_details_back);
-        postDetailsBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                btnfs.setOnClickListener(this);
-            }
-        });
-    }
-
-
-    //初始化数据
-    protected void initData()
-    {
-        mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'z'; i++) {
-            mDatas.add("" + (char) i);
-        }
-
-
-    }
-     //按钮的点击事件,并且对数据进行传输
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_fs:
-                fsVariety();
-        }
-
-    }
-   //里面map的数据集合,把数据封装起来,传输给另外一处,待完成
-    private void fsVariety() {
-
-
-    }
-
-    class CirclePostAdapter extends RecyclerView.Adapter<CirclePostAdapter.MyViewHolder> {
-
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                    CirclePostDetails.this).inflate(R.layout.post_reply_item, parent,
-                    false));
-            return holder;
-        }
-
-
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-
-            holder.item_name.setText(mDatas.get(position));
-            holder.item_time.setText(mDatas.get(position));
-            holder.item_reply.setText(mDatas.get(position));
-            //LoadImageManager.getImageLoader().displayImage("",holder.item_tx);
-
-        }
-
-
-        public int getItemCount() {
-            return mDatas.size();
-        }
-
-        class MyViewHolder extends RecyclerView.ViewHolder {
-            TextView item_name,item_time,item_reply;
-            CircleImageView item_tx;
-
-            public MyViewHolder(View view) {
-                super(view);
-                item_name = (TextView) view.findViewById(R.id.item_name);
-                item_time = (TextView) view.findViewById(R.id.item_time);
-                item_reply = (TextView) view.findViewById(R.id.item_reply);
-                item_tx = (CircleImageView) view.findViewById(R.id.item_tx);
-            }
-        }
-
-
-    }
-
-
-
-
-
-    /**
-     * 表情键盘
-     */
-    private void initEmotion(){
         post_emoticon = (ImageButton) findViewById(R.id.post_emoticon);
         et_reply = (EditText) findViewById(R.id.et_reply);
         emojicons_layout = (FrameLayout) findViewById(R.id.emojicons_layout);
 
-        FaceFragment faceFragment = FaceFragment.Instance();
-        getSupportFragmentManager().beginTransaction().add(R.id.emojicons_layout,faceFragment).commit();
+        et_reply.setOnClickListener(this);
+        postDetailsBack.setOnClickListener(this);
+        btn_send_comment.setOnClickListener(this);
+        imv_pbs_delete.setOnClickListener(this);
+        post_emoticon.setOnClickListener(this);
 
 
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        initEmotion();
+        initRecycleView();
+    }
 
-        post_emoticon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (emojicons_layout.isShown()){
-                    hideEmotionView(false);
-                }else{
-                    showEmotionView();
-                }
 
-            }
-        });
-        et_reply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hideEmotionView(true);
-            }
-        });
+    private void initRecycleView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setFocusable(false);
 
     }
+
+    @Override
+    protected PostPublishPresenter createPresenter() {
+        return new PostPublishPresenter(this);
+    }
+
+
+    //初始化数据
+    protected void initData(TopicBean mTopicBean) {
+        if (mTopicBean.getUser_icon() != null) {
+            LoadImageManager.getImageLoader().displayImage(mTopicBean.getUser_icon(), circleImv_psb_userHead);
+        }
+        tv_pbs_userName.setText(mTopicBean.getUser_name());
+        if (mTopicBean.getTopic_picture() != null) {
+            LoadImageManager.getImageLoader().displayImage(mTopicBean.getTopic_picture(), imv_pbs_imvdetail);
+        }
+        tv_pbs_commentTime.setText(mTopicBean.getPub_topic_time());
+        tv_pbs_content.setText(mTopicBean.getTopic_content());
+        tv_pbs_title.setText(mTopicBean.getTopic_title());
+
+
+    }
+
+    //按钮的点击事件,并且对数据进行传输
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_send_comment:
+                toolgleSendComment(false);
+                postCommentVearity();
+                hideEmotionView(true);
+                break;
+            case R.id.post_details_back:
+                finish();
+                break;
+            case R.id.imv_pbs_delete:
+
+                break;
+            case R.id.et_reply:
+                hideEmotionView(true);
+                break;
+            case R.id.post_emoticon:
+                if (emojicons_layout.isShown()) {
+                    hideEmotionView(false);
+                } else {
+                    showEmotionView();
+                }
+                break;
+        }
+    }
+
+
+    @Override
+    public void getDataFail(String msg) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+
+    @Override
+    public void getTopicListSrc(ArrayList<TopicBean> topicBeenList) {
+
+    }
+
+    @Override
+    public void getTopicListFail() {
+
+    }
+
+    @Override
+    public void postPublishCommentSuc(AddCommentReturn addCommentBean) {
+        addNewComemntObject(addCommentBean);
+
+        toolgleSendComment(true);
+    }
+
+    //添加评论在列表中
+    private void addNewComemntObject(AddCommentReturn addCommentBean) {
+        TopicCommentBean mTopicComment = new TopicCommentBean();
+        mTopicComment.setContent(tempContent);
+        String commentId = addCommentBean.getComment_id();
+        if (commentId != null) {
+            mTopicComment.setComment_id(Integer.parseInt(commentId));
+        }
+        mTopicComment.setUser_icon("http://119.29.137.109/tp/uploads/" + CurrentUser.getInstance().getUserBean().getUser_icon());
+        mTopicComment.setUser_name(CurrentUser.getInstance().getUserBean().getUser_name());
+        mTopicComment.setComment_time(addCommentBean.getComment_time());
+        topicCommentList.add(0, mTopicComment);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void postPublishCommentFail(String msg) {
+        Toast.makeText(BaseApplication.getContext(), msg, Toast.LENGTH_LONG).show();
+        toolgleSendComment(true);
+    }
+
+    @Override
+    public void getCommentListSuc(ArrayList<TopicCommentBean> topicCommentBeen) {
+        topicCommentList.addAll(topicCommentBeen);
+        if (!isFirstCreateRecycleAdatper) {
+            isFirstCreateRecycleAdatper = true;
+            initRecycleAdaper(topicCommentList);
+        } else {
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void getComemtnListFail() {
+
+    }
+
+    private void initRecycleAdaper(ArrayList<TopicCommentBean> topicCommentList) {
+        mAdapter = new CirclePostAdapter(this, topicCommentList);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    /**
+     * 表情键盘
+     */
+    private void initEmotion() {
+        FaceFragment faceFragment = FaceFragment.Instance();
+        getSupportFragmentManager().beginTransaction().add(R.id.emojicons_layout, faceFragment).commit();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+    }
+
+    private void toolgleSendComment(boolean isClick) {
+        if (isClick) {
+            btn_send_comment.setClickable(false);
+        } else {
+            btn_send_comment.setClickable(true);
+        }
+    }
+
+
     /**
      * 隐藏emoji
      **/
@@ -185,16 +288,16 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
             if (showKeyBoard) {
                 emojicons_layout.setVisibility(View.GONE);
                 //etWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
             } else {
                 emojicons_layout.setVisibility(View.GONE);
             }
         }
     }
+
     private void showEmotionView() {
         emojicons_layout.setVisibility(View.VISIBLE);
-        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(et_reply.getWindowToken(),0);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(et_reply.getWindowToken(), 0);
     }
 
     @Override
@@ -231,6 +334,7 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
             e.printStackTrace();
         }
     }
+
     @Override
     public void onEmojiClick(Emoji emoji) {
         if (emoji != null) {
@@ -246,8 +350,9 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
         et_reply.setSelection(et_reply.getText().length());
         //Log.i("onEmojiClick", "onEmojiClick: "+et_reply.getText().toString());
     }
+
     public boolean onTouchEvent(MotionEvent event) {
-        if(null != this.getCurrentFocus()){
+        if (null != this.getCurrentFocus()) {
             /**
              * 点击空白位置 隐藏软键盘
              */
@@ -255,7 +360,26 @@ public class CirclePostDetails extends AppCompatActivity implements FaceFragment
             InputMethodManager mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             return mInputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
         }
-        return super .onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 
+    //上传前进行判断
+    private void postCommentVearity() {
+        if (et_reply.getText().toString().isEmpty()) {
+            toolgleSendComment(true);
+            return;
+        }
+        publishComment();
+    }
+
+    private void publishComment() {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("user_token", TokenManager.getToken());
+        map.put("topic_id", mTopicBean.getTopic_id());
+        map.put("content", et_reply.getText().toString());
+        tempContent = et_reply.getText().toString();
+        mvpPresenter.postPublishComment(map);
+
+    }
 }

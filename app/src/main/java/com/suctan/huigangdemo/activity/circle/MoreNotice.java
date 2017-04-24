@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class MoreNotice extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.circle_notice);
-
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
         initButton();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.circle_notice);
@@ -44,7 +45,7 @@ public class MoreNotice extends AppCompatActivity {
     /*
     * 初始化返回、更多按钮
     * */
-    private void initButton(){
+    private void initButton() {
         noticeBack = (ImageButton) findViewById(R.id.notice_back);
         noticeRelease = (Button) findViewById(R.id.notice_fb);
 
@@ -58,8 +59,8 @@ public class MoreNotice extends AppCompatActivity {
         noticeRelease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goNoticeRelease = new Intent(MoreNotice.this,PostRelease.class);
-                goNoticeRelease.putExtra("isPic",false);
+                Intent goNoticeRelease = new Intent(MoreNotice.this, PostRelease.class);
+                goNoticeRelease.putExtra("isPic", false);
                 startActivity(goNoticeRelease);
             }
         });
@@ -76,15 +77,11 @@ public class MoreNotice extends AppCompatActivity {
 
 
     //初始化数据
-    protected void initData()
-    {
+    protected void initData() {
         mDatas = new ArrayList<String>();
-        for (int i = 'A'; i < 'a'; i++)
-        {
+        for (int i = 'A'; i < 'a'; i++) {
             mDatas.add("" + (char) i);
         }
-
-
     }
 
     class MoreNoticeAdapter extends RecyclerView.Adapter<MoreNoticeAdapter.MyViewHolder> {
@@ -95,7 +92,6 @@ public class MoreNotice extends AppCompatActivity {
                     false));
             return holder;
         }
-
 
 
         public void onBindViewHolder(MyViewHolder holder, int position) {
@@ -121,7 +117,7 @@ public class MoreNotice extends AppCompatActivity {
 
         class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView notice_item_title,notice_item_time,notice_item_content;
+            TextView notice_item_title, notice_item_time, notice_item_content;
 
             public MyViewHolder(View view) {
                 super(view);
@@ -133,10 +129,6 @@ public class MoreNotice extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 
 }
