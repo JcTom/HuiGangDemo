@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.androidbase.mvp.MvpActivity;
+import com.example.androidbase.utils.ToastTool;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.user.CourseBean;
@@ -36,8 +37,8 @@ public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.withdarwas);
-        initView();
         ButterKnife.bind(this);
+        initView();
     }
 
 
@@ -45,14 +46,12 @@ public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implemen
         //提现页面的返回按钮
         withdarwas_back = (ImageView) findViewById(R.id.withdarwas_back);
         withdarwas_back.setOnClickListener(this);
-
         //提现页面的确认按钮
         btnwitharwals.setOnClickListener(this);
-
         //得到从我的钱包的页面调回来的参数 多少钱
-        Intent intent=new Intent();
+        Intent intent=getIntent();
         String money = intent.getStringExtra("money");
-
+        ToastTool.showToast("我给了你钱"+money , 1);
         s1 = Double.parseDouble(money);
 
     }

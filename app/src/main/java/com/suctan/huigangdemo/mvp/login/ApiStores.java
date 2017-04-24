@@ -142,7 +142,6 @@ public interface ApiStores {
     @POST("show_address")
     Observable<String> getAddressListReturn(@QueryMap Map<String, Object> addaddressList);
 
-
     /*发布我想要吃*/
     @POST("pub_eatFood")
     Observable<ComomBeanReturn> PostWantEatReturn(@QueryMap Map<String, Object> wanteatReturn);

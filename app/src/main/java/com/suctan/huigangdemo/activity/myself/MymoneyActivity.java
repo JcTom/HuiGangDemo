@@ -41,7 +41,7 @@ public class MymoneyActivity  extends MvpActivity<MymoneyPresenter> implements M
             public void onClick(View v) {
                 Intent gotowithdarwas = new Intent(MymoneyActivity.this , WithdarwasActivity.class);
 //                gotowithdarwas.putExtras("Mmoney",);
-                gotowithdarwas.putExtra("money", Mymoney.getText().toString().trim());
+                gotowithdarwas.putExtra("money", Mymoney.getText());
                 startActivity(gotowithdarwas);
             }
         });
