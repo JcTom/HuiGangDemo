@@ -25,7 +25,7 @@ import com.suctan.huigangdemo.activity.myself.WaitOrdersActivity;
 import com.suctan.huigangdemo.activity.myself.WaitassessActivity;
 import com.suctan.huigangdemo.activity.myself.WaitfoodActitity;
 import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
-import com.suctan.huigangdemo.activity.myself.addressActivity;
+import com.suctan.huigangdemo.activity.address.addressActivity;
 import com.suctan.huigangdemo.activity.myself.buyActivity;
 import com.suctan.huigangdemo.activity.myself.my_assess;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
@@ -108,7 +108,6 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
 
         //设置地址管理跳转页面
         address.setOnClickListener(new View.OnClickListener() {
-
 
             @Override
             public void onClick(View v) {

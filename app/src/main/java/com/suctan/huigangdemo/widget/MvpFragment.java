@@ -286,7 +286,6 @@ public abstract class MvpFragment<presenter extends BasePresenter> extends
                 emptyView.setText(getResources().getString(R.string.txt_empty_tip));
             }
         }
-
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setRefreshing(false);
         }

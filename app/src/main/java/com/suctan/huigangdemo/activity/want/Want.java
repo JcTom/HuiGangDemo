@@ -1,6 +1,7 @@
 package com.suctan.huigangdemo.activity.want;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,15 +24,21 @@ import com.jaeger.library.StatusBarUtil;
 import com.roger.catloadinglibrary.CatLoadingView;
 import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.Home_Page.HomeActivity;
+import com.suctan.huigangdemo.activity.address.addressActivity;
 import com.suctan.huigangdemo.adapter.wanteat.AddFoodItemAdapter;
 import com.suctan.huigangdemo.adapter.wanteat.AddFoodSpinneItemAdapter;
+import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.wanteat.WantEatFoodBean;
 import com.suctan.huigangdemo.bean.wanteat.WantEatFoodItem;
+import com.suctan.huigangdemo.bean.wanteat.WantEatOtherBean;
+import com.suctan.huigangdemo.bean.wanteat.WantEatOtherComment;
 import com.suctan.huigangdemo.mvp.login.wanteat.WantEatPresenter;
 import com.suctan.huigangdemo.mvp.login.wanteat.WantEatView;
 import com.suctan.huigangdemo.widget.TimePickDialog;
+import com.suctan.huigangdemo.widget.TipsAddAddressDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -173,6 +180,23 @@ public class Want extends MvpActivity<WantEatPresenter> implements View.OnClickL
             Toast.makeText(BaseApplication.getContext(), "请选择期望时间！", Toast.LENGTH_LONG).show();
             return;
         }
+        if (CurrentUser.getInstance().getUserBean().getUser_address() != null) {
+            final TipsAddAddressDialog tipsAddAddressDialog = new TipsAddAddressDialog(this);
+            tipsAddAddressDialog.setTipClickLisener(new TipsAddAddressDialog.OnTipLisetner() {
+                @Override
+                public void comfirm() {
+                    Intent intent = new Intent(Want.this, addressActivity.class);
+                    startActivity(intent);
+                    tipsAddAddressDialog.dismiss();
+                }
+
+                @Override
+                public void cancel() {
+                    tipsAddAddressDialog.dismiss();
+                }
+            });
+            tipsAddAddressDialog.show();
+        }
 
 
 //转换相应时间
@@ -276,6 +300,7 @@ public class Want extends MvpActivity<WantEatPresenter> implements View.OnClickL
             addFoodAdatper = new AddFoodItemAdapter(this, wantEatFoodItemsList);
             lv_wanteat_list.setAdapter(addFoodAdatper);
             addFoodAdatper.setOnClickWantEatDeleteItem(this);
+            isFirstCreateFoodAdapter = true;
         } else {
             addFoodAdatper.notifyDataSetChanged();
         }
@@ -309,10 +334,11 @@ public class Want extends MvpActivity<WantEatPresenter> implements View.OnClickL
     }
 
     private void showTimePickDialog() {
+        selectHour = 1;
+        selectMinute = 1;
         timePickDialog = new TimePickDialog(this, ScreenTools.getWindowsWidth(this));
         timePickDialog.setOnTimePickOnclick(this);
         timePickDialog.show();
-
     }
 
     private void dimssTimePickDialog() {
@@ -385,6 +411,32 @@ public class Want extends MvpActivity<WantEatPresenter> implements View.OnClickL
     @Override
     public void postWantEatFail() {
         showCatLoadingDialog(false);
+    }
+
+    @Override
+    public void getOtherWantEatListSuc(ArrayList<EatFoodBean> eatFoodBeanList) {
+
+    }
+
+    @Override
+    public void addCartSuc() {
+
+    }
+
+
+    @Override
+    public void getOtherWantEatListFail() {
+
+    }
+
+    @Override
+    public void getOtherWantCommentListSuc(ArrayList<WantEatOtherComment> wantEatOtherCommentList) {
+
+    }
+
+    @Override
+    public void getOtherWantCommentListFail() {
+
     }
 
     @Override

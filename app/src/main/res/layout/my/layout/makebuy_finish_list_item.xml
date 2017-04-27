@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:background="@color/white"
+        android:orientation="vertical"
         android:padding="10dp">
 
         <LinearLayout
@@ -22,19 +23,21 @@
                 android:text="已完成"
                 android:textColor="@color/green"
                 android:textSize="15sp" />
+
             <TextView
+                android:id="@+id/tv_makebuyF_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="2017/04/19"/>
+                android:text="2017/04/19" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/bg_gray"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:background="@color/bg_gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,36 +46,36 @@
 
             <!--菜图片-->
             <ImageView
+                android:id="@+id/imv_makebuyF_pic"
                 android:layout_width="100dp"
                 android:layout_height="80dp"
-                android:id="@+id/ItemImage"
                 android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp">
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
 
                 <!--设置菜的名字-->
                 <TextView
-                    android:id="@+id/ItemTitle"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_makebuyF_foodname"
                     style="@style/text_main"
-                    android:text="番茄炒鸡蛋、麻婆豆腐、宫保鸡丁"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textColor="#000"
-                    android:layout_marginTop="10dp"/>
+                    android:text="番茄炒鸡蛋、麻婆豆腐、宫保鸡丁"
+                    android:textColor="#000" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_alignLeft="@id/ItemTitle"
                     android:layout_below="@id/ItemTitle"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
 
                     <!--设置菜的价格-->
                     <TextView
@@ -80,16 +83,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="¥"
-                        android:textSize="16sp"
-                        android:textColor="#ff0000" />
+                        android:textColor="#ff0000"
+                        android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/tv_makebuyF_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:text="350.00"
-                        android:textSize="16sp"
                         android:textColor="#ff0000"
-                        android:layout_marginLeft="5dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -101,9 +105,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/bg_gray"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:background="@color/bg_gray" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,25 +116,38 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <TextView
+                    style="@style/tips_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="订单编号   "
-                    style="@style/tips_font"
-                    android:textColor="@color/gray_h"/>
+                    android:textColor="@color/gray_h" />
+
+
                 <TextView
+                    android:id="@+id/tv_makebuyF_orderId"
+                    style="@style/tips_font"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="201704191049001"
-                    style="@style/tips_font"
-                    android:textColor="@color/gray_h"/>
+                    android:textColor="@color/gray_h" />
             </LinearLayout>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+
             <TextView
+                android:id="@+id/tv_makebuyF_checkCommend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -139,11 +157,12 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
-                android:text="评价"
+                android:text="查看评价"
                 android:textColor="@color/green"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_makebuyF_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/textviewstyle_circular"
@@ -155,13 +174,15 @@
                 android:text="详情"
                 android:textColor="@color/text_orange"
                 android:textSize="14sp" />
+
+
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/bg_gray"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:background="@color/bg_gray" />
 
         <!--<LinearLayout
             android:layout_width="match_parent"

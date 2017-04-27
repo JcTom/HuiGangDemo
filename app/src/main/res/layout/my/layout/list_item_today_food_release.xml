@@ -1,46 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="12dp">
 
     <ImageView
-        android:layout_alignParentLeft="true"
+        android:id="@+id/recommend_today_ItemImage"
         android:layout_width="100dp"
         android:layout_height="80dp"
-        android:id="@+id/recommend_today_ItemImage"
-        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp" />
+        android:src="@mipmap/ic_launcher" />
 
     <!--设置菜的名字-->
     <TextView
         android:id="@+id/recommend_today_ItemTitle"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textSize="18sp"
-        android:text="000"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/recommend_today_ItemImage"
-        android:lines="1"
         android:ellipsize="end"
+        android:lines="1"
         android:maxEms="18"
-        />
+        android:text="000"
+        android:textSize="18sp" />
 
     <!--设置菜的描述-->
     <TextView
-        android:layout_toRightOf="@id/recommend_today_ItemImage"
         android:id="@+id/recommend_today_descript"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textSize="12sp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/recommend_today_ItemTitle"
-        android:textColor="#d3d3d3"
-        android:text="0001"
-        android:lines="2"
+        android:layout_toRightOf="@id/recommend_today_ItemImage"
         android:ellipsize="end"
+        android:lines="2"
         android:maxEms="18"
-        />
+        android:text="0001"
+        android:textColor="#d3d3d3"
+        android:textSize="12sp" />
     <!--设置菜的价格-->
     <TextView
         android:id="@+id/recommend_today_ItemMoney"
@@ -49,34 +47,29 @@
         android:layout_alignBottom="@id/recommend_today_ItemImage"
         android:layout_alignLeft="@id/recommend_today_ItemTitle"
         android:text="¥"
-        android:textSize="18sp"
         android:textColor="#ff0000"
-        />
+        android:textSize="18sp" />
     <!--设置添加份量按钮-->
     <com.suctan.huigangdemo.numlib.AnimShopButton
         android:id="@+id/btn_book_eatfood"
-        android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/recommend_today_ItemImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/recommend_today_ItemImage"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
         app:count="3"
         app:gapBetweenCircle="30dp"
         app:hintFgColor="#ffffff"
         app:hintText="添加到购物车"
         app:maxCount="99"
-        app:perAnimDuration="200"
-        android:layout_marginRight="12dp"/>
+        app:perAnimDuration="200" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_below="@id/recommend_today_ItemImage"
         android:layout_marginTop="12dp"
-        android:background="@color/bg_gray"
-        android:layout_below="@id/recommend_today_ItemImage"/>
-
-
-
-
+        android:background="@color/bg_gray" />
 
 
 </RelativeLayout>

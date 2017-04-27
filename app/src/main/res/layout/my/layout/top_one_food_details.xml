@@ -14,11 +14,13 @@
         android:paddingRight="10dp">
 
         <ImageView
+            android:id="@+id/imv_eatdeatil_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="1dp"
             android:src="@mipmap/return_128" />
+
         <TextView
             android:id="@+id/tv_eat_name"
             android:layout_width="0dp"
@@ -30,6 +32,7 @@
             android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/imv_goto_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -37,6 +40,7 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scv_fooddetail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -58,7 +62,7 @@
                     android:id="@+id/imv_eat_deail"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@mipmap/my_kitchen_bg" />
             </LinearLayout>
 
@@ -71,7 +75,7 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/tv_user_name"
+                    android:id="@+id/tv_food_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/one_food_name"
@@ -90,7 +94,9 @@
                         android:text="@string/remain"
                         android:textSize="15sp" />
 
+
                     <TextView
+                        android:id="@+id/tv_remain_food"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -104,36 +110,6 @@
                         android:text="@string/danwei"
                         android:textSize="15sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="·"
-                        android:textColor="#000"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tv_eat_num"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/number_1"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/danwei_1"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/pinchang"
-                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -219,6 +195,7 @@
                 //菜品描述 ,一般都是四行字体左右,不过最大的设置行数,为3
 
                 <LinearLayout
+                    android:id="@+id/tv_food_decripts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -250,6 +227,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_addcart_comfrim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/common_green"

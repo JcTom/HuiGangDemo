@@ -37,8 +37,8 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                     public void onSuccess(String model) {
                         if (model != null) {
                             System.out.println("获取轮播图的信息" + model);
-                            EatFoodReturn eatFoodReturn=JSONParstObject.getRollViewDataList(model,0);
-                            if(eatFoodReturn!=null){
+                            EatFoodReturn eatFoodReturn = JSONParstObject.getRollViewDataList(model, 0);
+                            if (eatFoodReturn != null) {
                                 mvpView.getRollViewListSuc(eatFoodReturn);
                             }
                         }
@@ -50,6 +50,7 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                     }
                 }));
     }
+
 
     /**
      * 获取首页所有菜的列表
@@ -70,8 +71,8 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                     @Override
                     public void onSuccess(String model) {
                         if (model != null) {
-                            EatFoodReturn eatFoodReturn=JSONParstObject.getRollViewDataList(model,1);
-                            if(eatFoodReturn!=null){
+                            EatFoodReturn eatFoodReturn = JSONParstObject.getRollViewDataList(model, 1);
+                            if (eatFoodReturn != null) {
                                 System.out.println("首页获取菜的列表" + model);
                                 mvpView.getEatfoodListSuc(eatFoodReturn);
                             }
@@ -84,4 +85,6 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                     }
                 }));
     }
+
+
 }

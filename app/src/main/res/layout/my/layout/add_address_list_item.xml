@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -9,59 +10,58 @@
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/add_address_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
+            android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="1dp"
-            android:layout_gravity="left|center_vertical" />
+            android:src="@mipmap/return_128" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="添加地址"
-            android:textSize="20sp"
-            android:textColor="@color/top_title"
-            android:gravity="center"
             android:layout_marginRight="25dp"
-            />
+            android:gravity="center"
+            android:text="添加地址"
+            android:textColor="@color/top_title"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
         <!--收件人-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="18dp">
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
 
             <TextView
+                style="@style/two_title"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="收  货  人："
-                style="@style/two_title"
                 android:gravity="center"
-                />
+                android:text="收  货  人：" />
 
             <EditText
                 android:id="@+id/addressPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请输入你的名字"
                 android:layout_weight="1"
-                android:gravity="right"
                 android:background="@drawable/et_shape"
-                android:padding="5dp"/>
+                android:gravity="right"
+                android:hint="请输入你的名字"
+                android:padding="5dp" />
 
         </LinearLayout>
 
@@ -69,28 +69,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
 
             <TextView
+                style="@style/two_title"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="联系电话："
-                style="@style/two_title"
                 android:gravity="center"
-                />
+                android:text="联系电话：" />
 
             <EditText
                 android:id="@+id/addressPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请输入你的电话"
                 android:layout_weight="1"
-                android:gravity="right"
                 android:background="@drawable/et_shape"
-                android:padding="5dp"
+                android:gravity="right"
+                android:hint="请输入你的电话"
                 android:inputType="number"
-                />
+                android:padding="5dp" />
 
         </LinearLayout>
 
@@ -102,22 +100,22 @@
 
 
             <TextView
+                style="@style/two_title"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="所在地区："
                 android:gravity="center"
-                style="@style/two_title" />
+                android:text="所在地区：" />
 
             <!--点击时间,点击这个text的时候,底部会弹起滑动选择器-->
             <EditText
                 android:id="@+id/addressArea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请选择所在地区"
                 android:layout_weight="1"
-                android:gravity="right"
                 android:background="@drawable/et_shape"
-                android:padding="5dp"/>
+                android:gravity="right"
+                android:hint="请选择所在地区"
+                android:padding="5dp" />
 
         </LinearLayout>
 
@@ -126,88 +124,84 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
 
             <TextView
+                style="@style/two_title"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="小        区："
-                style="@style/two_title"
                 android:gravity="center"
-                />
+                android:text="小        区：" />
 
             <EditText
                 android:id="@+id/addressCommunity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请输入小区名字"
                 android:layout_weight="1"
-                android:gravity="right"
-                android:textSize="18sp"
                 android:background="@drawable/et_shape"
-                android:padding="5dp"/>
+                android:gravity="right"
+                android:hint="请输入小区名字"
+                android:padding="5dp"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!--详细地址-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
 
             <TextView
+                style="@style/two_title"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="详细地址："
-                style="@style/two_title"
                 android:gravity="center"
-                />
+                android:text="详细地址：" />
 
             <EditText
                 android:id="@+id/addressAllAera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请输入详细地址"
                 android:layout_weight="1"
-                android:gravity="right"
                 android:background="@drawable/et_shape"
-                android:padding="5dp"/>
+                android:gravity="right"
+                android:hint="请输入详细地址"
+                android:padding="5dp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="设置为默认地址"
-        android:padding="5dp"
-        android:textColor="#9db830"
-        android:layout_margin="8dp"
-        android:textSize="16sp"
-        />
+    <!--    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:padding="5dp"
+            android:text="设置为默认地址"
+            android:textColor="#9db830"
+            android:textSize="16sp" />-->
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        >
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
 
         <!--android:id="@+id/btn_degree_comfirm"-->
         <Button
             android:id="@+id/btnadressSave"
+            style="@style/title_font"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            style="@style/title_font"
-            android:text="保存"
-            android:background="@drawable/real_button_selector"/>
+            android:background="@drawable/real_button_selector"
+            android:gravity="center"
+            android:text="保存" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

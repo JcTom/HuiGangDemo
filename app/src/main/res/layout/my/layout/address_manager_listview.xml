@@ -1,107 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d3d3d3"
-    >
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal"
         android:background="@color/white"
-        >
+        android:orientation="horizontal">
         //单选按钮
-       <LinearLayout
-           android:layout_marginLeft="5dp"
-           android:layout_gravity="center_vertical"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           >
-          <RadioButton
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:button="@drawable/radio"
-              />
-       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp">
+
+     <!--       <RadioButton
+                android:id="@+id/rdb_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio" />-->
+        </LinearLayout>
         //其他地址详情
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_weight="1"
-            >
+            android:orientation="vertical">
             //我的名字 和电话号码
+
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="horizontal"
-                >
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
                 <TextView
+                    android:id="@+id/tv_address_username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:text="董家锋"
-                    android:textSize="16sp"
                     android:textColor="#434141"
-                    android:layout_margin="10dp"
-                    />
+                    android:textSize="16sp" />
+
                 <TextView
-                    android:layout_weight="4"
+                    android:id="@+id/tv_address_userPhone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="13433447124"
-                    android:textSize="16sp"
-                    android:textColor="#434141"
                     android:layout_margin="10dp"
-                    />
+                    android:layout_weight="4"
+                    android:text="13433447124"
+                    android:textColor="#434141"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             //设置具体的地址
+
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="horizontal"
-                >
+                android:layout_weight="1"
+                android:orientation="horizontal">
                 //当地址被设置为默认值的时候,出现,否则隐藏
+
                 <TextView
+                    android:id="@+id/tv_inorge_statu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:text="[默认]"
                     android:textColor="@color/common_green"
-                    android:layout_margin="10dp"
-                    />
+                    android:visibility="gone" />
+
                 <TextView
+                    android:id="@+id/tv_address_area"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:text="所在地区"
-                    android:textSize="16sp"
                     android:textColor="#434141"
-                    android:layout_margin="10dp"
-                    />
+                    android:textSize="16sp" />
+
                 <TextView
+                    android:id="@+id/tv_address_community"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="小区"
-                    android:textSize="16sp"
-                    android:textColor="#434141"
                     android:layout_margin="10dp"
-                    />
+                    android:text="小区"
+                    android:textColor="#434141"
+                    android:textSize="16sp" />
+
                 <TextView
-                    android:layout_weight="1"
+                    android:id="@+id/tv_address_detail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="详细地址"
-                    android:textSize="16sp"
-                    android:textColor="#434141"
                     android:layout_margin="10dp"
-                    />
+                    android:layout_weight="1"
+                    android:text="详细地址"
+                    android:textColor="#434141"
+                    android:textSize="16sp" />
             </LinearLayout>
-
 
 
         </LinearLayout>
@@ -109,11 +114,11 @@
     </LinearLayout>
 
     //分隔线
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/gray">
-    </LinearLayout>
+        android:background="@color/gray"></LinearLayout>
 
 
 </LinearLayout>

@@ -3,55 +3,79 @@ package com.suctan.huigangdemo.activity.myself;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.androidbase.BaseApplication;
+import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.fragment.my.MyFinishOrder;
-import com.suctan.huigangdemo.fragment.my.MyAllOrder;
-import com.suctan.huigangdemo.fragment.my.MyWaitSendOrder;
-import com.suctan.huigangdemo.fragment.my.MyWaitOrder;
+import com.suctan.huigangdemo.adapter.order.buyorder.BuyFragAdapter;
+import com.suctan.huigangdemo.fragment.my.buy.MyPublishFinishOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyPublishAllOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyWaitSendOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyPublishWaitOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyeatAllOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyeatFinishOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyeatWaitOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyeatWaitSendOrder;
 import com.suctan.huigangdemo.fragmentinterface.InterFaceOrderState;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by B-305 on 2017/4/13.
  */
 
 public class buyActivity extends FragmentActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, InterFaceOrderState {
-
-
     private TextView tv_mybuy_all, tv_mybuy_djd, tv_mybuy_dsc, tv_mybuy_ywc;
     private LinearLayout ll_mybuy_all, ll_mybuy_djd, ll_mybuy_dsc, ll_mybuy_ywc;
     private ViewPager myBuyViewpager;
+    private SegmentControl segment_buyOrder_sort;
 
     // 滑动条颜色
     private int select_color;
     private int unselect_color;
-
-    private FragmentPagerAdapter mAdapter;
-    private List<Fragment> mDatas;
+    private ArrayList<Fragment> mDatas = new ArrayList<Fragment>();
+    ;
     private ImageView buy_back; //定义一个图片名字
+
+    private MyPublishAllOrder mdoAllF;
+    private MyPublishWaitOrder mdoWaitOrder;
+    private MyPublishFinishOrder mdoWaitFinish;
+    private MyWaitSendOrder mdoWaitSend;
+
+
+    private MyeatAllOrder myeatAllOrder;
+    private MyeatWaitOrder myeatWaitOrder;
+    private MyeatWaitSendOrder myeatWaitSendOrder;
+    private MyeatFinishOrder myeatFinishOrder;
+    private boolean isFirstCrateViewPage;
+    private int orderSortKey;
+    private BuyFragAdapter mAdapter;
+    private ViewPager myBuyMakeViewpager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_buy);
         initView();
-        initFragment();
+        initFragment(orderSortKey);
     }
 
     private void initView() {
         //初始化，图片返回按钮点击事件
         buy_back = (ImageView) findViewById(R.id.buy_back);
+        segment_buyOrder_sort = (SegmentControl) findViewById(R.id.segment_buyOrder_sort);
         buy_back.setOnClickListener(this);
-
-
+        segment_buyOrder_sort.setOnSegmentControlClickListener(new SegmentControl.OnSegmentControlClickListener() {
+            @Override
+            public void onSegmentControlClick(int index) {
+                initFragment(index);
+            }
+        });
         // 获取颜色
         select_color = getResources().getColor(R.color.common_green);
         unselect_color = getResources().getColor(R.color.head_border_width_clo);
@@ -72,40 +96,60 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
         ll_mybuy_ywc.setOnClickListener(new MyOnClickListenser(3));
 
         myBuyViewpager = (ViewPager) findViewById(R.id.myBuyViewpager);
-        mDatas = new ArrayList<Fragment>();
+        myBuyMakeViewpager = (ViewPager) findViewById(R.id.myBuyMakeViewpager);
     }
 
-    private void initFragment() {
-
-        MyAllOrder mSDF = MyAllOrder.getFragmentInstant();
-        mSDF.setFragListner(this);
-        MyWaitOrder mCPF = MyWaitOrder.getFragmentInstant();
-        mCPF.setFragListner(this);
-        MyWaitSendOrder mTDF = MyWaitSendOrder.getFragmentInstant();
-        mTDF.setFragListner(this);
-        MyFinishOrder mFPF = MyFinishOrder.getFragmentInstant();
-        mFPF.setFragListner(this);
-        mDatas.add(mSDF);
-        mDatas.add(mCPF);
-        mDatas.add(mTDF);
-        mDatas.add(mFPF);
-
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
-
-            @Override
-            public int getCount() {
-                return mDatas == null ? 0 : mDatas.size();
-            }
-
-            @Override
-            public Fragment getItem(int position) {
-                return mDatas.get(position);
-            }
-        };
-        myBuyViewpager.setAdapter(mAdapter);
-        myBuyViewpager.addOnPageChangeListener(this);
-        myBuyViewpager.setCurrentItem(0);
+    private void toogleShowViewPage(int orderSortKey) {
+        if (orderSortKey == 0) {
+            myBuyViewpager.setVisibility(View.VISIBLE);
+            myBuyMakeViewpager.setVisibility(View.GONE);
+        } else {
+            myBuyViewpager.setVisibility(View.GONE);
+            myBuyMakeViewpager.setVisibility(View.VISIBLE);
+        }
     }
+
+    private void initFragment(int orderSortKey) {
+        this.orderSortKey = orderSortKey;
+        toogleShowViewPage(orderSortKey);
+        if (orderSortKey == 0) {
+            mdoAllF = MyPublishAllOrder.getFragmentInstant();
+            mdoAllF.setFragListner(this);
+            mdoWaitOrder = MyPublishWaitOrder.getFragmentInstant();
+            mdoWaitOrder.setFragListner(this);
+            mdoWaitSend = MyWaitSendOrder.getFragmentInstant();
+            mdoWaitSend.setFragListner(this);
+            mdoWaitFinish = MyPublishFinishOrder.getFragmentInstant();
+            mdoWaitFinish.setFragListner(this);
+            mDatas.add(mdoAllF);
+            mDatas.add(mdoWaitOrder);
+            mDatas.add(mdoWaitSend);
+            mDatas.add(mdoWaitFinish);
+            mAdapter = new BuyFragAdapter(getSupportFragmentManager(), mDatas);
+            myBuyViewpager.setAdapter(mAdapter);
+            myBuyViewpager.addOnPageChangeListener(this);
+            myBuyViewpager.setCurrentItem(0);
+        } else {
+            ArrayList<Fragment> fragmentsList = new ArrayList<>();
+            myeatAllOrder = MyeatAllOrder.getFragmentInstant();
+            myeatAllOrder.setFragListner(this);
+            myeatWaitOrder = MyeatWaitOrder.getFragmentInstant();
+            myeatWaitOrder.setFragListner(this);
+            myeatWaitSendOrder = MyeatWaitSendOrder.getFragmentInstant();
+            myeatWaitSendOrder.setFragListner(this);
+            myeatFinishOrder = MyeatFinishOrder.getFragmentInstant();
+            myeatFinishOrder.setFragListner(this);
+            fragmentsList.add(myeatAllOrder);
+            fragmentsList.add(myeatWaitOrder);
+            fragmentsList.add(myeatWaitSendOrder);
+            fragmentsList.add(myeatFinishOrder);
+            mAdapter = new BuyFragAdapter(getSupportFragmentManager(), fragmentsList);
+            myBuyMakeViewpager.setAdapter(mAdapter);
+            myBuyMakeViewpager.addOnPageChangeListener(this);
+            myBuyMakeViewpager.setCurrentItem(0);
+        }
+    }
+
 
     @Override
     public void onClick(View v) {

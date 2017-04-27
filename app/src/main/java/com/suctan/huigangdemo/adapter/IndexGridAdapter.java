@@ -24,10 +24,12 @@ import java.util.ArrayList;
 public class IndexGridAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<IndexGridBean> companyList;
-    public IndexGridAdapter(Context context,ArrayList<IndexGridBean> companyList){
-        this.context=context;
-        this.companyList=companyList;
+
+    public IndexGridAdapter(Context context, ArrayList<IndexGridBean> companyList) {
+        this.context = context;
+        this.companyList = companyList;
     }
+
     @Override
     public int getCount() {
         return companyList.size();
@@ -45,32 +47,32 @@ public class IndexGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        GridViewHolder holder=null;
-        IndexGridBean indexGridBean=companyList.get(position);
-        if(convertView==null){
-            convertView= LayoutInflater.from(context).inflate(R.layout.recommend_item,parent,false);
-            holder=new GridViewHolder();
-            holder.ItemImage= (ImageView) convertView.findViewById(R.id.recommend_index_ItemImage);
-            holder.ItemText= (TextView) convertView.findViewById(R.id.recommend_index_ItemText);
+        GridViewHolder holder = null;
+        IndexGridBean indexGridBean = companyList.get(position);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.recommend_item, parent, false);
+            holder = new GridViewHolder();
+            holder.ItemImage = (ImageView) convertView.findViewById(R.id.recommend_index_ItemImage);
+            holder.ItemText = (TextView) convertView.findViewById(R.id.recommend_index_ItemText);
             convertView.setTag(holder);
+        } else {
+            holder = (GridViewHolder) convertView.getTag();
         }
-        else{
-            holder= (GridViewHolder) convertView.getTag();}
-if(indexGridBean.getImageUrl()!=null){
-   LoadImageManager.getImageLoader().displayImage(indexGridBean.getImageUrl(),holder.ItemImage);
-}
+        if (indexGridBean.getImageUrl() != null) {
+            LoadImageManager.getImageLoader().displayImage(indexGridBean.getImageUrl(), holder.ItemImage);
+        }
         /*RecommendListener.onCarChange(mcompanyInfoBean);*/
         return convertView;
     }
 
-    public class GridViewHolder{
+    public class GridViewHolder {
         ImageView ItemImage;
         TextView ItemText;
     }
     /*Recommend RecommendListener;
     public void setRecomendLisner(Recommend RecommendListener){
         this.RecommendListener=RecommendListener;*/
-    }
+}
 
     /*public interface Recommend{
         void onCarChange(CompanyInfoBean mcompanyInfoBean);

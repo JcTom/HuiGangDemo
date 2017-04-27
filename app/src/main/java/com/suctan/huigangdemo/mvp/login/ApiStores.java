@@ -1,4 +1,6 @@
 package com.suctan.huigangdemo.mvp.login;
+
+import com.suctan.huigangdemo.bean.address.AddAddressResult;
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
 import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
@@ -17,8 +19,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-//    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
-    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
+//    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**
@@ -43,6 +45,7 @@ public interface ApiStores {
 //    Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
 //    @POST("login")
 //    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
+
     /**
      * 获取用户信息
      */
@@ -50,7 +53,7 @@ public interface ApiStores {
     Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
     /**
 
- /*    * 发布共享需求
+     /*    * 发布共享需求
      *//*
     @POST("pub_need")
     Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
@@ -125,7 +128,12 @@ public interface ApiStores {
      * 地址管理,里面的添加地址管理功能,目前这个功能待定
      */
     @POST("add_address")
-    Observable<String> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
+    Observable<AddAddressResult> addressReturn(@QueryMap Map<String, Object> addaddressReturn);
+
+
+    @POST("update_address")
+    Observable<ComomBeanReturn> changeAddressReturn(@QueryMap Map<String, Object> changeaddressReturn);
+
 
     @POST("show_address")
     Observable<String> getAddressListReturn(@QueryMap Map<String, Object> addaddressList);
@@ -144,5 +152,72 @@ public interface ApiStores {
     /*发布我想要吃*/
     @POST("get_eatFoodList")
     Observable<String> getDoWantListReturn(@QueryMap Map<String, Object> doeatReturn);
+
+    /*进入推荐获取同厨数据*/
+    @POST("look_makeFood")
+    Observable<String> getEatOrtherReturn(@QueryMap Map<String, Object> lookMakefoodReturn);
+
+    /**
+     * 添加购物车
+     */
+
+    @POST("add_shopCart")
+    Observable<ComomBeanReturn> addCartReturn(@QueryMap Map<String, Object> addCartReturn);
+
+
+    /*获取购物车列表*/
+    @POST("look_shopCart")
+    Observable<String> getCartListReturn(@QueryMap Map<String, Object> getCartListReturn);
+
+
+    /*修改购物车数量*/
+    @POST("update_shopCart")
+    Observable<String> changeCartCountReturn(@QueryMap Map<String, Object> changCartReturn);
+
+    /*结算购物车*/
+    @POST("pay_shopCart")
+    Observable<ComomBeanReturn> payCarttReturn(@QueryMap Map<String, Object> payCartReturn);
+
+
+    /*删除购物车*/
+    @POST("delete_shopCart")
+    Observable<ComomBeanReturn> deleteCartReturn(@QueryMap Map<String, Object> deleteCartReturn);
+
+
+    /**********************************************************************************************/
+                                                   /*订单*/
+
+/*我要吃所有推荐*/
+    @POST("cusAllEatOrder")
+    Observable<String> getBuyAllOrderListReturn(@QueryMap Map<String, Object> allorderReturn);
+
+    /*我要吃等待接单推荐*/
+    @POST("cusWaitEatOrder")
+    Observable<String> getBuyWaitReceiveOrderListReturn(@QueryMap Map<String, Object> waitOrderReturn);
+
+    /*我要吃等待送餐推荐*/
+    @POST("cusDeliveryEatOrder")
+    Observable<String> getBuyWaitSendOrderListReturn(@QueryMap Map<String, Object> waitSendReturn);
+
+    /*我要吃等待完成推荐*/
+    @POST("cusFinishEatOrder")
+    Observable<String> getBuyWaitFinishOrderListReturn(@QueryMap Map<String, Object> finishOrderReturn);
+
+    /*定做我要吃的饭*/
+    /*我要吃所有定做*/
+    @POST("cusAllMakeOrder")
+    Observable<String> getBuyMakeAllOrderListReturn(@QueryMap Map<String, Object> allOrderReturn);
+
+    /*我要吃等待接单定做*/
+    @POST("cusWaitMakeOrder")
+    Observable<String> getBuyMakeWaitOrderListReturn(@QueryMap Map<String, Object> waitOrderReturn);
+
+    /*我要吃等待送餐定做*/
+    @POST("cusDeliveryMakeOrder")
+    Observable<String> getBuyMakeWaitSendOrderListReturn(@QueryMap Map<String, Object> waitSendOrderReturn);
+
+    /*我要吃已完成定做*/
+    @POST("cusFinishMakeOrder")
+    Observable<String> getBuyMakeFinishOrderListReturn(@QueryMap Map<String, Object> finishOrderReturn);
 
 }
