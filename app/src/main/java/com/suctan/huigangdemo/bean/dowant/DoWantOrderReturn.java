@@ -10,7 +10,6 @@ public class DoWantOrderReturn {
     private String msg;
     private ArrayList<DoWantOrderBean> doWantOrderBeenList;
 
-
     public int getStatus() {
         return status;
     }

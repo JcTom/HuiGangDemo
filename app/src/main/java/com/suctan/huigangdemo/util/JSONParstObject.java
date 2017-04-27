@@ -6,10 +6,13 @@ import com.suctan.huigangdemo.bean.dowant.DoWantOrderReturn;
 import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
+import com.suctan.huigangdemo.bean.topic.DellCommentBean;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentReturn;
 import com.suctan.huigangdemo.bean.topic.TopicReturn;
+import com.suctan.huigangdemo.bean.user.MykitchenBean;
+import com.suctan.huigangdemo.bean.user.MykitchenReturn;
 import com.suctan.huigangdemo.bean.user.Users;
 
 import org.json.JSONArray;
@@ -263,6 +266,45 @@ public class JSONParstObject {
             return null;
         }
         return doWantOrderReturn;
+    }
+
+
+    /** 我的厨房
+    * */
+    public static MykitchenReturn getMykitchenBeanList(String mykitchenListString) {
+
+        MykitchenReturn mykitchenReturn = null;
+        ArrayList<MykitchenBean> mykitchenBeenList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(mykitchenListString);
+            mykitchenReturn = new MykitchenReturn();
+            mykitchenBeenList = new ArrayList<>();
+            mykitchenReturn.setStatus(jsonObject.getInt("status"));
+            mykitchenReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+
+            jsonArray = jsonObject.getJSONArray("myMakeOrderList");
+
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject2 = (JSONObject) jsonArray.get(i);
+                    MykitchenBean mykitchenBean = new MykitchenBean();
+
+                    mykitchenBean.setOrder_pic("http://119.29.137.109/tp/uploads/"+jsonObject2.getString("order_pic"));
+                    mykitchenBean.setOrder_id(Integer.parseInt(jsonObject2.getString("order_id")));
+                    mykitchenBean.setOrder_title(jsonObject2.getString("order_title"));
+                    mykitchenBean.setFood_description(jsonObject2.getString("food_description"));
+                    mykitchenBean.setOrder_price(Double.parseDouble(jsonObject2.getString("order_price")));
+
+                    mykitchenBeenList.add(mykitchenBean);
+                }
+                mykitchenReturn.setMykitchenBeanList(mykitchenBeenList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return mykitchenReturn;
     }
 
 }

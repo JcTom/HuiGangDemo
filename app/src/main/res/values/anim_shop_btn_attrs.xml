@@ -74,7 +74,6 @@
         <attr name="mStarChoose" format="integer" />
     </declare-styleable>
 
-
     <!-- CircularProgressBar -->
     <declare-styleable name="CircularProgressBar">
         <attr name="cpbStyle" format="reference"/>
@@ -86,5 +85,4 @@
         <attr name="cpb_sweep_speed" format="float"/>
         <attr name="cpb_rotation_speed" format="float"/>
     </declare-styleable>
-
 </resources>

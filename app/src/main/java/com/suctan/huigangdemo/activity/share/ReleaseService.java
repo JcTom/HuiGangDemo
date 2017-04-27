@@ -84,8 +84,8 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
     //初始化标题
     private void initView() {
         Intent it = getIntent();
-         String serviceType = it.getStringExtra("serviceType");
-         int needType = it.getIntExtra("needType",0);
+        String serviceType = it.getStringExtra("serviceType");
+        int needType = it.getIntExtra("needType",0);
         System.out.println("serviceType是"+serviceType+"需求类型是"+needType);
         loginTitle.setText("发布" + serviceType + "服务");
         search.setVisibility(View.GONE);

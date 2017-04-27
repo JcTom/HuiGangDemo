@@ -75,7 +75,6 @@ public class FragmentIndex extends MvpFragment<HomePresenter> implements ViewPag
         rollPagerView.setAnimationDurtion(500);
         mvpPresenter.getRollPageList();
 
-
     }
 
     @Override

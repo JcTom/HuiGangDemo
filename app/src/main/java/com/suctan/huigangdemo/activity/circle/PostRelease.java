@@ -28,6 +28,7 @@ import com.roger.catloadinglibrary.CatLoadingView;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.topic.AddCommentReturn;
+import com.suctan.huigangdemo.bean.topic.DellCommentBean;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
 import com.suctan.huigangdemo.bean.user.CourseBean;
@@ -407,6 +408,11 @@ public class PostRelease extends MvpActivity<PostPublishPresenter> implements Po
 
     @Override
     public void getComemtnListFail() {
+
+    }
+
+    @Override
+    public void getdeleteTopicdel(String msg) {
 
     }
 }
