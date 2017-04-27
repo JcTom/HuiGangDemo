@@ -224,23 +224,7 @@
             <ImageView style="@style/img_arrow" />
         </LinearLayout>
 
-        <View style="@style/bg_line" />
 
-        <LinearLayout
-            android:id="@+id/my_assess_me"
-            style="@style/mid_layout">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/evaluate_32"></ImageView>
-
-            <TextView
-                style="@style/usertext"
-                android:text="   我的评价" />
-
-            <ImageView style="@style/img_arrow" />
-        </LinearLayout>
 
         <View style="@style/bg_line" />
 
@@ -276,6 +260,21 @@
                 style="@style/usertext"
                 android:text="   我卖出的" />
 
+            <ImageView style="@style/img_arrow" />
+        </LinearLayout>
+        <View style="@style/bg_line" />
+        //我的购物车
+        <LinearLayout
+            android:id="@+id/my_assess_me"
+            style="@style/mid_layout">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/shopping_mycar">
+            </ImageView>
+            <TextView
+                style="@style/usertext"
+                android:text="   我的购物车" />
             <ImageView style="@style/img_arrow" />
         </LinearLayout>
 

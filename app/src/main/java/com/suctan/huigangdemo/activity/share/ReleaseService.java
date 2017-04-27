@@ -2,7 +2,6 @@ package com.suctan.huigangdemo.activity.share;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -214,7 +213,6 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
 
     @Override
     public void pubNeedGoBack() {
-
         ToastTool.showToast("发布成功",1);
     }
 }

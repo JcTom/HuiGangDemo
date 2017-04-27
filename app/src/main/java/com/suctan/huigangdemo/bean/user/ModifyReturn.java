@@ -6,6 +6,15 @@ package com.suctan.huigangdemo.bean.user;
 public class ModifyReturn {
     private int status;//返回状态
     private String msg;//返回信息
+    private String money;//返回信息
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
 
     public int getStatus() {
         return status;
