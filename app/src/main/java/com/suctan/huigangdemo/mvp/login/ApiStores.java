@@ -1,7 +1,6 @@
 package com.suctan.huigangdemo.mvp.login;
 
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
-import com.suctan.huigangdemo.bean.topic.DellCommentBean;
 import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
 import com.suctan.huigangdemo.bean.user.ModifyReturn;
@@ -19,8 +18,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
-   /* String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";*/
+  String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
+  //  String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**
@@ -45,7 +44,6 @@ public interface ApiStores {
 //    Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
 //    @POST("login")
 //    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
-
     /**
      * 获取用户信息
      */
@@ -53,12 +51,17 @@ public interface ApiStores {
     Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
     /**
 
-     /*    * 发布共享需求
-     *//*
+     * 发布共享需求
+     */
     @POST("pub_need")
-    Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
+    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
-*/
+
+    /**
+     * 发布我要吃的饭菜
+     */
+    @POST("pub_eatFood")
+    Observable<ModifyReturn> PubEatFood(@QueryMap Map<String, Object> needReturn);
 
     /**
      * 修改用户信息
@@ -83,21 +86,21 @@ public interface ApiStores {
      */
     @POST("pub_topic_comment")
     Observable<AddCommentBean> postComment(@QueryMap Map<String, Object> topicReturn);
-    /*
-    * 删除话题（帖子）
-    * */
-    @POST("delete_topic")
-    Observable<String> getdeletetopic(@QueryMap Map<String, Object> deletetopicS);
+
     /**
      * 获取话题列表
      */
     @POST("get_topicS")
     Observable<String> getPostTopicList(@QueryMap Map<String, Object> topicReturn);
+
+
     /**
      * 获取话题列表
      */
     @POST("look_topic")
     Observable<String> getTopicCommentListReturn(@QueryMap Map<String, Object> topiccoment);
+
+
     /**
      * 首页获取所有轮播图
      */
@@ -117,14 +120,18 @@ public interface ApiStores {
      */
     @POST("put_money")
     Observable<ModifyReturn> addmoneyReturn(@QueryMap Map<String, Object> moneyReturn);
+
+    /**
+     * 我的钱包,里面的显示金额功能
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn( @QueryMap Map<String, Object>  moneyReturn);
+
     /**
      * 我的钱包,里面的提现功能
      */
     @POST("get_money")
     Observable<ModifyReturn> outmoneyReturn(@QueryMap Map<String, Object> outmoneyReturn);
-
-    @POST("set_money")
-    Observable<ModifyReturn> MymoneyReturn(@QueryMap Map<String, Object> outmoneyReturn);
 
     /**
      * 地址管理,里面的添加地址管理功能,目前这个功能待定
@@ -135,25 +142,6 @@ public interface ApiStores {
     @POST("show_address")
     Observable<String> getAddressListReturn(@QueryMap Map<String, Object> addaddressList);
 
-    /*
-    * 我的厨房
-    * */
-    @POST("get_my_makeFoodList")
-    Observable<String> getMakeOrderListReturn(@QueryMap Map<String, Object> MakeOrderListReturn);
-
-    /*
-    * 优惠劵
-    * */
-    @POST("get_conpon")
-    Observable<String> getMydiscount(@QueryMap Map<String, Object> MakeOrderListReturn);
-
-
-        /*
-        * 发布共享需求
-        */
-    @POST("pub_need")
-    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
-
 
     /*发布我想要吃*/
     @POST("pub_eatFood")
@@ -162,16 +150,5 @@ public interface ApiStores {
     /*发布我想要吃*/
     @POST("get_eatFoodList")
     Observable<String> getDoWantListReturn(@QueryMap Map<String, Object> doeatReturn);
-
-    /**
-     * 添加购物车
-     */
-        /*发布我想要吃*/
-    @POST("add_shopCart")
-    Observable<ComomBeanReturn> addCartReturn(@QueryMap Map<String, Object> addCartReturn);
-
-    /*发布我想要吃*/
-    @POST("delete_shopCart")
-    Observable<ComomBeanReturn> deleteCartReturn(@QueryMap Map<String, Object> deleteCartReturn);
 
 }

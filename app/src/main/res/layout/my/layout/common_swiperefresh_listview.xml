@@ -10,6 +10,7 @@
         android:id="@+id/common_swipe_fresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.suctan.huigangdemo.widget.LoadMoreListView
             android:id="@+id/common_swipe_fresh_listview"
             android:layout_width="match_parent"
@@ -20,8 +21,7 @@
             android:fadingEdgeLength="0dp"
             android:listSelector="@android:color/transparent"
             android:overScrollMode="never"
-            android:scrollbars="none"
-            />
+            android:scrollbars="none" />
 
 
     </android.support.v4.widget.SwipeRefreshLayout>

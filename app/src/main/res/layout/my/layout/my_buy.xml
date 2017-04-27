@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
-        android:orientation="horizontal"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/buy_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
+            android:layout_centerVertical="true"
             android:layout_gravity="left|center_vertical"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="45sp"
-            android:text="我买到的"
-            android:textSize="20sp"
-            android:textColor="@color/top_title"
-            android:gravity="center"
-            android:layout_marginRight="25dp"
-            />
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
 
-    </LinearLayout>
+        <com.sevenheaven.segmentcontrol.SegmentControl xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segment_buyOrder_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            app:block_direction="horizon"
+            app:cornerRadius="5dp"
+            app:horizonGap="10dp"
+            app:normalColor="@color/green"
+            app:selectedColor="@color/bg_gray"
+            app:separatorWidth="2dp"
+            app:texts="推荐订单|订做订单"
+            app:verticalGap="10dp" />
+
+    </RelativeLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:baselineAligned="false"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <!--all-->
             <LinearLayout
@@ -66,7 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/tv_mybuy_djd"
@@ -82,13 +88,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/tv_mybuy_dsc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="待完成"
+                    android:text="待接单"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -98,14 +104,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
+
                 <TextView
                     android:id="@+id/tv_mybuy_ywc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="已完成"
-                    android:textSize="16dp"
-                    />
+                    android:textSize="16dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -114,7 +120,14 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/myBuyViewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
 
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myBuyMakeViewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </LinearLayout>

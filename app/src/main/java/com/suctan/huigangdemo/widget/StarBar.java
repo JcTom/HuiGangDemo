@@ -7,21 +7,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.suctan.huigangdemo.R;
 
 /**
  * 简单实现星级评选控件：内部填充多个ImageView
  * 继承LinearLayout 设置水平方向
  */
-    public class StarBar extends LinearLayout {
-        private int mImageWidth = 20;  //图片设置默认的宽度
-        private int mImageHeight = 20; //图片设置默认的高度
-        private int mDefaultImageId = R.mipmap.ic_launcher;
-        private int mClickImageId = R.mipmap.ic_launcher;
-        private int mMargin = 5;   //图片之间默认的margin
-        private int mStarNum = 5;  //星星默认的个数
-        private int mStarChoose = 3;  //默认默认是三颗星
-        private boolean isClick = true;
+public class StarBar extends LinearLayout {
+    private int mImageWidth = 20;  //图片设置默认的宽度
+    private int mImageHeight = 20; //图片设置默认的高度
+    private int mDefaultImageId = R.mipmap.ic_launcher;
+    private int mClickImageId = R.mipmap.ic_launcher;
+    private int mMargin = 5;   //图片之间默认的margin
+    private int mStarNum = 5;  //星星默认的个数
+    private int mStarChoose = 3;  //默认默认是三颗星
+    private boolean isClick = true;
 
     private OnStarItemClickListener mStarItemClickListener;
 
@@ -105,7 +106,8 @@ import com.suctan.huigangdemo.R;
             imageView.setLayoutParams(layoutParams);
             this.addView(imageView);
             imageView.setImageResource(mDefaultImageId);
-            setStarOnClick(imageView, i);
+
+//            setStarOnClick(imageView, i);
         }
         setCurrentChoose(mStarChoose);  //设置当前选择
     }
@@ -123,7 +125,7 @@ import com.suctan.huigangdemo.R;
                 @Override
                 public void onClick(View view) {
                     resetDefaultImage();
-                    setCurrentChoose(i+1);
+                    setCurrentChoose(i + 1);
                     if (mStarItemClickListener != null) {
                         mStarItemClickListener.onItemClick(imageView, i);
                     }
@@ -137,8 +139,8 @@ import com.suctan.huigangdemo.R;
      *
      * @param index
      */
-    private void setCurrentChoose(int index) {
-        if(isClick){
+    public void setCurrentChoose(int index) {
+        if (isClick) {
             for (int i = 0; i < index; i++) {
                 ImageView imageView = (ImageView) getChildAt(i);
                 imageView.setImageResource(mClickImageId);
@@ -203,6 +205,5 @@ import com.suctan.huigangdemo.R;
     public interface OnStarItemClickListener {
         public void onItemClick(View view, int pos);
     }
-
 
 }

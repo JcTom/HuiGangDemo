@@ -1,8 +1,6 @@
-package com.suctan.huigangdemo.fragment.my;
-
+package com.suctan.huigangdemo.fragment.my.sell;
 
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.suctan.huigangdemo.R;
@@ -11,19 +9,25 @@ import com.suctan.huigangdemo.mvp.login.sellorder.MySellOrderPresenter;
 import com.suctan.huigangdemo.mvp.login.sellorder.MySellOrderView;
 import com.suctan.huigangdemo.widget.MvpFragment;
 
+/**
+ * Created by B-305 on 2017/4/19.
+ */
 
-public class MysellWaitAgreeFrag extends MvpFragment<MySellOrderPresenter> implements MySellOrderView {
-
+public class MySell_Four extends MvpFragment<MySellOrderPresenter>implements MySellOrderView {
     private InterfaceMysellOrderState Listener;
 
-    public static MysellWaitAgreeFrag getFragInstant() {
-        MysellWaitAgreeFrag mysellWaitAgreeFrag = new MysellWaitAgreeFrag();
-        return mysellWaitAgreeFrag;
+    public static MySell_Four getFragInstant() {
+        MySell_Four mySell_four = new MySell_Four();
+        return mySell_four;
     }
 
     public void setListanter(InterfaceMysellOrderState Listener) {
         this.Listener = Listener;
     }
+
+
+    //这个fragment对应这个，我卖出的中的两个选项栏中的已完成
+
 
     @Override
     protected void onDataRefresh() {
@@ -47,7 +51,7 @@ public class MysellWaitAgreeFrag extends MvpFragment<MySellOrderPresenter> imple
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.seconded_fragment;
+        return R.layout.mysell_fragment_four;
     }
 
     @Override

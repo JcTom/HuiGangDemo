@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         style="@style/tab_title"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
+
         <ImageButton
+            android:id="@+id/imb_cart_back"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@mipmap/back_white"
             android:background="#00000000"
-            android:id="@+id/cart_back"/>
+            android:src="@mipmap/back_white" />
+
         <TextView
+            style="@style/title_font"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
             android:gravity="center"
-            android:text="@string/shopping_cart"
-            style="@style/title_font" />
+            android:text="@string/shopping_cart" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -30,70 +34,79 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingRight="10dp"
         android:paddingLeft="10dp"
-        android:background="@color/white">
+        android:paddingRight="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tv_anore_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="默认地址"
                 android:textColor="@color/gray_h"
                 android:textSize="14sp" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_weight="0.2"
-                android:textSize="14sp"
-                android:textColor="@color/gray"
                 android:text="3栋501"
-                android:layout_marginRight="10dp"/>
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/more_gray"/>
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+
         </LinearLayout>
+
         <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/bg_gray"/>
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/bg_gray" />
+
         <LinearLayout
+            android:id="@+id/ly_change_receiveTime"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="送达时间"
                 android:textColor="@color/gray_h"
                 android:textSize="14sp" />
+
             <TextView
+                android:id="@+id/tv_receiver_time"
                 android:layout_width="0dp"
-                android:layout_weight="0.2"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/gray"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.2"
                 android:text="14 : 33"
-                android:layout_marginRight="10dp"/>
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/more_gray"/>
+                android:background="@mipmap/more_gray" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/bg_gray"/>
+            android:background="@color/bg_gray" />
         <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -124,47 +137,55 @@
                 android:visibility="invisible"/>
         </LinearLayout>-->
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="@color/bg_gray"/>
+        android:background="@color/bg_gray" />
 
     <ListView
+        android:id="@+id/lv_cart_item"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-    </ListView>
+        android:layout_weight="1"></ListView>
+
     <LinearLayout
         style="@style/tab_title"
         android:layout_height="50dp"
         android:background="@color/line_gray"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
+
         <CheckBox
+            android:id="@+id/checkbox_cart_all"
+            style="@style/CustomCheckBoxTheme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/CustomCheckBoxTheme"
+            android:layout_marginRight="20dp"
             android:paddingLeft="6dp"
             android:text="@string/all_select"
-            android:textSize="18sp"
-            android:layout_marginRight="20dp"/>
+            android:textSize="18sp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:text="@string/all_money"
                 android:textColor="@android:color/holo_red_dark"
-                android:text="@string/all_money" />
+                android:textSize="18sp" />
+
             <TextView
+                android:id="@+id/tv_cart_allMomeny"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:text="840.00"
                 android:textColor="@android:color/holo_red_dark"
-                android:text="840.00" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -172,13 +193,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="right|center_vertical">
+
             <Button
+                android:id="@+id/btn_pay_cart"
+                style="@style/title_font"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="15dp"
-                android:text="@string/balance"
                 android:background="@drawable/btn_circle"
-                style="@style/title_font" />
+                android:text="@string/balance" />
         </LinearLayout>
 
     </LinearLayout>

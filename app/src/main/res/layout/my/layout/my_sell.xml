@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="#9db830"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
+        android:paddingRight="10dp">
 
         <ImageView
             android:id="@+id/sell_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@mipmap/return_128"
-            android:layout_marginLeft="1dp"
+            android:layout_centerVertical="true"
             android:layout_gravity="left|center_vertical"
-            />
+            android:layout_marginLeft="1dp"
+            android:src="@mipmap/return_128" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="45sp"
-            android:text="我卖出的"
-            android:textSize="20sp"
-            android:textColor="@color/top_title"
-            android:gravity="center"
-            android:layout_marginRight="25dp" />
+        <com.sevenheaven.segmentcontrol.SegmentControl xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segment_sellOrder_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            app:block_direction="horizon"
+            app:cornerRadius="5dp"
+            app:horizonGap="10dp"
+            app:normalColor="@color/green"
+            app:selectedColor="@color/bg_gray"
+            app:separatorWidth="2dp"
+            app:texts="卖出|接单"
+            app:verticalGap="10dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:baselineAligned="false"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <!--全部-->
             <LinearLayout
@@ -50,14 +57,15 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
+
                 <TextView
                     android:id="@+id/tvmysell_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="全部"
-                    android:textSize="16dp"
-                    android:textColor="#FF9db830"/>
+                    android:textColor="#FF9db830"
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
@@ -67,7 +75,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/tvmysell_dty"
@@ -83,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/tvmysell_jxz"

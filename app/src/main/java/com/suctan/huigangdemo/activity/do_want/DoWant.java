@@ -91,6 +91,7 @@ public class DoWant extends MvpActivity<DoWantPresenter> implements DoWantView, 
         if (!isFirstCreateAdapter) {
             dofoodAdapter = new DofoodAdapter(this, mDowantList);
             lv_wantdo_list.setAdapter(dofoodAdapter);
+            isFirstCreateAdapter=true;
         } else {
             dofoodAdapter.notifyDataSetChanged();
         }

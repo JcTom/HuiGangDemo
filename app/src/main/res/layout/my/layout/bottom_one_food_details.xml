@@ -104,7 +104,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/bottom_recycle_detail"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_gravity="center"></android.support.v7.widget.RecyclerView>
 
@@ -151,8 +151,7 @@
         <com.example.androidbase.widget.CustomListView
             android:id="@+id/bottom_listview_comment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.example.androidbase.widget.CustomListView>
+            android:layout_height="wrap_content"></com.example.androidbase.widget.CustomListView>
     </LinearLayout>
 
 </LinearLayout>

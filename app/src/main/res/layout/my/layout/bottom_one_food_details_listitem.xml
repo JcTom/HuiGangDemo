@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
-       android:layout_marginBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
+
         <com.example.androidbase.widget.CircleImageView
-            android:id="@+id/item_tx"
+            android:id="@+id/circle_WEOC_userHead"
             android:layout_width="0dp"
             android:layout_height="42dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:src="@mipmap/default_image"
-            app:border_width="1dp"
-            android:layout_marginTop="15dp"/>
+            app:border_width="1dp" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -31,66 +30,72 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                >
+                android:layout_marginTop="15dp">
+
                 <TextView
+                    android:id="@+id/tv_WEOC_userName"
+                    style="@style/editor_one"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/editor_one"
-                    android:text="某某用户"
-                    />
+                    android:text="某某用户" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <com.suctan.huigangdemo.widget.StarBar
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:id="@+id/start_view_3"
+
+                        android:id="@+id/StarBar_WEOC_level"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         app:mClickImageId="@mipmap/star_pj_y"
                         app:mDefaultImageId="@mipmap/star_pj_w"
                         app:mImageHeight="15dp"
                         app:mImageWidth="15dp"
                         app:mMargin="0dp"
-                        app:mStarChoose="3"
-                        app:mStarNum="5"/>
+                        app:mStarNum="5" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        style="@style/tips_font"
-                        android:text="5.0"
-                        android:gravity="center"/>
 
                     <TextView
-                        android:layout_marginLeft="5dp"
+                        android:id="@+id/tv_WEOC_score"
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="5.0" />
+
+                    <TextView
+                        style="@style/tips_font"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/tips_font"
-                        android:text="分"
-                        android:gravity="center"/>
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="分" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:gravity="right">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
-                            android:layout_marginRight="10dp"
-                            style="@style/tips_font"
-                            android:text="2017/04/15"/>
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_WEOC_time"
+                        style="@style/tips_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:text="2017/04/15" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -98,28 +103,32 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp">
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+
                 <TextView
-                    android:paddingRight="5dp"
-                    android:paddingTop="5dp"
+                    android:id="@+id/tv_WEOC_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:maxLines="2"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/pinglun"
                     android:textColor="@android:color/black"
-                    android:text="@string/pinglun"/>
+                    android:textSize="14sp" />
 
 
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/bg_gray"
-        android:layout_marginTop="5dp" />
-
+        android:layout_marginTop="5dp"
+        android:background="@color/bg_gray" />
 
 
 </LinearLayout>

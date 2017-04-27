@@ -167,7 +167,7 @@
 
         <!--我的页面中的注册文件-->
         <activity
-            android:name=".activity.myself.addressActivity"
+            android:name=".activity.address.addressActivity"
             android:configChanges="screenSize|keyboardHidden|screenLayout"
             android:windowSoftInputMode="adjustResize|stateHidden"></activity>
         <activity
@@ -236,7 +236,7 @@
             android:configChanges="screenSize|keyboardHidden|screenLayout"
             android:windowSoftInputMode="adjustResize|stateHidden"></activity>
         <activity
-            android:name=".activity.myself.address_listitemActivity"
+            android:name=".activity.address.address_listitemActivity"
             android:configChanges="screenSize|keyboardHidden|screenLayout"
             android:windowSoftInputMode="adjustResize|stateHidden"></activity>
         <activity
@@ -264,6 +264,9 @@
             android:name=".activity.do_want.DoWantOrderDetatil"
             android:configChanges="screenSize|keyboardHidden|screenLayout"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
+        <activity
+            android:name=".activity.cart.ShoppingCart"
+            android:configChanges="screenSize|keyboardHidden|screenLayout"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 </manifest>

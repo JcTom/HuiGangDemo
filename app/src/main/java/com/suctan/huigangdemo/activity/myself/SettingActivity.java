@@ -303,33 +303,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     private void setServiceData(int resultDataCode, String tempData) {
         Map<String, Object> mapModifyUser = new HashMap<>();
         mapModifyUser.put("user_token", TokenManager.getToken());
-
-        switch (resultDataCode) {
-            case requestUserName:
-                mapModifyUser.put("user_info", "user_name");
-                break;
-            case requestUserVeriatyBody:
-
-                break;
-            case requestUserSex:
-                mapModifyUser.put("user_info", "user_sex");
-                break;
-            case requestUserAge:
-                mapModifyUser.put("user_info", "user_age");
-                break;
-            case requestUserDegree:
-                mapModifyUser.put("user_info", "user_education");
-                break;
-            case requestUserKnowArea:
-                mapModifyUser.put("user_info", "user_skill");
-                break;
-            case requestUserHoppy:
-                mapModifyUser.put("user_info", "user_hoppy");
-                break;
-        }
-        if (resultDataCode == requestUserAge) {
-            mapModifyUser.put("user_data", tempData);
-        } else if (resultDataCode == requestUserSex) {
+        if (resultDataCode == requestUserSex) {
             if (tempData.equals("男")) {
                 mapModifyUser.put("user_data", 0);
             } else {
@@ -338,9 +312,36 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         } else {
             mapModifyUser.put("user_data", tempData);
         }
-        System.out.println("http://119.29.137.109/tp/index.php/home/index/" + "/update_userInfo/" + "user_info/" + "user_token/" + TokenManager.getToken() + "user_name/" + "user_data/" + tempData);
+        switch (resultDataCode) {
+            case requestUserName:
+                mapModifyUser.put("user_info", "user_name");
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserName, tempData);
+                break;
+            case requestUserVeriatyBody:
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserVeriatyBody, tempData);
+                break;
+            case requestUserSex:
+                mapModifyUser.put("user_info", "user_sex");
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserSex, tempData);
 
-        mvpPresenter.MoidifytyUser(mapModifyUser);
+                break;
+            case requestUserAge:
+                mapModifyUser.put("user_info", "user_age");
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserAge, tempData);
+                break;
+            case requestUserDegree:
+                mapModifyUser.put("user_info", "user_education");
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserDegree, tempData);
+                break;
+            case requestUserKnowArea:
+                mapModifyUser.put("user_info", "user_skill");
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserKnowArea, tempData);
+                break;
+            case requestUserHoppy:
+                mapModifyUser.put("user_info", "user_hoppy");
+                mvpPresenter.MoidifytyUser(mapModifyUser, requestUserHoppy, tempData);
+                break;
+        }
     }
 
     private void goClass(Class<?> goClass, int requestKey, String oldData) {

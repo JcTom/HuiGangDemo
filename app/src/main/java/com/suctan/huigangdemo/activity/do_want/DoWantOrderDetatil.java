@@ -83,6 +83,7 @@ public class DoWantOrderDetatil extends Activity implements View.OnClickListener
         if (!isFirstCreate) {
             dowantAdapter = new DoWantItemAdapter(this, wantEatFoodItems);
             lv_dowant_detail.setAdapter(dowantAdapter);
+            isFirstCreate=true;
         } else {
             dowantAdapter.notifyDataSetChanged();
         }

@@ -13,7 +13,15 @@ public class EatFoodBean implements Serializable {
     private double order_price;//
     private int num;
     private String user_name;
+    private int order_type;
 
+    public int getOrder_type() {
+        return order_type;
+    }
+
+    public void setOrder_type(int order_type) {
+        this.order_type = order_type;
+    }
 
     public String getUser_name() {
         return user_name;

@@ -6,16 +6,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.fragment.my.MysellAllFrag;
-import com.suctan.huigangdemo.fragment.my.MysellWaitAgreeFrag;
-import com.suctan.huigangdemo.fragment.my.MySell_Four;
-import com.suctan.huigangdemo.fragment.my.MySell_Three;
+import com.suctan.huigangdemo.fragment.my.sell.MysellAllFrag;
+import com.suctan.huigangdemo.fragment.my.sell.MysellWaitAgreeFrag;
+import com.suctan.huigangdemo.fragment.my.sell.MySell_Four;
+import com.suctan.huigangdemo.fragment.my.sell.MySell_Three;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  * Created by B-305 on 2017/4/13.
  */
 
-public class SellActivity  extends FragmentActivity implements View.OnClickListener,ViewPager.OnPageChangeListener {
+public class SellActivity extends FragmentActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
     private ImageView sell_back;
     // 4个滑动页面
     private ViewPager mViewPager;
@@ -32,8 +32,9 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
     private List<Fragment> mDatas;
 
     // 控件
-    private TextView tvmysell_all,tvmysell_dty,tvmysell_jxz,tvmysell_ywc;
-    private LinearLayout llmysell_all,llmysell_dty,llmysell_jxz,llmysell_ywc;
+    private TextView tvmysell_all, tvmysell_dty, tvmysell_jxz, tvmysell_ywc;
+    private LinearLayout llmysell_all, llmysell_dty, llmysell_jxz, llmysell_ywc;
+    private SegmentControl segment_sellOrder_sort;
 
 //    GridView my_first_framgment_gridview;
     /*GridView My_evaluation_thridFrament_gridview;*/
@@ -49,10 +50,20 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
         initFragment();
 
     }
+
     private void initView() {
 //        my_first_framgment_gridview = (GridView) findViewById(R.id.my_first_framgment_gridview);
         sell_back = (ImageView) findViewById(R.id.sell_back);
+        segment_sellOrder_sort = (SegmentControl) findViewById(R.id.segment_sellOrder_sort);
         sell_back.setOnClickListener(this);
+
+        segment_sellOrder_sort.setOnSegmentControlClickListener(new SegmentControl.OnSegmentControlClickListener() {
+            @Override
+            public void onSegmentControlClick(int index) {
+
+            }
+        });
+
         // 获取颜色
         select_color = getResources().getColor(R.color.common_green);
         unselect_color = getResources().getColor(R.color.head_border_width_clo);
@@ -111,7 +122,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.sell_back:
                 finish();
         }
@@ -142,7 +153,7 @@ public class SellActivity  extends FragmentActivity implements View.OnClickListe
 
     }
 
-    public class MyOnClickListenser implements View.OnClickListener{
+    public class MyOnClickListenser implements View.OnClickListener {
 
         private int index = 0;
 

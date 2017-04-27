@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.androidbase.BaseApplication;
 import com.example.androidbase.LoadImageManager;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.bean.index.EatFoodBean;
@@ -47,7 +49,7 @@ public class RecommendindexAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         GridViewHolder holder = null;
         EatFoodBean mFoodBean = eatFoodBeanArrayList.get(position);
         if (convertView == null) {
@@ -69,12 +71,14 @@ public class RecommendindexAdapter extends BaseAdapter {
         holder.recommend_today_ItemTitle.setText(mFoodBean.getOrder_title());
         holder.recommend_today_descript.setText(mFoodBean.getFood_description());
         holder.recommend_today_ItemMoney.setText("￥" + mFoodBean.getOrder_price());
-        holder.btn_book_eatfood.setCount(mFoodBean.getNum());
+        holder.btn_book_eatfood.setCount(0);
         holder.btn_book_eatfood.setMaxCount(mFoodBean.getNum());
         holder.btn_book_eatfood.setOnAddDelListener(new IOnAddDelListener() {
             @Override
             public void onAddSuccess(int count) {
+                Toast.makeText(BaseApplication.getContext(), "获得当前前添加的购物车数量"+count, Toast.LENGTH_LONG).show();
 
+                RecommendListener.addCartItemListener(position,count);
             }
 
             @Override
@@ -84,7 +88,9 @@ public class RecommendindexAdapter extends BaseAdapter {
 
             @Override
             public void onDelSuccess(int count) {
+                Toast.makeText(BaseApplication.getContext(), "获得当前前删除的购物车数量"+count, Toast.LENGTH_LONG).show();
 
+                RecommendListener.deleteCartItemListener(position, count);
             }
 
             @Override
@@ -106,12 +112,13 @@ public class RecommendindexAdapter extends BaseAdapter {
 
     Recommend RecommendListener;
 
-    public void setRecomendLisner(Recommend RecommendListener) {
+    public void setRecomendOnclickLisner(Recommend RecommendListener) {
         this.RecommendListener = RecommendListener;
     }
 
     public interface Recommend {
-        void onCarChange(CompanyInfoBean mcompanyInfoBean);
-    }
+        void addCartItemListener(int addCartPosition, int count);
 
+        void deleteCartItemListener(int deleteCartPosition, int count);
+    }
 }

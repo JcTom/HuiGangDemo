@@ -1,28 +1,13 @@
-package com.suctan.huigangdemo.fragment.my;
+package com.suctan.huigangdemo.fragment.my.sell;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.GridView;
 
 import com.suctan.huigangdemo.R;
-import com.suctan.huigangdemo.adapter.MyAssessUpAdapter;
-import com.suctan.huigangdemo.adapter.ProceedingAdapter;
-import com.suctan.huigangdemo.bean.user.MyAssessUpBean;
-import com.suctan.huigangdemo.bean.user.ProceedingBean;
 import com.suctan.huigangdemo.fragmentinterface.InterfaceMysellOrderState;
 import com.suctan.huigangdemo.mvp.login.sellorder.MySellOrderPresenter;
 import com.suctan.huigangdemo.mvp.login.sellorder.MySellOrderView;
 import com.suctan.huigangdemo.widget.MvpFragment;
-
-import java.util.ArrayList;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 public class MysellAllFrag extends MvpFragment<MySellOrderPresenter>implements MySellOrderView {
