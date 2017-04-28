@@ -16,6 +16,8 @@ import com.example.androidbase.mvp.MvpFragment;
 import com.example.androidbase.widget.CircleImageView;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.CurrentUser;
+import com.suctan.huigangdemo.activity.address.addressActivity;
+import com.suctan.huigangdemo.activity.cart.ShoppingCart;
 import com.suctan.huigangdemo.activity.myself.MydiscountAcitity;
 import com.suctan.huigangdemo.activity.myself.MykitchenActity;
 import com.suctan.huigangdemo.activity.myself.MymoneyActivity;
@@ -25,9 +27,7 @@ import com.suctan.huigangdemo.activity.myself.WaitOrdersActivity;
 import com.suctan.huigangdemo.activity.myself.WaitassessActivity;
 import com.suctan.huigangdemo.activity.myself.WaitfoodActitity;
 import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
-import com.suctan.huigangdemo.activity.address.addressActivity;
 import com.suctan.huigangdemo.activity.myself.buyActivity;
-import com.suctan.huigangdemo.activity.myself.my_assess;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftView;
 import com.suctan.huigangdemo.widget.BigImgDialog;
@@ -205,12 +205,12 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
             }
         });
 
-        //我的页面中的 我的评价页面跳转
+        //我的页面中的 我的购物车评价页面
         my_assess_me.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent gotoassess = new Intent(getActivity(), my_assess.class);
+                Intent gotoassess = new Intent(getActivity(), ShoppingCart.class);
                 startActivity(gotoassess);
             }
         });

@@ -125,6 +125,14 @@ public interface ApiStores {
     Observable<ModifyReturn> outmoneyReturn(@QueryMap Map<String, Object> outmoneyReturn);
 
     /**
+     * 我的钱包,里面的金额显示
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn(@QueryMap Map<String, Object> moneyReturn);
+
+
+
+    /**
      * 地址管理,里面的添加地址管理功能,目前这个功能待定
      */
     @POST("add_address")

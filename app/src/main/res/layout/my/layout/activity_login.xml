@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
     <LinearLayout
@@ -115,6 +116,30 @@
                 android:layout_marginLeft="5dp"
                 android:background="@null"
                 android:inputType="textPassword"
+                />
+        </LinearLayout>
+
+        //记住密码子布局
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="35dp"
+            >
+            <com.suctan.huigangdemo.activity.rememberPsw.SmoothCheckBox
+                android:id="@+id/remember_pass"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:paddingTop="10dp"
+                app:color_checked="@color/colorAccent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remember password"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
                 />
         </LinearLayout>
 

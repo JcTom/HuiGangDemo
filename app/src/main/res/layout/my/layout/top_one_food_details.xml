@@ -108,7 +108,34 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="@string/danwei"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:layout_weight="1"
+                        />
+                  //点赞
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <com.suctan.huigangdemo.activity.dianzan.ThumbUpView
+                            android:id="@+id/tpv1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:text="100"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:maxEms="3"
+                            android:layout_gravity="center_vertical"
+                            />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
