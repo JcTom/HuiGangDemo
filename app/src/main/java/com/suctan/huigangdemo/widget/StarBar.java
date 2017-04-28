@@ -23,8 +23,12 @@ public class StarBar extends LinearLayout {
     private int mStarNum = 5;  //星星默认的个数
     private int mStarChoose = 3;  //默认默认是三颗星
     private boolean isClick = true;
-
+    private boolean canCheck;
     private OnStarItemClickListener mStarItemClickListener;
+
+    public void setCanCheck(boolean click) {
+        this.canCheck = click;
+    }
 
     public StarBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -106,8 +110,9 @@ public class StarBar extends LinearLayout {
             imageView.setLayoutParams(layoutParams);
             this.addView(imageView);
             imageView.setImageResource(mDefaultImageId);
-
-//            setStarOnClick(imageView, i);
+            if (canCheck) {
+                setStarOnClick(imageView, i);
+            }
         }
         setCurrentChoose(mStarChoose);  //设置当前选择
     }
@@ -139,8 +144,17 @@ public class StarBar extends LinearLayout {
      *
      * @param index
      */
+    private int StartNum;
+
+    public int getCurrentStartNum() {
+        return StartNum;
+    }
+
+
     public void setCurrentChoose(int index) {
+        this.StartNum = index;
         if (isClick) {
+
             for (int i = 0; i < index; i++) {
                 ImageView imageView = (ImageView) getChildAt(i);
                 imageView.setImageResource(mClickImageId);

@@ -40,7 +40,7 @@ public class FinishRecommdOrederAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         MyViewHolder holder = null;
         BuyRecommendBean buyRecommendBean = AllBuyRecommendList.get(i);
         if (view == null) {
@@ -60,7 +60,32 @@ public class FinishRecommdOrederAdapter extends BaseAdapter {
         holder.tv_remdf_time.setText(buyRecommendBean.getOrder_expect_time());
         holder.tv_remdf_price.setText(buyRecommendBean.getOrder_price() + "");
         holder.tv_remdf_orderId.setText(buyRecommendBean.getOrder_id() + "");
+        holder.tv_remdf_checkCommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onCheckComments(i);
+            }
+        });
+
+        holder.tv_remdf_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onItemOnClick(i);
+            }
+        });
         return view;
+    }
+
+    FinishDetailOnClickListener detialOnClick;
+
+    public void onDetailOnclick(FinishDetailOnClickListener detialOnClick) {
+        this.detialOnClick = detialOnClick;
+    }
+
+    public interface FinishDetailOnClickListener {
+        void onItemOnClick(int position);
+
+        void onCheckComments(int position);
     }
 
     class MyViewHolder {

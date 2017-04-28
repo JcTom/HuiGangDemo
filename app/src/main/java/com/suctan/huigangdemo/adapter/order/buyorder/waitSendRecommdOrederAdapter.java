@@ -40,7 +40,7 @@ public class WaitSendRecommdOrederAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         MyViewHolder holder = null;
         BuyRecommendBean buyRecommendBean = AllBuyRecommendList.get(i);
         if (view == null) {
@@ -60,7 +60,36 @@ public class WaitSendRecommdOrederAdapter extends BaseAdapter {
         holder.tv_remdWS_time.setText(buyRecommendBean.getOrder_expect_time());
         holder.tv_remdWS_price.setText(buyRecommendBean.getOrder_price() + "");
         holder.tv_remdWS_orderId.setText(buyRecommendBean.getOrder_id() + "");
+        holder.tv_remdWS_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onItemOnClick(i);
+            }
+        });
+        holder.tv_remdWS_comfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onComfrimOnclick(i);
+            }
+        });
         return view;
+    }
+
+    WaitSendDetailOnClickListener detialOnClick;
+
+    public void onDetailOnclick(WaitSendDetailOnClickListener detialOnClick) {
+        this.detialOnClick = detialOnClick;
+    }
+
+    public void setDataChange(ArrayList<BuyRecommendBean> AllBuyRecommendList) {
+        this.AllBuyRecommendList = AllBuyRecommendList;
+        notifyDataSetChanged();
+    }
+
+    public interface WaitSendDetailOnClickListener {
+        void onItemOnClick(int position);
+
+        void onComfrimOnclick(int position);
     }
 
     class MyViewHolder {

@@ -1,6 +1,8 @@
 package com.suctan.huigangdemo.mvp.login;
 
 import com.suctan.huigangdemo.bean.address.AddAddressResult;
+import com.suctan.huigangdemo.bean.commend.buy.BuyACommendReturn;
+import com.suctan.huigangdemo.bean.commend.buy.BuyPCommendReturn;
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
 import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
@@ -124,6 +126,13 @@ public interface ApiStores {
     @POST("get_money")
     Observable<ModifyReturn> outmoneyReturn(@QueryMap Map<String, Object> outmoneyReturn);
 
+
+    /**
+     * 我的钱包,显示金额
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn(@QueryMap Map<String, Object> moneyReturn);
+
     /**
      * 地址管理,里面的添加地址管理功能,目前这个功能待定
      */
@@ -203,6 +212,28 @@ public interface ApiStores {
     @POST("cusFinishEatOrder")
     Observable<String> getBuyWaitFinishOrderListReturn(@QueryMap Map<String, Object> finishOrderReturn);
 
+
+    /*我要吃取消订单*/
+    @POST("cusCancelEatOrder")
+    Observable<ComomBeanReturn> BuyPubCancelOrderReturn(@QueryMap Map<String, Object> cancelOrderReturn);
+
+    /*确认收货 */
+    @POST("cusConfirmEatOrder")
+    Observable<ComomBeanReturn> BuyPubOrderRComfirmReturn(@QueryMap Map<String, Object> comfrimOrderReturn);
+
+    //查看订单的评论
+    @POST("cusLookCommentEatOrder")
+    Observable<BuyPCommendReturn> BuyCheckOrderCommentReturn(@QueryMap Map<String, Object> comfrimOrderReturn);
+
+    //添加订单的评论
+    @POST("cusCommentEatOrder")
+    Observable<ComomBeanReturn> BuyAddPOrderCommentReturn(@QueryMap Map<String, Object> comfrimOrderReturn);
+
+    //添加订单的评论
+    @POST("cusCommentMakeOrder")
+    Observable<ComomBeanReturn> BuyAddAOrderCommentReturn(@QueryMap Map<String, Object> comfrimOrderReturn);
+
+
     /*定做我要吃的饭*/
     /*我要吃所有定做*/
     @POST("cusAllMakeOrder")
@@ -219,5 +250,65 @@ public interface ApiStores {
     /*我要吃已完成定做*/
     @POST("cusFinishMakeOrder")
     Observable<String> getBuyMakeFinishOrderListReturn(@QueryMap Map<String, Object> finishOrderReturn);
+
+    /*我要吃推荐去人收货*/
+    @POST("cusConfirmMakeOrder")
+    Observable<String> BuyComfirmAOrderReturn(@QueryMap Map<String, Object> comfirmOrderReturn);
+
+    /*我要吃推荐去人收货*/
+    @POST("lookCommentMakeOrder")
+    Observable<BuyACommendReturn> BuyCheckAOrderCommentReturn(@QueryMap Map<String, Object> commentOrderReturn);
+
+
+    //添加订单的评论
+    @POST("cookCommentEatOrder")
+    Observable<ComomBeanReturn> SellAddPOrderCommentReturn(@QueryMap Map<String, Object> comfrimOrderReturn);
+
+
+    /************************************************************************************************
+     * /*
+     * 我要做接单所有
+     */
+    @POST("cookAllEatOrder")
+    Observable<String> getSellAllPOrderListReturn(@QueryMap Map<String, Object> sellallOrderReturn);
+
+    /*我要做接单进行中*/
+    @POST("cookingEatOrder")
+    Observable<String> getSellDoingPOrderListReturn(@QueryMap Map<String, Object> selldingOrderReturn);
+
+    /*我要做接单已完成*/
+    @POST("cookFinishEatOrder")
+    Observable<String> getSellFinishPOrderListReturn(@QueryMap Map<String, Object> sellfinishOrderReturn);
+
+
+    /*我要做卖出的订单*/
+
+    /*我要做卖出所有*/
+    @POST("cookAllMakeOrder")
+    Observable<String> getSellAllAOrderListReturn(@QueryMap Map<String, Object> allOrderReturn);
+
+    /*我要做卖出待同意*/
+    @POST("cookWaitMakeOrder")
+    Observable<String> getSellAgreeAOrderListReturn(@QueryMap Map<String, Object> agreeOrderReturn);
+
+
+    /*我要做卖出进行中*/
+    @POST("cookingMakeOrder")
+    Observable<String> getSellDoingAOrderListReturn(@QueryMap Map<String, Object> doingOrderReturn);
+
+
+    /*我要做卖出已完成*/
+    @POST("cookFinishMakeOrder")
+    Observable<String> getSellFinishAOrderListReturn(@QueryMap Map<String, Object> finishOrderReturn);
+
+
+    /*我要做取消*/
+    @POST("cancelMakeOrder")
+    Observable<ComomBeanReturn> sellCancelOrderReturn(@QueryMap Map<String, Object> cancelOrderReturn);
+
+    /*我要做接受*/
+    @POST("acceptMakeOrder")
+    Observable<ComomBeanReturn> sellAcceptOrderReturn(@QueryMap Map<String, Object> acceptOrderReturn);
+
 
 }

@@ -1,4 +1,4 @@
-package com.suctan.huigangdemo.activity.myself;
+package com.suctan.huigangdemo.activity.order;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,15 +8,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.androidbase.BaseApplication;
+import com.jaeger.library.StatusBarUtil;
 import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.adapter.order.buyorder.BuyFragAdapter;
 import com.suctan.huigangdemo.fragment.my.buy.MyPublishFinishOrder;
 import com.suctan.huigangdemo.fragment.my.buy.MyPublishAllOrder;
-import com.suctan.huigangdemo.fragment.my.buy.MyWaitSendOrder;
+import com.suctan.huigangdemo.fragment.my.buy.MyPublishWaitSendOrder;
 import com.suctan.huigangdemo.fragment.my.buy.MyPublishWaitOrder;
 import com.suctan.huigangdemo.fragment.my.buy.MyeatAllOrder;
 import com.suctan.huigangdemo.fragment.my.buy.MyeatFinishOrder;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
  * Created by B-305 on 2017/4/13.
  */
 
-public class buyActivity extends FragmentActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, InterFaceOrderState {
+public class BuyActivity extends FragmentActivity implements View.OnClickListener, ViewPager.OnPageChangeListener, InterFaceOrderState {
     private TextView tv_mybuy_all, tv_mybuy_djd, tv_mybuy_dsc, tv_mybuy_ywc;
     private LinearLayout ll_mybuy_all, ll_mybuy_djd, ll_mybuy_dsc, ll_mybuy_ywc;
     private ViewPager myBuyViewpager;
@@ -46,7 +45,7 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
     private MyPublishAllOrder mdoAllF;
     private MyPublishWaitOrder mdoWaitOrder;
     private MyPublishFinishOrder mdoWaitFinish;
-    private MyWaitSendOrder mdoWaitSend;
+    private MyPublishWaitSendOrder mdoWaitSend;
 
 
     private MyeatAllOrder myeatAllOrder;
@@ -61,6 +60,8 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_buy);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+
         initView();
         initFragment(orderSortKey);
     }
@@ -100,6 +101,8 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
     }
 
     private void toogleShowViewPage(int orderSortKey) {
+        resetTextColor();
+        tv_mybuy_all.setTextColor(select_color);
         if (orderSortKey == 0) {
             myBuyViewpager.setVisibility(View.VISIBLE);
             myBuyMakeViewpager.setVisibility(View.GONE);
@@ -113,11 +116,12 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
         this.orderSortKey = orderSortKey;
         toogleShowViewPage(orderSortKey);
         if (orderSortKey == 0) {
+            mAdapter = null;
             mdoAllF = MyPublishAllOrder.getFragmentInstant();
             mdoAllF.setFragListner(this);
             mdoWaitOrder = MyPublishWaitOrder.getFragmentInstant();
             mdoWaitOrder.setFragListner(this);
-            mdoWaitSend = MyWaitSendOrder.getFragmentInstant();
+            mdoWaitSend = MyPublishWaitSendOrder.getFragmentInstant();
             mdoWaitSend.setFragListner(this);
             mdoWaitFinish = MyPublishFinishOrder.getFragmentInstant();
             mdoWaitFinish.setFragListner(this);
@@ -130,6 +134,7 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
             myBuyViewpager.addOnPageChangeListener(this);
             myBuyViewpager.setCurrentItem(0);
         } else {
+            mAdapter = null;
             ArrayList<Fragment> fragmentsList = new ArrayList<>();
             myeatAllOrder = MyeatAllOrder.getFragmentInstant();
             myeatAllOrder.setFragListner(this);
@@ -185,7 +190,11 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
                     tv_mybuy_ywc.setTextColor(select_color);
                     break;
             }
-            myBuyViewpager.setCurrentItem(index);
+            if (orderSortKey == 0) {
+                myBuyViewpager.setCurrentItem(index);
+            } else {
+                myBuyMakeViewpager.setCurrentItem(index);
+            }
         }
     }
 
@@ -204,7 +213,7 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
     @Override
     public void onPageSelected(int position) {
         resetTextColor();
-        switch (myBuyViewpager.getCurrentItem()) {
+        switch (position) {
             case 0:
                 tv_mybuy_all.setTextColor(select_color);
                 break;
@@ -225,5 +234,6 @@ public class buyActivity extends FragmentActivity implements View.OnClickListene
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }
 

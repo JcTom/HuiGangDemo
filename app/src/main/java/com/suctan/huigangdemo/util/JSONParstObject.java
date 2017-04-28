@@ -5,12 +5,15 @@ import com.suctan.huigangdemo.bean.address.AddAdressReturn;
 import com.suctan.huigangdemo.bean.address.AddressBean;
 import com.suctan.huigangdemo.bean.cart.CartBean;
 import com.suctan.huigangdemo.bean.cart.CartReturn;
+import com.suctan.huigangdemo.bean.commend.buy.BuyPCommendReturn;
 import com.suctan.huigangdemo.bean.dowant.DoWantOrderBean;
 import com.suctan.huigangdemo.bean.dowant.DoWantOrderReturn;
 import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendBean;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendReturn;
+import com.suctan.huigangdemo.bean.order.sell.SellOrderBean;
+import com.suctan.huigangdemo.bean.order.sell.SellOrderReturn;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentReturn;
@@ -46,7 +49,7 @@ public class JSONParstObject {
                 currentUser.setUser_name(jsonObject.getString("user_name"));
             }
             if (jsonObject.getString("user_icon") != null) {
-                currentUser.setUser_icon(jsonObject.getString("user_icon"));
+                currentUser.setUser_icon("http://10.5.12.125/tp/uploads/" + jsonObject.getString("user_icon"));
             }
             if (jsonObject.getString("user_alias") != null) {
                 currentUser.setUser_alias(jsonObject.getString("user_alias"));
@@ -571,31 +574,42 @@ public class JSONParstObject {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
                     BuyRecommendBean buyRecommendBean = new BuyRecommendBean();
-                    String order_status = jsonObject1.getString("order_status");
+                    String order_status = jsonObject1.getString("status");
                     if (order_status != null) {
                         buyRecommendBean.setOrder_status(Integer.parseInt(order_status));
+                    }
+                    String id = jsonObject1.getString("id");
+                    if (id != null) {
+                        buyRecommendBean.setId(Integer.parseInt(id));
                     }
                     String order_id = jsonObject1.getString("order_id");
                     if (order_id != null) {
                         buyRecommendBean.setOrder_id(Integer.parseInt(order_id));
                     }
 
-                    String order_price = jsonObject1.getString("order_price");
+                    String order_price = jsonObject1.getString("price");
                     if (order_price != null) {
                         buyRecommendBean.setOrder_price(Double.parseDouble(order_price));
                     }
 
-                    String order_type = jsonObject1.getString("order_type");
+                    String order_type = jsonObject1.getString("type");
                     if (order_type != null) {
                         buyRecommendBean.setOrder_type(Integer.parseInt(order_type));
                     }
+                    String num = jsonObject1.getString("num");
+                    if (num != null) {
+                        buyRecommendBean.setNum(Integer.parseInt(num));
+                    }
+                    String all_price = jsonObject1.getString("all_price");
+                    if (all_price != null) {
+                        buyRecommendBean.setAll_price(Double.parseDouble(all_price));
+                    }
 
-                    buyRecommendBean.setPic(jsonObject1.getString("pic"));
-                    buyRecommendBean.setOrder_title(jsonObject1.getString("order_title"));
-                    buyRecommendBean.setEatstrarr(jsonObject1.getString("eatstrarr"));
-                    buyRecommendBean.setOrder_note(jsonObject1.getString("order_note"));
-                    buyRecommendBean.setOrder_res_time(jsonObject1.getString("order_res_time"));
-                    buyRecommendBean.setOrder_expect_time(jsonObject1.getString("order_pub_time"));
+
+                    buyRecommendBean.setPic("http://10.5.12.125/tp/uploads/" + jsonObject1.getString("pic"));
+                    buyRecommendBean.setOrder_title(jsonObject1.getString("title"));
+                    buyRecommendBean.setOrder_res_time(jsonObject1.getString("expect_time"));
+                    buyRecommendBean.setOrder_expect_time(jsonObject1.getString("pub_time"));
                     buyRecommendBean.setUser_name(jsonObject1.getString("user_name"));
                     buyRecommendBean.setUser_phone(jsonObject1.getString("user_phone"));
                     buyRecommendBean.setUer_address(jsonObject1.getString("user_address"));
@@ -611,6 +625,163 @@ public class JSONParstObject {
         return buyRecommendReturn;
     }
 
+
+    /**
+     * 获取我要做接单数据
+     *
+     * @param addressList
+     * @param status
+     * @return
+     */
+    public static SellOrderReturn getSellPOrderList(String addressList, int status) {
+        SellOrderReturn sellOrderReturn = null;
+        ArrayList<SellOrderBean> sellOrderBeenList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(addressList);
+            sellOrderReturn = new SellOrderReturn();
+            sellOrderBeenList = new ArrayList<>();
+            sellOrderReturn.setStatus(jsonObject.getInt("status"));
+            sellOrderReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            switch (status) {
+                case 0:
+                    jsonArray = jsonObject.getJSONArray("cookAllEatList");
+                    break;
+
+                case 2:
+                    jsonArray = jsonObject.getJSONArray("cookDeliveryEatList");
+                    break;
+                case 3:
+                    jsonArray = jsonObject.getJSONArray("cookFinishEatList");
+                    break;
+            }
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    SellOrderBean sellOrderBean = new SellOrderBean();
+                    String order_status = jsonObject1.getString("order_status");
+                    if (order_status != null) {
+                        sellOrderBean.setOrder_status(Integer.parseInt(order_status));
+                    }
+                    String order_id = jsonObject1.getString("order_id");
+                    if (order_id != null) {
+                        sellOrderBean.setOrder_id(Integer.parseInt(order_id));
+                    }
+                    String order_price = jsonObject1.getString("order_price");
+                    if (order_price != null) {
+                        sellOrderBean.setOrder_price(Double.parseDouble(order_price));
+                    }
+
+                    String order_type = jsonObject1.getString("order_type");
+                    if (order_type != null) {
+                        sellOrderBean.setOrder_type(Integer.parseInt(order_type));
+                    }
+
+                    sellOrderBean.setOrder_title(jsonObject1.getString("order_title"));
+                    sellOrderBean.setEatstrarr(jsonObject1.getString("eatstrarr"));
+                    sellOrderBean.setOrder_note(jsonObject1.getString("order_note"));
+                    sellOrderBean.setOrder_res_time(jsonObject1.getString("order_res_time"));
+                    sellOrderBean.setOrder_expect_time(jsonObject1.getString("order_pub_time"));
+                    sellOrderBean.setUser_name(jsonObject1.getString("user_name"));
+                    sellOrderBean.setUser_phone(jsonObject1.getString("user_phone"));
+                    sellOrderBean.setUser_address(jsonObject1.getString("user_address"));
+
+                    sellOrderBeenList.add(sellOrderBean);
+                }
+                sellOrderReturn.setSellOrderBeenList(sellOrderBeenList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return sellOrderReturn;
+    }
+
+
+    /**
+     * 获取我要做的卖出订单列表
+     *
+     * @param addressList
+     * @return
+     */
+    public static SellOrderReturn getSellAOrderList(String addressList, int status) {
+        SellOrderReturn sellOrderReturn = null;
+        ArrayList<SellOrderBean> sellOrderBeenList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(addressList);
+            sellOrderReturn = new SellOrderReturn();
+            sellOrderBeenList = new ArrayList<>();
+            sellOrderReturn.setStatus(jsonObject.getInt("status"));
+            sellOrderReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            switch (status) {
+                case 0:
+                    jsonArray = jsonObject.getJSONArray("cookAllMakeList");
+                    break;
+                case 1:
+                    jsonArray = jsonObject.getJSONArray("cookWaitMakeList");
+                    break;
+                case 2:
+                    jsonArray = jsonObject.getJSONArray("cookDeliveryMakeList");
+                    break;
+                case 3:
+                    jsonArray = jsonObject.getJSONArray("cookFinishMakeList");
+                    break;
+            }
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    SellOrderBean sellOrderBean = new SellOrderBean();
+                    String order_status = jsonObject1.getString("status");
+                    if (order_status != null) {
+                        sellOrderBean.setOrder_status(Integer.parseInt(order_status));
+                    }
+                    String id = jsonObject1.getString("id");
+                    if (id != null) {
+                        sellOrderBean.setId(Integer.parseInt(id));
+                    }
+                    String order_id = jsonObject1.getString("order_id");
+                    if (order_id != null) {
+                        sellOrderBean.setOrder_id(Integer.parseInt(order_id));
+                    }
+
+                    String order_price = jsonObject1.getString("price");
+                    if (order_price != null) {
+                        sellOrderBean.setOrder_price(Double.parseDouble(order_price));
+                    }
+
+                    String order_type = jsonObject1.getString("type");
+                    if (order_type != null) {
+                        sellOrderBean.setOrder_type(Integer.parseInt(order_type));
+                    }
+                    String num = jsonObject1.getString("num");
+                    if (num != null) {
+                        sellOrderBean.setNum(Integer.parseInt(num));
+                    }
+                    String all_price = jsonObject1.getString("all_price");
+                    if (all_price != null) {
+                        sellOrderBean.setAll_price(Double.parseDouble(all_price));
+                    }
+
+
+                    sellOrderBean.setPic("http://10.5.12.125/tp/uploads/" + jsonObject1.getString("pic"));
+                    sellOrderBean.setOrder_title(jsonObject1.getString("title"));
+                    sellOrderBean.setOrder_res_time(jsonObject1.getString("expect_time"));
+                    sellOrderBean.setOrder_expect_time(jsonObject1.getString("pub_time"));
+                    sellOrderBean.setUser_name(jsonObject1.getString("user_name"));
+                    sellOrderBean.setUser_phone(jsonObject1.getString("user_phone"));
+                    sellOrderBean.setUser_address(jsonObject1.getString("user_address"));
+
+                    sellOrderBeenList.add(sellOrderBean);
+                }
+                sellOrderReturn.setSellOrderBeenList(sellOrderBeenList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return sellOrderReturn;
+    }
 
 }
 

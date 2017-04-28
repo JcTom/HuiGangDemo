@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendBean;
 
@@ -41,7 +42,7 @@ public class FinishMakeOrederAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         MyViewHolder holder = null;
         BuyRecommendBean buyRecommendBean = AllBuyRecommendList.get(i);
         if (view == null) {
@@ -63,7 +64,41 @@ public class FinishMakeOrederAdapter extends BaseAdapter {
         holder.tv_makebuyF_time.setText(buyRecommendBean.getOrder_expect_time());
         holder.tv_makebuyF_price.setText(buyRecommendBean.getOrder_price() + "");
         holder.tv_makebuyF_orderId.setText(buyRecommendBean.getOrder_id() + "");
+
+        if (buyRecommendBean.getPic() != null) {
+            ImageLoader.getInstance().displayImage(buyRecommendBean.getPic(), holder.imv_makebuyF_pic);
+        }
+
+        holder.tv_makebuyF_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onItemOnClick(i);
+            }
+        });
+        holder.tv_makebuyF_checkCommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onFinishCommendOnclick(i);
+            }
+        });
         return view;
+    }
+
+    FinishMakeDetailOnClickListener detialOnClick;
+
+    public void onDetailOnclick(FinishMakeDetailOnClickListener detialOnClick) {
+        this.detialOnClick = detialOnClick;
+    }
+
+    public void setDataChange(ArrayList<BuyRecommendBean> makeFinishLists) {
+        this.AllBuyRecommendList = makeFinishLists;
+        notifyDataSetChanged();
+    }
+
+    public interface FinishMakeDetailOnClickListener {
+        void onItemOnClick(int position);
+
+        void onFinishCommendOnclick(int position);
     }
 
     class MyViewHolder {

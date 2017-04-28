@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendBean;
 
@@ -41,7 +42,7 @@ public class WaitMakeOrederAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         MyViewHolder holder = null;
         BuyRecommendBean buyRecommendBean = AllBuyRecommendList.get(i);
         if (view == null) {
@@ -64,8 +65,28 @@ public class WaitMakeOrederAdapter extends BaseAdapter {
         holder.tv_makebuyW_price.setText(buyRecommendBean.getOrder_price() + "");
         holder.tv_makebuyW_orderId.setText(buyRecommendBean.getOrder_id() + "");
         holder.tv_makebuyW_expecttime.setText(buyRecommendBean.getOrder_res_time());
-
+        if (buyRecommendBean.getPic() != null) {
+            ImageLoader.getInstance().displayImage(buyRecommendBean.getPic(), holder.imv_makebuyW_pic);
+        }
+        holder.tv_makebuyW_detial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onItemOnClick(i);
+            }
+        });
         return view;
+    }
+
+
+    WaitMakeDetailOnClickListener detialOnClick;
+
+    public void onDetailOnclick(WaitMakeDetailOnClickListener detialOnClick) {
+        this.detialOnClick = detialOnClick;
+    }
+
+    public interface WaitMakeDetailOnClickListener {
+        void onItemOnClick(int position);
+
     }
 
     class MyViewHolder {
