@@ -144,7 +144,6 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
 
     @Override
     public void getTopicListFail() {
-
     }
 
     @Override
@@ -165,6 +164,11 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
 
     @Override
     public void getComemtnListFail() {
+
+    }
+
+    @Override
+    public void getdeleteTopicdel(String msg) {
 
     }
 

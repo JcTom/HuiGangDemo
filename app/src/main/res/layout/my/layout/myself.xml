@@ -312,7 +312,7 @@
 
             <TextView
                 style="@style/usertext"
-                android:text="   我的优惠券" />
+                android:text="我的优惠券" />
 
             <ImageView style="@style/img_arrow" />
         </LinearLayout>

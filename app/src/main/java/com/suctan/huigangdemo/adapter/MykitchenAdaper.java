@@ -52,17 +52,25 @@ public class MykitchenAdaper extends BaseAdapter {
             convertView= LayoutInflater.from(context).inflate(R.layout.mykitchen_item,parent,false);
             holder = new GridViewHolder();
             holder.ItemImage= (ImageView) convertView.findViewById(R.id.Mykitchen_ItemImage);
-            holder.ItemText= (TextView) convertView.findViewById(R.id.Mykitchen_ItemTitle);
+            holder.Mykitchen_ItemTitle = (TextView) convertView.findViewById(R.id.Mykitchen_ItemTitle);
+            holder.Mykitchen_ItemText= (TextView) convertView.findViewById(R.id.Mykitchen_ItemText);
+            holder.Mykitchen_ItemMoney = (TextView) convertView.findViewById(R.id.Mykitchen_ItemMoney);
             convertView.setTag(holder);
         }else {
             holder = (GridViewHolder) convertView.getTag();}
-       if (mykitchenBean.getImageUrl()!=null){
-           LoadImageManager.getImageLoader().displayImage(mykitchenBean.getImageUrl(),holder.ItemImage);
+       if (mykitchenBean.getOrder_pic()!=null){
+           LoadImageManager.getImageLoader().displayImage(mykitchenBean.getOrder_pic(),holder.ItemImage);
        }
+
+        holder.Mykitchen_ItemTitle.setText(mykitchenBean.getOrder_title());
+        holder.Mykitchen_ItemText.setText(mykitchenBean.getFood_description());
+        holder.Mykitchen_ItemMoney.setText("￥"+(int) mykitchenBean.getOrder_price());
         return convertView;
     }
     public class GridViewHolder{
         ImageView ItemImage;
-        TextView ItemText;
+        TextView Mykitchen_ItemTitle;
+        TextView Mykitchen_ItemText;
+        TextView Mykitchen_ItemMoney;
     }
 }

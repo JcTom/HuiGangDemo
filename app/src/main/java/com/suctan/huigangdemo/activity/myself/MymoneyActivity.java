@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class MymoneyActivity  extends MvpActivity<MymoneyPresenter> implements MymoneyView{
 
-     private TextView Mymoney;
+    private TextView Mymoney;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_wallet);
@@ -87,7 +87,7 @@ public class MymoneyActivity  extends MvpActivity<MymoneyPresenter> implements M
 
     @Override
     public void getmoney(String money) {
-      Mymoney.setText(money);
+        Mymoney.setText(money);
 
     }
 }

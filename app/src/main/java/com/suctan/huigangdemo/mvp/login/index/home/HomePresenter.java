@@ -74,7 +74,6 @@ public class HomePresenter extends DemoBasePresenter<HomeView> {
                             EatFoodReturn eatFoodReturn = JSONParstObject.getRollViewDataList(model, 1);
                             if (eatFoodReturn != null) {
                                 System.out.println("首页获取菜的列表" + model);
-                                mvpView.getEatfoodListSuc(eatFoodReturn);
                             }
                         }
                     }

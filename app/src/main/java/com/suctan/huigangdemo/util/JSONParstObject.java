@@ -9,8 +9,6 @@ import com.suctan.huigangdemo.bean.dowant.DoWantOrderBean;
 import com.suctan.huigangdemo.bean.dowant.DoWantOrderReturn;
 import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
-import com.suctan.huigangdemo.bean.need.NeedBean;
-import com.suctan.huigangdemo.bean.need.NeedReturn;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendBean;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendReturn;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
