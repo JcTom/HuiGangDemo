@@ -49,7 +49,7 @@ public class PubNeedPresener extends DemoBasePresenter<PubNeedView> {
                     public void onCompleted() {
 
                     }
-                }));  //发送网络请求 实现回调方法
+                }));
 
     }
 }

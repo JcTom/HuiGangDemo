@@ -10,9 +10,11 @@ import com.example.androidbase.LoadImageManager;
 import com.example.androidbase.mvp.MvpActivity;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.CurrentUser;
+import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.Popupwindow.my_kitchen_popupwin_release;
 import com.suctan.huigangdemo.adapter.MykitchenAdaper;
 import com.suctan.huigangdemo.bean.user.MykitchenBean;
+import com.suctan.huigangdemo.bean.user.MykitchenReturn;
 import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenPresenter;
 import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenView;
 
@@ -30,15 +32,15 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
     private ImageView Mykitchen_back;
     GridView Mykitchen_gridview;
     private ImageView chiken_UserHead;//头像
-
-
+    private ArrayList<MykitchenBean> mykitchenList= new ArrayList<>();
+    boolean initFirstmykitchen;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_kitchen);
+        MyAddChiken();
         initView();
         initViewData();
         getMyChikenData();
-        goMykitchenAdapter();
 
             /*lv = (ListView) findViewById(R.id.list_view_food);*//*定义一个动态数组*//*
             ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();*//*在数组中存放数据*//*
@@ -71,6 +73,7 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
             });*/
     }
 
+
     @Override
     protected MyChikenPresenter createPresenter() {
         return new MyChikenPresenter(this);
@@ -91,14 +94,37 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
 
     }
 
+    MykitchenAdaper mykitchenAdaper;
+
+    @Override
+    public void getMakeOrderList(ArrayList<MykitchenBean> mykitchenBeenlist) {
+        this.mykitchenList.addAll(mykitchenBeenlist);
+        if (!initFirstmykitchen){
+            goMykitchenAdapter();
+            initFirstmykitchen = true;
+        }else {
+            mykitchenAdaper.notifyDataSetChanged();
+        }
+    }
+
+    private void MyAddChiken() {
+        Map <String,Object>map=new HashMap<>();
+        map.put("user_token", TokenManager.getToken());
+        mvpPresenter.AddChiken(map);
+    }
+
     private void goMykitchenAdapter() {
-        ArrayList<MykitchenBean> companys = new ArrayList<>();
+
+        mykitchenAdaper = new MykitchenAdaper(this,mykitchenList);
+        Mykitchen_gridview.setAdapter(mykitchenAdaper);
+
+        /*ArrayList<MykitchenBean> companys = new ArrayList<>();
         for (int i = 0; i <= 10; i++) {
             MykitchenBean mykitchenBean = new MykitchenBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
             companys.add(mykitchenBean);
         }
         MykitchenAdaper adapter = new MykitchenAdaper(this, companys);
-        Mykitchen_gridview.setAdapter(adapter);
+        Mykitchen_gridview.setAdapter(adapter);*/
     }
 
     /*这个功能是我的厨房中的发布按钮弹出的popupwindow*/
@@ -124,9 +150,6 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
                 startActivity(gotoaleadyfood);
 
             }
-
-
-
         });
     }
 

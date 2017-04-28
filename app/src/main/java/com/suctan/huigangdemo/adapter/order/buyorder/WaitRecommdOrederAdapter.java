@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by 黄淑翰 on 2017/4/26.
  */
-public class WaitRecommdOrederAdapter extends BaseAdapter {
+ public class WaitRecommdOrederAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<BuyRecommendBean> AllBuyRecommendList;
 

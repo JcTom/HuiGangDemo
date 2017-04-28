@@ -19,14 +19,14 @@ import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.activity.myself.MydiscountAcitity;
 import com.suctan.huigangdemo.activity.myself.MykitchenActity;
 import com.suctan.huigangdemo.activity.myself.MymoneyActivity;
-import com.suctan.huigangdemo.activity.order.SellActivity;
+import com.suctan.huigangdemo.activity.myself.SellActivity;
 import com.suctan.huigangdemo.activity.myself.SettingActivity;
 import com.suctan.huigangdemo.activity.myself.WaitOrdersActivity;
 import com.suctan.huigangdemo.activity.myself.WaitassessActivity;
 import com.suctan.huigangdemo.activity.myself.WaitfoodActitity;
 import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
 import com.suctan.huigangdemo.activity.address.addressActivity;
-import com.suctan.huigangdemo.activity.order.BuyActivity;
+import com.suctan.huigangdemo.activity.myself.buyActivity;
 import com.suctan.huigangdemo.activity.myself.my_assess;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftView;
@@ -122,7 +122,7 @@ public class FragmentMySelft extends MvpFragment<MySelftPresenter> implements Vi
 
             @Override
             public void onClick(View v) {
-                Intent gotobuy = new Intent(getActivity(), BuyActivity.class);
+                Intent gotobuy = new Intent(getActivity(), buyActivity.class);
                 startActivity(gotobuy);
             }
         });

@@ -5,7 +5,9 @@ import android.widget.Toast;
 import com.example.androidbase.BaseApplication;
 import com.example.androidbase.rxjava.ApiCallback;
 import com.example.androidbase.rxjava.SubscriberCallBack;
+import com.example.androidbase.utils.ToastTool;
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
+import com.suctan.huigangdemo.bean.topic.DellCommentBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentReturn;
 import com.suctan.huigangdemo.bean.topic.TopicReturn;
 import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
@@ -13,6 +15,7 @@ import com.suctan.huigangdemo.bean.user.ModifyReturn;
 import com.suctan.huigangdemo.mvp.login.DemoBasePresenter;
 import com.suctan.huigangdemo.util.JSONParstObject;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,7 +26,6 @@ public class PostPublishPresenter extends DemoBasePresenter<PostPublishView> {
     public PostPublishPresenter(PostPublishView mvpView) {
         attachView(mvpView);
     }
-
     /**
      * 发布评论
      *
@@ -37,19 +39,65 @@ public class PostPublishPresenter extends DemoBasePresenter<PostPublishView> {
                     public void onStart() {
 
                     }
-
                     @Override
                     public void onSuccess(AddCommentBean model) {
                       if(model!=null){
                           if (model.getStatus() == 1) {
                               if(model.getTopic()!=null ){
                                   mvpView.postPublishCommentSuc(model.getTopic());
-                                  System.out.println("获得当前我添加评论的对象");
+                                  System.out.println("获得当前我添加评论的对象"+model);
                               }
                           } else {
                               mvpView.postPublishCommentFail(model.getMsg());
                           }
                       }
+                    }
+
+                    @Override
+                    public void onFailed(String msg) {
+                        mvpView.getDataFail(msg);
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        mvpView.hideLoading();
+                    }
+                })
+
+        );
+    }
+
+    /*
+    * 删除帖子
+    * */
+
+    public void getdeletetopicSSS(Map map) {
+        addSubscription(apiStores.getdeletetopic(map),
+                new SubscriberCallBack<>(new ApiCallback<String>() {
+
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onSuccess(String model) {
+                        System.out.println("删除我添加的评论"+model);
+                        /*if (model.getStatus()==1){
+                            mvpView.getdeleteTopicdel(model.getMsg());
+                        }*/
+
+                        /*if(model!=null){
+                            if (model.getStatus()==1) {
+                                if(model.getTopid()!=null ){
+                                    mvpView.postPublishCommentSuc(model.getTopid());
+                                    System.out.println("获得当前我添加评论的对象"+model);
+                                }
+                            } else {
+                                mvpView.postPublishCommentFail(model.getMsg());
+                            }
+                        }*/
+
                     }
 
                     @Override
