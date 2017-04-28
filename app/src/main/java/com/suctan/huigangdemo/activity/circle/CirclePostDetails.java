@@ -59,7 +59,7 @@ import butterknife.ButterKnife;
  * Created by B-305 on 2017/4/8.
  */
 
-public class CirclePostDetails extends MvpActivity<PostPublishPresenter> implements FaceFragment.OnEmojiClickListener, View.OnClickListener, PostPublishView {
+public class CirclePostDetails extends MvpActivity<PostPublishPresenter> implements FaceFragment.OnEmojiClickListener, View.OnClickListener, PostPublishView,CirclePostAdapter.OnCirclePostListenter {
     private ImageButton post_emoticon;
     private EditText et_reply;
     private FrameLayout emojicons_layout;
@@ -87,10 +87,13 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_details);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
+
         initView();
         getIntentData();
         getCommmentList();
         /*deletetppiceSSS();*/
+        /*deletetppiceSS();*/
+
     }
 
     /*获取当前话题的评论*/
@@ -175,6 +178,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
                 break;
             case R.id.imv_pbs_delete:
                 Toast.makeText(this,"已删除",Toast.LENGTH_SHORT).show();
+                deletetppiceSSS();
                 delete();
                 break;
             case R.id.et_reply:
@@ -266,6 +270,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
 
     private void initRecycleAdaper(ArrayList<TopicCommentBean> topicCommentList) {
         mAdapter = new CirclePostAdapter(this, topicCommentList);
+        mAdapter.setOnClickCirclePostListenter((CirclePostAdapter.OnCirclePostListenter) this);
         mRecyclerView.setAdapter(mAdapter);
     }
     /**
@@ -393,18 +398,26 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
     }
 
     private void delete() {
-        /*post_details_ScrollView.removeAllViews();*/
-        /*Intent intent = new Intent(this, FragmentIndex.class);
-        intent.putExtra("nowTopic", topicBeanList.get(position));
-        startActivity(intent);*/
-        deletetppiceSSS();
         finish();
-        /*setResult(RESULT_OK,(new Intent()).setAction((FragmentFind.class)));*/
+        System.out.println("setUserVisibleHint执行了---finish");
     }
+
+
 
     private void deletetppiceSSS() {
         Map<String, Object> map = new HashMap<>();
         map.put("topic_id", mTopicBean.getTopic_id());
         mvpPresenter.getdeletetopicSSS(map);
     }
+    @Override
+    public void onPost_reply_item(int position) {
+        Toast.makeText(this,"删除",Toast.LENGTH_SHORT).show();
+    }
+
+    private void deletetppiceSS() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("topic_id", mTopicBean.getTopic_id());
+        mvpPresenter.getdeletetopicSS(map);
+    }
+
 }

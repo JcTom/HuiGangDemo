@@ -47,8 +47,6 @@ public class TopicRecycleAdapter extends RecyclerView.Adapter<TopicRecycleAdapte
             LoadImageManager.getImageLoader().displayImage(mtoPicBean.getUser_icon(),myViewHolder.item_imv);
         }
 
-
-
         myViewHolder.ly_topic_arroud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -33,7 +33,7 @@ public class CirclePostAdapter extends RecyclerView.Adapter<CirclePostAdapter.My
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         TopicCommentBean topicCommentBean = topicCommentList.get(position);
         MyViewHolder holder1 = holder;
         holder1.tv_comment_time.setText(topicCommentBean.getComment_time());
@@ -46,11 +46,29 @@ public class CirclePostAdapter extends RecyclerView.Adapter<CirclePostAdapter.My
         if (topicCommentBean.getUser_icon() != null) {
             LoadImageManager.getImageLoader().displayImage(topicCommentBean.getUser_icon(), holder1.recycleImv_comment_userHead);
         }
-    }
 
+
+        holder1.imvb_comment_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listenter.onPost_reply_item(position);
+            }
+        });
+    }
     public int getItemCount() {
         return topicCommentList.size();
     }
+
+    private OnCirclePostListenter listenter;
+
+    public void setOnClickCirclePostListenter(OnCirclePostListenter listenter){
+        this.listenter = listenter;
+    }
+
+    public interface OnCirclePostListenter {
+        void onPost_reply_item(int position);
+    }
+
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tv_comment_content, tv_comemnt_username, tv_comment_time;

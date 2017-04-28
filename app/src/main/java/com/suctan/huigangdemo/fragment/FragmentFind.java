@@ -54,12 +54,24 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
         return viewFind;
     }
 
+    /*public void onResume(){
+        super.onResume();
+        System.out.println("onResume执行了");
+    }*/
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initViews();
         getTopicData();
+        godelete();
+    }
 
+    private void godelete() {
+        /*int id = (TopicBean) getIntent().getSerializableExtra("nowTopic");
+        if (mTopicBean != null) {
+            initData(mTopicBean);
+        }*/
     }
 
     private void getTopicData() {
@@ -93,10 +105,7 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         swipe_circle = (SwipeRefreshLayout) viewFind.findViewById(R.id.swipe_circle);
         initRefreshView();
-
     }
-
-
     @Override
     public void onClick(View v) {
 
@@ -159,7 +168,6 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
 
     @Override
     public void getCommentListSuc(ArrayList<TopicCommentBean> topicCommentBeen) {
-
     }
 
     @Override
@@ -178,8 +186,21 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
             Intent intent = new Intent(getActivity(), CirclePostDetails.class);
             intent.putExtra("nowTopic", topicBeanList.get(position));
             startActivity(intent);
+            /*startActivityForResult(intent,1);*/
         }
     }
+
+   /* public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            *//*getTopicData();*//*
+            //相当于Fragment的onResume
+        } else {
+            //相当于Fragment的onPause
+        }
+    }*/
+
+
 
     @Override
     protected void lazyLoad() {

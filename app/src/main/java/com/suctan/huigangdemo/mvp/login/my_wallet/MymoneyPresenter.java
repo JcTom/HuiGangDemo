@@ -30,13 +30,13 @@ public class MymoneyPresenter extends DemoBasePresenter<MymoneyView>{
 
                     @Override
                     public void onSuccess(ModifyReturn model) {
-                        Log.i(TAG, "onSuccess: ");
+                        /*Log.i(TAG, "onSuccess: ");
                         if (model.getStatus() == "1") {
                             mvpView.getmoney(model.getMoney());
                         } else {
                             ToastTool.showToast(model.getMsg(),0);
                         }
-                        ToastTool.showToast("onSuccess: 返回状态是:"+model.getStatus()+"msg："+model.getMsg(),1);
+                        ToastTool.showToast("onSuccess: 返回状态是:"+model.getStatus()+"msg："+model.getMsg(),1);*/
                     }
 
                     @Override

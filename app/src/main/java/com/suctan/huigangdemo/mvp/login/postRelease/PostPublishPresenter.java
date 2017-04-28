@@ -75,7 +75,6 @@ public class PostPublishPresenter extends DemoBasePresenter<PostPublishView> {
     public void getdeletetopicSSS(Map map) {
         addSubscription(apiStores.getdeletetopic(map),
                 new SubscriberCallBack<>(new ApiCallback<String>() {
-
                     @Override
                     public void onStart() {
 
@@ -114,6 +113,32 @@ public class PostPublishPresenter extends DemoBasePresenter<PostPublishView> {
 
         );
     }
+    /*
+    * 删除一条记录
+    * */
+    public void getdeletetopicSS(Map map) {
+        addSubscription(apiStores.getdeletetopiccomment(map),
+                new SubscriberCallBack<>(new ApiCallback<String>() {
+                    @Override
+                    public void onStart() {
+                    }
+                    @Override
+                    public void onSuccess(String model) {
+                        System.out.println("删除一条记录"+model);
+                    }
+                    @Override
+                    public void onFailed(String msg) {
+                        mvpView.getDataFail(msg);
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        mvpView.hideLoading();
+                    }
+                })
+        );
+    }
+
 
     /**
      * 获取话题列表

@@ -19,7 +19,7 @@ public class MydiscountPresenter extends DemoBasePresenter<MydiscountView> {
     /*
     * 优惠劵
     * */
-    public void getMydiscount() {
+    /*public void getMydiscount() {
         addSubscription(apiStores.getMydiscount(new HashMap<String, Object>()),
                 new SubscriberCallBack<>(new ApiCallback<String>() {
                     @Override
@@ -39,6 +39,6 @@ public class MydiscountPresenter extends DemoBasePresenter<MydiscountView> {
                         mvpView.getDataFail(msg);
                     }
                 }));
-    }
+    }*/
 
 }

@@ -398,7 +398,6 @@ public class PostRelease extends MvpActivity<PostPublishPresenter> implements Po
 
     @Override
     public void postPublishCommentFail(String msg) {
-
     }
 
     @Override

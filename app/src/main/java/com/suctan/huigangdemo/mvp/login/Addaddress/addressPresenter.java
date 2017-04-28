@@ -112,9 +112,7 @@ public class addressPresenter extends DemoBasePresenter<addressView> {
                         System.out.println("获取用户地址列表" + model);
                         if (model != null) {
                             AddAdressReturn addAdressReturn = JSONParstObject.getAddressListObject(model);
-
                             if (addAdressReturn != null && addAdressReturn.getAddressList() != null) {
-
                                 mvpView.getAddressListSuc(addAdressReturn.getAddressList());
                             }
                         }

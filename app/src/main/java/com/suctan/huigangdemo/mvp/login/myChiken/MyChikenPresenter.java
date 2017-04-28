@@ -28,7 +28,6 @@ public class MyChikenPresenter extends DemoBasePresenter<MyChikenView> {
                 new SubscriberCallBack<>(new ApiCallback<String>() {
                     @Override
                     public void onStart() {
-
                     }
 
                     @Override
@@ -41,7 +40,6 @@ public class MyChikenPresenter extends DemoBasePresenter<MyChikenView> {
                             }
                         }
                     }
-
                    /* @Override
                     public void onSuccess(String model) {
                         if (model!=null){

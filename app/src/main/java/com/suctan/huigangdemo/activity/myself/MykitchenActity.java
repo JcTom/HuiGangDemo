@@ -41,7 +41,6 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
         initView();
         initViewData();
         getMyChikenData();
-
             /*lv = (ListView) findViewById(R.id.list_view_food);*//*定义一个动态数组*//*
             ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String, Object>>();*//*在数组中存放数据*//*
             for (int i = 0; i < 100; i++) {
@@ -117,7 +116,6 @@ public class MykitchenActity extends MvpActivity<MyChikenPresenter> implements V
 
         mykitchenAdaper = new MykitchenAdaper(this,mykitchenList);
         Mykitchen_gridview.setAdapter(mykitchenAdaper);
-
         /*ArrayList<MykitchenBean> companys = new ArrayList<>();
         for (int i = 0; i <= 10; i++) {
             MykitchenBean mykitchenBean = new MykitchenBean("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492091993911&di=804ff682760b588e56abfc96f9d43ecd&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F82%2F51%2F77P58PICFKD_1024.jpg");
