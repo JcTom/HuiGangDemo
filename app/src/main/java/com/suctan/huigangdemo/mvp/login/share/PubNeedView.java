@@ -8,6 +8,4 @@ import com.example.androidbase.mvp.BaseMvpView;
 
 public interface PubNeedView extends BaseMvpView {
     void pubNeedGoBack();
-
-
 }

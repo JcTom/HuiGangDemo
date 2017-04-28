@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 
 public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implements View.OnClickListener,tx_walletView {
     double s1;
-     private ImageView withdarwas_back;
+    private ImageView withdarwas_back;
     @BindView(R.id.btnwitharwals)
     Button btnwitharwals;
     @BindView(R.id.witharwals)
@@ -60,33 +60,34 @@ public class WithdarwasActivity extends MvpActivity<tx_walletPresenter> implemen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.withdarwas_back:
-                 finish();
+                finish();
             case R.id.btnwitharwals:
                 witharwalsVariety();
+
         }
 
     }
 
     private void witharwalsVariety() {
-          double s;
-          String outmoney = witharwals.getText().toString().trim();
-          s=Double.parseDouble(outmoney);
-          String token = TokenManager.getToken();
-          if (TextUtils.isEmpty(outmoney)){
-              Toast.makeText(this, "你还没有输入提现的数字,谢谢", Toast.LENGTH_SHORT).show();
-              return;
-          }else{
-                    if(s1>s) {
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("user_token", token);
-                        map.put("money", s);
-                        mvpPresenter.withrawalsAction(map);
-                        return;
-                    }else{
-                        Toast.makeText(this, "你并没有这么多钱!", Toast.LENGTH_SHORT).show();
-                    }
+        double s;
+        String outmoney = witharwals.getText().toString().trim();
+        s=Double.parseDouble(outmoney);
+        String token = TokenManager.getToken();
+        if (TextUtils.isEmpty(outmoney)){
+            Toast.makeText(this, "你还没有输入提现的数字,谢谢", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            if(s1>s) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("user_token", token);
+                map.put("money", s);
+                mvpPresenter.withrawalsAction(map);
+                return;
+            }else{
+                Toast.makeText(this, "你并没有这么多钱!", Toast.LENGTH_SHORT).show();
+            }
 
-          }
+        }
 
 
     }

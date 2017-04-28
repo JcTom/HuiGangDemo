@@ -1,6 +1,7 @@
 package com.suctan.huigangdemo.activity.circle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,10 +35,14 @@ import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.CurrentUser;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.adapter.topic.CirclePostAdapter;
+import com.suctan.huigangdemo.adapter.topic.TopicRecycleAdapter;
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
 import com.suctan.huigangdemo.bean.topic.AddCommentReturn;
+import com.suctan.huigangdemo.bean.topic.DellCommentBean;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
 import com.suctan.huigangdemo.bean.topic.TopicCommentBean;
+import com.suctan.huigangdemo.fragment.FragmentFind;
+import com.suctan.huigangdemo.fragment.FragmentIndex;
 import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishPresenter;
 import com.suctan.huigangdemo.mvp.login.postRelease.PostPublishView;
 
@@ -70,10 +76,11 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
     private Button btn_send_comment;
     private ArrayList<TopicCommentBean> topicCommentList = new ArrayList<>();
     private CirclePostAdapter mAdapter;
-
+    private ScrollView post_details_ScrollView;
     private TopicBean mTopicBean;//当前的话题对象
     private boolean isFirstCreateRecycleAdatper;
     private String tempContent;
+    private DellCommentBean mDellCommentBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +90,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         initView();
         getIntentData();
         getCommmentList();
-
+        /*deletetppiceSSS();*/
     }
 
     /*获取当前话题的评论*/
@@ -112,6 +119,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         imv_pbs_delete = (ImageView) findViewById(R.id.imv_pbs_delete);
         btn_send_comment = (Button) findViewById(R.id.btn_send_comment);
         tv_pbs_title = (TextView) findViewById(R.id.tv_pbs_title);
+        post_details_ScrollView = (ScrollView) findViewById(R.id.post_details_ScrollView);
 
         post_emoticon = (ImageButton) findViewById(R.id.post_emoticon);
         et_reply = (EditText) findViewById(R.id.et_reply);
@@ -123,7 +131,6 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         imv_pbs_delete.setOnClickListener(this);
         post_emoticon.setOnClickListener(this);
 
-
         initEmotion();
         initRecycleView();
     }
@@ -132,14 +139,12 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
     private void initRecycleView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setFocusable(false);
-
     }
 
     @Override
     protected PostPublishPresenter createPresenter() {
         return new PostPublishPresenter(this);
     }
-
 
     //初始化数据
     protected void initData(TopicBean mTopicBean) {
@@ -153,14 +158,13 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         tv_pbs_commentTime.setText(mTopicBean.getPub_topic_time());
         tv_pbs_content.setText(mTopicBean.getTopic_content());
         tv_pbs_title.setText(mTopicBean.getTopic_title());
-
-
     }
 
     //按钮的点击事件,并且对数据进行传输
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+
             case R.id.btn_send_comment:
                 toolgleSendComment(false);
                 postCommentVearity();
@@ -170,7 +174,8 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
                 finish();
                 break;
             case R.id.imv_pbs_delete:
-
+                Toast.makeText(this,"已删除",Toast.LENGTH_SHORT).show();
+                delete();
                 break;
             case R.id.et_reply:
                 hideEmotionView(true);
@@ -184,7 +189,6 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
                 break;
         }
     }
-
 
     @Override
     public void getDataFail(String msg) {
@@ -215,7 +219,6 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
     @Override
     public void postPublishCommentSuc(AddCommentReturn addCommentBean) {
         addNewComemntObject(addCommentBean);
-
         toolgleSendComment(true);
     }
 
@@ -227,7 +230,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         if (commentId != null) {
             mTopicComment.setComment_id(Integer.parseInt(commentId));
         }
-        mTopicComment.setUser_icon("http://119.29.137.109/tp/uploads/" + CurrentUser.getInstance().getUserBean().getUser_icon());
+        mTopicComment.setUser_icon(CurrentUser.getInstance().getUserBean().getUser_icon());
         mTopicComment.setUser_name(CurrentUser.getInstance().getUserBean().getUser_name());
         mTopicComment.setComment_time(addCommentBean.getComment_time());
         topicCommentList.add(0, mTopicComment);
@@ -256,11 +259,15 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
 
     }
 
+    @Override
+    public void getdeleteTopicdel(String msg) {
+
+    }
+
     private void initRecycleAdaper(ArrayList<TopicCommentBean> topicCommentList) {
         mAdapter = new CirclePostAdapter(this, topicCommentList);
         mRecyclerView.setAdapter(mAdapter);
     }
-
     /**
      * 表情键盘
      */
@@ -361,6 +368,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
             return mInputMethodManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
         }
         return super.onTouchEvent(event);
+
     }
 
     //上传前进行判断
@@ -370,6 +378,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
             return;
         }
         publishComment();
+
     }
 
     private void publishComment() {
@@ -381,5 +390,21 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         tempContent = et_reply.getText().toString();
         mvpPresenter.postPublishComment(map);
 
+    }
+
+    private void delete() {
+        /*post_details_ScrollView.removeAllViews();*/
+        /*Intent intent = new Intent(this, FragmentIndex.class);
+        intent.putExtra("nowTopic", topicBeanList.get(position));
+        startActivity(intent);*/
+        deletetppiceSSS();
+        finish();
+        /*setResult(RESULT_OK,(new Intent()).setAction((FragmentFind.class)));*/
+    }
+
+    private void deletetppiceSSS() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("topic_id", mTopicBean.getTopic_id());
+        mvpPresenter.getdeletetopicSSS(map);
     }
 }

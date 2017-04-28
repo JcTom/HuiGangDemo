@@ -53,12 +53,17 @@ public interface ApiStores {
     Observable<String> getUserReturnMessage(@QueryMap Map<String, Object> userReturn);
     /**
 
-     /*    * 发布共享需求
-     *//*
+     * 发布共享需求
+     */
     @POST("pub_need")
-    Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
+    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
-*/
+
+    /**
+     * 发布我要吃的饭菜
+     */
+    @POST("pub_eatFood")
+    Observable<ModifyReturn> PubEatFood(@QueryMap Map<String, Object> needReturn);
 
     /**
      * 修改用户信息
@@ -112,11 +117,23 @@ public interface ApiStores {
     Observable<String> getEatFoodList(@QueryMap Map<String, Object> EatListReturn);
 
 
+     /**
+     * 我的钱包显示金额
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn(@QueryMap Map<String, Object> MymoneyReturn);
+
     /**
      * 我的钱包,里面的充值功能
      */
     @POST("put_money")
     Observable<ModifyReturn> addmoneyReturn(@QueryMap Map<String, Object> moneyReturn);
+
+    /**
+     * 我的钱包,里面的显示金额功能
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn( @QueryMap Map<String, Object>  moneyReturn);
 
     /**
      * 我的钱包,里面的提现功能
@@ -146,12 +163,13 @@ public interface ApiStores {
     @POST("show_address")
     Observable<String> getAddressListReturn(@QueryMap Map<String, Object> addaddressList);
 
-    /*
-        * 发布共享需求
-        */
-    @POST("pub_need")
-    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
+
+    /**
+     * 发布共享需求
+     */
+    @POST("get_needList")
+    Observable<String> getNeedList(@QueryMap Map<String, Object> needReturn);
 
     /*发布我想要吃*/
     @POST("pub_eatFood")

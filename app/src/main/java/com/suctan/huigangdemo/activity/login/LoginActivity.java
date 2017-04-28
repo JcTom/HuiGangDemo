@@ -61,7 +61,12 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         Bmob.initialize(this, "1fe47f6bb8ec6a3eb640c3617952b5a6");
         setContentView(R.layout.activity_login);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
-         ToastTool.showToast(TokenManager.getToken(),2);
+        String token = TokenManager.getToken();
+         ToastTool.showToast(token,2);
+//        if (!TextUtils.isEmpty(token)) {
+//            goActivity();
+////            startActivity(new Intent(this , MainActivity.class));
+//        }
 //        mvpPresenter.getHelloText();
 //        //
 //        TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);

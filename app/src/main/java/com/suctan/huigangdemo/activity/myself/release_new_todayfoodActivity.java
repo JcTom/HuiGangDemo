@@ -24,6 +24,8 @@ import com.sevenheaven.segmentcontrol.SegmentControl;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.bean.user.MyChikenFoodBean;
+import com.suctan.huigangdemo.bean.user.MykitchenBean;
+import com.suctan.huigangdemo.bean.user.MykitchenReturn;
 import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenPresenter;
 import com.suctan.huigangdemo.mvp.login.myChiken.MyChikenView;
 import com.suctan.huigangdemo.net.FileUploadService;
@@ -35,6 +37,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -386,5 +389,10 @@ public class release_new_todayfoodActivity extends MvpActivity<MyChikenPresenter
                         toogleShowCatLoading(false);
                     }
                 });
+    }
+
+    @Override
+    public void getMakeOrderList(ArrayList<MykitchenBean> mykitchenBeenlist) {
+
     }
 }

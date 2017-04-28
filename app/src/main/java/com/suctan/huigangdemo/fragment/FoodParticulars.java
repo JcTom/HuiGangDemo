@@ -32,8 +32,6 @@ public class FoodParticulars extends BaseActivity {
         super.onCreate(savedInstanceState);
         initView();
     }
-
     private void initView() {
-
     }
 }

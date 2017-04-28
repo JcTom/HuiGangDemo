@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.example.androidbase.ActivityTask;
 import com.example.androidbase.BaseApplication;
 import com.example.androidbase.Constants;
+import com.example.androidbase.LoadImageManager;
 import com.example.androidbase.mvp.MvpActivity;
 import com.example.androidbase.utils.ACache;
 import com.example.androidbase.utils.ScreenTools;
@@ -47,6 +49,8 @@ import com.suctan.huigangdemo.bean.user.CourseBean;
 import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserPresenter;
 import com.suctan.huigangdemo.mvp.login.ModifityUser.ModifityUserView;
+import com.suctan.huigangdemo.net.FileUploadService;
+import com.suctan.huigangdemo.net.ServiceGenerator;
 import com.suctan.huigangdemo.widget.TipDialog;
 import com.suctan.huigangdemo.widget.TipsUserDialog;
 
@@ -66,11 +70,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import retrofit.RetrofitError;
+import retrofit.mime.TypedFile;
+
 /**
  * Created by B-305 on 2017/4/13.
  */
 
 public class SettingActivity extends MvpActivity<ModifityUserPresenter> implements View.OnClickListener, ModifityUserView {
+    private static final String TAG = "SettingActivity";//获取拍照
     private static final int requestCamera = 1001;//获取拍照
     private static final int requestPhoto = 1002;//获取图库
     private static final int requestUserName = 1003;//获取用户名
@@ -192,6 +200,8 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
         tv_knowArea.setText(mUser.getUser_skill());
         if (mUser.getUser_hobby() != null) {
             tv_hobby.setText(mUser.getUser_hobby());
+        }   if (mUser.getUser_icon() != null) {
+            LoadImageManager.getImageLoader().displayImage(CurrentUser.getInstance().getUserBean().getUser_icon(),imv_head);
         }
     }
 
@@ -338,6 +348,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
                 mvpPresenter.MoidifytyUser(mapModifyUser, requestUserKnowArea, tempData);
                 break;
             case requestUserHoppy:
+                // // FIXME: 2017/4/27   修改 user_hoppyy
                 mapModifyUser.put("user_info", "user_hoppy");
                 mvpPresenter.MoidifytyUser(mapModifyUser, requestUserHoppy, tempData);
                 break;
@@ -457,6 +468,7 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
             Bitmap photo = extras.getParcelable("data");
             imv_head.setImageBitmap(photo);
 //            initWaitDialog();
+
             upload(zoomImg(compBitmap(photo), 64, 64));
         }
     }
@@ -728,38 +740,27 @@ public class SettingActivity extends MvpActivity<ModifityUserPresenter> implemen
     }
 
     private void upload(Bitmap bitmap) {
-//        http://119.29.137.109/tp/index.php/home/index/upload
-//        String url = "http://112.74.195.131:9899/api/vatar.ashx?" + "action=" + "uploadavatar";
-        String url = "http://119.29.137.109/tp/index.php/home/index/uploadTest";
-        RequestParams params = new RequestParams(url);
-//        params.setMultipart(true);
-//       params.addBodyParameter("token", CurrentUser.getInstance().getUserBean().getToken());
-        params.addBodyParameter("file", saveBitmapFile(bitmap, getNowTime() + ".jpg"));//设置上传的文件路径
-        cancelable = x.http().post(params, new Callback.CommonCallback<JSONObject>() {
-            @Override
-            public void onSuccess(JSONObject result) {
-//                waitDialog.cancel();
-                System.out.println("当前上传结果" + result);
-                Toast.makeText(BaseApplication.getContext(), "当前上传结果" + result, Toast.LENGTH_LONG).show();
+        FileUploadService serviceGenerator = ServiceGenerator.createService(FileUploadService.class);
+        // FIXME: 2017/4/27  头像图片的后缀名?
+        TypedFile typedFile = new TypedFile("multipart/form-data", saveBitmapFile(bitmap, getNowTime() + "jpg"));
+        serviceGenerator.update_icon(typedFile, TokenManager.getToken()
+                , new retrofit.Callback<String>() {
+                    @Override
+                    public void success(String s, retrofit.client.Response response) {
+                        Log.i(TAG, "success:  更新头像成功" + s);
+//                        toogleShowCatLoading(false);
+                        Toast.makeText(BaseApplication.getContext(), "更新头像成功！", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
 
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                ex.printStackTrace();
-                ToastTool.showToast("头像上传失败" + ex, 2);
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-                hideLoading();
-            }
-        });
+                    @Override
+                    public void failure(RetrofitError retrofitError) {
+                        Log.i(TAG, "failure: " + "更新头像失败！");
+//                        System.out.println("发布成功" + retrofitError.toString());
+                        Toast.makeText(BaseApplication.getContext(), "更新头像失败！", Toast.LENGTH_LONG).show();
+//                        toogleShowCatLoading(false);
+                    }
+                });
     }
 
 
