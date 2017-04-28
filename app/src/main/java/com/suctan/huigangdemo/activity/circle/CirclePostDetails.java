@@ -227,7 +227,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         if (commentId != null) {
             mTopicComment.setComment_id(Integer.parseInt(commentId));
         }
-        mTopicComment.setUser_icon("http://119.29.137.109/tp/uploads/" + CurrentUser.getInstance().getUserBean().getUser_icon());
+        mTopicComment.setUser_icon(CurrentUser.getInstance().getUserBean().getUser_icon());
         mTopicComment.setUser_name(CurrentUser.getInstance().getUserBean().getUser_name());
         mTopicComment.setComment_time(addCommentBean.getComment_time());
         topicCommentList.add(0, mTopicComment);

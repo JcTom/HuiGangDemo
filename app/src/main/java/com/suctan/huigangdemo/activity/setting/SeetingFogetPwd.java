@@ -101,7 +101,6 @@ public class SeetingFogetPwd extends MvpActivity<ResetPassPresenter> implements 
                 BmobSMS.verifySmsCode(this, user_phone.getText().toString(), identityCode.getText().toString(), new VerifySMSCodeListener() {
                     @Override
                     public void done(BmobException ex) {
-                        // TODO Auto-generated method stub
                         if (ex == null) {//短信验证码已验证成功
                             Log.i("smile", "验证通过");
                             LoginVariety(phone,pwd);

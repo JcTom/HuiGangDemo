@@ -112,6 +112,12 @@ public interface ApiStores {
     Observable<String> getEatFoodList(@QueryMap Map<String, Object> EatListReturn);
 
 
+     /**
+     * 我的钱包显示金额
+     */
+    @POST("set_money")
+    Observable<ModifyReturn> MymoneyReturn(@QueryMap Map<String, Object> MymoneyReturn);
+
     /**
      * 我的钱包,里面的充值功能
      */
@@ -144,6 +150,11 @@ public interface ApiStores {
     @POST("pub_need")
     Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
+    /**
+     * 发布共享需求
+     */
+    @POST("get_needList")
+    Observable<String> getNeedList(@QueryMap Map<String, Object> needReturn);
 
     /*发布我想要吃*/
     @POST("pub_eatFood")

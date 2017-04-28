@@ -28,6 +28,7 @@ import com.suctan.huigangdemo.activity.myself.WaitrealActivity;
 import com.suctan.huigangdemo.activity.address.addressActivity;
 import com.suctan.huigangdemo.activity.myself.buyActivity;
 import com.suctan.huigangdemo.activity.myself.my_assess;
+import com.suctan.huigangdemo.bean.user.Users;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftPresenter;
 import com.suctan.huigangdemo.mvp.login.index.myselft.MySelftView;
 import com.suctan.huigangdemo.widget.BigImgDialog;

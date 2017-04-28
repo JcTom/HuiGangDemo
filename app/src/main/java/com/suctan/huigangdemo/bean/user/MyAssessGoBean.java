@@ -1,7 +1,5 @@
 package com.suctan.huigangdemo.bean.user;
 
-import android.widget.ImageView;
-
 /**
  * Created by Tom on 2017/4/16.
  */

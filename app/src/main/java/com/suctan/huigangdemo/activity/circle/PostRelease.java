@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -53,6 +54,7 @@ import retrofit.mime.TypedFile;
  */
 
 public class PostRelease extends MvpActivity<PostPublishPresenter> implements PostPublishView, View.OnClickListener {
+    private static final String TAG = "PostRelease";// TAG
     private static final int CHOSE_PICTRUE = 1;// 选择本地图片
     private static final int CROP_SMALL_PICTURE = 2;// 裁剪
     private static final int OPEN_SETTING = 0x1001;//打开应用信息
@@ -364,6 +366,7 @@ public class PostRelease extends MvpActivity<PostPublishPresenter> implements Po
                 , new retrofit.Callback<String>() {
                     @Override
                     public void success(String s, retrofit.client.Response response) {
+                        Log.i(TAG, "success: "+s);
                         System.out.println("发布成功" + s);
                         toogleShowCatLoading(false);
                         Toast.makeText(BaseApplication.getContext(), "发布成功！", Toast.LENGTH_LONG).show();
@@ -372,7 +375,8 @@ public class PostRelease extends MvpActivity<PostPublishPresenter> implements Po
 
                     @Override
                     public void failure(RetrofitError retrofitError) {
-                        System.out.println("发布成功" + retrofitError.toString());
+                        Log.i(TAG, "failure: "+"发布失败！");
+//                        System.out.println("发布成功" + retrofitError.toString());
                         Toast.makeText(BaseApplication.getContext(), "发布失败！", Toast.LENGTH_LONG).show();
                         toogleShowCatLoading(false);
                     }

@@ -51,13 +51,12 @@ public class LoginPresener extends DemoBasePresenter<LoginView> {
                     public void onSuccess(LoginReturn model) {
                         if (model != null) {
                             if (model.getStatus() == 1) {
-
-                                Log.i(TAG, "token是：" + model.getToken() + model.getStatus() + "msg是" + model.getMsg());
+                                Log.i(TAG, "token是：" + model.getToken() + model.getStatus() + "   msg是" + model.getMsg());
                                 InsertTokenToCace(model.getToken());//缓存token
                                 getCurrentUser(model.getToken());   //获取登陆的用户信息
                                 mvpView.loginGoMain();
                             } else {
-                                mvpView.getDataFail("用户名或者密码错误");
+                                mvpView.getDataFail(model.getMsg());
                             }
                         }
                     }

@@ -31,7 +31,7 @@ public class MymoneyPresenter extends DemoBasePresenter<MymoneyView>{
                           @Override
                           public void onSuccess(ModifyReturn model) {
                               Log.i(TAG, "onSuccess: ");
-                              if (model.getStatus() == "1") {
+                              if (model.getStatus() == 1) {
                                   mvpView.getmoney(model.getMoney());
                               } else {
                                   ToastTool.showToast(model.getMsg(),0);

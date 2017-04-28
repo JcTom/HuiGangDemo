@@ -9,6 +9,8 @@ import com.suctan.huigangdemo.bean.dowant.DoWantOrderBean;
 import com.suctan.huigangdemo.bean.dowant.DoWantOrderReturn;
 import com.suctan.huigangdemo.bean.index.EatFoodBean;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
+import com.suctan.huigangdemo.bean.need.NeedBean;
+import com.suctan.huigangdemo.bean.need.NeedReturn;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendBean;
 import com.suctan.huigangdemo.bean.order.buy.BuyRecommendReturn;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
@@ -610,6 +612,57 @@ public class JSONParstObject {
         }
         return buyRecommendReturn;
     }
+
+
+
+    /**
+     * 获取需求列表
+     *
+     * @param topString
+     * @return
+     */
+    public static NeedReturn getNeedStringObject(String topString) {
+        NeedReturn needReturn = null;
+        ArrayList<NeedBean> needBeenList = null;
+        try {
+            JSONObject jsonObject = new JSONObject(topString);
+            needReturn = new NeedReturn();
+            needBeenList = new ArrayList<>();
+            needReturn.setStatus(jsonObject.getInt("status"));
+            needReturn.setMsg(jsonObject.getString("msg"));
+            JSONArray jsonArray = null;
+            jsonArray = jsonObject.getJSONArray("needList");
+            if (jsonArray != null) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+                    NeedBean needBean = new NeedBean();
+                    String needId = jsonObject1.getString("need_id");
+                    if (needId != null) {
+                        needBean.setNeed_id(Integer.parseInt(needId));
+                    }
+                    needBean.setUser_icon(jsonObject1.getString("user_icon"));
+                    needBean.setUser_name(jsonObject1.getString("user_name"));
+                    needBean.setUser_phone(jsonObject1.getString("user_phone"));
+                    needBean.setUser_address(jsonObject1.getString("user_address"));
+
+                    needBean.setNeed_title(jsonObject1.getString("need_title"));
+                    needBean.setNeed_content(jsonObject1.getString("need_content"));
+                    needBean.setNeed_price(jsonObject1.getString("need_price"));
+
+                    needBean.setResponse_time(jsonObject1.getString("response_time"));
+                    needBean.setExpect_time(jsonObject1.getString("expect_time"));
+                    needBean.setPub_time(jsonObject1.getString("pub_time"));
+                    needBeenList.add(needBean);
+                }
+                needReturn.setTipBeanList(needBeenList);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return needReturn;
+    }
+
 
 
 }
