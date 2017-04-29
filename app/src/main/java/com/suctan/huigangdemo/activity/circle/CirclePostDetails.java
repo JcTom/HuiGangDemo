@@ -75,13 +75,14 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
     private ImageView imv_pbs_delete;
     private Button btn_send_comment;
     private ArrayList<TopicCommentBean> topicCommentList = new ArrayList<>();
+
     private CirclePostAdapter mAdapter;
     private ScrollView post_details_ScrollView;
     private TopicBean mTopicBean;//当前的话题对象
     private boolean isFirstCreateRecycleAdatper;
     private String tempContent;
     private DellCommentBean mDellCommentBean;
-
+    private boolean isVisable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,10 +92,9 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         initView();
         getIntentData();
         getCommmentList();
-        /*deletetppiceSSS();*/
-        /*deletetppiceSS();*/
 
     }
+
 
     /*获取当前话题的评论*/
     private void getCommmentList() {
@@ -119,7 +119,7 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         tv_pbs_commentTime = (TextView) findViewById(R.id.tv_pbs_commentTime);
         tv_pbs_content = (TextView) findViewById(R.id.tv_pbs_content);
         imv_pbs_imvdetail = (ImageView) findViewById(R.id.imv_pbs_imvdetail);
-        imv_pbs_delete = (ImageView) findViewById(R.id.imv_pbs_delete);
+        imv_pbs_delete = (ImageView) findViewById(R.id.imv_pbs_delete);//删除
         btn_send_comment = (Button) findViewById(R.id.btn_send_comment);
         tv_pbs_title = (TextView) findViewById(R.id.tv_pbs_title);
         post_details_ScrollView = (ScrollView) findViewById(R.id.post_details_ScrollView);
@@ -193,6 +193,9 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
                 break;
         }
     }
+
+
+
 
     @Override
     public void getDataFail(String msg) {
@@ -270,7 +273,8 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
 
     private void initRecycleAdaper(ArrayList<TopicCommentBean> topicCommentList) {
         mAdapter = new CirclePostAdapter(this, topicCommentList);
-        mAdapter.setOnClickCirclePostListenter((CirclePostAdapter.OnCirclePostListenter) this);
+        mAdapter.setOnClickCirclePostListenter(this);
+        deletetppiceSS();
         mRecyclerView.setAdapter(mAdapter);
     }
     /**
@@ -280,7 +284,6 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         FaceFragment faceFragment = FaceFragment.Instance();
         getSupportFragmentManager().beginTransaction().add(R.id.emojicons_layout, faceFragment).commit();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
     }
 
     private void toolgleSendComment(boolean isClick) {
@@ -401,23 +404,32 @@ public class CirclePostDetails extends MvpActivity<PostPublishPresenter> impleme
         finish();
         System.out.println("setUserVisibleHint执行了---finish");
     }
+    /*private deleteTop deleteTop;
 
 
+    private  interface deleteTop{
+        void deleteTop(int position);
+    }*/
 
     private void deletetppiceSSS() {
         Map<String, Object> map = new HashMap<>();
         map.put("topic_id", mTopicBean.getTopic_id());
         mvpPresenter.getdeletetopicSSS(map);
+
     }
     @Override
     public void onPost_reply_item(int position) {
         Toast.makeText(this,"删除",Toast.LENGTH_SHORT).show();
-    }
-
-    private void deletetppiceSS() {
         Map<String, Object> map = new HashMap<>();
-        map.put("topic_id", mTopicBean.getTopic_id());
+        map.put("comment_id", topicCommentList.get(position).getComment_id());
         mvpPresenter.getdeletetopicSS(map);
+        topicCommentList.remove(position);
+        mAdapter.notifyItemRemoved(position);
+        mAdapter.notifyDataSetChanged();
+
+    }
+    private void deletetppiceSS() {
+
     }
 
 }

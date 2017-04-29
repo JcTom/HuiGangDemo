@@ -19,8 +19,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-    String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
-//    String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+    /*String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";*/
+  String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**

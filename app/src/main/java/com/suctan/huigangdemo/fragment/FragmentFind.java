@@ -40,6 +40,7 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
     private List<String> mDatas;
     private ArrayList<TopicBean> topicBeanList = new ArrayList<>();
     private boolean isFirstCreateRecycle;
+    private ArrayList<TopicBean> topicBeenList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,10 +55,7 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
         return viewFind;
     }
 
-    /*public void onResume(){
-        super.onResume();
-        System.out.println("onResume执行了");
-    }*/
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -68,10 +66,7 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
     }
 
     private void godelete() {
-        /*int id = (TopicBean) getIntent().getSerializableExtra("nowTopic");
-        if (mTopicBean != null) {
-            initData(mTopicBean);
-        }*/
+
     }
 
     private void getTopicData() {
@@ -123,7 +118,6 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
 
     @Override
     public void hideLoading() {
-
     }
 
     @Override
@@ -140,11 +134,11 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
         if (!isFirstCreateRecycle) {
             isFirstCreateRecycle = true;
             InitRecycleViewAdapter(this.topicBeanList);
+            topicBeenList.remove("topic_id");
         } else {
             topListAdatper.notifyDataSetChanged();
         }
     }
-
     private void InitRecycleViewAdapter(ArrayList<TopicBean> topicBeenList) {
         topListAdatper = new TopicRecycleAdapter(getActivity(), topicBeenList);
         topListAdatper.setOnClickTopicListner(this);
@@ -159,8 +153,6 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
     public void postPublishCommentSuc(AddCommentReturn addCommentBean) {
 
     }
-
-
     @Override
     public void postPublishCommentFail(String msg) {
 
@@ -172,7 +164,6 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
 
     @Override
     public void getComemtnListFail() {
-
     }
 
     @Override
@@ -186,10 +177,19 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
             Intent intent = new Intent(getActivity(), CirclePostDetails.class);
             intent.putExtra("nowTopic", topicBeanList.get(position));
             startActivity(intent);
-            /*startActivityForResult(intent,1);*/
         }
-    }
+        /*if (this.topicBeanList.size()!=topicBeanList.size()){
 
+            topListAdatper.notifyDataSetChanged();
+
+        }*/
+        /*topicBeanList.remove(position);
+        topListAdatper.notifyItemRemoved(position);
+        topListAdatper.notifyDataSetChanged();*/
+    }
+    public void onResume(){
+        super.onResume();
+    }
    /* public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
@@ -199,9 +199,6 @@ public class FragmentFind extends MvpFragment<PostPublishPresenter> implements V
             //相当于Fragment的onPause
         }
     }*/
-
-
-
     @Override
     protected void lazyLoad() {
 

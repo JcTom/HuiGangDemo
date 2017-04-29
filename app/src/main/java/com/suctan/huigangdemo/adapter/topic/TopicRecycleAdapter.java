@@ -13,6 +13,7 @@ import com.example.androidbase.BaseApplication;
 import com.example.androidbase.LoadImageManager;
 import com.example.androidbase.widget.CircleImageView;
 import com.suctan.huigangdemo.R;
+import com.suctan.huigangdemo.activity.circle.CirclePostDetails;
 import com.suctan.huigangdemo.bean.topic.TopicBean;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class TopicRecycleAdapter extends RecyclerView.Adapter<TopicRecycleAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<TopicBean> topicBeenList;
-
+    private boolean isShowDelete=false;
 
     public TopicRecycleAdapter(Context context, ArrayList<TopicBean> topicBeenList) {
         this.context = context;
@@ -67,6 +68,16 @@ public class TopicRecycleAdapter extends RecyclerView.Adapter<TopicRecycleAdapte
 
    public interface OnTopicListenter {
         void onClickTopicItem(int position);
+    }
+
+    private deleteTop deleteTop;
+
+    public void setDeleteTop(deleteTop deleteTop){
+        this.deleteTop = deleteTop;
+    }
+
+    private  interface deleteTop{
+        void deleteTop(int position);
     }
 
 
