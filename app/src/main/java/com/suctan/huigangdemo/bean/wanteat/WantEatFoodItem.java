@@ -9,7 +9,6 @@ public class WantEatFoodItem {
     private int foodCount;//总数
 
 
-
     public WantEatFoodItem(String foodName, int foodType, int foodCount) {
         this.foodName = foodName;
         this.foodType = foodType;

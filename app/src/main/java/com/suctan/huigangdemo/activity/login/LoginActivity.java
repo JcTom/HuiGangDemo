@@ -1,8 +1,8 @@
 package com.suctan.huigangdemo.activity.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +19,7 @@ import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.acache.TokenManager;
 import com.suctan.huigangdemo.activity.MainActivity;
+import com.suctan.huigangdemo.activity.rememberPsw.SmoothCheckBox;
 import com.suctan.huigangdemo.activity.setting.SeetingFogetPwd;
 import com.suctan.huigangdemo.activity.signup.signupActivity;
 import com.suctan.huigangdemo.bean.user.Users;
@@ -47,6 +48,11 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
     private EditText edtUserName;
     private EditText edtPwd;
     private String TAG ="LoginActivity";
+    private boolean xuanzhong;
+
+    //记住密码
+    private SmoothCheckBox scb;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +61,12 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         Bmob.initialize(this, "1fe47f6bb8ec6a3eb640c3617952b5a6");
         setContentView(R.layout.activity_login);
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary), 0);
-         ToastTool.showToast(TokenManager.getToken(),2);
+        String token = TokenManager.getToken();
+         ToastTool.showToast(token,2);
+//        if (!TextUtils.isEmpty(token)) {
+//            goActivity();
+////            startActivity(new Intent(this , MainActivity.class));
+//        }
 //        mvpPresenter.getHelloText();
 //        //
 //        TelephonyManager TelephonyMgr = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
@@ -87,6 +98,16 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
         edtUserName = (EditText) findViewById(R.id.edt_login_user_name);
         edtPwd = (EditText) findViewById(R.id.edt_login_user_pwd);
 
+        //记住密码
+        sp = getSharedPreferences("config", MODE_PRIVATE);
+        scb = (SmoothCheckBox) findViewById(R.id.remember_pass);
+        //获取sp里面存储的数据
+        String savedphone= sp.getString("phone", "");
+        String savedPassword = sp.getString("password", "");
+        boolean saveremenber = sp.getBoolean("xuanzhong",false);
+        edtUserName.setText(savedphone);
+        edtPwd.setText(savedPassword);
+        scb.setChecked(saveremenber);
     }
 
     /**
@@ -180,6 +201,22 @@ public class LoginActivity extends MvpActivity<LoginPresener> implements LoginVi
 
     @Override
     public void loginGoMain() {
+        //获取正确的数据储存起来
+        String account1 = edtUserName.getText().toString();
+        String password1 = edtPwd.getText().toString();
+        if (scb.isChecked()) {
+            // 说明勾选框被选中了。把用户名和密码给记录下来
+            // 获取到一个参数文件的编辑器。
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("phone", account1);
+            editor.putString("password", password1);
+            editor.putBoolean("xuanzhong",true);
+            // 把数据给保存到sp里面
+            editor.commit();
+            Toast.makeText(getApplicationContext(), "记住密码已经生效", Toast.LENGTH_SHORT)
+                    .show();
+        }
+
         goActivity();
     }
 

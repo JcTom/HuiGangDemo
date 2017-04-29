@@ -12,9 +12,9 @@ import retrofit.mime.TypedFile;
 public interface FileUploadService {
 
     @Multipart
-    @POST("/tp/index.php/Home/Index/uploadTest")
-    void upload(@Part("file") TypedFile file,
-                @Part("description") String description,
+    @POST("/tp/index.php/Home/Index/update_icon")
+    void update_icon(@Part("file") TypedFile file,
+                @Part("user_token") String user_token,
                 Callback<String> cb);
 
     @Multipart

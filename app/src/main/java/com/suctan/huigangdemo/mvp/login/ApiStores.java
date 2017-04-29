@@ -1,6 +1,5 @@
 package com.suctan.huigangdemo.mvp.login;
 
-import com.suctan.huigangdemo.bean.address.AddAddressResult;
 import com.suctan.huigangdemo.bean.topic.AddCommentBean;
 import com.suctan.huigangdemo.bean.user.ComomBeanReturn;
 import com.suctan.huigangdemo.bean.user.LoginReturn;
@@ -19,8 +18,8 @@ import rx.Observable;
 public interface ApiStores {
     //    String ServerUrl = "http://112.74.195.131:8666/api/";
 //String ServerUrl = "http://10.0.2.2/tp/index.php/home/index/login_test/username/合明/password/94682431/";
-    /*String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";*/
-  String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
+  String ServerUrl = "http://10.5.12.125/tp/index.php/home/index/";
+  //  String ServerUrl = "http://119.29.137.109/tp/index.php/home/index/";
 //        String ServerUrl = "http://119.29.137.109/hello/";
 /**********************************************************************************************************************/
     /**
@@ -45,7 +44,6 @@ public interface ApiStores {
 //    Observable<LoginReturn> getLoginReturnMessage(@QueryMap Map<String, Object> loginMap);
 //    @POST("login")
 //    Observable<String> getHello(@QueryMap Map<String, Object> helloReturn);
-
     /**
      * 获取用户信息
      */
@@ -56,9 +54,14 @@ public interface ApiStores {
      /*    * 发布共享需求
      *//*
     @POST("pub_need")
-    Observable<ModifyReturn> PubNeedReturn(@QueryMap Map<String, Object> needReturn);
+    Observable<ModifyReturn> PubNeed(@QueryMap Map<String, Object> needReturn);
 
-*/
+
+    /**
+     * 发布我要吃的饭菜
+     */
+    @POST("pub_eatFood")
+    Observable<ModifyReturn> PubEatFood(@QueryMap Map<String, Object> needReturn);
 
     /**
      * 修改用户信息
@@ -75,7 +78,7 @@ public interface ApiStores {
     /**
      * 发布帖子或者话题
      */
-    @POST("pub_topic")
+    @POST("pub_ topic")
     Observable<ModifyReturn> postReleaseReturn(@QueryMap Map<String, Object> topicReturn);
 
     /**

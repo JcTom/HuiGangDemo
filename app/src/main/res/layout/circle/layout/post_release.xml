@@ -12,7 +12,7 @@
         <ImageButton
             android:id="@+id/post_back"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#00000000"
             android:src="@mipmap/back_white" />
@@ -100,8 +100,7 @@
         <FrameLayout
             android:id="@+id/img_layout"
             android:layout_width="95dp"
-            android:layout_height="95dp"
-            >
+            android:layout_height="95dp">
 
             <ImageButton
                 android:id="@+id/select_img"

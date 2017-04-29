@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ly_show"
+    >
+
+    <LinearLayout
+        style="@style/tab_title"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imb_checkcomment_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:src="@mipmap/back_white" />
+
+        <TextView
+            style="@style/title_font"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center"
+            android:text="查看评价" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edt_checkcomment_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:hint="给些宝贵意见呗"
+        android:padding="10dp"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ly_emotion"
+        style="@style/tab_title"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <ImageButton
+            android:id="@+id/imb_checkcomment_post_emoticon"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:src="@mipmap/emoticon" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_checkcomment_reply"
+                style="@style/text_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white"
+                android:hint="回复楼主"
+                android:maxHeight="50dp"
+                android:minHeight="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+
+                android:id="@+id/btn_checkcomment_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@color/white"
+                android:text="发送"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_checkcomment_emojicons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+</LinearLayout>

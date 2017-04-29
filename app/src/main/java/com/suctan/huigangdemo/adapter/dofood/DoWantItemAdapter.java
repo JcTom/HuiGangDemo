@@ -61,7 +61,6 @@ public class DoWantItemAdapter extends BaseAdapter {
         } else {
             orderType = "(大份)";
         }
-
         holder.tv_dowant_orderdetail.setText(wantEatFoodItem.getFoodName() + "            " + wantEatFoodItem.getFoodCount() + "          " + orderType);
 
         return view;

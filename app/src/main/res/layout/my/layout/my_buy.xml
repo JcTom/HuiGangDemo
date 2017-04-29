@@ -33,7 +33,7 @@
             app:normalColor="@color/green"
             app:selectedColor="@color/bg_gray"
             app:separatorWidth="2dp"
-            app:texts="推荐订单|订做订单"
+            app:texts="订做订单|推荐订单"
             app:verticalGap="10dp" />
 
     </RelativeLayout>
@@ -94,7 +94,7 @@
                     android:id="@+id/tv_mybuy_dsc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="待接单"
+                    android:text="待送餐"
                     android:textSize="16dp" />
             </LinearLayout>
 

@@ -48,7 +48,7 @@ public class MyAssessGoAdapter extends BaseAdapter {
         if(convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.my_assess_go_item,parent,false);
             holder = new GridViewHolder();
-            //holder.myAssessGo_ImageView= (ImageView) convertView.findViewById(R.id.myAssessGo_ImageView);
+//            holder.myAssessGo_ImageView= (ImageView) convertView.findViewById(R.id.myAssessGo_ImageView);
             holder.evaluate_hand_Image = (ImageView) convertView.findViewById(R.id.evaluate_hand_Image);
             //holder.evaluate_star = (ImageView) convertView.findViewById(R.id.evaluate_star);
             holder.evaluate_user = (TextView) convertView.findViewById(R.id.evaluate_user);
@@ -60,7 +60,8 @@ public class MyAssessGoAdapter extends BaseAdapter {
         else{
             holder = (GridViewHolder) convertView.getTag();}
         if(myAssessGoBean.getImageUrl()!=null){
-            LoadImageManager.getImageLoader().displayImage(myAssessGoBean.getImageUrl(),holder.myAssessGo_ImageView);
+            //  // FIXME: 2017/4/27   菜品图片 myAssessGo_ImageView需要不 ？ 已注释
+//            LoadImageManager.getImageLoader().displayImage(myAssessGoBean.getImageUrl(),holder.myAssessGo_ImageView);
             LoadImageManager.getImageLoader().displayImage(myAssessGoBean.getImage_evaluate_User(),holder.evaluate_hand_Image);
         }
         return convertView;

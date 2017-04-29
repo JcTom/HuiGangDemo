@@ -39,7 +39,6 @@ public class PostPublishPresenter extends DemoBasePresenter<PostPublishView> {
                     public void onStart() {
 
                     }
-
                     @Override
                     public void onSuccess(AddCommentBean model) {
                       if(model!=null){

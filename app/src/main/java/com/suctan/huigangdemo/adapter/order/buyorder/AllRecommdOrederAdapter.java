@@ -40,7 +40,7 @@ public class AllRecommdOrederAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         MyViewHolder holder = null;
         BuyRecommendBean buyRecommendBean = AllBuyRecommendList.get(i);
         if (view == null) {
@@ -100,9 +100,55 @@ public class AllRecommdOrederAdapter extends BaseAdapter {
         holder.tv_remdAll_foodname.setText(buyRecommendBean.getOrder_title());
         holder.tv_remdAll_foodprice.setText(buyRecommendBean.getOrder_price() + "");
         holder.tv_remdAll_orderNumber.setText(buyRecommendBean.getOrder_id() + "");
-
+/*监听事件 */
+        holder.tv_remdAll_checkdetial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onItemOnClick(i);
+            }
+        });
+        holder.tv_remdAll_cancel_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onCancelOnclick(i);
+            }
+        });
+        holder.tv_remdAll_comfirm_food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onComfrimOnclick(i);
+            }
+        });
+        holder.tv_remdAll_checkcommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onCheckComment(i);
+            }
+        });
         return view;
     }
+
+    AllDetailOnClickListener detialOnClick;
+
+    public void onDetailOnclick(AllDetailOnClickListener detialOnClick) {
+        this.detialOnClick = detialOnClick;
+    }
+
+    public void setDataChange(ArrayList<BuyRecommendBean> AllBuyRecommendList) {
+        this.AllBuyRecommendList = AllBuyRecommendList;
+        notifyDataSetChanged();
+    }
+
+    public interface AllDetailOnClickListener {
+        void onItemOnClick(int position);
+
+        void onCancelOnclick(int position);
+
+        void onComfrimOnclick(int position);
+
+        void onCheckComment(int position);
+    }
+
 
     class MyViewHolder {
         TextView tv_remdAll_order_status;

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
@@ -18,32 +20,30 @@
             android:paddingRight="10dp">
 
             <ImageView
+                android:id="@+id/imv_BuyAcomment_back"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/return_128"
+                android:layout_gravity="left|center_vertical"
                 android:layout_marginLeft="1dp"
 
-                android:layout_gravity="left|center_vertical"
-                />
+                android:src="@mipmap/return_128" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="@string/assess"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:gravity="center"
                 android:layout_weight="4"
-                />
+                android:gravity="center"
+                android:text="@string/assess"
+                android:textColor="#fff"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:textSize="18sp"
-                android:textColor="#fff"
-                android:gravity="center"
                 android:layout_marginRight="1dp"
-                />
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <!--标题栏以下-->
@@ -52,9 +52,7 @@
             android:layout_height="match_parent"
             android:background="#fff"
             android:orientation="vertical">
-
             <!--评价部分-->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +67,9 @@
                     android:textColor="#9db830"
                     android:textSize="18sp" />
 
+
                 <EditText
+                    android:id="@+id/edt_BuyAcomment_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -113,7 +113,7 @@
                         android:textSize="18sp" />
 
                     <com.suctan.huigangdemo.widget.StarBar
-                        android:id="@+id/start_view_0"
+                        android:id="@+id/start_BuyAcomment_miao"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -146,7 +146,8 @@
                         android:textSize="18sp" />
 
                     <com.suctan.huigangdemo.widget.StarBar
-                        android:id="@+id/start_view_1"
+
+                        android:id="@+id/start_BuyAcomment_serivice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -179,7 +180,7 @@
                         android:textSize="18sp" />
 
                     <com.suctan.huigangdemo.widget.StarBar
-                        android:id="@+id/start_view_2"
+                        android:id="@+id/start_BuyAcomment_level"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -208,7 +209,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/post_fb"
+            android:id="@+id/btn_BuyAcomment_psot"
             style="@style/title_font"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

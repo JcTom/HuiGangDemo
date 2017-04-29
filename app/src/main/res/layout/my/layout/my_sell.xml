@@ -35,7 +35,7 @@
             app:normalColor="@color/green"
             app:selectedColor="@color/bg_gray"
             app:separatorWidth="2dp"
-            app:texts="卖出|接单"
+            app:texts="接单|卖出"
             app:verticalGap="10dp" />
 
     </RelativeLayout>
@@ -121,8 +121,13 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/mViewpager"
+        android:id="@+id/sell_viewPagep"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/sell_viewPageA"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 </LinearLayout>

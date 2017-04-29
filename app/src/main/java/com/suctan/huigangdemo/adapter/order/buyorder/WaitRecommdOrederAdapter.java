@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by 黄淑翰 on 2017/4/26.
  */
-public class WaitRecommdOrederAdapter extends BaseAdapter {
+ public class WaitRecommdOrederAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<BuyRecommendBean> AllBuyRecommendList;
 
@@ -40,7 +40,7 @@ public class WaitRecommdOrederAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         MyViewHolder holder = null;
         BuyRecommendBean buyRecommendBean = AllBuyRecommendList.get(i);
         if (view == null) {
@@ -58,13 +58,43 @@ public class WaitRecommdOrederAdapter extends BaseAdapter {
             holder = (MyViewHolder) view.getTag();
         }
         holder.tv_remdWait_foodname.setText(buyRecommendBean.getOrder_title());
-        holder.tv_remdWait_recTime.setText(buyRecommendBean.getOrder_expect_time());
+        holder.tv_remodWait_time.setText(buyRecommendBean.getOrder_expect_time());
         holder.tv_remdWait_price.setText(buyRecommendBean.getOrder_price() + "");
         holder.tv_remdWait_orderId.setText(buyRecommendBean.getOrder_id() + "");
         holder.tv_remdWait_recTime.setText(buyRecommendBean.getOrder_res_time());
 
+        holder.tv_remdWait_detial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onItemOnClick(i);
+            }
+        });
+        holder.tv_remdWait_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detialOnClick.onCancelOnclick(i);
+            }
+        });
         return view;
     }
+
+    WaitDetailOnClickListener detialOnClick;
+
+    public void onDetailOnclick(WaitDetailOnClickListener detialOnClick) {
+        this.detialOnClick = detialOnClick;
+    }
+
+    public void setDataChange(ArrayList<BuyRecommendBean> AllBuyRecommendList) {
+        this.AllBuyRecommendList = AllBuyRecommendList;
+        notifyDataSetChanged();
+    }
+
+    public interface WaitDetailOnClickListener {
+        void onItemOnClick(int position);
+
+        void onCancelOnclick(int position);
+    }
+
 
     class MyViewHolder {
 
@@ -77,5 +107,4 @@ public class WaitRecommdOrederAdapter extends BaseAdapter {
         TextView tv_remdWait_cancel;
         TextView tv_remdWait_detial;
     }
-
 }

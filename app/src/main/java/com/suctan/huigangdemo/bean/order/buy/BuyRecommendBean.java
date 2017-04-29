@@ -1,10 +1,14 @@
 package com.suctan.huigangdemo.bean.order.buy;
 
+import java.io.Serializable;
+
 /**
  * Created by 黄淑翰 on 2017/4/26.
  */
-public class BuyRecommendBean {
+public class BuyRecommendBean implements Serializable{
+
     private int order_status;
+    private int id;
     private int order_id;
     private String order_title;
     private String eatstrarr;
@@ -17,7 +21,33 @@ public class BuyRecommendBean {
     private String user_phone;
     private String uer_address;
     private String pic;
+    private double all_price;
+    private int num;
 
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public double getAll_price() {
+        return all_price;
+    }
+
+    public void setAll_price(double all_price) {
+        this.all_price = all_price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getPic() {
         return pic;

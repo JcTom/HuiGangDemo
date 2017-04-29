@@ -59,7 +59,7 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
     @BindView(R.id.service_fb)
     Button service_fb;
     //此处定义共享需求类型常量
-//    private  int need_type = 8  ;
+    private  int needType = 8  ;
 //    private static final int HOME_SERVICES=1; //家政
 //    private static final int HELP_BUY= 2;     //代购
 //    private static final int FREE_CAR = 3;    //顺风车
@@ -84,8 +84,8 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
     //初始化标题
     private void initView() {
         Intent it = getIntent();
-        String serviceType = it.getStringExtra("serviceType");
-        int needType = it.getIntExtra("needType",0);
+         String serviceType = it.getStringExtra("serviceType");
+          needType = it.getIntExtra("needType",0);
         System.out.println("serviceType是"+serviceType+"需求类型是"+needType);
         loginTitle.setText("发布" + serviceType + "服务");
         search.setVisibility(View.GONE);
@@ -179,7 +179,7 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
         map.put("need_price", money);
         map.put("response_time", response_time);
         map.put("expect_time", expect_time);
-//        map.put("need_type", need_type);
+        map.put("need_type", needType);
         System.out.println(map);
         mvpPresenter.pub_needAction(map);
     }
@@ -191,6 +191,7 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
                 finish();
                 break;
             case R.id.service_fb:
+
                 pubNeedVariety();
                 break;
         }
@@ -214,5 +215,8 @@ public class ReleaseService extends MvpActivity<PubNeedPresener> implements PubN
     @Override
     public void pubNeedGoBack() {
         ToastTool.showToast("发布成功",1);
+        //跳转到ServiceList
+        startActivity(new Intent(ReleaseService.this ,ServiceList.class ));
+
     }
 }

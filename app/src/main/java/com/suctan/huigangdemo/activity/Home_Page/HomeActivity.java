@@ -6,14 +6,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.androidbase.mvp.BasePresenter;
 import com.example.androidbase.mvp.MvpActivity;
 import com.jaeger.library.StatusBarUtil;
 import com.suctan.huigangdemo.R;
 import com.suctan.huigangdemo.activity.MainActivity;
-import com.suctan.huigangdemo.activity.login.LoginActivity;
 import com.suctan.huigangdemo.bean.index.EatFoodReturn;
-import com.suctan.huigangdemo.bean.user.HomeBean;
 import com.suctan.huigangdemo.mvp.login.index.home.HomePresenter;
 import com.suctan.huigangdemo.mvp.login.index.home.HomeView;
 
@@ -49,7 +46,6 @@ public class HomeActivity extends MvpActivity<HomePresenter> implements HomeView
             case R.id.login_back:
                 finish();
                 break;
-
             case R.id.search:
                 Intent goMainIntent = new Intent(HomeActivity.this, MainActivity.class);
                 startActivity(goMainIntent);
@@ -76,6 +72,7 @@ public class HomeActivity extends MvpActivity<HomePresenter> implements HomeView
     @Override
     protected HomePresenter createPresenter() {
         return null;
+        //return  new HomePresenter(this);
     }
 
 
